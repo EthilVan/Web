@@ -16,7 +16,7 @@ gem 'execjs', require: false
 gem 'sinatra-flash', require: 'sinatra/flash'
 gem 'will_paginate'
 gem 'redcarpet'
-gem 'gemoji'
+gem 'gemoji', require: false
 gem 'chunky_png'
 gem 'image_size'
 gem 'bcrypt-ruby', require: 'bcrypt'

@@ -1,0 +1,42 @@
+yearplus:
+    depuis: "plus d'un an"
+    ilya:   "plus d'un an"
+month2plus:
+    depuis: "plus de deux mois"
+    ilya:   "plus de deux mois"
+month2:
+    depuis: "deux mois"
+    ilya:   "deux mois"
+month1:
+    depuis: "un mois"
+    ilya:   "un mois"
+week3plus:
+    depuis: "moins d'un mois"
+    ilya:   "plus de deux semaine"
+week2:
+    depuis: "deux semaines"
+    ilya:   "deux semaines"
+week1:
+    depuis: "une semaine"
+    ilya:   "une semaine"
+day2plus:
+    depuis: "cette semaine"
+    ilya:   "plus de deux jours"
+day2:
+    depuis: "deux jours"
+    ilya:   "deux jours"
+day1:
+    depuis: "hier"
+    ilya:   "plus de 24h"
+hour2plus:
+    depuis: "aujourd'hui"
+    ilya:   "moins de 24h"
+hour2:
+    depuis: "environ deux heures"
+    ilya:   "environ deux heures"
+hour1:
+    depuis: "environ une heure"
+    ilya:   "environ une heure"
+hour0:
+    depuis: "moins d'une heure"
+    ilya:   "moins d'une heure"

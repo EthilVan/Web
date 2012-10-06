@@ -1,17 +1,29 @@
 #! /usr/bin/env ruby
 # encoding: utf-8
-
-require "thor"
+require 'thor'
 
 module EthilVan
    class CLI < Thor
 
       include Thor::Actions
 
+      no_tasks do
+         def load_environment
+            require './config/env'
+         end
+      end
+
       desc 'console',
             'Débute un shell ruby interactif avec l\'environnement chargé'
       def console
          run 'irb -r./config/env', verbose: false
+      end
+
+      desc 'emoji', 'Installe les emoji dans le dossier "public/images/emoji"'
+      def emoji
+         load_environment
+         rrequire 'lib/tasks/emoji_install'
+         EthilVan::Emoji.install
       end
    end
 end
