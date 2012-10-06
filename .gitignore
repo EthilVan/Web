@@ -1,0 +1,11 @@
+.rbx
+log/
+tmp/
+.bundle/
+.sass-cache/
+.assets_cache/
+public/javascripts
+public/stylesheets
+public/images/emoji/*.png
+
+config/database.private.rb
