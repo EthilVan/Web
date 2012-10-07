@@ -23,6 +23,7 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 
 # Développement
 group :development do
+   gem 'pry'
    gem 'thin'
    gem 'shotgun'
 end

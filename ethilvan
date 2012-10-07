@@ -16,7 +16,12 @@ module EthilVan
       desc 'console',
             'Débute un shell ruby interactif avec l\'environnement chargé'
       def console
-         run 'irb -r./config/env', verbose: false
+         load_environment
+         Pry.config.prompt = [
+            proc { |obj, nest_level, _| "#{obj} (#{nest_level}) >> " },
+            proc { |obj, nest_level, _| "#{obj} (#{nest_level}) << " }
+         ]
+         EthilVan.pry
       end
 
       desc 'emoji', 'Installe les emoji dans le dossier "public/images/emoji"'
