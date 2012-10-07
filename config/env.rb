@@ -15,3 +15,6 @@ rrequire_rdir 'lib'
 # Base de données
 rrequire 'config/database'
 rrequire_dir 'database/models'
+
+# Routes
+rrequire_dir 'routes'

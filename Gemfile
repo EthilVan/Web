@@ -2,7 +2,7 @@ source :rubygems
 
 # Core
 gem 'thor'
-gem 'sinatra'
+gem 'sinatra', require: 'sinatra/base'
 gem 'activerecord', require: 'active_record'
 gem 'mysql2'
 gem 'mustache'
