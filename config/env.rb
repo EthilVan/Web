@@ -10,7 +10,7 @@ Bundler.require(:default, EthilVan::ENV)
 
 # Lib & helpers
 require './lib/core/require'
-rrequire_all 'lib'
+rrequire_rdir 'lib'
 
 # Base de données
 rrequire 'config/database'
