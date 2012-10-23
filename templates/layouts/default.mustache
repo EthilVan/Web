@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <title>{{ title }}</title>
+      <link rel="icon" type="image/png" href="/favicon.png" />
+      <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/{{ stylesheet_name }}.css" rel="stylesheet" type="text/css" />
+   </head>
+
+   <body>
+
+      <div id="page">
+         <img class="motif_bg left" src="/images/layout/motif-g.png" />
+         <img class="motif_bg right" src="/images/layout/motif-d.png" />
+         <header>
+            <div id="banner">
+               <a href="/">
+                  <img src="/images/layout/titre.png" />
+               </a>
+            </div>
+            <div id="menu">
+               <div id="button1" class="buttons"></div>
+               <div id="button2" class="buttons"></div>
+               <div class="submenu_bg"></div>
+               {{#member_menu}}
+                  {{> layouts/submenu_member}}
+               {{/member_menu}}
+               {{^member_menu}}
+                  {{> layouts/submenu_server}}
+               {{/member_menu}}
+            </div>
+         </header>
+
+         <div id="contents">
+            <ul id="nav">
+               {{^tabs?}}
+                  <li class="tab active">
+                     <div class="onglet">{{ subtitle }}</div>
+                  </li>
+               {{/tabs?}}
+               {{#tabs}}
+                  <li class="tab">
+                     <a href="{{ url }}" data-toggle="tab">
+                        <div class="onglet">{{ name }}</div>
+                     </a>
+                  </li>
+               {{/tabs}}
+            </ul>
+            <div class="cleaner"></div>
+               <div id="subcontents" class="{{ path_to_classes }}">
+                  {{{ yield }}}
+                  <div class="cleaner"></div>
+               </div>
+               <div id="signature">
+                  <div>-- Ethil Van - Site r&eacute;alis&eacute; par aumgn - Design par Travis --</div>
+               </div>
+            </div>
+         </div>
+
+         {{#logged_in?}}
+            <div class="submenu-templates" style="display: none;">
+               {{> layouts/submenu_server}}
+               {{> layouts/submenu_member}}
+            </div>
+        {{/logged_in?}}
+
+        <script src="/javascripts/{{ javascript_name }}.js"></script>
+    </body>
+
+</html>

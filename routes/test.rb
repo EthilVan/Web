@@ -1,9 +1,9 @@
 module EthilVan
 
    class App < Sinatra::Base
-
       get '/' do
-         'Hello world !'
+         view Views::Public::Presentation::Generale.new
+         mustache "public/presentation/generale"
       end
    end
 end
