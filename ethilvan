@@ -31,6 +31,15 @@ module EthilVan
          EthilVan::Emoji.install
       end
 
+      desc 'migrate', 'Migre la base de données'
+      def migrate
+         load_environment
+         require 'logger'
+         ActiveRecord::Base.logger = Logger.new(STDOUT)
+         ActiveRecord::Migration.verbose = true
+         ActiveRecord::Migrator.migrate('database/migrations')
+      end
+
       desc 'assets', 'Compile les assets'
       def assets
          load_environment
