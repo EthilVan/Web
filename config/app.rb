@@ -7,6 +7,9 @@ module EthilVan
 
       register EthilVan::Mustache
       set :layout, "layouts/default"
+
+      register EthilVan::Authentication
+      set :remember_for, 2.months
    end
 end
 

@@ -3,6 +3,7 @@ source :rubygems
 # Core
 gem 'thor'
 gem 'sinatra', require: 'sinatra/base'
+gem 'sinatra-contrib', require: false
 gem 'activerecord', require: 'active_record'
 gem 'mysql2'
 gem 'mustache'
