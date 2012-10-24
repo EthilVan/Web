@@ -31,12 +31,20 @@ module EthilVan
          EthilVan::Emoji.install
       end
 
-      desc 'assets', 'Process assets'
+      desc 'assets', 'Compile les assets'
       def assets
          load_environment
-         rrequire_dir 'lib/assets'
-         EthilVan::Assets::Style.new("app").compile
-         EthilVan::Assets::Scripts.new("app").compile
+         rrequire 'lib/tasks/assets'
+         EthilVan::Assets.compile
+      end
+
+      desc 'watch',
+            'Surveille les changements des assets et recompile si besoin'
+      def watch
+         load_environment
+         rrequire 'lib/tasks/assets'
+         EthilVan::Assets.compile
+         EthilVan::Assets.watch
       end
    end
 end

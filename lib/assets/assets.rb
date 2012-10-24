@@ -19,9 +19,12 @@ module EthilVan::Assets
          @name = name
       end
 
+      def manifest_path
+         File.join SRC, self.class::DirName, @name + MANIFEST_EXT
+      end
+
       def manifest
-         path = File.join SRC, self.class::DirName, @name + MANIFEST_EXT
-         File.read(path).split("\n").map do |filepath|
+         File.read(manifest_path).split("\n").map do |filepath|
             File.join SRC, self.class::DirName, filepath.strip
          end
       end
@@ -96,7 +99,7 @@ module EthilVan::Assets
       end
    end
 
-   class Scripts < Base
+   class Script < Base
 
       DirName = "scripts"
       OutputExt = "js"

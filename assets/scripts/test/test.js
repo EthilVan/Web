@@ -1,2 +1,2 @@
-var test = "Test !";
+var test = "Test !!!";
 alert(test);

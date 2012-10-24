@@ -24,6 +24,7 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 # Développement
 group :development do
    gem 'pry'
+   gem 'watchr'
    gem 'thin'
    gem 'shotgun'
 end
