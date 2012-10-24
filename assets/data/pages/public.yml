@@ -1,0 +1,15 @@
+presentation:
+   titre: "Présentation"
+   template: "public/presentation/layout"
+   principal: "generale"
+   onglets:
+      generale:
+         nom: "Générale"
+      equipe:
+         nom: "Equipe"
+         helpers: ["Team"]
+
+dons_merci:
+   url: "dons/merci"
+   titre: "Dons - Remerciements"
+   template: "public/dons/merci"

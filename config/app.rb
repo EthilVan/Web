@@ -11,4 +11,4 @@ module EthilVan
 end
 
 # Routes
-rrequire_dir 'routes'
+rrequire_rdir 'routes'

@@ -6,7 +6,7 @@ class Time
 
    class Interval
 
-      Messages = EthilVan.load_data "time_interval"
+      Messages = EthilVan.load_data "misc", "time_interval"
 
       T0 = Time.at 0
 

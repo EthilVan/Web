@@ -6,8 +6,6 @@ module EthilVan
          app.const_set :Views, Module.new
          rrequire_rdir "views"
 
-         app.send :attr, :mustache_view
-         app.send :attr, :mustache_layout
          app.send :include, Helpers
       end
 
@@ -23,14 +21,15 @@ module EthilVan
 
          def mustache(template)
             template_path = filepath_for template
-            rendered = mustache_view.render File.read template_path
+            view = @mustache_view || Mustache
+            rendered = view.render File.read template_path
 
-            layout = mustache_layout
+            layout = @mustache_layout
             layout = settings.layout if layout.nil?
 
             if layout
                layout_path = filepath_for layout
-               rendered = mustache_view.render File.read(layout_path),
+               rendered = view.render File.read(layout_path),
                      :yield => rendered
             end
 
