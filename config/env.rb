@@ -2,6 +2,14 @@ module EthilVan
 
    ENV = (::ENV["RACK_ENV"] || "development").to_sym
    ROOT = File.expand_path('../..', __FILE__)
+
+   def self.evelopment?
+      ENV == :development
+   end
+
+   def self.production?
+      ENV == :production
+   end
 end
 
 require 'bundler'

@@ -30,6 +30,14 @@ module EthilVan
          rrequire 'lib/tasks/emoji_install'
          EthilVan::Emoji.install
       end
+
+      desc 'assets', 'Process assets'
+      def assets
+         load_environment
+         rrequire_dir 'lib/assets'
+         EthilVan::Assets::Style.new("app").compile
+         EthilVan::Assets::Scripts.new("app").compile
+      end
    end
 end
 
