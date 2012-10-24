@@ -65,7 +65,6 @@ module EthilVan::Assets
 
          cached = file.gsub(/^#{SRC}/, "#{CACHE}/#{EthilVan::ENV}")
          if !File.exists?(cached) or File.mtime(file) > File.mtime(cached)
-            puts "# Fichier \"#{file}\" modifié."
             FileUtils.mkdir_p File.dirname cached
             if compile_asset(file, cached)
                puts "# Fichier \"#{file}\" compilé."

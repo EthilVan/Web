@@ -1,4 +1,4 @@
-rrequire_dir 'lib/tasks/assets'
+rrequire_dir 'lib/assets'
 
 module EthilVan::Assets
    @list = [ Style.new('app'), Script.new('app')]

@@ -2,10 +2,10 @@
 log/
 tmp/
 .bundle/
-.sass-cache/
 .assets_cache/
-public/javascripts
-public/stylesheets
+
+public/scripts
+public/style
 public/images/emoji/*.png
 
 config/database.private.rb
