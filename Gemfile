@@ -11,7 +11,6 @@ gem 'mustache'
 # Assets
 gem 'sass', require: false
 gem 'rainpress', require: false
-gem 'execjs', require: false
 
 # Librairies
 gem 'sinatra-flash', require: 'sinatra/flash'
@@ -24,20 +23,20 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 
 # Développement
 group :development do
-   gem 'pry'
-   gem 'watchr'
-   gem 'thin'
-   gem 'shotgun'
+   gem 'pry', require: false
+   gem 'watchr', require: false
+   gem 'thin', require: false
+   gem 'shotgun', require: false
 end
 
 # Production
 group :production do
-   gem 'puma'
+   gem 'puma', require: false
 end
 
 # Test
 group :test do
-   gem 'minitest', require: 'minitest/autorun'
-   gem 'rack-test', require: 'rack/test'
-   gem 'factory_girl'
+   gem 'minitest', require: false
+   gem 'rack-test', require: false
+   gem 'factory_girl', require: false
 end

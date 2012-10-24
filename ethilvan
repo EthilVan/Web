@@ -11,12 +11,18 @@ module EthilVan
          def load_environment
             require './config/env'
          end
+
+         def load_app
+            load_environment
+            rrequire 'config/app'
+         end
       end
 
       desc 'console',
             'Débute un shell ruby interactif avec l\'environnement chargé'
       def console
          load_environment
+         require 'pry'
          Pry.config.prompt = [
             proc { |obj, nest_level, _| "#{obj} (#{nest_level}) >> " },
             proc { |obj, nest_level, _| "#{obj} (#{nest_level}) << " }
@@ -54,6 +60,13 @@ module EthilVan
          rrequire 'lib/tasks/assets'
          EthilVan::Assets.compile
          EthilVan::Assets.watch
+      end
+
+      desc 'test', 'Execute les test'
+      def test
+         ENV["RACK_ENV"] = 'test'
+         load_app
+         rrequire 'test/run'
       end
    end
 end
