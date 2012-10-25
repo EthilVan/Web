@@ -28,9 +28,10 @@ module EthilVan::Mustache
 
    class YamlTab < Partial
 
-      attr_reader :url, :name
+      attr_reader :id, :url, :name
 
       def initialize(page, id, hash)
+         @id = id
          @name = hash["nom"]
          @url = page.url + "/" + (hash["url"] || id)
       end

@@ -1,0 +1,34 @@
+/// <reference path="../definitions/bootstrap.d.ts" />
+
+function tabNameFor(url): String {
+   var match = (/.+\/(.+?)$/g).exec(url);
+   if (match == null) {
+      return '';
+   } else {
+      return match[1];
+   }
+}
+
+function displayTab(tabName: String) {
+   var realTabName: String = tabName;
+   if (realTabName == null || realTabName == '') {
+      realTabName = $('.tab-pane-default').attr('id');
+   }
+   var tab = $('ul#nav .tab a[href="#' + realTabName + '"]');
+   tab.tab('show');
+}
+
+$(function() {
+   $('ul#nav .tab a').click(function(event) {
+      event.preventDefault();
+      $(this).tab('show');
+      var newTab = $(this).attr('href').substring(1);
+      window.history.pushState({}, null, newTab);
+   });
+
+   window.onpopstate = function(event) {
+      displayTab(tabNameFor(window.location.pathname));
+   }
+
+   displayTab(tabNameFor(window.location.pathname));
+});

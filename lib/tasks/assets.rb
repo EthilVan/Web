@@ -1,7 +1,12 @@
 rrequire_dir 'lib/assets'
 
 module EthilVan::Assets
-   @list = [ Style.new('app'), Script.new('app')]
+   @list = [
+      Style.new('app'),
+      Style.new('member'),
+      Script.new('app'),
+      Script.new('member')
+   ]
 
    def self.compile
       @list.each { |asset| asset.compile }

@@ -1,4 +1,4 @@
 bootstrap/bootstrap.less
-shared/header.less
-shared/column.less
-shared/page.less
+layout/header.less
+layout/column.less
+layout/page.less

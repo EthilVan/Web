@@ -8,6 +8,10 @@ presentation:
       equipe:
          nom: "Equipe"
          helpers: ["Team"]
+      dimensions:
+         nom: "Dimensions"
+      partenaires:
+         nom: "Partenaires"
 
 dons_merci:
    url: "dons/merci"

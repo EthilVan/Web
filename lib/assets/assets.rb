@@ -78,6 +78,7 @@ module EthilVan::Assets
             if compile_asset(file, cached)
                puts "# Fichier \"#{file}\" compilé."
             else
+               FileUtils.rm_f cached
                puts "# Une erreur est survenu durant " +
                      "la compilation de \"#{file}\""
                exit 1
@@ -100,7 +101,6 @@ module EthilVan::Assets
       def initialize(*args)
          super(*args)
          @included_files = IncludePath.map { |p| Dir[p + "/**/*"] }.flatten
-
       end
 
       def included_files
@@ -135,8 +135,10 @@ module EthilVan::Assets
          File.extname(file) == ".ts"
       end
 
+      # TODO: Trouvé comment gérer les erreurs du compilateur.
       def compile_asset(file, dest)
          system "tsc --out #{dest} #{file}"
+         true
       end
 
       def compress(source)
