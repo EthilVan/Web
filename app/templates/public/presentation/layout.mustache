@@ -1,1 +1,16 @@
-{{> public/presentation/_generale}}
+<div>
+  <div id="generale" class="tab-pane tab-pane-default">
+    {{> public/presentation/_generale}}
+  </div>
+  <div id="equipe" class="equipe tab-pane">
+    {{#equipe}}
+      {{> public/presentation/_equipe}}
+    {{/equipe}}
+  </div>
+  <div id="dimensions" class="tab-pane">
+    {{> public/presentation/_dimensions}}
+  </div>
+  <div id="partenaires" class="tab-pane">
+    {{> public/presentation/_partenaires}}
+  </div>
+</div>
