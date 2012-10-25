@@ -8,6 +8,13 @@ module EthilVan
             'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
       enable :sessions
 
+      if EthilVan.development?
+         require 'sinatra/reloader'
+         register Sinatra::Reloader
+         also_reload "lib/**/*"
+         also_reload "database/**/*"
+      end
+
       register EthilVan::Mustache
       set :layout, "layouts/default"
 
