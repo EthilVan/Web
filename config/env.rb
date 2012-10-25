@@ -1,3 +1,6 @@
+Encoding.default_internal = "UTF-8"
+Encoding.default_external = "UTF-8"
+
 module EthilVan
 
    ENV = (::ENV["RACK_ENV"] || "development").to_sym
@@ -22,6 +25,6 @@ rrequire_rdir 'lib/mustache'
 rrequire_rdir 'lib/authorization'
 rrequire_rdir 'lib/misc'
 
-# Base de données
+# Base de donnÃ©es
 rrequire 'config/database'
 rrequire_dir 'database/models'
