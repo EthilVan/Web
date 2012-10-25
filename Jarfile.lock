@@ -1,21 +1,7 @@
----
-version: 0.7.2
-groups:
-  default:
-    dependencies:
-    - asm:asm-analysis:jar:3.3.1
-    - asm:asm-tree:jar:3.3.1
-    - asm:asm-util:jar:3.3.1
-    - asm:asm:jar:3.3.1
-    - org.parboiled:parboiled-core:jar:1.0.2
-    - org.parboiled:parboiled-java:jar:1.0.2
-    - org.pegdown:pegdown:jar:1.1.0
-    artifacts:
-    - jar:org.pegdown:pegdown:jar:1.1.0:
-        transitive:
-          org.parboiled:parboiled-java:jar:1.0.2:
-            asm:asm-tree:jar:3.3.1: {}
-            asm:asm-util:jar:3.3.1: {}
-            asm:asm-analysis:jar:3.3.1: {}
-            asm:asm:jar:3.3.1: {}
-          org.parboiled:parboiled-core:jar:1.0.2: {}
+org.pegdown:pegdown:jar:1.1.0
+org.parboiled:parboiled-core:jar:1.0.2
+org.parboiled:parboiled-java:jar:1.0.2
+asm:asm:jar:3.3.1
+asm:asm-util:jar:3.3.1
+asm:asm-tree:jar:3.3.1
+asm:asm-analysis:jar:3.3.1

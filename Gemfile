@@ -1,18 +1,13 @@
-if RUBY_PLATFORM =~ /java/
-   require 'lock_jar/bundler'
-end
-
 source :rubygems
 
-# Default platform
-default = [:ruby, :mswin, :mingw]
+gem 'jbundle', platforms: :jruby
 
 # Core
-gem 'thor', "~> 0.14.6"
+gem 'thor'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib', require: false
 gem 'activerecord', require: 'active_record'
-gem 'mysql2', platforms: default
+gem 'mysql2', platforms: :ruby
 gem 'activerecord-jdbcmysql-adapter', platforms: :jruby
 gem 'mustache'
 gem 'puma', require: false
@@ -24,7 +19,7 @@ gem 'rainpress', require: false
 # Librairies
 gem 'os', require: false
 gem 'will_paginate'
-gem 'redcarpet', platforms: default
+gem 'redcarpet', platforms: :ruby
 gem 'gemoji', require: false
 gem 'chunky_png'
 gem 'image_size'

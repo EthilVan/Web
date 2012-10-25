@@ -2,6 +2,7 @@
 log/
 tmp/
 .bundle/
+.jbundler/
 .assets_cache/
 
 public/scripts
