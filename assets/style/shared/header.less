@@ -1,0 +1,226 @@
+@import 'var.less';
+
+@menu-height: 28px;
+
+@presentation: 131px;
+@news: 72px;
+@reglement: 111px;
+@images: 84px;
+@postulation: 122px;
+@contact: 89px;
+@cartes: 80px;
+
+@accueil: 85px;
+@profil: 74px;
+@membres: 100px;
+@discussions: 128px;
+@villes: 72px;
+@projets: 85px;
+
+
+header {
+
+   #banner {
+      width: 507px;
+      margin: 0 auto;
+   }
+
+   #menu {
+
+      height: 88px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      position: relative;
+
+      .buttons {
+         width: 188px;
+         height: 88px;
+         position: absolute;
+         top: 0px;
+         cursor: pointer;
+      }
+
+      #button1 {
+         background-image: url("/images/layout/bouton-serveur.png");
+         left: 0px;
+      }
+
+      #button1:hover,
+      #button1:focus {
+         background-image: url("/images/layout/bouton-serveur-2.png");
+      }
+
+      #button2 {
+         background-image: url("/images/layout/bouton-membre.png");
+         right: 0px;
+      }
+
+      #button2:hover,
+      #button2:focus {
+         background-image: url("/images/layout/bouton-membre-2.png");
+      }
+
+      .submenu_bg {
+         position: absolute;
+         top: 24px;
+         bottom: 24px;
+         left: 168px;
+         right: 168px;
+         z-index: -1;
+         background-color: @gris-sombre;
+         border: 1px solid black;
+         box-shadow: 0px 0px 15px 0px black;
+      }
+
+      #submenu_server {
+
+         width: @presentation + @news + @reglement + @images + @postulation + @contact + @cartes + 8;
+         margin: 0px auto;
+         padding-top: 30px;
+
+         a {
+            float: left;
+            border-left: 1px solid @vert;
+            height: @menu-height;
+            outline: none
+         }
+
+         a:first-child {
+            border-left: none;
+            margin-left: 0px;
+         }
+
+         a:last-child {
+            margin-right: 0px;
+         }
+
+         .presentation {
+            width: @presentation;
+            background-image: url("/images/layout/serveur/presentation.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/presentation-2.png");
+            }
+         }
+
+         .news {
+            width: @news;
+            background-image: url("/images/layout/serveur/news.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/news-2.png");
+            }
+         }
+
+         .reglement {
+            width: @reglement;
+            background-image: url("/images/layout/serveur/reglement.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/reglement-2.png");
+            }
+         }
+
+         .images {
+            width: @images;
+            background-image: url("/images/layout/serveur/medias.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/medias-2.png");
+            }
+         }
+
+         .postulation {
+            width: @postulation;
+            background-image: url("/images/layout/serveur/postulation.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/postulation-2.png");
+            }
+         }
+
+         .contact {
+            width: @contact;
+            background-image: url("/images/layout/serveur/contact.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/contact-2.png");
+            }
+         }
+
+         .cartes {
+            width: @cartes;
+            background-image: url("/images/layout/membre/cartes.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/cartes-2.png");
+            }
+         }
+
+      }
+
+      #submenu_member {
+
+         width: @accueil + @profil + @membres + @discussions + @villes + @projets + 8;
+         margin: 0px auto;
+         padding-top: 30px;
+
+         .accueil {
+            width: @accueil;
+            background-image: url("/images/layout/membre/accueil.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/accueil-2.png");
+            }
+         }
+
+         .profil {
+            width: @profil;
+            background-image: url("/images/layout/membre/profil.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/profil-2.png");
+            }
+         }
+
+         .membres {
+            width: @membres;
+            background-image: url("/images/layout/membre/membres.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/membres-2.png");
+            }
+         }
+
+         .discussions {
+            width: @discussions;
+            background-image: url("/images/layout/membre/discussions.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/discussions-2.png");
+            }
+         }
+
+         .villes {
+            width: @villes;
+            background-image: url("/images/layout/membre/villes.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/villes-2.png");
+            }
+         }
+
+         .projets {
+            width: @projets;
+            background-image: url("/images/layout/membre/projets.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/projets-2.png");
+            }
+         }
+
+      }
+
+   }
+
+}
