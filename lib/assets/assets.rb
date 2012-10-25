@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'fileutils'
+require 'os'
 require 'net/http'
 require 'rainpress'
 
@@ -29,8 +30,16 @@ module EthilVan::Assets
          end
       end
 
+      def included_files
+         []
+      end
+
       def compile?(file)
          false
+      end
+
+      def dirty?(file, cached)
+         !File.exists?(cached) or File.mtime(file) > File.mtime(cached)
       end
 
       def compress?
@@ -64,7 +73,7 @@ module EthilVan::Assets
          end
 
          cached = file.gsub(/^#{SRC}/, "#{CACHE}/#{EthilVan::ENV}")
-         if !File.exists?(cached) or File.mtime(file) > File.mtime(cached)
+         if dirty?(file, cached)
             FileUtils.mkdir_p File.dirname cached
             if compile_asset(file, cached)
                puts "# Fichier \"#{file}\" compilé."
@@ -83,14 +92,33 @@ module EthilVan::Assets
 
       DirName = "style"
       OutputExt = "css"
+      IncludePath = [
+         "#{SRC}/#{DirName}/bootstrap",
+         "#{SRC}/#{DirName}/include"
+      ]
+
+      def initialize(*args)
+         super(*args)
+         @included_files = IncludePath.map { |p| Dir[p + "/**/*"] }.flatten
+
+      end
+
+      def included_files
+         @included_files
+      end
 
       def compile?(file)
          File.extname(file) == ".less"
       end
 
+      def dirty?(file, cached)
+         return true if super(file, cached)
+         included_files.map { |f| File.mtime f }.max > File.mtime(cached)
+      end
+
       def compile_asset(file, dest)
-         system "lessc --include-path=#{SRC}/#{self.class::DirName}/include/ " +
-               " #{file} #{dest}"
+         include_path = IncludePath * (OS.windows? ? ';' : ':')
+         system "lessc --include-path=#{include_path} #{file} #{dest}"
       end
 
       def compress(source)

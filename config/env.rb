@@ -22,6 +22,6 @@ rrequire_rdir 'lib/mustache'
 rrequire_rdir 'lib/authorization'
 rrequire_rdir 'lib/misc'
 
-# Base de donnÃ©es
+# Base de données
 rrequire 'config/database'
 rrequire_dir 'database/models'

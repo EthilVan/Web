@@ -1,2 +1,5 @@
-test/test.js
-test/test.ts
+lib/jquery.js
+bootstrap/bootstrap-transition.js
+bootstrap/bootstrap-button.js
+bootstrap/bootstrap-tab.js
+bootstrap/bootstrap-collapse.js

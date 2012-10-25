@@ -1,2 +1,1 @@
-test/test.css
-test/test.less
+bootstrap/bootstrap.less

@@ -13,7 +13,7 @@ gem 'sass', require: false
 gem 'rainpress', require: false
 
 # Librairies
-gem 'sinatra-flash', require: 'sinatra/flash'
+gem 'os', require: false
 gem 'will_paginate'
 gem 'redcarpet'
 gem 'gemoji', require: false

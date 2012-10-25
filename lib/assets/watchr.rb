@@ -7,6 +7,11 @@ class EthilVan::Assets::Watchr < ::Watchr::Script
       super()
 
       assets.each do |asset|
+         asset.included_files.each do |included_file|
+            watch included_file do
+               asset.compile
+            end
+         end
          watch asset.manifest_path do
             watch_asset_files asset
             asset.compile
