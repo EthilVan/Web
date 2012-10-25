@@ -12,6 +12,10 @@ class Account < ActiveRecord::Base
       return account
    end
 
+   def role
+      EthilVan::Authorization::Role.get role_id.to_sym
+   end
+
    def check_password?(password)
      ::BCrypt::Password.new(crypted_password) == password
    end

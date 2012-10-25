@@ -1,0 +1,29 @@
+admin:
+   name: "Sage"
+   subroles:
+      - dev
+      - modo
+      - redacteur
+      - default
+dev:
+   name: "Savant"
+   subroles:
+      - modo
+      - redacteur
+      - default
+modo:
+   name: "Gardien"
+   subroles:
+      - redacteur
+      - default
+redacteur:
+   name: "Orateur"
+   subroles:
+      - default
+default:
+   name: "Aventurier"
+   subroles:
+      - ancien
+ancien:
+   name: "Pélerin"
+   subroles: []

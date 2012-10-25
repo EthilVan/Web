@@ -16,6 +16,7 @@ class EthilVan::App < Sinatra::Base
          mustache "authentication/login"
       else
          login(account.auth_token, !params["remember_me"].nil?)
+         redirect_after_login
          redirect "/"
       end
    end
