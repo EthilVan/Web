@@ -4,7 +4,7 @@ module EthilVan
 
       def self.registered(app)
          app.const_set :Views, Module.new
-         rrequire_rdir "views"
+         rrequire_rdir "app/views"
 
          app.send :include, Helpers
       end
@@ -39,7 +39,7 @@ module EthilVan
       private
 
          def filepath_for(template)
-            File.join("./templates", template) + ".mustache"
+            File.join("app", "templates", template) + ".mustache"
          end
       end
    end

@@ -14,4 +14,4 @@ module EthilVan
 end
 
 # Routes
-rrequire_rdir 'routes'
+rrequire_rdir 'app/controllers'
