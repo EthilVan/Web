@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 #! /usr/bin/env ruby
 # encoding: utf-8
 require 'thor'
@@ -30,11 +32,11 @@ module EthilVan
          EthilVan.pry
       end
 
-      desc 'emoji', 'Installe les emoji dans le dossier "public/images/emoji"'
-      def emoji
-         load_environment
-         rrequire 'lib/tasks/emoji_install'
-         EthilVan::Emoji.install
+      desc 'install', 'Execute l\'ensemble des tâches necessaires à l\'execution'
+      def install
+         migrate
+         assets
+         emoji
       end
 
       desc 'migrate', 'Migre la base de données'
@@ -51,6 +53,13 @@ module EthilVan
          load_environment
          rrequire 'lib/tasks/assets'
          EthilVan::Assets.compile
+      end
+
+      desc 'emoji', 'Installe les emoji dans le dossier "public/images/emoji"'
+      def emoji
+         load_environment
+         rrequire 'lib/tasks/emoji_install'
+         EthilVan::Emoji.install
       end
 
       desc 'watch',
