@@ -22,12 +22,16 @@ module EthilVan
       set :remember_for, 2.months
 
       register EthilVan::Authorization
-      MODERATEUR_ROLE = EthilVan::Authorization::Role.get :modo
-      REDACTEUR_ROLE = EthilVan::Authorization::Role.get :redacteur
       before do
-         ensure_logged_in if request.path =~ %r{^/membre}
-         ensure_authorized ORATEUR_ROLE if request.path =~ %r{^/news/creer}
-         ensure_authorized MODERATEUR_ROLE if request.path =~ %r{^/moderation}
+         if request.path =~ %r{^/membre}
+            ensure_logged_in
+         end
+         if request.path =~ %r{^/news/creer}
+            ensure_authorized EthilVan::Role::ORATEUR_ROLE
+         end
+         if request.path =~ %r{^/moderation}
+            ensure_authorized EthilVan::Role::MODERATEUR
+         end
       end
 
       register EthilVan::Markdown

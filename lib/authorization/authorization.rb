@@ -2,9 +2,6 @@ module EthilVan::Authorization
 
    AFTER_LOGIN_KEY = 'Iino2yBxlYqY0FaRImfk'
 
-   MODERATEUR_ROLE = Role.get :modo
-   REDACTEUR_ROLE = Role.get :redacteur
-
    def self.registered(app)
       app.set :login_path, "/login"
       app.send :include, Helpers

@@ -1,4 +1,4 @@
-module EthilVan::Authorization
+module EthilVan
 
    class Role
 
@@ -21,5 +21,9 @@ module EthilVan::Authorization
       def self.get(id)
          @roles.find { |role| role.id == id}
       end
+
+      ADMIN = get :admin
+      MODO = get :modo
+      REDACTEUR = get :redacteur
    end
 end
