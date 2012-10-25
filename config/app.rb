@@ -29,6 +29,8 @@ module EthilVan
          ensure_authorized ORATEUR_ROLE if request.path =~ %r{^/news/creer}
          ensure_authorized MODERATEUR_ROLE if request.path =~ %r{^/moderation}
       end
+
+      register EthilVan::Markdown
    end
 end
 

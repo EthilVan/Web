@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'jbundle', platforms: :jruby
+gem 'jbundler', platforms: :jruby
 
 # Core
 gem 'thor'

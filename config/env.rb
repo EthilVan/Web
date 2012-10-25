@@ -23,6 +23,7 @@ require './lib/core/require'
 rrequire_rdir 'lib/core'
 rrequire_rdir 'lib/mustache'
 rrequire_rdir 'lib/authorization'
+rrequire 'lib/markdown/markdown'
 rrequire_rdir 'lib/misc'
 
 # Base de données
