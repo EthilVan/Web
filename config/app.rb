@@ -13,6 +13,8 @@ module EthilVan
          register Sinatra::Reloader
          also_reload "lib/**/*"
          also_reload "database/**/*"
+         also_reload "app/helpers/**/*"
+         also_reload "app/views/**/*"
       end
 
       register EthilVan::Mustache

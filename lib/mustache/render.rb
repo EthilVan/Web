@@ -3,7 +3,9 @@ module EthilVan
    module Mustache
 
       def self.registered(app)
+         app.const_set :Helpers, Module.new
          app.const_set :Views, Module.new
+         rrequire_rdir "app/helpers"
          rrequire_rdir "app/views"
 
          app.send :include, Helpers

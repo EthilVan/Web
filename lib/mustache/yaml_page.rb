@@ -24,6 +24,18 @@ module EthilVan::Mustache
       def main_tab_url
          @main_tab
       end
+
+      def respond_to?(name)
+         return super(name) || name =~ /^tab_/
+      end
+
+      def method_missing(name, *args)
+         if name =~ /^tab_(.+)$/
+            return @tabs.find { |tab| tab.id == $1 }
+         else
+            super(name, *args)
+         end
+      end
    end
 
    class YamlTab < Partial
@@ -34,6 +46,16 @@ module EthilVan::Mustache
          @id = id
          @name = hash["nom"]
          @url = page.url + "/" + (hash["url"] || id)
+
+         if hash.key? "helpers"
+            hash["helpers"].each do |helper_token|
+               helper_path = helper_token.split("::")
+               helper = helper_path.inject(EthilVan::Helpers) do |mod, const|
+                  mod.const_get const
+               end
+               extend helper
+            end
+         end
       end
    end
 end

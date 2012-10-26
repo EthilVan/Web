@@ -7,7 +7,7 @@ presentation:
          nom: "Générale"
       equipe:
          nom: "Equipe"
-         helpers: ["Team"]
+         helpers: ["Public::Team"]
       dimensions:
          nom: "Dimensions"
       partenaires:

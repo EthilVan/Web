@@ -2,6 +2,8 @@ require 'securerandom'
 
 class Account < ActiveRecord::Base
 
+   has_one :profil
+
    before_create :generate_auth_token
 
    def self.authenticate(name, password)
