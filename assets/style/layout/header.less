@@ -3,19 +3,20 @@
 @menu-height: 28px;
 
 @presentation: 131px;
+@apercu: 85px;
 @news: 72px;
 @reglement: 111px;
-@images: 84px;
 @postulation: 122px;
-@contact: 89px;
-@cartes: 80px;
+@aide: 46px;
+@contact: 44px;
 
 @accueil: 85px;
+@discussions: 128px;
+@projets: 85px;
+@evenements: 126px;
 @profil: 74px;
 @membres: 100px;
-@discussions: 128px;
-@villes: 72px;
-@projets: 85px;
+@don: 58px;
 
 
 header {
@@ -74,7 +75,7 @@ header {
 
       #submenu_server {
 
-         width: @presentation + @news + @reglement + @images + @postulation + @contact + @cartes + 8;
+         width: @presentation + @apercu + @news + @reglement + @postulation + @aide + @contact + 8;
          margin: 0px auto;
          padding-top: 30px;
 
@@ -103,6 +104,15 @@ header {
             }
          }
 
+         .apercu {
+            width: @apercu;
+            background-image: url("/images/layout/serveur/apercu.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/apercu-2.png");
+            }
+         }
+
          .news {
             width: @news;
             background-image: url("/images/layout/serveur/news.png");
@@ -121,21 +131,21 @@ header {
             }
          }
 
-         .images {
-            width: @images;
-            background-image: url("/images/layout/serveur/medias.png");
-
-            &:hover, &:focus {
-               background-image: url("/images/layout/serveur/medias-2.png");
-            }
-         }
-
          .postulation {
             width: @postulation;
             background-image: url("/images/layout/serveur/postulation.png");
 
             &:hover, &:focus {
                background-image: url("/images/layout/serveur/postulation-2.png");
+            }
+         }
+
+         .aide {
+            width: @aide;
+            background-image: url("/images/layout/serveur/aide.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/serveur/aide-2.png");
             }
          }
 
@@ -148,20 +158,11 @@ header {
             }
          }
 
-         .cartes {
-            width: @cartes;
-            background-image: url("/images/layout/membre/cartes.png");
-
-            &:hover, &:focus {
-               background-image: url("/images/layout/membre/cartes-2.png");
-            }
-         }
-
       }
 
       #submenu_member {
 
-         width: @accueil + @profil + @membres + @discussions + @villes + @projets + 8;
+         width: @accueil + @discussions + @projets + @evenements + @profil + @membres + @don + 8;
          margin: 0px auto;
          padding-top: 30px;
 
@@ -171,6 +172,33 @@ header {
 
             &:hover, &:focus {
                background-image: url("/images/layout/membre/accueil-2.png");
+            }
+         }
+
+         .discussions {
+            width: @discussions;
+            background-image: url("/images/layout/membre/discussions.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/discussions-2.png");
+            }
+         }
+
+         .projets {
+            width: @projets;
+            background-image: url("/images/layout/membre/projets.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/projets-2.png");
+            }
+         }
+
+         .evenements {
+            width: @evenements;
+            background-image: url("/images/layout/membre/evenements.png");
+
+            &:hover, &:focus {
+               background-image: url("/images/layout/membre/evenements-2.png");
             }
          }
 
@@ -192,30 +220,12 @@ header {
             }
          }
 
-         .discussions {
-            width: @discussions;
-            background-image: url("/images/layout/membre/discussions.png");
+         .don {
+            width: @don;
+            background-image: url("/images/layout/membre/don.png");
 
             &:hover, &:focus {
-               background-image: url("/images/layout/membre/discussions-2.png");
-            }
-         }
-
-         .villes {
-            width: @villes;
-            background-image: url("/images/layout/membre/villes.png");
-
-            &:hover, &:focus {
-               background-image: url("/images/layout/membre/villes-2.png");
-            }
-         }
-
-         .projets {
-            width: @projets;
-            background-image: url("/images/layout/membre/projets.png");
-
-            &:hover, &:focus {
-               background-image: url("/images/layout/membre/projets-2.png");
+               background-image: url("/images/layout/membre/don-2.png");
             }
          }
 
