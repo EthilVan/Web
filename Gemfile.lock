@@ -108,6 +108,6 @@ DEPENDENCIES
   sass
   sinatra
   sinatra-contrib
-  thor
+  thor (< 0.16.0)
   watchr
   will_paginate

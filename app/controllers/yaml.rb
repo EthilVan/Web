@@ -7,22 +7,22 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   YamlPages.each do |static_page|
-      if static_page.tabs?
-         get static_page.url do
-            redirect static_page.main_tab_url
+   YamlPages.each do |yaml_page|
+      if yaml_page.tabs?
+         get yaml_page.url do
+            redirect yaml_page.main_tab_url
          end
 
-         for tab in static_page.tabs do
+         for tab in yaml_page.tabs do
             get tab.url do
-               view static_page
-               mustache static_page.template
+               view yaml_page
+               mustache yaml_page.template
             end
          end
       else
-         get static_page.url do
-            view static_page
-            mustache static_page.template
+         get yaml_page.url do
+            view yaml_page
+            mustache yaml_page.template
          end
       end
    end
