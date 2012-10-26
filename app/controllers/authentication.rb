@@ -7,15 +7,19 @@ class EthilVan::App < Sinatra::Base
    end
 
    post '/login' do
-      account = Account.authenticate(params[:name], params[:password])
+      name, password = params[:name], params[:password]
+      remember = !params["remember_me"].nil? and params["remember_me"] == "1"
+      account = Account.authenticate(name, password)
       if account.nil?
-         view Views::Public::Authentication::Login.new(true)
+         view Views::Public::Authentication::Login.new(
+               name, password, remember, true)
          mustache "authentication/login"
       elsif account.banned
-         view Views::Public::Authentication::Login.new(false, true)
+         view Views::Public::Authentication::Login.new(
+               name, password, remember, false, true)
          mustache "authentication/login"
       else
-         login(account.auth_token, !params["remember_me"].nil?)
+         login(account.auth_token, remember)
          redirect_after_login
          redirect "/"
       end

@@ -7,15 +7,15 @@
    {{/banned?}}
    <div class="field">
       <label for="name">Nom</label>
-      <input class="text_field" name="name" type="text" />
+      <input class="text_field" name="name" type="text" {{{ name }}}/>
    </div>
    <div class="field">
       <label for="password">Mot de passe</label>
-      <input class="text_field" name="password" type="password" />
+      <input class="text_field" name="password" type="password" {{{ password }}}/>
    </div>
    <div class="field">
       <label for="remember_me">Se souvenir de moi</label>
-      <input name="remember_me" type="checkbox" />
+      <input name="remember_me" type="checkbox" {{{ remember }}}/>
    </div>
    <div class="submit">
       <input class="login" value="Se connecter" type="submit" />
