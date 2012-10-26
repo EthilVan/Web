@@ -1,0 +1,59 @@
+<form class="form-horizontal formulaire" method="POST" action="">
+
+   {{#errors?}}
+      <ul class="errors">
+      {{#errors}}
+         <li>{{ . }}</li>
+      {{/errors}}
+      </ul>
+   {{/errors?}}
+
+   <div class="control-group">
+      <label class="control-label" for="name">Nom</label>
+      <div class="controls">
+         <input id="name" name="name" class="input-xlarge"
+               type="text" {{{ name }}}/>
+      </div>
+   </div>
+
+   <div class="control-group">
+      <label class="control-label" for="email">Email</label>
+      <div class="controls">
+         <input id="email" name="email" class="input-xlarge"
+               type="text" {{{ email }}}/>
+      </div>
+   </div>
+
+   <div class="control-group">
+      <label class="control-label" for="category">Catégorie</label>
+      <div class="controls">
+         {{#category}}
+         <select id="category" name="category" class="input-xlarge" type="text">
+            <option value="general" {{{ general? }}}>Général</option>
+            <option value="partnership" {{{ partnership? }}}>Partenariat</option>
+            <option value="development" {{{ development? }}}>Dévelopement</option>
+         </select>
+         {{/category}}
+      </div>
+   </div>
+
+   <div class="control-group">
+      <label class="control-label" for="subject">Sujet</label>
+      <div class="controls">
+         <input id="subject" name="subject" class="input-xlarge"
+               type="text" {{{ subject }}}/>
+      </div>
+   </div>
+
+   <div class="control-group">
+      <label class="control-label" for="message">Message</label>
+      <div class="controls">
+         <textarea id="message" name="message" rows="7">{{{ message }}}</textarea>
+      </div>
+   </div>
+
+   <div class="pull-right">
+      <input type="submit" class="btn" value="Envoyer" />
+   </div>
+
+</form>
