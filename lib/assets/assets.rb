@@ -10,11 +10,9 @@ module EthilVan::Assets
    class Base
 
       SRC = "assets"
-      CACHE = ".assets_cache"
+      CACHE = "assets/compiled"
       MANIFEST_EXT = ".mf"
       DEST = "public"
-
-      Dir.mkdir CACHE unless Dir.exists? CACHE
 
       def initialize(name)
          @name = name
@@ -72,7 +70,7 @@ module EthilVan::Assets
             return File.read file
          end
 
-         cached = file.gsub(/^#{SRC}/, "#{CACHE}/#{EthilVan::ENV}")
+         cached = file.gsub(/^#{SRC}/, "#{CACHE}/")
          if dirty?(file, cached)
             FileUtils.mkdir_p File.dirname cached
             if compile_asset(file, cached)

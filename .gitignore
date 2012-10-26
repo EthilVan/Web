@@ -3,8 +3,8 @@ log/
 tmp/
 .bundle/
 .jbundler/
-.assets_cache/
 
+assets/compiled
 public/scripts
 public/style
 public/images/emoji/*.png
