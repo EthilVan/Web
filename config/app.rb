@@ -24,17 +24,9 @@ module EthilVan
       set :remember_for, 2.months
 
       register EthilVan::Authorization
-      before do
-         if request.path =~ %r{^/membre}
-            ensure_logged_in
-         end
-         if request.path =~ %r{^/news/creer}
-            ensure_authorized EthilVan::Role::ORATEUR_ROLE
-         end
-         if request.path =~ %r{^/moderation}
-            ensure_authorized EthilVan::Role::MODERATEUR
-         end
-      end
+      logged_only %r{^/membre}
+      protect %r{^/news/creer}, EthilVan::Role::REDACTEUR
+      protect %r{^/moderation}, EthilVan::Role::MODO
 
       register EthilVan::Markdown
    end
