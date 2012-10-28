@@ -21,7 +21,7 @@ class EthilVan::App < Sinatra::Base
       else
          login(account.auth_token, remember)
          redirect_after_login
-         redirect "/"
+         redirect '/membre'
       end
    end
 

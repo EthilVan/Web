@@ -12,6 +12,8 @@ function preloadImages(...images: String[]) {
 preloadImages(
    'bouton-serveur.png',
    'bouton-serveur-2.png',
+   'bouton-connexion.png',
+   'bouton-connexion-2.png',
    'bouton-membre.png',
    'bouton-membre-2.png',
 

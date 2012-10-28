@@ -44,21 +44,30 @@ header {
       #button1 {
          background-image: url("/images/layout/bouton-serveur.png");
          left: 0px;
-      }
 
-      #button1:hover,
-      #button1:focus {
-         background-image: url("/images/layout/bouton-serveur-2.png");
+         &:hover,
+         &:focus {
+            background-image: url("/images/layout/bouton-serveur-2.png");
+         }
       }
 
       #button2 {
-         background-image: url("/images/layout/bouton-membre.png");
          right: 0px;
-      }
+         background-image: url("/images/layout/bouton-membre.png");
 
-      #button2:hover,
-      #button2:focus {
-         background-image: url("/images/layout/bouton-membre-2.png");
+         &.button-login {
+            background-image: url("/images/layout/bouton-connexion.png");
+         }
+
+         &:hover,
+         &:focus {
+            background-image: url("/images/layout/bouton-membre-2.png");
+         }
+
+         &.button-login:hover,
+         &.button-login:focus {
+            background-image: url("/images/layout/bouton-connexion-2.png");
+         }
       }
 
       .submenu_bg {

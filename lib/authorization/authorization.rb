@@ -39,9 +39,10 @@ module EthilVan::Authorization
    module Helpers
 
       def redirect_after_login
-         unless session[AFTER_LOGIN_KEY].nil?
-            redirect session[AFTER_LOGIN_KEY]
+         redirect_path = session[AFTER_LOGIN_KEY]
+         unless redirect_path.nil?
             session[AFTER_LOGIN_KEY] = nil
+            redirect redirect_path
          end
       end
 

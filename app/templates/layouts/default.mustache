@@ -22,7 +22,7 @@
             </div>
             <div id="menu">
                <div id="button1" class="buttons"></div>
-               <div id="button2" class="buttons"></div>
+               <div id="button2" class="buttons{{^logged_in?}} button-login{{/logged_in?}}"></div>
                <div class="submenu_bg"></div>
                {{#member_menu?}}
                   {{> layouts/submenu_member}}
