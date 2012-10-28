@@ -3,7 +3,7 @@
 <html>
 
    <head>
-      <title>{{ title }}</title>
+      <title>{{ page_title }}</title>
       <link rel="icon" type="image/png" href="/favicon.png" />
       <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
       <link href="/style/{{ stylesheet_name }}.css" rel="stylesheet" type="text/css" />
@@ -37,7 +37,7 @@
             <ul id="nav">
                {{^tabs?}}
                   <li class="tab active">
-                     <div class="onglet">{{ title }}</div>
+                     <div class="onglet">{{ page_title }}</div>
                   </li>
                {{/tabs?}}
                {{#tabs}}

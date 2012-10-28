@@ -2,12 +2,12 @@ module EthilVan::App::Views
 
    class YamlPage < Page
 
-      attr_reader :url, :template, :title, :tabs
+      attr_reader :url, :template, :tabs
 
       def initialize(id, hash)
          @url = "/" + (hash["url"] || id)
          @template = hash["template"]
-         @title = hash["titre"]
+         @page_title = hash["titre"]
 
          if hash.key? "onglets"
             @main_tab = @url + "/" + hash["principal"]

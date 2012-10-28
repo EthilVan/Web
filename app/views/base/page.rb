@@ -2,6 +2,15 @@ module EthilVan::App::Views
 
    class Page < EthilVan::Mustache::Partial
 
+      def page_title
+         @page_title || "Ethil Van"
+      end
+
+      def title(text)
+         @page_title = text
+         nil
+      end
+
       def member_page?
          path = app.request.path
          !(path =~ %r{^/m(embre|oderation)}).nil?
