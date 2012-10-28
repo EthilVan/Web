@@ -5,4 +5,4 @@ marked.setOptions({
   highlight: null
 });
 
-var editor = new EpicEditor().load();
+// var editor = new EpicEditor().load();

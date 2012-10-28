@@ -4,7 +4,7 @@ module EthilVan::App::Views
 
       module Contact
 
-         class Index < EthilVan::Mustache::Page
+         class Index < Page
 
             CATEGORIES = %[general partnership development]
 

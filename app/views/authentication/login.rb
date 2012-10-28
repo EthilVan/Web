@@ -4,7 +4,7 @@ module EthilVan::App::Views
 
       module Authentication
 
-         class Login < EthilVan::Mustache::Page
+         class Login < Page
 
             include EthilVan::Mustache::Form
 

@@ -6,7 +6,7 @@ module EthilVan::Mustache
 
       attr_accessor :app
 
-      def partial(partial)
+      def p(partial)
          partial.app = app
          partial
       end

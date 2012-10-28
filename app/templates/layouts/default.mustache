@@ -24,12 +24,12 @@
                <div id="button1" class="buttons"></div>
                <div id="button2" class="buttons"></div>
                <div class="submenu_bg"></div>
-               {{#member_menu}}
+               {{#member_menu?}}
                   {{> layouts/submenu_member}}
-               {{/member_menu}}
-               {{^member_menu}}
+               {{/member_menu?}}
+               {{^member_menu?}}
                   {{> layouts/submenu_server}}
-               {{/member_menu}}
+               {{/member_menu?}}
             </div>
          </header>
 
@@ -64,7 +64,7 @@
                {{> layouts/submenu_server}}
                {{> layouts/submenu_member}}
             </div>
-        {{/logged_in?}}
+         {{/logged_in?}}
 
         <script src="/scripts/{{ javascript_name }}.js"></script>
     </body>

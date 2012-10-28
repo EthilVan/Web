@@ -14,7 +14,7 @@ module EthilVan
       module Helpers
 
          def view(view)
-            view.app = app
+            view.app = self
             @mustache_view = view
          end
 

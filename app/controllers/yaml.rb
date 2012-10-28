@@ -3,7 +3,7 @@ class EthilVan::App < Sinatra::Base
    YamlPages = []
    EthilVan.load_datas("pages").each do |data|
        data.each do |id, hash|
-         YamlPages << EthilVan::Mustache::YamlPage.new(id, hash)
+         YamlPages << Views::YamlPage.new(id, hash)
       end
    end
 

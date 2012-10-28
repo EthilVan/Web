@@ -1,4 +1,4 @@
-module EthilVan::Mustache
+module EthilVan::App::Views
 
    class YamlPage < Page
 
@@ -38,7 +38,7 @@ module EthilVan::Mustache
       end
    end
 
-   class YamlTab < Partial
+   class YamlTab < EthilVan::Mustache::Partial
 
       attr_reader :id, :url, :name
 

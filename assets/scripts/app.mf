@@ -7,3 +7,4 @@ lib/epiceditor.js
 app/preload_images.ts
 app/tab.ts
 app/epiceditor.js
+app/public-menu.ts
