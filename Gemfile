@@ -19,7 +19,6 @@ gem 'rainpress', require: false
 # Librairies
 gem 'os', require: false
 gem 'will_paginate'
-gem 'redcarpet', platforms: :ruby
 gem 'gemoji', require: false
 gem 'chunky_png'
 gem 'image_size'

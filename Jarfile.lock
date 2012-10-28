@@ -1,7 +1,0 @@
-org.pegdown:pegdown:jar:1.1.0
-org.parboiled:parboiled-core:jar:1.0.2
-org.parboiled:parboiled-java:jar:1.0.2
-asm:asm:jar:3.3.1
-asm:asm-util:jar:3.3.1
-asm:asm-tree:jar:3.3.1
-asm:asm-analysis:jar:3.3.1
