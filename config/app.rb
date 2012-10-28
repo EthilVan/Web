@@ -27,8 +27,6 @@ module EthilVan
       logged_only %r{^/membre}
       protect %r{^/news/creer}, EthilVan::Role::REDACTEUR
       protect %r{^/moderation}, EthilVan::Role::MODO
-
-      register EthilVan::Markdown
    end
 end
 
