@@ -20,7 +20,7 @@ gem 'rainpress', require: false
 gem 'os', require: false
 gem 'will_paginate'
 gem 'gemoji', require: false
-gem 'chunky_png'
+gem 'chunky_png', platforms: :ruby
 gem 'image_size'
 gem 'bcrypt-ruby', require: 'bcrypt'
 

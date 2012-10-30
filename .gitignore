@@ -5,6 +5,7 @@ tmp/
 .jbundler/
 
 assets/compiled
+cache/
 public/scripts
 public/style
 public/images/emoji/*.png
