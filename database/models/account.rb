@@ -15,7 +15,7 @@ class Account < ActiveRecord::Base
    end
 
    def role
-      EthilVan::Authorization::Role.get role_id.to_sym
+      EthilVan::Role.get role_id.to_sym
    end
 
    def check_password?(password)
