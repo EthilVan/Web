@@ -1,5 +1,5 @@
-require 'fileutils'
 require 'emoji'
+rrequire 'lib/misc/emoji'
 
 module EthilVan::Emoji
 

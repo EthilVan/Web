@@ -1,3 +1,5 @@
+require_relative 'env'
+
 # Configuration de l'application
 module EthilVan
 
@@ -27,8 +29,8 @@ module EthilVan
       logged_only %r{^/membre}
       protect %r{^/news/creer}, EthilVan::Role::REDACTEUR
       protect %r{^/moderation}, EthilVan::Role::MODO
+
+      # Routes
+      rrequire_rdir 'app/controllers'
    end
 end
-
-# Routes
-rrequire_rdir 'app/controllers'

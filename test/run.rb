@@ -1,3 +1,5 @@
+require './config/app'
+
 require 'test/unit'
 require 'rack/test'
 require 'factory_girl'

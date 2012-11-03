@@ -3,7 +3,7 @@ source :rubygems
 gem 'jbundler', platforms: :jruby
 
 # Core
-gem 'thor', '< 0.16.0'
+gem 'rake'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib', require: false
 gem 'activerecord', require: 'active_record'
@@ -17,7 +17,6 @@ gem 'sass', require: false
 gem 'rainpress', require: false
 
 # Librairies
-gem 'os', require: false
 gem 'will_paginate'
 gem 'gemoji', require: false
 gem 'chunky_png', platforms: :ruby
