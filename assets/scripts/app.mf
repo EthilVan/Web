@@ -6,5 +6,5 @@ bootstrap/bootstrap-collapse.js
 lib/epiceditor.js
 app/preload_images.ts
 app/tab.ts
-app/epiceditor.js
+app/markdown.ts
 app/public-menu.ts
