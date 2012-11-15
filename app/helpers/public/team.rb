@@ -35,7 +35,7 @@ module EthilVan::Helpers
                end
             end
 
-            def name
+            def role_name
                @role.name
             end
 

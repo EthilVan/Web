@@ -1,0 +1,39 @@
+#equipe .role {
+    overflow: auto;
+}
+
+#equipe .membre {
+
+   list-style-type: none;
+   margin: 10px auto;
+   clear: both;
+
+   .name {
+      font-weight: bold;
+      font-size: 17px;
+      line-height: 17px;
+
+      .icon {
+         float: left;
+         margin-right: 6px;
+         width: 17px;
+         height: 17px;
+         background-image: url(/images/public/presentation/contracter.png)
+      }
+
+      &.collapsed .icon{
+         background-image: url(/images/public/presentation/developper.png)
+      }
+   }
+
+   .description {
+      .avatar {
+         float: left;
+         margin-right: 15px;
+      }
+      p {
+         margin-top: 0px;
+      }
+   }
+
+}
