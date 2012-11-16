@@ -27,6 +27,20 @@ apercu:
       cartes:
          nom: "Cartes"
 
+reglement:
+   titre: "Règlement"
+   template: "public/reglement/layout"
+   principal: "general"
+   onglets:
+      general:
+         nom: "Général"
+      terres_sauvages:
+         nom: "Terres sauvages"
+      trefonds:
+         nom: "Tréfonds"
+      evasion:
+         nom: "Evasion"
+
 dons_merci:
    url: "dons/merci"
    titre: "Dons - Remerciements"
