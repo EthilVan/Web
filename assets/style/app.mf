@@ -3,3 +3,5 @@ layout/header.less
 layout/column.less
 layout/page.less
 presentation/equipe.less
+news/news.less
+news/news_edit.less

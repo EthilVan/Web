@@ -1,0 +1,52 @@
+@import 'var.less';
+
+.news {
+
+   .news-list {
+      background-color: $gris-medium;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 1px 1px 0px 0px $gris-relief;
+   }
+
+   .news {
+      background-color: $gris-sombre;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      box-shadow: 1px 1px 0px 0px $gris-relief inset;
+   }
+
+   .news:last-child {
+      margin-bottom: 0px;
+   }
+
+   .news .titre {
+      font-size: 28px;
+      font-weight: bold;
+   }
+
+   img {
+      margin: 14px auto;
+      display: block;
+      max-width: 100%;
+   }
+
+   .contenu {
+      margin: 15px 10px;
+   }
+
+   .suite {
+      float: left;
+   }
+
+   .creation {
+      text-align: right;
+      font-style: italic;
+   }
+
+}
+
+.news.show .news {
+   background-color: $gris-medium;
+}
