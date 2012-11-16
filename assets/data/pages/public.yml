@@ -13,6 +13,20 @@ presentation:
       partenaires:
          nom: "Partenaires"
 
+apercu:
+   titre: "Aperçu"
+   template: "public/apercu/layout"
+   principal: "presentation"
+   onglets:
+      presentation:
+         nom: "Présentation"
+      images:
+         nom: "Images"
+      videos:
+         nom: "Vidéos"
+      cartes:
+         nom: "Cartes"
+
 dons_merci:
    url: "dons/merci"
    titre: "Dons - Remerciements"
