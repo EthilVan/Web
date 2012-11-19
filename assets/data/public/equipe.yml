@@ -1,19 +1,26 @@
 admin: >
-   Il s'agit du groupe des administrateurs du serveur, ceux qui supervisent l'ensemble des choses
-   que ce soit sur le serveur lui-même ou sur le site. Ils ont un accès total au serveur et peuvent le
-   redémarrer et effectuer un grand nombre d'opérations. Si vous avez des suggestions à faire concernant le
-   serveur ou un aspect technique du site c'est à eux qu'il faut en parler ou à un développeur.
+   Il s'agit du groupe des administrateurs du serveur, ceux qui supervisent
+   l'ensemble des choses que ce soit sur le serveur lui-même ou sur le site.
+   Ils ont un accès total au serveur, peuvent le redémarrer et effectuer
+   un grand nombre d'opérations. Si vous avez des suggestions à faire
+   concernant le serveur ou un aspect technique du site c'est à eux qu'il
+   faut en parler ou à un développeur.
 dev: >
-   Il s'agit du groupe des developpeurs du serveur, ceux qui créent ou modifient des plugins et qui
-   s'occupent de toute la partie code et développement du site. Ils ont également un accès total au serveur
-   mais leur travail demandant déjà beaucoup de temps, ils ne s'occupent pas de la gestion des membres pour
-   pouvoir se concentrer sur les aspects techniques du site et du serveur.
+   Il s'agit du groupe des developpeurs du serveur, ceux qui créent ou
+   modifient des plugins et qui s'occupent de toute la partie code et
+   développement du site. Ils ont également un accès total au serveur mais
+   leur travail demandant déjà beaucoup de temps, ils ne s'occupent pas de
+   la gestion des membres pour pouvoir se concentrer sur les aspects
+   techniques du site et du serveur.
 modo: >
-   Il s'agit du groupe des modérateurs du site et du serveur, ceux qui s'occupent de la gestion des
-   membres et des évenements. En cas de conflit avec d'autres joueurs ou de problème en jeu lié a d'autres
-   utilisateurs, c'est eux qu'il faut contacter. Les gardiens peuvent également sanctionner les membres
-   ayant commis une faute ou ne respectant pas les autorités, il est donc conseillé de les écouter attentivement.
+   Il s'agit du groupe des modérateurs du site et du serveur, ceux qui
+   s'occupent de la gestion des membres. En cas de conflit avec d'autres
+   joueurs ou de problème en jeu lié a d'autres utilisateurs, c'est eux qu'il
+   faut contacter. Les gardiens peuvent également sanctionner les membres ayant
+   commis une faute ou ne respectant pas les autorités, il est donc conseillé
+   de les écouter attentivement.
 redacteur: >
-   Il s'agit du groupe des rédacteurs du site, ceux qui s'occupent d'écrire des news et qui sont
-   au courant d'un peu tout ce qui se passe ou de ce qui est prévu. Ils peuvent également s'occuper
-   de faire des annonces en jeu ou d'organiser des évènements.
+   Il s'agit du groupe des rédacteurs du site, ceux qui s'occupent d'écrire des
+   news et qui sont au courant d'un peu tout ce qui se passe ou de ce qui est
+   prévu. Ils peuvent également s'occuper de faire des annonces en jeu ou
+   d'organiser des évènements.
