@@ -46,6 +46,7 @@ aide:
    template: "public/aide/index"
 
 aide_nouveautes:
+   url: "aide/nouveautes"
    titre: "Aide - Nouveautés"
    template: "public/aide/nouveautes/layout"
    principal: "crafts"
@@ -59,14 +60,17 @@ aide_nouveautes:
 
 
 aide_screenshots:
+   url: "aide/screenshots"
    titre: "Aide - ScreenShots"
    template: "public/aide/screenshots"
 
 aide_teamspeak:
+   url: "aide/teamspeak"
    titre: "Aide - TeamSpeak"
    template: "public/aide/teamspeak"
 
 aide_markdown:
+   url: "aide/markdown"
    titre: "Aide - Mise en forme"
    template: "public/aide/markdown"
 
