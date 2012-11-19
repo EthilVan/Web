@@ -41,6 +41,35 @@ reglement:
       evasion:
          nom: "Evasion"
 
+aide:
+   titre: "Aide"
+   template: "public/aide/index"
+
+aide_nouveautes:
+   titre: "Aide - Nouveautés"
+   template: "public/aide/nouveautes/layout"
+   principal: "crafts"
+   onglets:
+      crafts:
+         nom: "Crafts"
+      blocs:
+         nom: "Blocs"
+      objets:
+         nom: "Objets"
+
+
+aide_screenshots:
+   titre: "Aide - ScreenShots"
+   template: "public/aide/screenshots"
+
+aide_teamspeak:
+   titre: "Aide - TeamSpeak"
+   template: "public/aide/teamspeak"
+
+aide_markdown:
+   titre: "Aide - Mise en forme"
+   template: "public/aide/markdown"
+
 dons_merci:
    url: "dons/merci"
    titre: "Dons - Remerciements"
