@@ -73,8 +73,3 @@ aide_markdown:
    url: "aide/markdown"
    titre: "Aide - Mise en forme"
    template: "public/aide/markdown"
-
-dons_merci:
-   url: "dons/merci"
-   titre: "Dons - Remerciements"
-   template: "public/dons/merci"
