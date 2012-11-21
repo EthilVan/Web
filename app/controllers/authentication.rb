@@ -3,7 +3,7 @@ class EthilVan::App < Sinatra::Base
    get '/login' do
       logout if logged_in?
       view Views::Public::Authentication::Login.new
-      mustache "authentication/login"
+      mustache "public/authentication/login"
    end
 
    post '/login' do
