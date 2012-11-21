@@ -4,9 +4,14 @@
 
    <head>
       <title>{{ page_title }}</title>
+      <meta charset="utf-8">
+      {{# page_description? }}
+      <meta name="description" content="{{ get_page_description }}">
+      {{/ page_description? }}
       <link rel="icon" type="image/png" href="/favicon.png" />
       <link rel="author" href="humans.txt" />
-      <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+      <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic"
+            rel="stylesheet" type="text/css" />
       <link href="/style/{{ stylesheet_name }}.css" rel="stylesheet" type="text/css" />
    </head>
 
