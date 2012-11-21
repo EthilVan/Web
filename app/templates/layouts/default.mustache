@@ -3,16 +3,17 @@
 <html>
 
    <head>
-      <title>{{ page_title }}</title>
-      <meta charset="utf-8">
+      <title>{{ meta_page_title }}</title>
+      <meta charset="utf-8" />
       {{# page_description? }}
-      <meta name="description" content="{{ get_page_description }}">
+      <meta name="description" content="{{ get_page_description }}" />
       {{/ page_description? }}
       <link rel="icon" type="image/png" href="/favicon.png" />
       <link rel="author" href="humans.txt" />
       <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic"
             rel="stylesheet" type="text/css" />
-      <link href="/style/{{ stylesheet_name }}.css" rel="stylesheet" type="text/css" />
+      <link href="/style/{{ stylesheet_name }}.css"
+            rel="stylesheet" type="text/css" />
    </head>
 
    <body>
@@ -28,49 +29,50 @@
             </div>
             <div id="menu">
                <div id="button1" class="buttons"></div>
-               <div id="button2" class="buttons{{^logged_in?}} button-login{{/logged_in?}}"></div>
+               <div id="button2"
+                     class="buttons{{^ logged_in? }} button-login{{/ logged_in? }}">
+               </div>
                <div class="submenu_bg"></div>
-               {{#member_menu?}}
-                  {{> layouts/submenu_member}}
-               {{/member_menu?}}
-               {{^member_menu?}}
-                  {{> layouts/submenu_server}}
-               {{/member_menu?}}
+               {{# member_menu? }}
+                  {{> layouts/submenu_member }}
+               {{/ member_menu? }}
+               {{^ member_menu? }}
+                  {{> layouts/submenu_server }}
+               {{/ member_menu? }}
             </div>
          </header>
 
          <div id="contents">
             <ul id="nav">
-               {{^tabs?}}
+               {{^ tabs? }}
                   <li class="tab active">
                      <div class="onglet">{{ page_title }}</div>
                   </li>
-               {{/tabs?}}
-               {{#tabs}}
+               {{/ tabs? }}
+               {{# tabs }}
                   <li class="tab">
                      <a href="#{{ id }}" data-toggle="tab">
                         <div class="onglet">{{ name }}</div>
                      </a>
                   </li>
-               {{/tabs}}
+               {{/ tabs }}
             </ul>
             <div class="cleaner"></div>
-               <div id="subcontents" class="{{ path_to_classes }}">
-                  {{{ yield }}}
-                  <div class="cleaner"></div>
-               </div>
-               <div id="signature">
-                  <div>-- Ethil Van - Site réalisé par aumgn - Design par Travis --</div>
-               </div>
+            <div id="subcontents" class="{{ path_to_classes }}">
+               {{{ yield }}}
+               <div class="cleaner"></div>
+            </div>
+            <div id="signature">
+               <div>-- Ethil Van - Site réalisé par aumgn - Design par Travis --</div>
             </div>
          </div>
 
-         {{#logged_in?}}
+         {{# logged_in? }}
             <div class="submenu-templates" style="display: none;">
-               {{> layouts/submenu_server}}
-               {{> layouts/submenu_member}}
+               {{> layouts/submenu_server }}
+               {{> layouts/submenu_member }}
             </div>
-         {{/logged_in?}}
+         {{/ logged_in? }}
 
         <script src="/scripts/{{ javascript_name }}.js"></script>
     </body>

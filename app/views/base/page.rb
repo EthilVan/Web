@@ -3,6 +3,10 @@ module EthilVan::App::Views
    class Page < EthilVan::Mustache::Partial
 
       def page_title
+         @page_title || "Ethil Van"
+      end
+
+      def meta_page_title
          @page_title ? @page_title + " | Ethil Van" : "Ethil Van"
       end
 
