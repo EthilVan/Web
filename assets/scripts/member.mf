@@ -2,10 +2,12 @@ lib/jquery.js
 bootstrap/bootstrap-transition.js
 bootstrap/bootstrap-button.js
 bootstrap/bootstrap-tab.js
+bootstrap/bootstrap-dropdown.js
 bootstrap/bootstrap-collapse.js
 bootstrap/bootstrap-carousel.js
 lib/epiceditor.js
 app/preload-images.ts
 app/tab.ts
 app/markdown.ts
+app/select.ts
 app/member-menu.ts
