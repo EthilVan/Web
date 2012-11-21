@@ -5,7 +5,7 @@ bootstrap/bootstrap-tab.js
 bootstrap/bootstrap-collapse.js
 bootstrap/bootstrap-carousel.js
 lib/epiceditor.js
-app/preload_images.ts
+app/preload-images.ts
 app/tab.ts
 app/markdown.ts
 app/public-menu.ts
