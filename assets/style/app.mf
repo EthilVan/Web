@@ -2,6 +2,8 @@ bootstrap/bootstrap.less
 layout/header.less
 layout/column.less
 layout/page.less
+layout/form.less
+login/login.less
 presentation/equipe.less
 news/news.less
 news/news_edit.less

@@ -1,27 +1,20 @@
 {{#title}}Connexion{{/title}}
 
-<form class="formulaire aligned" action="" method="post">
+<form id="login" class="formulaire" action="" method="post">
    {{#invalid?}}
       <div class="flash warning">Mot de passe ou pseudo invalide.</div>
    {{/invalid?}}
    {{#banned?}}
       <div class="flash warning">Vous êtes banni de ce site.</div>
    {{/banned?}}
-   <div class="field">
-      <!-- <label for="name">Nom</label> -->
-      <input class="text_field" name="name" type="text"
-            placeholder="Pseudo" {{{ name }}}/>
-   </div>
-   <div class="field">
-      <!-- <label for="password">Mot de passe</label> -->
-      <input class="text_field" name="password" type="password"
-            placeholder="Mot de passe" {{{ password }}}/>
-   </div>
-   <div class="field">
-      <label for="remember_me">Se souvenir de moi</label>
+   <input class="centre" name="name" type="text"
+         placeholder="Pseudo" {{{ name }}}/>
+   <input class="centre" name="password" type="password"
+         placeholder="Mot de passe" {{{ password }}}/>
+   <div class="centre remember">
       <input name="remember_me" type="checkbox" {{{ remember }}}/>
+      <span>Se souvenir de moi</span>
    </div>
-   <div class="submit">
-      <input class="login" value="Se connecter" type="submit" />
-   </div>
+   <div class="cleaner"></div>
+   <input class="centre btn connexion" value="Se connecter" type="submit" />
 </form>
