@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /membre
+Disallow: /moderation
