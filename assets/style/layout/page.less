@@ -1,4 +1,5 @@
 @import 'var.less';
+@import 'mixins.less';
 
 .cleaner {
    clear: both;
@@ -68,7 +69,7 @@
 
    ul, ol {
       font-size: 16px;
-      color: @gris-clair;
+      color: @gris-police;
       margin-top: 3px;
       margin-bottom: 10px;
 
@@ -79,7 +80,7 @@
 
    p {
       font-size: 16px;
-      color: @gris-clair;
+      color: @gris-police;
       text-align: justify;
       text-indent: 0px;
       margin: 10px 0px;
@@ -104,22 +105,12 @@
       padding: 22px;
       padding-top: 30px;
       background-color: @vert-medium;
-      //@include background-image(linear-gradient(top, @vert-sombre, @vert-clair));
-      background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@vert-sombre), to(@vert-clair));
-      background-image: -webkit-linear-gradient(top, @vert-sombre, @vert-clair);
-      background-image:    -moz-linear-gradient(top, @vert-sombre, @vert-clair);
-      background-image:     -ms-linear-gradient(top, @vert-sombre, @vert-clair);
-      background-image:      -o-linear-gradient(top, @vert-sombre, @vert-clair);
+      #gradient .vertical(@vert-clair, @vert-sombre);
       border: solid 2px black;
       color: @vert;
 
       blockquote {
-         //@include background-image(linear-gradient(top, @vert-clair, @vert-sombre));
-         background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@vert-clair), to(@vert-sombre));
-         background-image: -webkit-linear-gradient(top, @vert-clair, @vert-sombre);
-         background-image:    -moz-linear-gradient(top, @vert-clair, @vert-sombre);
-         background-image:     -ms-linear-gradient(top, @vert-clair, @vert-sombre);
-         background-image:      -o-linear-gradient(top, @vert-clair, @vert-sombre);
+         #gradient .vertical(@vert-sombre, @vert-clair);
       }
 
       p, ul {
@@ -154,14 +145,6 @@
 
    img {
       max-width: 100%;
-   }
-
-   .button-left, .button-right {
-      margin: 20px 0px;
-   }
-
-   .button-right {
-      float: right;
    }
 
    .video iframe {

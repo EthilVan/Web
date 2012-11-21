@@ -3,18 +3,18 @@
 .news {
 
    .news-list {
-      background-color: $gris-medium;
+      background-color: @gris-medium;
       padding: 15px;
       border-radius: 6px;
       box-shadow: 1px 1px 0px 0px $gris-relief;
    }
 
    .news {
-      background-color: $gris-sombre;
+      background-color: @gris-colonne;
       padding: 15px;
       border-radius: 6px;
       margin-bottom: 15px;
-      box-shadow: 1px 1px 0px 0px $gris-relief inset;
+      box-shadow: 1px 1px 0px 0px @gris-relief inset;
    }
 
    .news:last-child {
@@ -48,5 +48,5 @@
 }
 
 .news.show .news {
-   background-color: $gris-medium;
+   background-color: @gris-medium;
 }
