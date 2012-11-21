@@ -1,0 +1,40 @@
+ /* TEAM */
+Developer: aumgn
+Site: aumgn.fr
+Twitter: aum9n
+Location: Montpellier, France
+
+Designer: Travis-Hironak
+
+Server Manager: Loup Des Neiges
+Site: www.loup-des-neiges.com
+
+/* SITE */
+
+Doctype: HTML5
+
+Components:
+ - JQuery: http://jquery.com/
+ - Bootstrap: http://twitter.github.com/bootstrap/
+ - Marked: https://github.com/chjj/marked
+ - Epic Editor: http://epiceditor.com/
+
+Deploy Stack:
+ - Centos: http://www.centos.org/
+ - Lighttpd: http://www.lighttpd.net/
+ - Ruby: http://ruby-lang.org/
+ - Thin: http://code.macournoyer.com/thin/
+ - Mysql: http://mysql.com
+ - Sinatra: http://sinatrarb.com/
+ - Mustache: http://mustache.github.com/
+ - TypeScript: http://www.typescriptlang.org/
+ - Less: http://lesscss.org/
+
+Softwares:
+ - Sublime Text 2: http://www.sublimetext.com/2
+ - Openssh: http://www.openssh.org/
+ - Git: http://git-scm.com/
+ - Git For Window: http://code.google.com/p/msysgit/
+ - Mintty: http://code.google.com/p/mintty/
+ - VirtualBox: http://www.virtualbox.org
+ - Photoshop: http://www.adobe.com/fr/products/photoshop.html
