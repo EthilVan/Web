@@ -4,10 +4,10 @@ dons:
 
 dons_merci:
    url: "membre/dons/merci"
-   titre: "Dons - Remerciements"
+   titre: "Remerciements | Remerciements"
    template: "member/dons/merci"
 
 dons_erreur:
    url: "membre/dons/erreur"
-   titre: "Dons - Erreur"
+   titre: "Erreur | Dons"
    template: "member/dons/erreur"
