@@ -1,4 +1,5 @@
 require 'net/http'
+require 'chunky_png'
 
 module EthilVan::Skins
 

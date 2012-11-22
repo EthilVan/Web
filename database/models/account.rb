@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'bcrypt'
 
 class Account < ActiveRecord::Base
 

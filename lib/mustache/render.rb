@@ -1,3 +1,5 @@
+require 'mustache'
+
 module EthilVan
 
    module Mustache

@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'active_record'
+
 begin
   rrequire 'config/database.private'
 rescue Exception => exc

@@ -16,7 +16,7 @@ module EthilVan
 end
 
 require 'bundler'
-Bundler.require(:default, EthilVan::ENV)
+Bundler.setup(:default, EthilVan::ENV)
 
 # Ensure this is loaded now
 require 'active_support/time'
