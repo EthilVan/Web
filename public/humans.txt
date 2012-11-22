@@ -4,7 +4,9 @@ Site: aumgn.fr
 Twitter: aum9n
 Location: Montpellier, France
 
-Designer: Travis-Hironak
+Designer: Travis Hironak
+Twitter: Travis_Hironak
+Location: Nevers, France
 
 Server Manager: Loup Des Neiges
 Site: www.loup-des-neiges.com
@@ -34,7 +36,7 @@ Softwares:
  - Sublime Text 2: http://www.sublimetext.com/2
  - Openssh: http://www.openssh.org/
  - Git: http://git-scm.com/
- - Git For Window: http://code.google.com/p/msysgit/
+ - Git For Windows: http://code.google.com/p/msysgit/
  - Mintty: http://code.google.com/p/mintty/
  - VirtualBox: http://www.virtualbox.org
  - Photoshop: http://www.adobe.com/fr/products/photoshop.html
