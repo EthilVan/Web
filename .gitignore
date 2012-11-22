@@ -9,4 +9,4 @@ public/scripts
 public/style
 public/images/emoji/*.png
 
-config/database.private.rb
+config/config.yml

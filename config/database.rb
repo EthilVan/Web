@@ -1,15 +1,9 @@
-# encoding: utf-8
-
 require 'active_record'
 
-begin
-  rrequire 'config/database.private'
-rescue Exception => exc
-  puts 'Configuration de la base données manquante !'
-  puts '(Fichier config/database.private.rb)'
-  exit 1
-end
-
 class ActiveRecord::Base
+   EthilVan::Config['database'].each do |env, dbconfig|
+      configurations[env.to_sym] = dbconfig
+   end
+
    establish_connection configurations[EthilVan::ENV]
 end
