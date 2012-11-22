@@ -3,21 +3,21 @@ class EthilVan::App < Sinatra::Base
    get '/login' do
       logout if logged_in?
       view Views::Public::Authentication::Login.new
-      mustache "public/authentication/login"
+      mustache 'public/authentication/login'
    end
 
    post '/login' do
       name, password = params[:name], params[:password]
-      remember = !params["remember_me"].nil? and params["remember_me"] == "1"
+      remember = !params['remember_me'].nil? and params["remember_me"] == '1'
       account = Account.authenticate(name, password)
       if account.nil?
          view Views::Public::Authentication::Login.new(
                name, password, remember, true)
-         mustache "authentication/login"
+         mustache 'public/authentication/login'
       elsif account.banned
          view Views::Public::Authentication::Login.new(
                name, password, remember, false, true)
-         mustache "authentication/login"
+         mustache 'public/authentication/login'
       else
          login(account.auth_token, remember)
          redirect_after_login
