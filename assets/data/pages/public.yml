@@ -47,7 +47,7 @@ aide:
 
 aide_nouveautes:
    url: "aide/nouveautes"
-   titre: "Nouveautés | Aide"
+   titre: ["Aide", "Nouveautés"]
    template: "public/aide/nouveautes/layout"
    principal: "crafts"
    onglets:
@@ -61,15 +61,15 @@ aide_nouveautes:
 
 aide_screenshots:
    url: "aide/screenshots"
-   titre: "ScreenShots | Aide"
+   titre: ["Aide", "ScreenShots"]
    template: "public/aide/screenshots"
 
 aide_teamspeak:
    url: "aide/teamspeak"
-   titre: "TeamSpeak | Aide"
+   titre: ["Aide", "TeamSpeak"]
    template: "public/aide/teamspeak"
 
 aide_markdown:
    url: "aide/markdown"
-   titre: "Mise en forme | Aide"
+   titre: ["Aide", "Mise en forme"]
    template: "public/aide/markdown"

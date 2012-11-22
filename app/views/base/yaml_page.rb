@@ -8,6 +8,7 @@ module EthilVan::App::Views
          @url = "/" + (hash["url"] || id)
          @template = hash["template"]
          @page_title = hash["titre"]
+         @page_title = [ @page_title ] unless @page_title.is_a? Array
 
          if hash.key? "onglets"
             @main_tab = @url + "/" + hash["principal"]
