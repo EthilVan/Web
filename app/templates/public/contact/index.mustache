@@ -28,9 +28,9 @@
 
    <div class="control-group">
       <label class="control-label" for="category">Catégorie</label>
-      <div class="controls">
+      <div class="controls" id="category">
          {{#category}}
-         <select id="category" name="category" class="input-xlarge" type="text">
+         <select name="category" type="text">
             <option value="general" {{{ general? }}}>Général</option>
             <option value="partnership" {{{ partnership? }}}>Partenariat</option>
             <option value="development" {{{ development? }}}>Développement</option>

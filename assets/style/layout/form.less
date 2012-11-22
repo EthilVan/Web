@@ -1,30 +1,60 @@
 @import 'var.less';
 @import 'mixins.less';
 
-label {
-   font-size: 15px;
-   font-weight: bold;
-}
 
-.btn {
-   .buttonBackground(@bouton-1, @bouton-2);
-}
+#subcontents {
 
-.button-left, .button-right {
-   margin: 20px 0px;
-}
+   label {
+      font-size: 15px;
+      font-weight: bold;
+   }
 
-.button-right {
-   float: right;
-}
+   .btn {
+      .buttonBackground(@formulaire-1, @formulaire-2);
+      color: @gris-form;
+   }
 
-input[type="text"], input[type="password"], textarea {
-   #gradient .vertical(@formulaire-1, @formulaire-2);
-   color: @gris-police;
-   border: solid black 1px;
-}
+   .bootstrap-select {
 
-textarea {
-   width: 540px;
-   max-width: 95%;
+      .dropdown-toggle {
+         color: @gris-form;
+         font-weight: normal;
+
+         .caret {
+            margin-left: 14px;
+            border-top-color: @gris-form;
+         }
+      }
+
+      .dropdown-menu {
+         #gradient .vertical(@formulaire-1, @formulaire-2);
+         border: solid black 1px;
+
+         a, a:hover {
+            color: @gris-form;
+            font-weight: normal;
+         }
+      }
+
+   }
+
+   .button-left, .button-right {
+      margin: 20px 0px;
+   }
+
+   .button-right {
+      float: right;
+   }
+
+   input[type="text"], input[type="password"], textarea {
+      #gradient .vertical(@formulaire-1, @formulaire-2);
+      color: @gris-form;
+      border: solid black 1px;
+   }
+
+   textarea {
+      width: 540px;
+      max-width: 95%;
+   }
+
 }

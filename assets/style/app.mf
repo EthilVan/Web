@@ -7,3 +7,4 @@ login/login.less
 presentation/equipe.less
 news/news.less
 news/news_edit.less
+contact/contact.less
