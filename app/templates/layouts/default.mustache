@@ -66,15 +66,16 @@
                <div>-- Ethil Van - Site réalisé par aumgn - Design par Travis --</div>
             </div>
          </div>
+      </div>
 
-         {{# logged_in? }}
-            <div class="submenu-templates" style="display: none;">
-               {{> layouts/submenu_server }}
-               {{> layouts/submenu_member }}
-            </div>
-         {{/ logged_in? }}
+      {{# logged_in? }}
+         <div class="submenu-templates" style="display: none;">
+            {{> layouts/submenu_server }}
+            {{> layouts/submenu_member }}
+         </div>
+      {{/ logged_in? }}
 
-        <script src="/scripts/{{ javascript_name }}.js"></script>
-    </body>
+      <script src="/scripts/{{ javascript_name }}.js"></script>
+   </body>
 
 </html>
