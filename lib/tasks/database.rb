@@ -1,6 +1,8 @@
+task :install => 'db:migrate'
+
 namespace :db do
 
-   task :migrate => :load_environment do
+   task :migrate do
       require 'logger'
       ActiveRecord::Base.logger = Logger.new(STDOUT)
       ActiveRecord::Migration.verbose = true

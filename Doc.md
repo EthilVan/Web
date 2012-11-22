@@ -114,10 +114,16 @@ recompiler quand cela est nécessaire. Pour le lancer :
 
 #### Clean des assets:
 
-Pour supprimer tout ce qui a été généré de manière automatique pour les
-assets (cache et fichiers résultants) afin de répartir sur une base fraiche :
+Pour supprimer tout ce qui a pu être généré de manière automatique pour les
+assets (cache et/ou fichiers résultants) afin de répartir sur une base fraiche :
 
-`rake assets:clean`
+```
+rake assets:clean
+rake assets:clean:cache
+rake assets:clean:emoji
+rake assets:clean:style
+rake assets:clean:script
+```
 
 
 ### Accéder au site web

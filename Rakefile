@@ -14,9 +14,7 @@ task :irb do
    system 'irb -r./config/env'
 end
 
-task :install => 'db:migrate'
-task :install => 'assets:install'
-task :install => 'assets:compile'
+task :install
 
 rrequire 'lib/tasks/database'
 rrequire 'lib/tasks/assets/assets'
