@@ -1,7 +1,5 @@
 source :rubygems
 
-gem 'jbundler', platforms: :jruby
-
 # Core
 gem 'rake'
 gem 'sinatra', require: 'sinatra/base'
@@ -19,7 +17,7 @@ gem 'rainpress', require: false
 # Librairies
 gem 'will_paginate'
 gem 'gemoji', require: false
-gem 'chunky_png', platforms: :ruby
+gem 'chunky_png'
 gem 'image_size'
 gem 'bcrypt-ruby', require: 'bcrypt'
 

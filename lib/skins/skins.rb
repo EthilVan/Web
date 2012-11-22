@@ -34,8 +34,4 @@ private
    end
 end
 
-if RUBY_PLATFORM == 'java'
-   rrequire 'lib/skins/java_skins'
-else
-   rrequire 'lib/skins/chunky_skins'
-end
+rrequire 'lib/skins/chunky_skins'
