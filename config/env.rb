@@ -49,6 +49,7 @@ module EthilVan
    rrequire_rdir 'lib/mustache'
    rrequire_rdir 'lib/authorization'
    rrequire_rdir 'lib/misc'
+   rrequire 'lib/markdown/markdown'
    rrequire 'lib/skins/skins'
 
    # Base de données

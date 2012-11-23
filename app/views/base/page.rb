@@ -50,5 +50,9 @@ module EthilVan::App::Views
       def member_menu?
          member_page?
       end
+
+      def render_markdown(text)
+         @app.markdown(text)
+      end
    end
 end

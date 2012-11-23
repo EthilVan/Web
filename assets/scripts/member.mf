@@ -8,6 +8,5 @@ bootstrap/bootstrap-carousel.js
 lib/epiceditor.js
 app/preload-images.ts
 app/tab.ts
-app/markdown.ts
 app/select.ts
 app/member-menu.ts

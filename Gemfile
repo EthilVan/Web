@@ -15,6 +15,7 @@ gem 'gemoji'
 
 # Librairies
 gem 'bcrypt-ruby'
+gem 'redcarpet', platforms: :ruby
 # gem 'will_paginate'
 gem 'chunky_png'
 # gem 'image_size'

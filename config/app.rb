@@ -30,6 +30,8 @@ module EthilVan
       protect %r{^/news/creer}, EthilVan::Role::REDACTEUR
       protect %r{^/moderation}, EthilVan::Role::MODO
 
+      register EthilVan::Markdown
+
       # Routes
       rrequire_rdir 'app/controllers'
    end
