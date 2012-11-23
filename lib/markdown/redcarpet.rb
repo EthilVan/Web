@@ -36,14 +36,11 @@ module EthilVan::Markdown::Helpers
       space_after_headers: true
    }
 
-   HtmlRenderer  = Redcarpet::Markdown.new(ToHTML,  Options)
-   XHtmlRenderer = Redcarpet::Markdown.new(ToXHTML, Options)
-
    def render_markdown(source)
-      HtmlRenderer.render(source)
+      Redcarpet::Markdown.new(ToHTML,  Options).render(source)
    end
 
    def render_xmarkdown(source)
-      XHtmlRenderer.render(source)
+      Redcarpet::Markdown.new(ToXHTML, Options).render(source)
    end
 end
