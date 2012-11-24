@@ -1,7 +1,6 @@
 class EthilVan::App < Sinatra::Base
 
    get '/login' do
-      logout if logged_in?
       view Views::Public::Authentication::Login.new
       mustache 'public/authentication/login'
    end
@@ -19,15 +18,13 @@ class EthilVan::App < Sinatra::Base
                name, password, remember, false, true)
          mustache 'public/authentication/login'
       else
-         login(account.auth_token, remember)
+         login(account, remember)
          redirect_after_login
          redirect '/membre'
       end
    end
 
    get '/membre/logout' do
-      current_account.generate_auth_token
-      current_account.save
       logout
       redirect '/'
    end
