@@ -29,16 +29,6 @@ la base de données).
 Se réferer au fichier `config/config.example.yml` pour plus de détails.
 
 
-#### Specifités de jruby
-
-Afin de fonctionner sous jruby le site nécessite quelques rustines qui sont
-gérés à part afin de ne pas encombrer le dépôt. Pour les installer taper:
-
-```
-jruby -S rake jruby:install
-```
-
-
 
 ## Utilisation
 

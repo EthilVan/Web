@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/EthilVan/jruby-pegdown.git
+  revision: 7bee48f03f3241a1b5a382050f20a5daa88a6864
+  specs:
+    jruby-pegdown (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -82,6 +88,7 @@ DEPENDENCIES
   chunky_png
   factory_girl
   gemoji
+  jruby-pegdown!
   minitest
   mustache
   mysql2

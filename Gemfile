@@ -16,6 +16,8 @@ gem 'gemoji'
 # Librairies
 gem 'bcrypt-ruby'
 gem 'redcarpet', platforms: :ruby
+gem 'jruby-pegdown', platforms: :jruby,
+      git: 'git://github.com/EthilVan/jruby-pegdown.git'
 gem 'nokogiri'
 # gem 'will_paginate'
 gem 'chunky_png'
