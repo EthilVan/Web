@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   class Page < EthilVan::Mustache::Partial
+   class Page < Partial
 
       def page_title
          return "Ethil Van" if @page_title.blank?
@@ -54,5 +54,11 @@ module EthilVan::App::Views
       def render_markdown(text)
          @app.markdown(text)
       end
+   end
+
+   module Public
+   end
+
+   module Member
    end
 end

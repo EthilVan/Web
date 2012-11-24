@@ -1,0 +1,20 @@
+{{#title}}News{{/title}}
+
+<div class="newses">
+    {{# newses }}
+    <div class="news {{ important_class }}">
+        <div class="titre">
+            <a href="{{ url }}">{{ title }}</a>
+        </div>
+        <div class="banner">
+          <a href="{{ url }}"><img src="{{ banner_url }}" /></a>
+        </div>
+        <div class="contenu">{{{ summary }}}</div>
+        <div class="suite">
+            <a href="{{ url }}">→ Lire la suite...</a>
+        </div>
+        <div class="creation"> - Le {{ created }} par {{ author }} - </div>
+        <div class="ligne"> </div>
+    </div>
+    {{/ newses }}
+</div>

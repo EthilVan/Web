@@ -1,11 +1,21 @@
 class EthilVan::App
 
    get '/news' do
-      page = Views::Page.new
-      def page.newses
-         @app.markdown(News.first(conditions: { id: 26 }).contents)
+      if logged_in?
+         newses = News.where private: false
+      else
+         newses = News
       end
-      view page
-      mustache 'public/news/liste'
+      newses = newses.order "created_at DESC"
+      view Views::Public::News::Index.new newses
+      mustache 'public/news/index'
+   end
+
+   get %r{/news/(\d{1,3})$} do |id|
+      news = News.find_by_id id
+      raise Sinatra::NotFound if news.nil?
+      halt 401 if !logged_in? and news.private
+      view Views::Public::News::Show.new news
+      mustache 'public/news/show'
    end
 end
