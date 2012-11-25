@@ -1,4 +1,5 @@
 dons:
+   url: "membre/dons"
    titre: "Dons"
    template: "member/dons/dons"
 
