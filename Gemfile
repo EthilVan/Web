@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 source :rubygems
 
 # Core
@@ -23,10 +24,14 @@ gem 'nokogiri'
 gem 'chunky_png'
 # gem 'image_size'
 
+
+gem 'thin', platforms: :ruby
+
 # Développement
 group :development do
    gem 'pry'
    gem 'watchr'
+   gem 'puma', platforms: :jruby
 end
 
 # Test
