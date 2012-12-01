@@ -51,8 +51,4 @@ module EthilVan
    rrequire_rdir 'lib/misc'
    rrequire 'lib/markdown/markdown'
    rrequire 'lib/skins/skins'
-
-   # Base de données
-   require_relative 'database'
-   rrequire_dir 'app/models'
 end

@@ -1,3 +1,4 @@
+require_relative 'env'
 require 'active_record'
 
 class ActiveRecord::Base
@@ -16,3 +17,5 @@ class ActiveRecord::Base
 
    establish_connection configurations[EthilVan::ENV]
 end
+
+rrequire_dir 'app/models'

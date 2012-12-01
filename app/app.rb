@@ -1,4 +1,5 @@
 require_relative 'env'
+require_relative 'database'
 
 # Configuration de l'application
 module EthilVan
