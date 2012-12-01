@@ -1,4 +1,4 @@
-require './config/app'
+require './app/app'
 
 require 'test/unit'
 require 'rack/test'

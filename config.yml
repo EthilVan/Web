@@ -1,0 +1,13 @@
+database:
+   development:
+      username:  aumgn
+      password:  ethilvan1.0.0
+      database:  ethilvan_dev
+   test:
+      username:  aumgn
+      password:  ethilvan1.0.0
+      database:  ethilvan_test
+   production:
+      username:  aumgn
+      password:  ethilvan1.0.0
+      database:  ethilvan_dev

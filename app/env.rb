@@ -35,7 +35,7 @@ module EthilVan
    end
 
    require 'yaml'
-   Config = YAML.load_file(File.join('config', 'config.yml'))
+   Config = YAML.load_file 'config.yml'
 
    require 'bundler'
    Bundler.setup(:default, EthilVan::ENV)
@@ -53,6 +53,6 @@ module EthilVan
    rrequire 'lib/skins/skins'
 
    # Base de données
-   rrequire 'config/database'
+   require_relative 'database'
    rrequire_dir 'database/models'
 end

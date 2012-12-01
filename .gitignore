@@ -9,4 +9,4 @@ public/style
 public/images/emoji/*.png
 
 # Config
-config/config.yml
+config.yml

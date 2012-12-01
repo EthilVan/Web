@@ -1,4 +1,4 @@
-require_relative 'config/env'
+require_relative 'app/env'
 
 task :default => :pry
 task :pry do
@@ -11,7 +11,7 @@ task :pry do
 end
 
 task :irb do
-   system 'irb -r./config/env'
+   system 'irb -r./app/env'
 end
 
 task :install

@@ -1,6 +1,6 @@
 #! /usr/bin/env rackup
 # encoding: utf-8
 
-require './config/app'
+require './app/app'
 
 run EthilVan::App

@@ -22,12 +22,19 @@ Une fois installé, dans une console taper :
 
 #### Configuration
 
-Le site web utilise un fichier de configuration `config/config.yml` pour
+Le site web utilise un fichier de configuration `config.yml` pour
 gérer sa configuration (notamment pour les informations de connexion à
 la base de données).
 
-Se réferer au fichier `config/config.example.yml` pour plus de détails.
+Exemple :
 
+```yml
+database:
+   development:
+      username:  username
+      password:  password
+      database:  database
+```
 
 
 ## Utilisation
