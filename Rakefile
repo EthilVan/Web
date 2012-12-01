@@ -2,7 +2,7 @@ require 'fileutils'
 FileUtilsV = FileUtils::Verbose
 require_relative 'app/env'
 
-task :default => :pry
+task :default => :console
 task :console
 task :install
 task :clean => :clean_skins

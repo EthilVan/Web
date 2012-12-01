@@ -15,9 +15,7 @@ module EthilVan
          require 'sinatra/reloader'
          register Sinatra::Reloader
          also_reload "lib/**/*"
-         also_reload "database/**/*"
-         also_reload "app/helpers/**/*"
-         also_reload "app/views/**/*"
+         also_reload "app/**/*"
       end
 
       register EthilVan::Mustache
