@@ -9,6 +9,6 @@ namespace :db do
 
       version = ENV['version']
       version = version.to_i unless version.nil?
-      ActiveRecord::Migrator.migrate('database/migrations', version)
+      ActiveRecord::Migrator.migrate('lib/tasks/migrations', version)
    end
 end

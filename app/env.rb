@@ -54,5 +54,5 @@ module EthilVan
 
    # Base de données
    require_relative 'database'
-   rrequire_dir 'database/models'
+   rrequire_dir 'app/models'
 end
