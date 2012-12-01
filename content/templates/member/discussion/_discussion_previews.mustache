@@ -1,0 +1,26 @@
+{{# discussions? }}
+<ul>
+   {{# discussions }}
+   <li>
+      <div class="discussion">
+         <div class="lien">
+            <a href="{{ url_discussion }}">
+               <div class="icone {{ status_class }}"></div>
+               <div class="titre-discussion">{{ name }}</div>
+            </a>
+         </div>
+         <div class="creation">
+            Discussion créée le {{ created }} par
+            <a href="{{ author_link }}">{{ author }}</a>
+         </div>
+         <div class="dernier">
+            <a href="{{ last_message_link }}">Dernier message</a>
+            le {{ last_message }} par
+            <a href="{{ last_author_link }}">{{ last_author }}</a>
+         </div>
+         <div class="cleaner"></div>
+      </div>
+   </li>
+   {{/ discussions }}
+</ul>
+{{/ discussions? }}

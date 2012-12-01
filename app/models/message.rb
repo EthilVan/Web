@@ -1,5 +1,8 @@
 class Message < ActiveRecord::Base
 
+   belongs_to :discussion
+   belongs_to :account
+
    include EthilVan::Markdown::Helpers
 
    before_save :parse_contents, :if => :new_contents?

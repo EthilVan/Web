@@ -1,1 +1,21 @@
 {{#title}}Discussions{{/title}}
+
+{{# groups }}
+   <div class="discussion-group">
+      <a href="{{ url }}" title="{{ description }}">
+         <div class="titre-espace">{{ name }}</div>
+      </a>
+      {{> member/discussion/_discussion_previews }}
+      {{# remaining? }}
+      <a href="{{ url }}" title="{{ description }}">
+         <div class="restantes">
+            Nombre de discussions restantes: {{ remaining }}
+         </div>
+      </a>
+      {{/ remaining? }}
+      <a href="{{ url }}/creer">
+         <div class="nouvelle">+ Nouvelle discussion</div>
+      </a>
+      <div class="cleaner"></div>
+   </div>
+{{/ groups }}
