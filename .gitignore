@@ -1,12 +1,12 @@
+# Ruby
 .rbx
-log/
-tmp/
 .bundle/
 
-assets/compiled
-cache/
+# Generated
+tmp
 public/scripts
 public/style
 public/images/emoji/*.png
 
+# Config
 config/config.yml

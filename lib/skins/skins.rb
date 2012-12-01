@@ -3,7 +3,7 @@ module EthilVan::Skins
    DEFAULT_SCALE = 4
    DEFAULT_CACHE = 24.hour.to_i
 
-   cache_directory = File.join EthilVan::ROOT,  'cache'
+   cache_directory = File.join EthilVan::ROOT,  'tmp'
    skins_directory = File.join cache_directory, 'skins'
    PREVIEW_DIR     = File.join skins_directory, 'preview'
    HEAD_DIR        = File.join skins_directory, 'head'

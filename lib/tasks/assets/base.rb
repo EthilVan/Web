@@ -5,7 +5,7 @@ module EthilVan::Assets
    class Base
 
       SRC = "assets"
-      CACHE = "assets/compiled"
+      CACHE = "tmp"
       MANIFEST_EXT = ".mf"
       DEST = "public"
 
