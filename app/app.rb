@@ -6,6 +6,7 @@ module EthilVan
    class App < Sinatra::Base
       set :environment, EthilVan::ENV
       set :root, EthilVan::ROOT
+      set :public_folder, 'static'
       set :session_secret,
             'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
       enable :sessions

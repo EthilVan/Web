@@ -7,7 +7,7 @@ module EthilVan::Assets
       SRC = "content"
       CACHE = "tmp"
       MANIFEST_EXT = ".mf"
-      DEST = "public"
+      DEST = "static"
 
       class << self
 

@@ -4,9 +4,9 @@
 
 # Generated
 tmp
-public/scripts
-public/style
-public/images/emoji/*.png
+static/scripts
+static/style
+static/images/emoji/*.png
 
 # Config
 config.yml

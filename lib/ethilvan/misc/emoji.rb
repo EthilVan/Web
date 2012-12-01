@@ -1,7 +1,7 @@
 module EthilVan::Emoji
 
    def self.images_path
-      File.join(EthilVan::ROOT, 'public', 'images', 'emoji')
+      File.join(EthilVan::ROOT, 'static', 'images', 'emoji')
    end
 
    def self.names
