@@ -8,7 +8,7 @@ module EthilVan
          app.const_set :Helpers, Module.new
          app.const_set :Views, Module.new
          rrequire_rdir "app/{helpers,views}"
-         app.set :mustache_template_path, File.join('app', 'templates')
+         app.set :mustache_template_path, File.join('content', 'templates')
 
          app.send :include, Helpers
       end

@@ -17,7 +17,7 @@ end
 task :install
 
 rrequire 'lib/tasks/database'
-rrequire 'lib/tasks/assets/assets'
+rrequire 'lib/tasks/assets'
 
 task :test do
    system "RACK_ENV='test' ruby ./test/run.rb"
