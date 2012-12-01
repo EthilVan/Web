@@ -1,0 +1,19 @@
+<h4>Membres</h4>
+
+<ul class="members">
+   {{# members }}
+   <li>
+      <a href="/membre/@{{ name }}">
+         <img src="{{ head }}" />
+         {{ name }}
+      </a>
+   </li>
+   {{/ members }}
+</ul>
+
+<h6>Anciens</h6>
+<ul class="anciens">
+   {{# old_members }}
+   <li><a href="/membre/@{{ name }}">{{ name }}</a></li>
+   {{/ old_members }}
+</ul>

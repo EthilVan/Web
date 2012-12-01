@@ -15,7 +15,7 @@ module EthilVan::Helpers
             end
 
             def avatar
-               @account.profil.avatar_link
+               @account.profil.avatar_url
             end
 
             def description

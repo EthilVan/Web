@@ -7,7 +7,7 @@ class Account < ActiveRecord::Base
 
    AUTH_TOKEN_COST = 5
 
-   has_one :profil
+   has_one :profil, inverse_of: :account
 
    def self.authenticate(name, password)
       return nil unless name.present?
@@ -33,7 +33,7 @@ class Account < ActiveRecord::Base
    end
 
    def check_password?(password)
-     Password.new(crypted_password) == password
+      Password.new(crypted_password) == password
    end
 
    def check_token?(token)

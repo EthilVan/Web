@@ -25,5 +25,6 @@ module EthilVan
       ADMIN = get :admin
       MODO = get :modo
       REDACTEUR = get :redacteur
+      MEMBER = get :default
    end
 end
