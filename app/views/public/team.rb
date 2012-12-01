@@ -48,7 +48,7 @@ module EthilVan::Helpers
             end
          end
 
-         descriptions = EthilVan.load_data("public", "equipe")
+         descriptions = EthilVan.load_data("public", "team")
          Descriptions = descriptions.map do |id, desc|
             role = EthilVan::Role.get id.to_sym
             Role.new(role, desc)

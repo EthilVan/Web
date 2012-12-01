@@ -18,4 +18,4 @@ class ActiveRecord::Base
    establish_connection configurations[EthilVan::ENV]
 end
 
-rrequire_dir 'app/models'
+require_all 'app/models'

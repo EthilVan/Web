@@ -31,7 +31,7 @@ module EthilVan
 end
 
 if RUBY_PLATFORM == 'java'
-   require_relative 'jruby'
+   require 'ethilvan/markdown/jruby'
 else
-   require_relative 'redcarpet'
+   require 'ethilvan/markdown/redcarpet'
 end

@@ -16,7 +16,7 @@ namespace :assets do
    namespace :install do
 
       task :emoji do
-         rrequire 'lib/tasks/assets/emoji'
+         require_relative 'assets/emoji'
          puts 'Installation des emojis'
          EthilVan::Emoji.install
       end

@@ -1,5 +1,10 @@
 require 'mustache'
 
+require 'ethilvan/mustache/context'
+require 'ethilvan/mustache/template'
+require 'ethilvan/mustache/partial'
+require 'ethilvan/mustache/form'
+
 module EthilVan
 
    module Mustache
@@ -7,7 +12,6 @@ module EthilVan
       def self.registered(app)
          app.const_set :Helpers, Module.new
          app.const_set :Views, Module.new
-         rrequire_rdir "app/{helpers,views}"
          app.set :mustache_template_path, File.join('content', 'templates')
 
          app.send :include, Helpers

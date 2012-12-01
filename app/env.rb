@@ -40,15 +40,6 @@ module EthilVan
    require 'bundler'
    Bundler.setup(:default, EthilVan::ENV)
 
-   # Ensure this is loaded now
-   require 'active_support/time'
-
-   # Lib & helpers
-   require './lib/core/require'
-   rrequire_rdir 'lib/core'
-   rrequire_rdir 'lib/mustache'
-   rrequire_rdir 'lib/authorization'
-   rrequire_rdir 'lib/misc'
-   rrequire 'lib/markdown/markdown'
-   rrequire 'lib/skins/skins'
+   $LOAD_PATH.unshift path('lib')
+   require 'ethilvan'
 end

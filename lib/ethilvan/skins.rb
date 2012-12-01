@@ -1,3 +1,5 @@
+require 'ethilvan/skins/chunky_png'
+
 module EthilVan::Skins
 
    DEFAULT_SCALE = 4
@@ -33,5 +35,3 @@ private
       !File.exists?(path) || (Time.now - File.mtime(path)) >= DEFAULT_CACHE
    end
 end
-
-rrequire 'lib/skins/chunky_skins'

@@ -1,5 +1,4 @@
 require_relative 'env'
-require_relative 'database'
 
 # Configuration de l'application
 module EthilVan
@@ -32,8 +31,9 @@ module EthilVan
       protect %r{^/moderation}, EthilVan::Role::MODO
 
       register EthilVan::Markdown
-
-      # Routes
-      rrequire_rdir 'app/controllers'
    end
 end
+
+require_relative 'database'
+require_all 'app/views'
+require_all 'app/controllers'
