@@ -1,4 +1,5 @@
 task :install => 'assets:install'
+task :clean => 'assets:clean'
 
 task :assets => 'assets:compile'
 namespace :assets do
@@ -9,7 +10,6 @@ namespace :assets do
       require_relative 'assets/script'
       require_relative 'assets/watchr'
       include EthilVan::Assets
-      FileUtilsV = FileUtils::Verbose
    end
 
    task :install => ['install:emoji', :compile]
@@ -62,4 +62,7 @@ namespace :assets do
          FileUtilsV.rm_rf Base::CACHE
       end
    end
+
+   task :reinstall => :clean
+   task :reinstall => :install
 end
