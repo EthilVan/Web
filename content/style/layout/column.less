@@ -48,18 +48,6 @@ a img {
    font-family: Asap,calibri,cantarell,serif,Arial;
    color: @vert;
 
-   #signature {
-      font-weight: bold;
-      text-align: center;
-
-      div {
-         width: 500px;
-         padding-top: 10px;
-         margin: 0 auto;
-         border-top: 1px solid;
-      }
-   }
-
 }
 
 #nav {
@@ -104,4 +92,20 @@ a img {
       width: 26px;
    }
 
+}
+
+#signature {
+   margin-top: 8px;
+   text-align: center;
+
+   a {
+      color: #444;
+      text-shadow: 1px 1px black;
+      text-decoration: none;
+      font-size: 15px;
+
+      &:hover {
+         color: @gris-em;
+      }
+   }
 }
