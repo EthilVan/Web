@@ -3,7 +3,7 @@ FactoryGirl.define do
    factory :account do
       name "user"
       email "user@ethilvan.fr"
-      # password "password"
+      password "password"
       # password_confirmation "password"
       minecraft_name "minecraft_user"
       role_id "default"

@@ -1,3 +1,5 @@
+New = News
+
 class CreateNews < ActiveRecord::Migration
 
    def self.up
@@ -9,6 +11,7 @@ class CreateNews < ActiveRecord::Migration
          t.boolean :important
          t.boolean :private
       end
+      New.table_name = 'news'
    end
 
    def self.down
