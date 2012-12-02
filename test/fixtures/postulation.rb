@@ -1,3 +1,4 @@
+=begin
 FactoryGirl.define do
 
    screens_url = [
@@ -81,3 +82,4 @@ FactoryGirl.define do
       END
    end
 end
+=end

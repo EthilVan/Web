@@ -1,3 +1,4 @@
+=begin
 FactoryGirl.define do
 
    factory :profil do
@@ -28,3 +29,4 @@ FactoryGirl.define do
       END
     end
 end
+=end

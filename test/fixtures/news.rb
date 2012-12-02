@@ -1,3 +1,4 @@
+=begin
 FactoryGirl.define do
 
    factory :new do
@@ -11,3 +12,4 @@ FactoryGirl.define do
       private true
    end
 end
+=end

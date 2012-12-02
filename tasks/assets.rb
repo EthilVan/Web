@@ -5,6 +5,7 @@ task :assets => 'assets:compile'
 namespace :assets do
 
    task :init do
+      require './app/env'
       require_relative 'assets/base'
       require_relative 'assets/style'
       require_relative 'assets/script'
