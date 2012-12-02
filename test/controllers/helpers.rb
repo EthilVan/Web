@@ -6,18 +6,19 @@ class MiniTest::Unit::TestCase
    include Rack::Test::Methods
 
    def app
-      EthilVan::App.new!
-      #Sinatra::Wrapper.new(@ethilvan.build(@ethilvan).to_app, @ethilvan)
+      EthilVan::App.new
    end
-
-   #def ethilvan
-   #   @ethilvan
-   #end
 
    alias response last_response
 
-   def login(account)
-      app.current_account = account
+   def login(user, &block)
+      name = user.is_a?(Account) ? user.name : user
+      post '/login', name: name, password: 'password'
+      if block_given?
+         block.call
+         logout
+      end
+      name
    end
 
    def logout

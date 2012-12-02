@@ -2,9 +2,9 @@ class EthilVan::App
 
    get '/news' do
       if logged_in?
-         newses = News.where private: false
-      else
          newses = News
+      else
+         newses = News.where private: false
       end
       newses = newses.order "created_at DESC"
       view Views::Public::News::Index.new newses

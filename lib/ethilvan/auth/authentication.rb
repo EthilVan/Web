@@ -22,11 +22,6 @@ module EthilVan::Authentication
          @current_account ||= find_current_account
       end
 
-      def current_account=(account)
-         warn "Bypassing authentication !" unless EthilVan.test?
-         @current_account = account
-      end
-
       def login(account, remember)
          pseudo = CaesarCipher.obfuscate(account.name)
          auth_token = account.generate_auth_token

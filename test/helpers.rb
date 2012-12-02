@@ -4,28 +4,27 @@ ARGV.clear
 require 'test/unit'
 require 'minitest/spec'
 require 'factory_girl'
+require 'database_cleaner'
 
-require_relative 'helpers'
+module BCrypt
 
-Dir["test/fixtures/*.rb"].each do |factory|
-   require './' + factory.gsub(/\.rb$/, "")
-end
+   class PlainPassword < String
 
-class ActiveRecord::ConnectionAdapters::Mysql2Adapter
+      def self.create(password, *args)
+         new(password[0...20])
+      end
 
-   def truncate(table_name)
-      execute("TRUNCATE TABLE #{table_name}")
-   end
-end
-
-class ActiveRecord::Base
-
-   def self.truncate
-      connection.truncate(table_name)
+      def ==(other)
+         return false unless other.is_a? String
+         super(other[0...20])
+      end
+      alias is_password? ==
    end
 
-   infect_an_assertion :assert_valid, :must_be_valid, true
-   infect_an_assertion :assert_valid_with, :must_be_valid_with, true
-   infect_an_assertion :refute_valid, :wont_be_valid, true
-   infect_an_assertion :refute_valid_with, :wont_be_valid_with, true
+   remove_const :Password
+   Password = PlainPassword
 end
+
+DatabaseCleaner.clean_with :truncation
+require_relative 'fixtures'
+DatabaseCleaner.strategy = :transaction

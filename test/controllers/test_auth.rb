@@ -3,32 +3,39 @@ require_relative 'helpers'
 class AuthTest < MiniTest::Spec
 
    def setup
-      @account = FactoryGirl.create :account
-      @news = FactoryGirl.create :news, account_id: @account.id
-      @private_news = FactoryGirl.create :private_news,
-            account_id: @account.id, title: "Private News"
+      DatabaseCleaner.start
    end
 
    def teardown
-      Account.truncate
-      News.truncate
+      DatabaseCleaner.clean
    end
 
-   def test_presentation_is_accessible
-      get '/presentation'
-      follow_redirect!
+   def test_login_is_accessible
+      get '/login'
       response.must_be :ok?
    end
 
-   def test_member_is_not_accessible_when_not_logged
-      get '/membre'
+   def test_member_dons_is_not_accessible_when_not_logged
+      get '/membre/dons'
       response.wont_be :ok?
    end
 
    def test_member_is_accessible_when_logged
-      login @account
-      get '/membre'
-      follow_redirect!
+      login 'user'
+      get '/membre/dons'
       response.must_be :ok?
+   end
+
+   def test_news_index_does_not_display_private_news_when_not_logged_in
+      get '/news'
+      response.body.must_include "News"
+      response.body.wont_include "Private News"
+   end
+
+   def test_news_index_do_display_private_news_when_logged_in
+      login 'user'
+      get '/news'
+      response.body.must_include "News"
+      response.body.must_include "Private News"
    end
 end
