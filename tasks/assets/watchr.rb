@@ -19,7 +19,7 @@ class EthilVan::Assets::Watchr < ::Watchr::Script
       @assets.each do |asset|
          watch asset.manifest do
             watch_all
-            asset.each &:compile
+            asset.compile
          end
       end
 
