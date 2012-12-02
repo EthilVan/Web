@@ -1,5 +1,7 @@
 task :install => 'db:migrate'
 
+MIGRATIONS_PATH = 'tasks/migrations'
+
 namespace :db do
 
    task :migrate do
@@ -8,9 +10,19 @@ namespace :db do
       ActiveRecord::Base.logger = Logger.new(STDOUT)
       ActiveRecord::Migration.verbose = true
 
-      version = ENV['version']
-      version = version.to_i unless version.nil?
-      ActiveRecord::Migrator.migrate('tasks/migrations', version)
+      if ENV['up'].nil?
+         if ENV['down'].nil?
+            version = ENV['version']
+            version = version.to_i unless version.nil?
+            ActiveRecord::Migrator.migrate(MIGRATIONS_PATH, version)
+         else
+            steps = ENV['down'].to_i
+            ActiveRecord::Migrator.rollback(MIGRATIONS_PATH, steps)
+         end
+      else
+         steps = ENV['up'].to_i
+         ActiveRecord::Migrator.forward(MIGRATIONS_PATH, steps)
+      end
    end
 
    task :console do

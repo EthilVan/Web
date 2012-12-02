@@ -1,4 +1,4 @@
-require 'ethilvan/tasks/html_truncator'
+require './tasks/html_truncator'
 
 class FillMissingNewsSummaries < ActiveRecord::Migration
 
