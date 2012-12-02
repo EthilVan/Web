@@ -1,19 +1,27 @@
-<h4>Membres</h4>
+<h4>Aventuriers</h4>
 
-<ul class="members">
+<ul class="membres">
    {{# members }}
    <li>
       <a href="/membre/@{{ name }}">
-         <img src="{{ head }}" />
-         {{ name }}
+         <div class="membre">
+            <img src="{{ head }}" />
+            <div class="pseudo" >{{ name }}</div>
+         </div>
       </a>
    </li>
    {{/ members }}
 </ul>
+<div class="cleaner"></div>
 
-<h6>Anciens</h6>
+<h4>Pèlerins</h4>
 <ul class="anciens">
    {{# old_members }}
-   <li><a href="/membre/@{{ name }}">{{ name }}</a></li>
+   <li>
+      <a href="/membre/@{{ name }}">
+         <div class="ancien membre" >{{ name }}</a>
+      </a>
+   </li>
    {{/ old_members }}
 </ul>
+<div class="cleaner"></div>
