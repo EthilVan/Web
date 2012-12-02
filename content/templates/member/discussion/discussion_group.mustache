@@ -1,6 +1,6 @@
 {{#title}}Discussions{{/title}}
 
-<div class="discussion_group">
+<div class="discussion-group">
    <a href="/membre/discussion">
       ← Retour à la liste des espaces de discussion
    </a>
@@ -10,7 +10,7 @@
       <p>{{ description }}</p>
    </div>
    {{> member/discussion/_discussion_previews }}
-   <a href="{{ url }}/creer">
-      <input type="button" value="Nouvelle discussion"/>
-   </a>
 </div>
+<a href="{{ url }}/creer">
+   <input class='btn button-right' type="button" value="Nouvelle discussion"/>
+</a>
