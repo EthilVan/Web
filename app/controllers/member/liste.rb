@@ -6,6 +6,6 @@ class EthilVan::App
          member.role.inherit?(EthilVan::Role::MEMBER)
       end
       view Views::Member::List.new(current, old)
-      mustache 'member/list'
+      mustache 'membre/membres/list'
    end
 end

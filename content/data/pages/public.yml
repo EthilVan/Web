@@ -45,11 +45,6 @@ postulation:
    titre: "Postulation"
    template: "public/postulation/index"
 
-postulation_validation:
-   url: "postulation/validation"
-   titre: "Postulation"
-   template: "public/postulation/validation"
-
 aide:
    titre: "Aide"
    template: "public/aide/index"

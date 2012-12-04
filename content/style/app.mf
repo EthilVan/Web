@@ -3,8 +3,8 @@ layout/header.less
 layout/column.less
 layout/page.less
 layout/form.less
-login/login.less
-presentation/equipe.less
-news/news.less
-news/news_edit.less
-contact/contact.less
+public/login/login.less
+public/presentation/equipe.less
+public/news/news.less
+public/news/news_edit.less
+public/contact/contact.less
