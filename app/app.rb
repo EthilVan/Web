@@ -12,6 +12,10 @@ module EthilVan
       enable :sessions
 
       if EthilVan.development?
+         require 'better_errors'
+         use BetterErrors::Middleware
+         BetterErrors.application_root = EthilVan::ROOT
+
          require 'sinatra/reloader'
          register Sinatra::Reloader
          also_reload "lib/**/*"
