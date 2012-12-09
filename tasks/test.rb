@@ -1,5 +1,4 @@
 def load_tests(*directories)
-   ENV['RACK_ENV'] = 'test'
    Dir["./test/{#{directories * ','}}/test_*.rb"].each do |file|
       require file
    end
