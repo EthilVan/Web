@@ -1,1 +1,19 @@
 {{#title}}Discussion{{/title}}
+
+<div class="titre">{{ name }}</div>
+<div class="ligne"></div>
+<div class="date">Discussion crée le {{ date }} par {{ author }}</div>
+
+<div class="cleaner"></div>
+
+<div class="messages">
+{{# messages }}
+   {{> membre/discussion/_message }}
+{{/ messages }}
+</div>
+
+<div class="button-right">
+   <a href="{{ response_link }}">
+      <input type="button" value="Répondre" />
+   </a>
+</div>

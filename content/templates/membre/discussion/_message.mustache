@@ -1,0 +1,44 @@
+<div id="{{ anchor }}" class="message {{ even_class }}">
+
+   <a href="{{ author_profil }}">
+      <div class="profil-cadre mini">
+         <div class="jauge" style="top: {{ gauge_top }}px; height: {{ gauge_height }}px;"> </div>
+         <div class="avatar" style="background-image: url('{{ author_avatar }}')"> </div>
+         <div class="pseudo"> - {{ author_name }} - </div>
+         <div class="online-status {{ online }}"> </div>
+      </div>
+   </a>
+
+   <div class="contenu">
+      <div class="texte">{{{ contents }}}</div>
+      <div class="signature-block">
+         {{# dates? }}
+            <div class="dates creation">Posté le {{ created }}</div>
+            <div class="dates edition">Dernière édition le {{ updated }}</div>
+         {{/ dates? }}
+         <div class="cleaner-side"></div>
+         <div class="ligne-signature"></div>
+         <div class="signature-membre">
+            <div class="boutons">
+               {{# can_edit }}
+               <a href="{{ edit_url }}">
+                  <div class="edit">
+                     <input type="button" value="Editer" />
+                  </div>
+               </a>
+               <a href="{{ delete_url }}">
+                  <div class="suppr">
+                     <input type="button" value="Supprimer" />
+                  </div>
+               </a>
+               {{/ can_edit }}
+            </div>
+            <div class="signature"> {{{ author_signature }}} </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="cleaner"> </div>
+   <div class="ligne"> </div>
+
+</div>

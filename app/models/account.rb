@@ -8,7 +8,7 @@ class Account < ActiveRecord::Base
    AUTH_TOKEN_COST = 5
 
    has_one :profil, inverse_of: :account
-
+   has_one :minecraft_stats, inverse_of: :account
    before_save :encrypt_password, :if => :new_password?
 
    def self.authenticate(name, password)
