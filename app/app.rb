@@ -1,4 +1,5 @@
 require_relative 'env'
+require_relative 'database'
 
 # Configuration de l'application
 module EthilVan
@@ -15,6 +16,9 @@ module EthilVan
          require 'better_errors'
          use BetterErrors::Middleware
          BetterErrors.application_root = EthilVan::ROOT
+
+         require 'rack-mini-profiler'
+         use Rack::MiniProfiler
 
          require 'sinatra/reloader'
          register Sinatra::Reloader
@@ -37,6 +41,5 @@ module EthilVan
    end
 end
 
-require_relative 'database'
 require_all 'app/views'
 require_all 'app/controllers'

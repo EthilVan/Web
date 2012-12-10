@@ -30,10 +30,11 @@ gem 'thin', platforms: :ruby
 # Développement
 group :development do
    gem 'pry'
-   gem 'better_errors'
-   gem 'binding_of_caller'
    gem 'watchr'
    gem 'puma', platforms: :jruby
+   gem 'better_errors'
+   gem 'binding_of_caller'
+   gem 'rack-mini-profiler'
 end
 
 # Test
