@@ -1,8 +1,4 @@
-if RUBY_PLATFORM == 'java'
-   console = :irb
-else
-   console = :pry
-end
+console = RUBY_PLATFORM == 'java' ? :irb : :pry
 
 task :console => 'console:env'
 namespace :console do
@@ -23,6 +19,7 @@ end
 namespace :pry do
 
    task :env do
+      require './app/env'
       load_pry
    end
 
