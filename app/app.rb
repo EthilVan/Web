@@ -16,10 +16,10 @@ module EthilVan
          require 'better_errors'
          use BetterErrors::Middleware
          BetterErrors.application_root = EthilVan::ROOT
-      end
+
          require 'rack-mini-profiler'
          use Rack::MiniProfiler
-      if EthilVan.development?
+
          require 'sinatra/reloader'
          register Sinatra::Reloader
          also_reload "lib/**/*"
