@@ -3,14 +3,20 @@ require 'chunky_png'
 
 module EthilVan::Skins
 
-   def self.generate_preview(username, scale, filename)
-      skin = Skin.new username
-      skin.preview(scale).save filename
+   module Preview
+
+      def self.generate(image, scale, filename)
+         skin = Skin.new image
+         skin.preview(scale).save filename
+      end
    end
 
-   def self.generate_head(username, scale, filename)
-      skin = Skin.new username
-      skin.head_with_helmet(scale).save filename
+   module Head
+
+      def self.generate(image, scale, filename)
+         skin = Skin.new image
+         skin.head_with_helmet(scale).save filename
+      end
    end
 
    class SkinImage < ::ChunkyPNG::Image
@@ -25,34 +31,28 @@ module EthilVan::Skins
       end
 
       def has_transparency?(x_range, y_range)
-         for i in x_range
-            for j in y_range
-               return true if a(self[i, j]) < 0xff
-            end
-         end
+         x_range.each { |i| y_range.each { |j|
+            return true if a(self[i, j]) < 0xff
+         } }
 
          return false
       end
 
       def set_opaque(x_range, y_range)
-         for i in x_range
-            for j in y_range
-               color = self[i, j]
-               self[i, j] = rgba(r(color), g(color), b(color), 0xff)
-            end
-         end
+         x_range.each { |i| y_range.each { |j|
+            color = self[i, j]
+            self[i, j] = rgba(r(color), g(color), b(color), 0xff)
+         } }
       end
 
       def set_transparent(x_range, y_range)
          return if has_transparency? x_range, y_range
          workaround_alpha = self[x_range.begin, y_range.begin]
-         for i in x_range
-            for j in y_range
-               if self[i, j] == workaround_alpha
-                  self[i, j] = TRANSPARENT
-               end
+         x_range.each { |i| y_range.each { |j|
+            if self[i, j] == workaround_alpha
+               self[i, j] = TRANSPARENT
             end
-         end
+         } }
       end
 
       def crop_rescale(x, y, w, h, scale)
@@ -64,14 +64,8 @@ module EthilVan::Skins
 
    class Skin
 
-      def initialize(username)
-         uri = URI("http://s3.amazonaws.com/MinecraftSkins/#{username}.png")
-         begin
-            @image = SkinImage.from_blob Net::HTTP.get uri
-         rescue Exception => e
-            char = File.read("./public/images/member/profil/char.png")
-            @image = SkinImage.from_blob char
-         end
+      def initialize(image)
+         @image = SkinImage.from_blob image
       end
 
       def head(scale)
