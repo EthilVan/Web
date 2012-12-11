@@ -3,8 +3,9 @@ class Profil < ActiveRecord::Base
    belongs_to :account, inverse_of: :profil
 
    def head_url(size = nil)
-      url = "/membre/@#{account.name}/head"
-      url << "/#{size}" unless size.nil?
+      url = "/membre/skin/#{account.name}_head"
+      url << "_x#{size}" unless size.nil?
+      url << '.png'
       url
    end
 
