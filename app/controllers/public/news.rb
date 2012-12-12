@@ -1,12 +1,8 @@
 class EthilVan::App
 
    get '/news' do
-      if logged_in?
-         newses = News
-      else
-         newses = News.where private: false
-      end
-      newses = newses.order "created_at DESC"
+      newses = News.with_account.ordered
+      newses = newses.public unless logged_in?
       view Views::Public::News::Index.new newses
       mustache 'public/news/index'
    end

@@ -11,6 +11,8 @@ class Account < ActiveRecord::Base
    has_one :minecraft_stats, inverse_of: :account
    before_save :encrypt_password, :if => :new_password?
 
+   scope :with_profil, includes(:profil)
+
    def self.authenticate(name, password)
       return nil unless name.present?
       account = find_by_name name
