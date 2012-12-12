@@ -33,7 +33,7 @@ group :development do
    gem 'watchr'
    gem 'puma', platforms: :jruby
    gem 'better_errors'
-   gem 'binding_of_caller'
+   gem 'binding_of_caller', platforms: :ruby
    gem 'rack-mini-profiler'
 end
 
