@@ -9,7 +9,7 @@ class EthilVan::App
       email = EthilVan::ContactEmail.new(params.extract!(
             'name', 'email', 'category', 'subject', 'message'))
       if email.valid?
-         puts 'Envoi de l\'email de contact !'
+         logger.info 'Envoi de l\'email de contact !'
          redirect '/'
       else
          view Views::Public::Contact::Index.new email

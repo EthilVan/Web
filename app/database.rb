@@ -16,6 +16,8 @@ class ActiveRecord::Base
    end
 
    establish_connection configurations[EthilVan::ENV]
+
+   self.logger = Logging.logger[self]
 end
 
 require_all 'app/models'

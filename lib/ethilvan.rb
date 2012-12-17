@@ -17,6 +17,7 @@ module EthilVan
    # Libs
    require 'ethilvan'
    require 'ethilvan/require'
+   require 'ethilvan/logger'
    require 'ethilvan/mustache'
    require 'ethilvan/auth'
    require 'ethilvan/misc'

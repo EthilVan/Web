@@ -4,6 +4,7 @@ source :rubygems
 gem 'rake'
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'logging'
 gem 'activerecord'
 gem 'mysql2'
 gem 'mustache'

@@ -8,9 +8,12 @@ module EthilVan
       set :environment, EthilVan::ENV
       set :root, EthilVan::ROOT
       set :public_folder, 'static'
+
+      register EthilVan::Logging
+
+      enable :sessions
       set :session_secret,
             'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
-      enable :sessions
 
       EthilVan.development? do
          require 'better_errors'

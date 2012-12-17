@@ -7,7 +7,6 @@ namespace :db do
    task :migrate do
       require './app/database'
       require 'logger'
-      ActiveRecord::Base.logger = Logger.new(STDOUT)
       ActiveRecord::Migration.verbose = true
 
       if ENV['up'].nil?
