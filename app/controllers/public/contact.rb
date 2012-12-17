@@ -7,9 +7,9 @@ class EthilVan::App
 
    post '/contact' do
       email = EthilVan::ContactEmail.new(params.extract!(
-            "name", "email", "category", "subject", "message"))
+            'name', 'email', 'category', 'subject', 'message'))
       if email.valid?
-         puts "Envoi de l'email de contact !"
+         puts 'Envoi de l\'email de contact !'
          redirect '/'
       else
          view Views::Public::Contact::Index.new email

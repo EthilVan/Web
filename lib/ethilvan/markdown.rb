@@ -20,9 +20,9 @@ module EthilVan
 
          def linkify_mention(text)
             text.gsub(/@([A-Za-z]\w+)/) do |mention|
-               account = Account.find_by_name $1
-               account.nil? ? mention : <<-END
-<a class=\"membre_mention\" href=\"/membre/@#{account.name}\">#{mention}</a>
+               break(mention) unless Account.exists? name: $1
+               <<-END
+<a class=\"membre_mention\" href=\"/membre/#{mention}\">#{mention}</a>
                END
             end
          end

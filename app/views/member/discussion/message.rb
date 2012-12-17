@@ -20,21 +20,12 @@ module EthilVan::App::Views
             false
          end
 
-         def edit_url
-            ""
-         end
-
-         def delete_url
-            ""
-         end
-
          def author_name
             @author.name
          end
 
          def author_avatar
-            return 'http://cambelt.co/120x120'
-            @author.profil.avatar_link
+            @author.profil.avatar_url
          end
 
          def author_profil
@@ -47,8 +38,8 @@ module EthilVan::App::Views
          end
 
          def online
-            return "offline"
-            @author.online? ? "online" : "offline"
+            return 'offline'
+            @author.online? ? 'online' : 'offline'
          end
 
          def presence
@@ -65,7 +56,7 @@ module EthilVan::App::Views
          end
 
          def even_class
-            (@index % 2 == 0) ? "odd" : "even"
+            (@index % 2 == 0) ? 'odd' : 'even'
          end
 
          def contents
@@ -77,11 +68,11 @@ module EthilVan::App::Views
          end
 
          def created
-            @message.created_at.strftime("%d/%m/%Y à  %H:%M")
+            @message.created_at.strftime('%d/%m/%Y à  %H:%M')
          end
 
          def updated
-            @message.updated_at.strftime("%d/%m/%Y à  %H:%M")
+            @message.updated_at.strftime('%d/%m/%Y à  %H:%M')
          end
       end
     end

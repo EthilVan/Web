@@ -4,7 +4,7 @@ module EthilVan
 
    class ContactEmail
 
-      CATEGORIES = %(general partnership development)
+      CATEGORIES = %w{general partnership development}
 
       include ActiveModel::Validations
 
@@ -25,7 +25,7 @@ module EthilVan
       validate :validate_category
 
 
-      def initialize(attributes)
+      def initialize(attributes = {})
          @attributes = attributes
       end
 

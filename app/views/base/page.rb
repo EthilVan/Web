@@ -3,13 +3,13 @@ module EthilVan::App::Views
    class Page < Partial
 
       def page_title
-         return "Ethil Van" if @page_title.blank?
+         return 'Ethil Van' if @page_title.blank?
          @page_title * ' - '
       end
 
       def meta_page_title
-         return "Ethil Van" if @page_title.blank?
-         @page_title.reverse * " | " + " | Ethil Van"
+         return 'Ethil Van' if @page_title.blank?
+         @page_title.reverse * ' | ' + ' | Ethil Van'
       end
 
       def title(text)
@@ -35,16 +35,12 @@ module EthilVan::App::Views
          !(path =~ %r{^/m(embre|oderation)}).nil?
       end
 
-      def logged_in?
-         app.logged_in?
-      end
-
       def stylesheet_name
-         member_page? ? "member" : "app"
+         member_page? ? 'member' : 'app'
       end
 
       def javascript_name
-         logged_in? ? "member" : "app"
+         logged_in? ? 'member' : 'app'
       end
 
       def member_menu?

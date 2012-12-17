@@ -4,11 +4,11 @@ module EthilVan::Assets
 
    class Script < Base
 
-      DirName = "scripts"
-      OutputExt = "js"
+      DirName = 'scripts'
+      OutputExt = 'js'
 
       def compile?(file)
-         File.extname(file) == ".ts"
+         File.extname(file) == '.ts'
       end
 
       # TODO: Trouvé comment gérer les erreurs du compilateur.
@@ -19,9 +19,9 @@ module EthilVan::Assets
 
       def compress(source)
          response = Net::HTTP.post_form(
-            URI.parse("http://closure-compiler.appspot.com/compile"),
-            output_info: "compiled_code",
-            compilation_level: "SIMPLE_OPTIMIZATIONS",
+            URI.parse('http://closure-compiler.appspot.com/compile'),
+            output_info: 'compiled_code',
+            compilation_level: 'SIMPLE_OPTIMIZATIONS',
             js_code: source
          )
          return response.body

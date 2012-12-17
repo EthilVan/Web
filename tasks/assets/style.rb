@@ -4,15 +4,15 @@ module EthilVan::Assets
 
    class Style < Base
 
-      DirName = "style"
-      OutputExt = "css"
+      DirName = 'style'
+      OutputExt = 'css'
       IncludePath = [
          "#{SRC}/style/bootstrap",
          "#{SRC}/#{DirName}/include"
       ]
 
       def self.included_files
-         @include_files ||= IncludePath.map { |p| Dir[p + "/**/*"] }.flatten
+         @include_files ||= IncludePath.map { |p| Dir[p + '/**/*'] }.flatten
       end
 
       def initialize(*args)
@@ -20,7 +20,7 @@ module EthilVan::Assets
       end
 
       def compile?(file)
-         File.extname(file) == ".less"
+         File.extname(file) == '.less'
       end
 
       def dirty?(file, cached)

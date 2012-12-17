@@ -5,7 +5,6 @@ class EthilVan::App < Sinatra::Base
    end
 
    post '/markdown' do
-      halt 401 unless logged_in?
       markdown params['content']
    end
 end

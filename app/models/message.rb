@@ -5,11 +5,16 @@ class Message < ActiveRecord::Base
 
    include EthilVan::Markdown::Helpers
 
-   before_save :parse_contents, :if => :new_contents?
+   before_save :parse_contents, if: :new_contents?
 
    def contents=(new_contents)
       write_attribute :contents, new_contents
       write_attribute :parsed_contents, nil
+   end
+
+   def editable_by?(account)
+      account.role.inherit? EthilVan::Role::MODO or
+            self.account == account
    end
 
 private

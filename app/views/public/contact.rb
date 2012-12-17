@@ -4,16 +4,16 @@ module EthilVan::App::Views
 
       class Index < Page
 
-         CATEGORIES = %[general partnership development]
+         CATEGORIES = %w{general partnership development}
 
          include EthilVan::Mustache::Form
 
-         def initialize(contact_email = nil)
+         def initialize(contact_email = EthilVan::ContactEmail.new)
             @contact_email = contact_email
          end
 
          def errors?
-            !@contact_email.nil? && !@contact_email.errors.empty?
+            !@contact_email.errors.empty?
          end
 
          def errors
@@ -21,24 +21,23 @@ module EthilVan::App::Views
          end
 
          def name
-            field(@contact_email.nil? ? nil : @contact_email.name)
+            field @contact_email.name
          end
 
          def email
-            field(@contact_email.nil? ? nil : @contact_email.email)
+            field @contact_email.email
          end
 
          def category
-            categories = @contact_email.nil? ? nil : @contact_email.category
-            select categories, CATEGORIES
+            select @contact_email.category, CATEGORIES
          end
 
          def subject
-            field(@contact_email.nil? ? nil : @contact_email.subject)
+            field @contact_email.subject
          end
 
          def message
-            @contact_email.nil? ? nil : @contact_email.message
+            @contact_email.message
          end
       end
    end

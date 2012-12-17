@@ -9,12 +9,12 @@ class News < ActiveRecord::Base
 
    belongs_to :account
 
-   before_save :parse_summary,  :if => :new_summary?
-   before_save :parse_contents, :if => :new_contents?
+   before_save :parse_summary,  if: :new_summary?
+   before_save :parse_contents, if: :new_contents?
 
    scope :with_account, includes(:account)
-   scope :ordered,      order('created_at DESC')
-   scope :public,       where(private: false)
+   scope :by_date,      order('created_at DESC')
+   scope :public_only,  where(private: false)
 
    def summary=(new_summary)
       write_attribute :summary, new_summary

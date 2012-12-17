@@ -1,7 +1,7 @@
 class EthilVan::App < Sinatra::Base
 
    name = '(.+)' # TODO: Replace with proper regexp
-   scale = '(?:_x([1-8]))?'
+   scale = '(?:_x([1-8]|15))?'
 
    helpers do
 

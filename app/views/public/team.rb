@@ -1,4 +1,4 @@
-module EthilVan::Helpers
+module EthilVan::App::Views
 
    module Public
 
@@ -30,9 +30,6 @@ module EthilVan::Helpers
             def initialize(role, desc)
                @role = role
                @description = desc
-               @members = Account.where(:role_id => @role.id).map do |account|
-                  Member.new account
-               end
             end
 
             def role_name
@@ -40,22 +37,23 @@ module EthilVan::Helpers
             end
 
             def members?
-               !@members.empty?
+               Account.where(role_id: @role.id).exists?
             end
 
             def members
-               @members
+               @members = Account.with_profil.where(role_id: @role.id).map do |account|
+                  Member.new account
+               end
             end
          end
 
-         descriptions = EthilVan.load_data("public", "team")
-         Descriptions = descriptions.map do |id, desc|
+         @@roles = EthilVan.load_data('public', 'team').map do |id, desc|
             role = EthilVan::Role.get id.to_sym
             Role.new(role, desc)
          end
 
          def roles
-            Descriptions
+            @@roles
          end
       end
    end

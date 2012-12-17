@@ -5,9 +5,9 @@ module EthilVan::Markdown::Helpers
    class ToHTML < Redcarpet::Render::HTML
 
       HtmlOptions = {
-         filter_html: true,
-         with_toc_data: true,
-         hard_wrap: true
+         filter_html:     true,
+         with_toc_data:   true,
+         hard_wrap:       true,
       }
 
       include Redcarpet::Render::SmartyPants
@@ -28,12 +28,12 @@ module EthilVan::Markdown::Helpers
    end
 
    Options = {
-      no_intra_emphasis: true,
-      tables: true,
-      autolink: true,
-      strikethrough: true,
-      lax_html_blocks: true,
-      space_after_headers: true
+      no_intra_emphasis:      true,
+      tables:                 true,
+      autolink:               true,
+      strikethrough:          true,
+      lax_html_blocks:        true,
+      space_after_headers:    true,
    }
 
    def render_markdown(source)

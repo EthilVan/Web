@@ -10,7 +10,6 @@ module EthilVan
    module Mustache
 
       def self.registered(app)
-         app.const_set :Helpers, Module.new
          app.const_set :Views, Module.new
          app.set :mustache_template_path, File.join('content', 'templates')
 

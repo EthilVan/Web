@@ -12,9 +12,9 @@ module EthilVan::Mustache
          @app.mustache_template_for(name).render(self)
       end
 
-      def push(new)
-         new.app = @app if new.respond_to? :app
-         super(new)
+      def push(elem)
+         elem.app = @app if elem.respond_to? :app
+         super elem
       end
       alias_method :update, :push
 

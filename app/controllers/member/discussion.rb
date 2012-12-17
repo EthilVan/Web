@@ -1,7 +1,7 @@
 class EthilVan::App < Sinatra::Base
 
    get '/membre/discussion' do
-      groups = GeneralDiscussionGroup.order "priority ASC"
+      groups = GeneralDiscussionGroup.by_priority
       view Views::Member::Discussion::Index.new groups
       mustache 'membre/discussion/index'
    end

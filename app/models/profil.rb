@@ -10,7 +10,7 @@ class Profil < ActiveRecord::Base
    end
 
    def avatar_url
-      return head_url if avatar.nil?
+      return head_url(15) if avatar.nil?
       return avatar
    end
 end

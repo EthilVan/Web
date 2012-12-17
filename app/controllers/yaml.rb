@@ -12,7 +12,7 @@ class EthilVan::App < Sinatra::Base
          redirect page.main_tab_url
       end
 
-      for tab in page.tabs do
+      page.tabs.each do |tab|
          get tab.url do
             view page
             mustache page.template
@@ -20,7 +20,7 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   EthilVan.load_datas("pages").each do |data|
+   EthilVan.load_datas('pages').each do |data|
        data.each do |id, hash|
          yaml_page = Views::YamlPage.new(id, hash)
          if yaml_page.tabs?

@@ -66,13 +66,13 @@ module EthilVan::Authentication
       OFFSET = 5
 
       def self.obfuscate(string)
-         string.bytes.inject('') do |obfuscated, byte|
+         string.bytes.each_with_object('') do |byte, obfuscated|
             obfuscated << (byte + OFFSET).chr
          end + '$' + SecureRandom.base64(10)
       end
 
       def self.deobfuscate(string)
-         string.bytes.inject('') do |deobfuscated, byte|
+         string.bytes.each_with_object('') do |byte, deobfuscated|
             break(deobfuscated) if byte == 36
             deobfuscated << (byte - OFFSET).chr
          end

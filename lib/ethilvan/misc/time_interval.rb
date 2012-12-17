@@ -6,7 +6,7 @@ class Time
 
    class Interval
 
-      Messages = EthilVan.load_data "misc", "time_interval"
+      Messages = EthilVan.load_data 'misc', 'time_interval'
 
       T0 = Time.at 0
 
@@ -44,45 +44,45 @@ class Time
 
       def format(context)
          if year > 0
-            return Messages["yearplus"][context]
+            return Messages['yearplus'][context]
          end
          if month > 2
-            return Messages["month2plus"][context]
+            return Messages['month2plus'][context]
          end
          if month == 2
-            return Messages["month2"][context]
+            return Messages['month2'][context]
          end
          if month == 1
-            return Messages["month1"][context]
+            return Messages['month1'][context]
          end
          if week > 2
-            return Messages["week3plus"][context]
+            return Messages['week3plus'][context]
          end
          if week == 2
-            return Messages["week2"][context]
+            return Messages['week2'][context]
          end
          if week == 1
-            return Messages["week1"][context]
+            return Messages['week1'][context]
          end
          if day > 2
-            return Messages["day2plus"][context]
+            return Messages['day2plus'][context]
          end
          if day == 2
-            return Messages["day2"][context]
+            return Messages['day2'][context]
          end
          if day == 1
-            return Messages["day1"][context]
+            return Messages['day1'][context]
          end
          if hour > 2
-            return Messages["hour2plus"][context]
+            return Messages['hour2plus'][context]
          end
          if hour == 2
-            return Messages["hour2"][context]
+            return Messages['hour2'][context]
          end
          if hour > 1
-            return Messages["hour1"][context]
+            return Messages['hour1'][context]
          end
-         return Messages["hour0"][context]
+         return Messages['hour0'][context]
       end
 
       def format_since

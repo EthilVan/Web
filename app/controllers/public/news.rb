@@ -1,8 +1,8 @@
 class EthilVan::App
 
    get '/news' do
-      newses = News.with_account.ordered
-      newses = newses.public unless logged_in?
+      newses = News.with_account.by_date
+      newses = newses.public_only unless logged_in?
       view Views::Public::News::Index.new newses
       mustache 'public/news/index'
    end

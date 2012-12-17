@@ -6,15 +6,15 @@ module EthilVan
 
       def initialize(id, data)
          @id = id.to_sym
-         @name = data["name"]
-         @subroles = data["subroles"].map &:to_sym
+         @name = data['name']
+         @subroles = data['subroles'].map &:to_sym
       end
 
       def inherit?(role)
          self == role or @subroles.any? { |subrole_id| subrole_id == role.id }
       end
 
-      @roles = EthilVan.load_data("misc", "roles").map do |id, data|
+      @roles = EthilVan.load_data('misc', 'roles').map do |id, data|
          Role.new(id, data)
       end
 

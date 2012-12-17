@@ -5,15 +5,18 @@ module EthilVan::App::Views
       attr_reader :url, :template, :tabs
 
       def initialize(id, hash)
-         @url = "/" + (hash["url"] || id)
-         @template = hash["template"]
-         @page_title = hash["titre"]
+         @url = '/' + (hash['url'] || id)
+         @template = hash['template']
+         @page_title = hash['titre']
          @page_title = [ @page_title ] unless @page_title.is_a? Array
 
-         if hash.key? "onglets"
-            @main_tab = @url + "/" + hash["principal"]
-            @tabs = hash["onglets"].map do |id, hash|
-               YamlTab.new(self, id, hash)
+         if hash.key? 'onglets'
+            @main_tab = @url + '/' + hash['principal']
+            meta_class = (class << self; self; end)
+            @tabs = hash['onglets'].map do |id, hash|
+               tab = YamlTab.new(self, id, hash)
+               meta_class.send(:define_method, "tab_#{tab.id}") { tab }
+               tab
             end
          end
       end
@@ -25,18 +28,6 @@ module EthilVan::App::Views
       def main_tab_url
          @main_tab
       end
-
-      def respond_to?(name)
-         return super(name) || name =~ /^tab_/
-      end
-
-      def method_missing(name, *args)
-         if name =~ /^tab_(.+)$/
-            return @tabs.find { |tab| tab.id == $1 }
-         else
-            super(name, *args)
-         end
-      end
    end
 
    class YamlTab < EthilVan::Mustache::Partial
@@ -45,13 +36,13 @@ module EthilVan::App::Views
 
       def initialize(page, id, hash)
          @id = id
-         @name = hash["nom"]
-         @url = page.url + "/" + (hash["url"] || id)
+         @name = hash['nom']
+         @url = page.url + '/' + (hash['url'] || id)
 
-         if hash.key? "helpers"
-            hash["helpers"].each do |helper_token|
-               helper_path = helper_token.split("::")
-               helper = helper_path.inject(EthilVan::Helpers) do |mod, const|
+         if hash.key? 'helpers'
+            hash['helpers'].each do |helper_token|
+               helper_path = helper_token.split('::')
+               helper = helper_path.inject(EthilVan::App::Views) do |mod, const|
                   mod.const_get const
                end
                extend helper

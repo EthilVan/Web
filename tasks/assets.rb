@@ -16,7 +16,7 @@ namespace :assets do
    task :install => ['install:emoji', :compile]
    namespace :install do
 
-      task :emoji do
+      task :emoji => :init do
          require_relative 'assets/emoji'
          puts 'Installation des emojis'
          EthilVan::Emoji.install
@@ -52,11 +52,11 @@ namespace :assets do
          FileUtils.rm_f Dir[glob]
       end
       task :style => :init do
-         FileUtilsV.rm_rf File.join(Base::CACHE, "style")
+         FileUtilsV.rm_rf File.join(Base::CACHE, 'style')
          Style.each { |style| FileUtilsV.rm_f style.output_file }
       end
       task :script => :init do
-         FileUtilsV.rm_rf File.join(Base::CACHE, "scripts")
+         FileUtilsV.rm_rf File.join(Base::CACHE, 'scripts')
          Script.each { |style| FileUtilsV.rm_f style.output_file }
       end
       task :cache => :init do

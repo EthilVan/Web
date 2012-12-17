@@ -9,7 +9,7 @@ class Account < ActiveRecord::Base
 
    has_one :profil, inverse_of: :account
    has_one :minecraft_stats, inverse_of: :account
-   before_save :encrypt_password, :if => :new_password?
+   before_save :encrypt_password, if: :new_password?
 
    scope :with_profil, includes(:profil)
 
@@ -56,13 +56,12 @@ class Account < ActiveRecord::Base
 
   def generate_auth_token
       raw_auth_token = SecureRandom.base64(180)
-      self.auth_token = Password.create(raw_auth_token, cost: AUTH_TOKEN_COST)
-      save validate: false
+      auth_token = Password.create(raw_auth_token, cost: AUTH_TOKEN_COST)
+      update_attribute :auth_token, auth_token
       return raw_auth_token
    end
 
    def delete_auth_token
-      self.auth_token = nil
-      save validate: false
+      update_attribute :auth_token, nil
    end
 end

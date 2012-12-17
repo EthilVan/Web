@@ -4,10 +4,10 @@ module EthilVan::Assets
 
    class Base
 
-      SRC = "content"
-      CACHE = "tmp"
-      MANIFEST_EXT = ".mf"
-      DEST = "static"
+      SRC = 'content'
+      CACHE = 'tmp'
+      MANIFEST_EXT = '.mf'
+      DEST = 'static'
 
       class << self
 
@@ -62,11 +62,11 @@ module EthilVan::Assets
          out = output_file
          puts "### Génération de \"#{out}\"."
 
-         result = ""
+         result = ''
          files.each { |file| result << compiled(file) }
          result = compress result if compress?
 
-         File.open(out, "w") { |f| f << result }
+         File.open(out, 'w') { |f| f << result }
          puts "### Fichier \"#{out}\" généré."
       end
 
@@ -80,7 +80,7 @@ module EthilVan::Assets
                puts "# Fichier \"#{file}\" compilé."
             else
                FileUtils.rm_f cached
-               puts "# Une erreur est survenu durant " +
+               puts '# Une erreur est survenu durant ' +
                      "la compilation de \"#{file}\""
                exit 1
             end

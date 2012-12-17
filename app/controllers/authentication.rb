@@ -7,7 +7,7 @@ class EthilVan::App < Sinatra::Base
 
    post '/login' do
       name, password = params[:name], params[:password]
-      remember = !params['remember_me'].nil? and params["remember_me"] == '1'
+      remember = !params['remember_me'].nil? and params['remember_me'] == '1'
       account = Account.authenticate(name, password)
       if account.nil?
          view Views::Public::Authentication::Login.new(

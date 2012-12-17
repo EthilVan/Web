@@ -31,7 +31,7 @@ module EthilVan::App::Views
          end
 
          def important_class
-             @news.important ? "important" : ""
+             @news.important ? 'important' : ''
          end
 
          def summary
@@ -43,7 +43,7 @@ module EthilVan::App::Views
          end
 
          def created
-             @news.created_at.strftime("%d/%m/%Y à %H:%M")
+             @news.created_at.strftime('%d/%m/%Y à %H:%M')
          end
       end
    end

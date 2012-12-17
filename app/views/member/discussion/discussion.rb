@@ -15,7 +15,7 @@ module EthilVan::App::Views
          end
 
          def date
-            @discussion.created_at.strftime("%d/%m/%Y à %H:%M")
+            @discussion.created_at.strftime('%d/%m/%Y à %H:%M')
          end
 
          def author
@@ -26,7 +26,7 @@ module EthilVan::App::Views
             base_url = "/membre/discussion/#{@discussion.id}"
             _messages.each_with_index.map do |message, index|
                account = @app.current_account
-               if account.role.inherit? EthilVan::Role::MODO or message.account == account
+               if message.editable_by? account
                   EditableMessage.new(message, index, base_url)
                else
                   Message.new(message, index)

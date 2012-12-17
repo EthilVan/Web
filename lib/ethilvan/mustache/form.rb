@@ -5,7 +5,7 @@ module EthilVan::Mustache
       class Select < Partial
 
          def initialize(selected)
-            @selected = selected.map { |s| (s + "?").to_sym }
+            @selected = selected.map { |s| :"#{s}?" }
          end
 
          def respond_to?(name)
