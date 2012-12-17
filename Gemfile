@@ -6,8 +6,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'activerecord'
-gem 'mysql2', platforms: :ruby
-gem 'activerecord-jdbcmysql-adapter', platforms: :jruby
+gem 'mysql2'
 gem 'mustache'
 
 # Assets
@@ -16,24 +15,21 @@ gem 'gemoji'
 
 # Librairies
 gem 'bcrypt-ruby'
-gem 'redcarpet', platforms: :ruby
-gem 'jruby-pegdown', platforms: :jruby,
-      git: 'git://github.com/EthilVan/jruby-pegdown.git'
+gem 'redcarpet'
 gem 'nokogiri'
 # gem 'will_paginate'
 gem 'chunky_png'
 # gem 'image_size'
 
 
-gem 'thin', platforms: :ruby
+gem 'thin'
 
 # Développement
 group :development do
    gem 'pry'
    gem 'watchr'
-   gem 'puma', platforms: :jruby
    gem 'better_errors'
-   gem 'binding_of_caller', platforms: :ruby
+   gem 'binding_of_caller'
    gem 'rack-mini-profiler'
 end
 

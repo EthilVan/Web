@@ -30,8 +30,4 @@ module EthilVan
    end
 end
 
-if RUBY_PLATFORM == 'java'
-   require 'ethilvan/markdown/jruby'
-else
-   require 'ethilvan/markdown/redcarpet'
-end
+require 'ethilvan/markdown/redcarpet'

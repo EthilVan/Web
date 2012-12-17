@@ -1,13 +1,5 @@
-console = RUBY_PLATFORM == 'java' ? :irb : :pry
-
-task :console => 'console:env'
-namespace :console do
-   task :env => "#{console}:env"
-   task :db => "#{console}:db"
-   task :app => "#{console}:app"
-end
-
-def load_pry
+def load_pry_with(path)
+   require path
    require 'pry'
    Pry.config.prompt = [
       proc { |obj, nest_level, _| "#{obj} (#{nest_level}) >> " },
@@ -16,35 +8,9 @@ def load_pry
    EthilVan.pry
 end
 
-namespace :pry do
-
-   task :env do
-      require './app/env'
-      load_pry
-   end
-
-   task :db do
-      require './app/database'
-      load_pry
-   end
-
-   task :app do
-      require './app/app'
-      load_pry
-   end
-end
-
-namespace :irb do
-
-   task :env do
-      system 'irb -r./app/env'
-   end
-
-   task :db do
-      system 'irb -r./app/database'
-   end
-
-   task :app do
-      system 'irb -r./app/app'
-   end
+task :console => 'console:env'
+namespace :console do
+   task(:env) { load_pry_with './app/env' }
+   task(:db)  { load_pry_with './app/database' }
+   task(:app) { load_pry_with './app/app' }
 end
