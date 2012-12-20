@@ -16,7 +16,9 @@ namespace :assets do
    task :install => ['install:emoji', :compile]
    namespace :install do
 
-      task :emoji => :init do
+      task :emoji => :init
+      task :emoji => 'clean:emoji'
+      task :emoji do
          require_relative 'assets/emoji'
          puts 'Installation des emojis'
          EthilVan::Emoji.install
