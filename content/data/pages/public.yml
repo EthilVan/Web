@@ -77,3 +77,9 @@ aide_markdown:
    url: "aide/markdown"
    titre: ["Aide", "Mise en forme"]
    template: "public/aide/markdown"
+
+aide_emoji:
+   url: 'aide/emoji'
+   titre: ['Aide', 'Emojis']
+   helpers: ['Help::Emoji']
+   template: 'public/aide/emoji'
