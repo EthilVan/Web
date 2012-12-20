@@ -1,0 +1,64 @@
+team:
+   -  role:       Developer
+      role_fr:    Développeur
+      name:       aumgn
+      site:       http://aumgn.fr
+      twitter:    aum9n
+      location:   'Montpellier, France'
+
+   -  role:       Designer
+      role_fr:    Designer
+      name:       Travis Hironak
+      twitter:    Travis_Hironak
+      location:   'Nevers, France'
+
+   -  role:       Server Admin
+      role_fr:    Administrateur Serveur
+      name:       Loup Des Neiges
+      site:       http://www.loup-des-neiges.com
+
+components:
+   -  name:    Sinatra
+      url:     http://sinatrarb.com/
+   -  name:    Mustache
+      url:     http://mustache.github.com/
+   -  name:    JQuery
+      url:     http://jquery.com/
+   -  name:    Bootstrap
+      url:     http://twitter.github.com/bootstrap/
+   -  name:    Epic Editor
+      url:     http://epiceditor.com/
+
+stack:
+   -  name:    Centos
+      url:     http://www.centos.org/
+   -  name:    Lighttpd
+      url:     http://www.lighttpd.net/
+   -  name:    Ruby
+      url:     http://ruby-lang.org/
+   -  name:    Thin
+      url:     http://code.macournoyer.com/thin/
+   -  name:    Mysql
+      url:     http://mysql.com
+   -  name:    TypeScript
+      url:     http://www.typescriptlang.org/
+   -  name:    Less
+      url:     http://lesscss.org/
+
+softwares:
+   -  name:    Sublime Text 2
+      url:     http://www.sublimetext.com/2
+   -  name:    Openssh
+      url:     http://www.openssh.org/
+   -  name:    Git
+      url:     http://git-scm.com/
+   -  name:    Git For Windows
+      url:     http://code.google.com/p/msysgit/
+   -  name:    Mintty
+      url:     http://code.google.com/p/mintty/
+   -  name:    VirtualBox
+      url:     http://www.virtualbox.org
+   -  name:    Vagrant
+      url:     http://vagrantup.com
+   -  name:    Photoshop
+      url:     http://www.adobe.com/fr/products/photoshop.html

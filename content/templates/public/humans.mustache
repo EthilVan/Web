@@ -1,0 +1,34 @@
+/* TEAM */
+
+{{# team }}
+{{ role }}: {{ name }}
+{{# site }}
+Site: {{ site }}
+{{/ site }}
+{{# twitter }}
+Twitter: {{ twitter }}
+{{/ twitter }}
+{{# location }}
+Location: {{ location }}
+{{/ location }}
+
+{{/ team }}
+
+/* SITE */
+
+Doctype:HTML5
+
+Components:
+{{# components }}
+  - {{ name }}: {{ url }}
+{{/ components }}
+
+Stack:
+{{# stack }}
+  - {{ name }}: {{ url }}
+{{/ stack }}
+
+Softwares:
+{{# softwares }}
+  - {{ name }}: {{ url }}
+{{/ softwares }}

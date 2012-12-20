@@ -1,0 +1,44 @@
+{{#title}}A Propos{{/title}}
+
+<h2>Equipe :</h2>
+
+<ul>
+   {{# team }}
+   <li>
+      <p>{{ role_fr }}: {{ name }}</p>
+      {{# site }}
+      <p>Site: <a href="{{ site }}">{{ site }}</a></p>
+      {{/ site }}
+      {{# twitter }}
+      <p>Twitter: <a href="http://twitter.com/{{ twitter }}">{{ twitter }}</a></p>
+      {{/ twitter }}
+      {{# location }}
+      <p>Location: {{ location }}</p>
+      {{/ location }}
+   </li>
+   {{/ team }}
+</ul>
+
+<h2>In the wild :</h2>
+<ul>
+   <li><a href="http://twitter.com/EthilVan">Twitter</a></li>
+   <li><a href="http://twitter.com/EthilVanDev">Twitter Développement</a></li>
+   <li><a href="https://github.com/EthilVan">Github Plugins</a></li>
+   <li><a href="https://github.com/EthilVanMods">Github Mods</a></li>
+</ul>
+
+<h2>Caractèristiques Techniques</h2>
+
+<h3>Composants :</h3>
+<ul>
+{{# components }}
+   <li><a href="{{ url }}">{{ name }}</a></li>
+{{/ components }}
+</ul>
+
+<h3>Déploiement :</h3>
+<ul>
+{{# stack }}
+   <li><a href="{{ url }}">{{ name }}</a></li>
+{{/ stack }}
+</ul>
