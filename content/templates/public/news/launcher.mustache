@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+      <style>
+         body {
+            background-color: #141414;
+            font-family: Arial;
+            font-family: cantarell;
+            font-family: calibri;
+            color: #7fac3a;
+         }
+         a {
+            font-weight: bold;
+            text-decoration: none;
+            color: #036B03;
+         }
+         a:hover {
+            color: #06b606;
+         }
+         p {
+            color: #afafaf;
+         }
+         ul {
+            color: #afafaf;
+         }
+         .colonne {
+            width: 960px;
+            margin: auto;
+         }
+         .grand-titre {
+            font-size: 32px;
+            margin: 10px 15px;
+            padding-top: 5px;
+            font-family: Arial;
+            font-family: cantarell;
+            font-family: calibri;
+         }
+         .news-list {
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-radius: 6px;
+         }
+         .news-list .news {
+            padding: 15px;
+            background-color: #141414;
+            border-radius: 6px;
+            margin-bottom: 15px;
+         }
+         .news-list .news:last-child {
+            margin-bottom: 0px;
+         }
+         .news-list .news .titre {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 6px auto;
+         }
+         .news-list .news .titre .private-icon {
+            vertical-align: middle;
+            margin-right: 10px;
+         }
+         .news-list .news .titre span {
+            vertical-align: middle;
+         }
+         .banner img {
+            display: block;
+            margin: 15px auto;
+         }
+         .news-list .news .suite {
+            float: left;
+            font-family: Arial;
+            font-family: cantarell;
+            font-family: calibri;
+         }
+         .news-list .news .creation {
+            text-align: right;
+            font-family: Arial;
+            font-family: cantarell;
+            font-family: calibri;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div class="colonne">
+         <div class="grand-titre">Ethil Van - News</div>
+         <div class="news-list">
+            {{# newses }}
+            <div class="news {{ important_class }} {{# private }}private{{/ private }}">
+               <div class="titre">
+                  <a href="{{ url }}">
+                     {{# private }}
+                     <img class="private-icon" src="/images/public/news/lien.png" />
+                     {{/ private }}
+                     <span>{{ title }}</span>
+                  </a>
+               </div>
+               {{^ private }}
+               <div class="banner">
+                  <a href="{{ url }}"><img src="{{ banner_url }}" /></a>
+               </div>
+               <div class="contenu">{{{ summary }}}</div>
+               <div class="suite">
+                  <a href="{{ url }}">→ Lire la suite...</a>
+               </div>
+               <div class="creation"> - Le {{ created }} par {{ author }} - </div>
+               {{/ private }}
+            </div>
+            {{/ newses }}
+         </div>
+        </div>
+    </body>
+</html>

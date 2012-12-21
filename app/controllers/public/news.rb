@@ -7,6 +7,13 @@ class EthilVan::App
       mustache 'public/news/index'
    end
 
+   get '/news/launcher' do
+      newses = News.with_account.by_date
+      view Views::Public::News::Index.new newses
+      layout false
+      mustache 'public/news/launcher'
+   end
+
    get urls.news '(\d{1,3})' do |id|
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?
