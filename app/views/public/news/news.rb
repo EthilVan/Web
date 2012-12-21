@@ -11,7 +11,7 @@ module EthilVan::App::Views
          end
 
          def url
-             "/news/#{@news.id}"
+             urls.news @news
          end
 
          def title

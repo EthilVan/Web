@@ -15,10 +15,6 @@ module EthilVan::App::Views
             @account = current_account
          end
 
-         def profil_link(author_name)
-            "/membre/@#{author_name}"
-         end
-
          def url_discussion
             @url
          end
@@ -40,7 +36,7 @@ module EthilVan::App::Views
          end
 
          def author_link
-            profil_link author
+            urls.profil @first_message.account
          end
 
          def last_message_link
@@ -57,7 +53,7 @@ module EthilVan::App::Views
          end
 
          def last_author_link
-            profil_link last_author
+            urls.profil @last_message.account
          end
       end
    end

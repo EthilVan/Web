@@ -2,6 +2,8 @@ module EthilVan::App::Views
 
    class Partial < EthilVan::Mustache::Partial
 
+      include EthilVan::Urls::Sinatra::Helpers
+
       def logged_in?
          app.logged_in?
       end

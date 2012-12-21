@@ -1,4 +1,5 @@
 require_relative 'env'
+require_relative 'urls'
 require 'active_record'
 
 class ActiveRecord::Base

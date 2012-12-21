@@ -29,6 +29,8 @@ module EthilVan
          also_reload 'app/**/*'
       end
 
+      register EthilVan::Urls::Sinatra
+
       register EthilVan::Mustache
       set :layout, 'layouts/default'
 

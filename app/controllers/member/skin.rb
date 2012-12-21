@@ -14,11 +14,11 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   get %r{/skin/#{name}_preview#{scale}.png$} do |username, scale|
+   get urls.skin_preview(name, scale) do |username, scale|
       skin_image EthilVan::Skins::Preview, username, scale
    end
 
-   get %r{/skin/#{name}_head#{scale}.png$} do |username, scale|
+   get urls.skin_head(name, scale) do |username, scale|
       skin_image EthilVan::Skins::Head, username, scale
    end
 end

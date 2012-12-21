@@ -3,10 +3,7 @@ class Profil < ActiveRecord::Base
    belongs_to :account, inverse_of: :profil
 
    def head_url(size = nil)
-      url = "/membre/skin/#{account.name}_head"
-      url << "_x#{size}" unless size.nil?
-      url << '.png'
-      url
+      EthilVan::Urls.skin_head(account.name, size)
    end
 
    def avatar_url
