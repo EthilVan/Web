@@ -7,7 +7,7 @@ require 'minitest/autorun'
 require 'factory_girl'
 require 'database_cleaner'
 
-require './app/app'
+require './app/boot/app'
 
 module BCrypt
 

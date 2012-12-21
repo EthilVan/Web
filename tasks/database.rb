@@ -5,7 +5,7 @@ MIGRATIONS_PATH = 'tasks/migrations'
 namespace :db do
 
    task :migrate do
-      require './app/database'
+      require './app/boot/database'
       require 'logger'
       ActiveRecord::Migration.verbose = true
 

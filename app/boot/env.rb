@@ -6,7 +6,7 @@ module EthilVan
    extend self
 
    ENV = (::ENV["RACK_ENV"] || "development").to_sym
-   ROOT = File.expand_path('../..', __FILE__)
+   ROOT = File.expand_path('../../..', __FILE__)
 
    def path(*args)
       File.join(ROOT, *args)

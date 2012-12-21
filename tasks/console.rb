@@ -8,9 +8,9 @@ def load_pry_with(path)
    EthilVan.pry
 end
 
-task :console => 'console:env'
+task :console => 'console:db'
 namespace :console do
-   task(:env) { load_pry_with './app/env' }
-   task(:db)  { load_pry_with './app/database' }
-   task(:app) { load_pry_with './app/app' }
+   task(:env) { load_pry_with './app/boot/env' }
+   task(:db)  { load_pry_with './app/boot/database' }
+   task(:app) { load_pry_with './app/boot/app' }
 end
