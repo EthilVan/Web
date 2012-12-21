@@ -14,6 +14,12 @@ class EthilVan::App
       mustache 'public/news/launcher'
    end
 
+   get '/news/feed' do
+      content_type 'application/rss+xml'
+      newses = News.with_account.public_only.by_date
+      Views::Public::News::Feed.new(newses).to_xml
+   end
+
    get urls.news '(\d{1,3})' do |id|
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?

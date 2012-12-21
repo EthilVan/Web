@@ -16,6 +16,7 @@ gem 'gemoji'
 
 # Librairies
 gem 'bcrypt-ruby'
+gem 'builder'
 gem 'redcarpet'
 gem 'nokogiri'
 # gem 'will_paginate'
