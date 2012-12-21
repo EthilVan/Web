@@ -15,6 +15,7 @@ class News < ActiveRecord::Base
    scope :with_account, includes(:account)
    scope :by_date,      order('created_at DESC')
    scope :public_only,  where(private: false)
+   scope :with_banners, where('banner != \'\'')
 
    def summary=(new_summary)
       write_attribute :summary, new_summary

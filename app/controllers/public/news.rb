@@ -20,6 +20,15 @@ class EthilVan::App
       Views::Public::News::Feed.new(newses).to_xml
    end
 
+   get '/news/banners' do
+      content_type 'text/plain'
+      private_icon = request.url.gsub(request.path, "/images/app/news/link.png")
+      banners = News.public_only.with_banners.pluck 'banner'
+      view Views::Public::News::Banners.new private_icon, banners
+      layout false
+      mustache 'public/news/banners'
+   end
+
    get urls.news '(\d{1,3})' do |id|
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?
