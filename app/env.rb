@@ -34,8 +34,8 @@ module EthilVan
       bool
    end
 
-   require 'yaml'
-   Config = YAML.load_file 'config.yml'
+   require_relative 'config'
+   Config = YamlConfig.new path('config.yml')
 
    require 'bundler'
    Bundler.setup(:default, EthilVan::ENV)

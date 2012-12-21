@@ -1,4 +1,5 @@
 require_relative 'env'
+require_relative 'mail'
 require_relative 'database'
 
 # Configuration de l'application
@@ -30,6 +31,8 @@ module EthilVan
       end
 
       register EthilVan::Urls::Sinatra
+
+      register EthilVan::Mail
 
       register EthilVan::Mustache
       set :layout, 'layouts/default'

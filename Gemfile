@@ -7,6 +7,7 @@ gem 'sinatra-contrib'
 gem 'logging'
 gem 'activerecord'
 gem 'mysql2'
+gem 'mail'
 gem 'mustache'
 
 # Assets
