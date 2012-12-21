@@ -5,6 +5,8 @@ class Account < ActiveRecord::Base
 
    include BCrypt
 
+   NAME = '[A-Za-z]\w+'
+
    AUTH_TOKEN_COST = 5
 
    has_one :profil, inverse_of: :account

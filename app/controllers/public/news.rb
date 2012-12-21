@@ -29,7 +29,7 @@ class EthilVan::App
       mustache 'public/news/banners'
    end
 
-   get urls.news '(\d{1,3})' do |id|
+   get %r{/news/\d{1,3}$} do |id|
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?
       halt 401 if !logged_in? and news.private

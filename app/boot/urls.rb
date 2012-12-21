@@ -8,8 +8,10 @@ module EthilVan
          "/news/#{news_id}"
       end
 
-      def profil(account_name)
-         "/membre/@#{account_name}"
+      def profil(page = nil, account_name)
+         url = "/membre/@#{account_name}"
+         url << '/' << page unless page.nil?
+         url
       end
 
       def skin_preview(account, scale)
@@ -47,8 +49,8 @@ module EthilVan
          super news.id
       end
 
-      def profil(account)
-         super account.name
+      def profil(page = nil, account)
+         super(page, account.name)
       end
 
       def skin_preview(account, scale)
@@ -68,38 +70,20 @@ module EthilVan
       end
    end
 
-   module UrlsDefinition
-
-      extend self
-
-      def respond_to?(method)
-         RawUrls.respond_to? method
-      end
-
-      def method_missing(name, *args)
-         url = RawUrls.send(name, *args)
-         /#{url}$/
-      end
-   end
-
    module Urls::Sinatra
 
       def self.registered(app)
          app.helpers Helpers
-         app.extend ClassHelpers
       end
 
       module Helpers
 
+         def raw_urls
+            RawUrls
+         end
+
          def urls
             Urls
-         end
-      end
-
-      module ClassHelpers
-
-         def urls
-            UrlsDefinition
          end
       end
    end

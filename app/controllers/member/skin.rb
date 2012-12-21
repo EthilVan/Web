@@ -1,6 +1,5 @@
 class EthilVan::App < Sinatra::Base
 
-   name = '(.+)' # TODO: Replace with proper regexp
    scale = '(?:_x([1-8]|15))?'
 
    helpers do
@@ -14,11 +13,13 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   get urls.skin_preview(name, scale) do |username, scale|
+   preview = %r{/membre/skin/#{Account::NAME}_preview#{scale}.png$}
+   get preview do |username, scale|
       skin_image EthilVan::Skins::Preview, username, scale
    end
 
-   get urls.skin_head(name, scale) do |username, scale|
+   head = %r{/membre/skin/#{Account::NAME}_head#{scale}.png$}
+   get head do |username, scale|
       skin_image EthilVan::Skins::Head, username, scale
    end
 end
