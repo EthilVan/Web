@@ -53,4 +53,7 @@ module EthilVan::App::Views
 
    module Member
    end
+
+   module Gestion
+   end
 end

@@ -44,7 +44,7 @@ module EthilVan
       logged_only %r{^/membre}
       logged_only %r{^/markdown$}
       protect %r{^/news/creer}, EthilVan::Role::REDACTEUR
-      protect %r{^/moderation}, EthilVan::Role::MODO
+      protect %r{^/gestion}, EthilVan::Role::MODO
 
       register EthilVan::Markdown
    end

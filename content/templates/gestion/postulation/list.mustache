@@ -1,0 +1,34 @@
+{{# title }}Postulations{{/ title }}
+
+{{# postulations? }}
+   <h4>En attente</h4>
+   <ul>
+      {{# postulations }}
+      <a href="{{ url }}">
+         <li class="postulation">{{ date }} - {{ name }}</li>
+      </a>
+      {{/ postulations }}
+   </ul>
+{{/ postulations? }}
+
+{{# validated? }}
+   <h4>Validées</h4>
+   <ul>
+      {{# validated }}
+      <a href="{{ url }}">
+         <li class="postulation">{{ date }} - {{ name }}</li>
+      </a>
+      {{/ validated }}
+   </ul>
+{{/ validated? }}
+
+{{# vetoed? }}
+   <h4>Refusées</h4>
+   <ul>
+      {{# vetoed }}
+      <a href="{{ url }}">
+         <li class="postulation">{{ date }} - {{ name }}</li>
+      </a>
+      {{/ vetoed }}
+   </ul>
+{{/ vetoed? }}
