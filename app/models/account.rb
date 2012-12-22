@@ -40,6 +40,11 @@ class Account < ActiveRecord::Base
       true
    end
 
+   def online?
+     return false if last_visit.nil?
+     return last_visit >= 5.minutes.ago
+   end
+
    def check_password?(password)
       Password.new(crypted_password) == password
    end
