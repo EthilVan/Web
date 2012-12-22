@@ -35,7 +35,7 @@ module EthilVan::App::Views
          end
 
          def tab_postulation
-            Postulation.new(nil)
+            Postulation.new(@account.postulation)
          end
 
          def tab_tags

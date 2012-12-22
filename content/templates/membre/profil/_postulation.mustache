@@ -1,1 +1,36 @@
-Postulation !!!
+<h5> A déjà joué en multi à Minecraft : </h5>
+<p>{{ multi_minecraft }}</p>
+
+{{# multi_minecraft? }}
+   <h5> Ancien serveur : </h5>
+   <p> {{ old_server }} </p>
+
+   <h5> Raison du départ : </h5>
+   <p> {{ old_server_reason }} </p>
+{{/ multi_minecraft? }}
+
+<h5> Découverte d'Ethil Van : </h5>
+<p>{{ ethilvan_discovered }}</p>
+
+<h5> Raison d'avoir choisi Ethil Van : </h5>
+<p> {{ ethilvan_reason }} </p>
+
+<h5> Screenshots : </h5>
+{{# screens }}
+   <h4> Screenshot : </h4>
+   <a href="{{ url }}" target="_blank">
+      <img src="{{ url }}" width="{{ width }}" height="{{ height }}">
+   </a>
+   <p> {{ description }} </p>
+{{/ screens }}
+
+<h5> Disponibilités: </h5>
+<p> {{ availability }} </p>
+
+{{# microphone }}
+   <h5> Régularité sur TeamSpeak : </h5>
+   <p> {{ mumble }} </p>
+{{/ microphone }}
+
+<h5> Champ Libre : </h5>
+<p> {{ free_text }} </p>
