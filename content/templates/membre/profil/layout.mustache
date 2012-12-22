@@ -1,0 +1,19 @@
+<div class="tab-content">
+   <div id="generale" class="tab-pane tab-pane-default">
+      {{# tab_generale }}
+         {{> membre/profil/_generale }}
+      {{/ tab_generale }}
+   </div>
+   {{# postulation? }}
+   <div id="postulation" class="tab-pane">
+      {{# tab_postulation }}
+         {{> membre/profil/_postulation }}
+      {{/ tab_postulation }}
+   </div>
+   {{/ postulation? }}
+   <div id="tags" class="tab-pane">
+      {{# tab_tags }}
+         {{> membre/profil/_tags }}
+      {{/ tab_tags }}
+   </div>
+</div>
