@@ -12,6 +12,10 @@ module EthilVan::App::Views
             @minecraft_stats = account.minecraft_stats
          end
 
+         def cadre
+            Cadre.new(@account, @profil, @minecraft_stats)
+         end
+
          def account_name
             @account.name
          end

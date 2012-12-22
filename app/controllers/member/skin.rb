@@ -13,12 +13,12 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   preview = %r{/membre/skin/#{Account::NAME}_preview#{scale}.png$}
+   preview = %r{/membre/skin/(#{Account::NAME})_preview#{scale}.png$}
    get preview do |username, scale|
       skin_image EthilVan::Skins::Preview, username, scale
    end
 
-   head = %r{/membre/skin/#{Account::NAME}_head#{scale}.png$}
+   head = %r{/membre/skin/(#{Account::NAME})_head#{scale}.png$}
    get head do |username, scale|
       skin_image EthilVan::Skins::Head, username, scale
    end
