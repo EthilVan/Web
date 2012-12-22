@@ -1,0 +1,79 @@
+<h3>Postulation - {{ name }}</h3>
+
+{{# birthdate? }}
+   <h4>Age - Date de naissance :</h4>
+   <p>{{ age }} ans - {{ birthdate }}</p>
+{{/ birthdate? }}
+
+{{# sexe? }}
+    <h4>Sexe:</h4>
+    <p>{{ sexe }}</p>
+{{/ sexe? }}
+
+<h4>Joue à Minecraft depuis :</h4>
+<p>{{ minecraft_since }}
+
+<h4>A déjà joué en multi à minecraft :</h4>
+<p>{{ multi_minecraft }}</p>
+
+{{# multi_minecraft? }}
+    <h4>Ancien Serveur :</h4>
+    <p>{{ old_server }}</h4>
+    <h5>Raison du départ :</h5>
+    <p>{{ old_server_reason }}</p>
+{{/ multi_minecraft? }}
+
+<h4>Découverte d'Ethil Van :</h4>
+<p>{{ ethilvan_discovered }}</p>
+
+<h4>Pourquoi Ethil Van :</h4>
+<p>{{ ethilvan_reason }}</p>
+
+<h4>Screenshots :</h4>
+{{# screens }}
+    <h5><a href="{{url}}" target="_blank">Screenshot</a></h5>
+    <a href="{{url}}" target="_blank">
+        <img src="{{url}}" width="{{width}}" height="{{height}}" />
+    </a>
+    <p>{{ description }}</p>
+{{/ screens }}
+
+<h4>Disponibilités :</h4>
+<p>{{ availability }}</p>
+
+<h4>Dispose d'un micro :</h4>
+<p>{{ microphone }}</p>
+
+{{# microphone }}
+    <h4>Regularité sur TeamSpeak :</h4>
+    <p>{{ mumble }}</p>
+{{/ microphone }}
+
+<h4>Champ Libre :</h4>
+<p>{{ free_text }}</p>
+
+{{# pending? }}
+    <h4>{{ agreements_number }} approbation(s)</h4>
+    {{# agreements? }}
+        {{# agreements }}
+            <ul>
+                <li>{{ name }}</li>
+            </ul>
+        {{/ agreements }}
+    {{/ agreements? }}
+
+    {{# can_vote? }}
+        <div id="vote">
+            <input id="agreement" type="button" value="Approuver" />
+            <input id="refus" type="button" value="Refuser" />
+            <form id="form login" action="{{url}}" method="post"  style="display: none;"/>
+                <h4>Motif :</h4>
+                <input id="agreement_field" name="agreement" value="0" type="hidden" />
+                <textarea id="reason" name="reason"></textarea>
+                <div class="submit">
+                    <input type="submit" value="Envoyer" />
+                </div>
+            </form>
+        </div>
+    {{/ can_vote? }}
+{{/ pending? }}
