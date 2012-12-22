@@ -39,7 +39,7 @@ module EthilVan::App::Views
          end
 
          def tab_tags
-            Tags.new
+            Tags.new(@account.profil_tags)
          end
       end
    end

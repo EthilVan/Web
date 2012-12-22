@@ -1,1 +1,15 @@
-Tags !!!
+<form method="post" action="">
+   <textarea id="new_tag" name="new_tag" cols="60" rows="3"></textarea>
+   <input type="submit" value="Poster" />
+</form>
+
+{{#tags?}}
+   <h5>Tags :</h5>
+   {{#tags}}
+      <div class="tag">
+         <p>Par {{ tagger }} :</p>
+         <p>{{ contents }}</p>
+         <p>Le {{ date }}</p>
+      </div>
+   {{/tags}}
+{{/tags?}}

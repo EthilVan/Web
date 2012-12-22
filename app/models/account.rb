@@ -11,6 +11,7 @@ class Account < ActiveRecord::Base
 
    has_one :profil,          inverse_of: :account
    has_one :minecraft_stats, inverse_of: :account
+   has_many :profil_tags,    foreign_key: :tagged_id
 
    before_save :encrypt_password, if: :new_password?
 
