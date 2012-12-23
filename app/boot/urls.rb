@@ -34,7 +34,7 @@ module EthilVan
 
       def skin_url(account, type, scale = nil)
          url = "/membre/skin/#{account}_#{type}"
-         url << scale unless scale.nil?
+         url << "_x#{scale}" unless scale.nil?
          url << '.png'
          url
       end

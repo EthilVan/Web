@@ -9,6 +9,10 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
+   get '/membre/profil' do
+      redirect urls.profil('generale', current_account)
+   end
+
    get %r{/membre/@(#{Account::NAME})$} do |name|
       redirect "/membre/@#{name}/generale"
    end

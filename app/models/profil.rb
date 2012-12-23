@@ -2,8 +2,8 @@ class Profil < ActiveRecord::Base
 
    belongs_to :account, inverse_of: :profil
 
-   def head_url(size = nil)
-      EthilVan::Urls.skin_head(account.name, size)
+   def head_url(scale = nil)
+      EthilVan::Urls.skin_head(account, scale)
    end
 
    def avatar_url
