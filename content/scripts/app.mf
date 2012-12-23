@@ -11,3 +11,4 @@ app/public-menu.ts
 app/tab.ts
 app/select.ts
 app/epiceditor.ts
+app/news.js

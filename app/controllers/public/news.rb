@@ -1,9 +1,12 @@
 class EthilVan::App
 
    get '/news' do
-      newses = News.with_account.by_date
+      page = request.xhr? ? params['page'].to_i : 1
+      newses = News.with_account.by_date.page(page).per(8)
+      raise Sinatra::NotFound if newses.empty?
       newses = newses.public_only unless logged_in?
-      view Views::Public::News::Index.new newses
+      view Views::Public::News::Index.new newses.all
+      layout !request.xhr?
       mustache 'public/news/index'
    end
 
@@ -29,7 +32,7 @@ class EthilVan::App
       mustache 'public/news/banners'
    end
 
-   get %r{/news/\d{1,3}$} do |id|
+   get %r{/news/(\d{1,3})$} do |id|
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?
       halt 401 if !logged_in? and news.private

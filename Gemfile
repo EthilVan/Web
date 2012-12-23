@@ -15,6 +15,7 @@ gem 'rainpress'
 gem 'gemoji'
 
 # Librairies
+gem 'kaminari'
 gem 'bcrypt-ruby'
 gem 'builder'
 gem 'redcarpet'
