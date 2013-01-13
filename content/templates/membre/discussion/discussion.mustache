@@ -4,6 +4,10 @@
 <div class="ligne"></div>
 <div class="date">Discussion crée le {{ date }} par {{ author }}</div>
 
+{{# pager }}
+{{> membre/discussion/_pager }}
+{{/ pager }}
+
 <div class="cleaner"></div>
 
 <div class="messages">
@@ -11,6 +15,10 @@
    {{> membre/discussion/_message }}
 {{/ messages }}
 </div>
+
+{{# pager }}
+{{> membre/discussion/_pager }}
+{{/ pager }}
 
 <div class="button-right">
    <a href="{{ response_link }}">

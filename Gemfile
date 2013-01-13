@@ -20,7 +20,6 @@ gem 'bcrypt-ruby'
 gem 'builder'
 gem 'redcarpet'
 gem 'nokogiri'
-# gem 'will_paginate'
 gem 'chunky_png'
 # gem 'image_size'
 

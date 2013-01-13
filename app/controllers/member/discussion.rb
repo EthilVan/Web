@@ -9,7 +9,9 @@ class EthilVan::App < Sinatra::Base
    get %r{/membre/discussion/(\d{1,5})$} do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
-      view Views::Member::Discussion::Discussion.new(discussion)
+      page = discussion.page(params[:page]).includes(account: [ :profil, :minecraft_stats ])
+      raise Sinatra::NotFound unless page.present?
+      view Views::Member::Discussion::Discussion.new(discussion, page)
       mustache 'membre/discussion/discussion'
    end
 

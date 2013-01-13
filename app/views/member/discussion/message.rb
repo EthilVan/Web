@@ -6,10 +6,15 @@ module EthilVan::App::Views
 
       class Message < Partial
 
-         def initialize(message, index)
+         def initialize(message, index, stats_max = nil)
             @message = message
             @index = index
             @author = message.account
+            @stats_max = stats_max
+         end
+
+         def stats_max
+            @stats_max ||= MinecraftStats.maximum('version')
          end
 
          def anchor
@@ -38,13 +43,11 @@ module EthilVan::App::Views
          end
 
          def online
-            return 'offline'
             @author.online? ? 'online' : 'offline'
          end
 
          def presence
-            @presence ||= @author.minecraft_stats.version.to_f /
-                  MinecraftStats.maximum('version')
+            @presence ||= @author.minecraft_stats.version.to_f / stats_max
          end
 
          def gauge_top
@@ -68,11 +71,11 @@ module EthilVan::App::Views
          end
 
          def created
-            @message.created_at.strftime('%d/%m/%Y à  %H:%M')
+            @message.created_at.strftime('%d/%m/%Y à %H:%M')
          end
 
          def updated
-            @message.updated_at.strftime('%d/%m/%Y à  %H:%M')
+            @message.updated_at.strftime('%d/%m/%Y à %H:%M')
          end
       end
     end

@@ -11,4 +11,12 @@ class Discussion < ActiveRecord::Base
       discussion_view = DiscussionView.for(account, self)
       !discussion_view.nil? and discussion_view.date > updated_at
    end
+
+   def page(number)
+      Message.where(discussion_id: id).order('created_at ASC').page(number)
+   end
+
+   def total_pages
+      page(1).total_pages
+   end
  end

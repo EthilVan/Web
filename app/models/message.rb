@@ -7,6 +7,8 @@ class Message < ActiveRecord::Base
 
    before_save :parse_contents, if: :new_contents?
 
+   paginates_per 8
+
    def contents=(new_contents)
       write_attribute :contents, new_contents
       write_attribute :parsed_contents, nil

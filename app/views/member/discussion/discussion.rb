@@ -6,8 +6,9 @@ module EthilVan::App::Views
 
       class Discussion < Page
 
-         def initialize(discussion)
+         def initialize(discussion, page = nil)
             @discussion = discussion
+            @page = page
          end
 
          def name
@@ -23,15 +24,21 @@ module EthilVan::App::Views
          end
 
          def messages
+            return [] if @page.nil?
             base_url = "/membre/discussion/#{@discussion.id}"
-            _messages.each_with_index.map do |message, index|
+            stats_max = MinecraftStats.maximum('version')
+            @page.each_with_index.map do |message, index|
                account = @app.current_account
                if message.editable_by? account
-                  EditableMessage.new(message, index, base_url)
+                  EditableMessage.new(message, index, stats_max, base_url)
                else
-                  Message.new(message, index)
+                  Message.new(message, index, stats_max)
                end
             end
+         end
+
+         def pager
+            @pager ||= Pager.new(@discussion, @page)
          end
 
          def response_link

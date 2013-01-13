@@ -1,0 +1,26 @@
+{{# first? }}
+   <a href="{{ first }}">&lt;&lt;</a>
+{{/ first? }}
+{{# previous? }}
+   <a href="{{ previous }}">&lt;</a>
+{{/ previous? }}
+{{# first? }}
+   ...
+{{/ first? }}
+{{# pages }}
+   {{# selected }}
+   <span>{{ i }}</span>
+   {{/ selected }}
+   {{^ selected }}
+   <a href="{{ url }}">{{ i }}</a>
+   {{/ selected }}
+{{/ pages }}
+{{# last? }}
+   ...
+{{/ last? }}
+{{# next? }}
+   <a href="{{ next }}">&gt;</a>
+{{/ next? }}
+{{# last? }}
+   <a href="{{ last }}">&gt;&gt;</a>
+{{/ last? }}

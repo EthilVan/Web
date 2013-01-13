@@ -4,8 +4,8 @@ module EthilVan::App::Views
 
       class EditableMessage < Message
 
-         def initialize(message, index, base_url)
-            super(message, index)
+         def initialize(message, index, stats_max, base_url)
+            super(message, index, stats_max)
             @base_url = base_url
          end
 
