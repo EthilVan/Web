@@ -4,9 +4,8 @@ module EthilVan::App::Views
 
       class EditableMessage < Message
 
-         def initialize(message, index, stats_max, base_url)
+         def initialize(message, index, stats_max = nil)
             super(message, index, stats_max)
-            @base_url = base_url
          end
 
          def can_edit
@@ -14,11 +13,11 @@ module EthilVan::App::Views
          end
 
          def edit_url
-            "#{@base_url}/editer?msg=#{@message.id}"
+            "/membre/message/#{@message.id}/editer"
          end
 
          def delete_url
-            "#{@base_url}/supprimer?msg=#{@message.id}"
+            "/membre/message/#{@message.id}/supprimer"
          end
       end
    end

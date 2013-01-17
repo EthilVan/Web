@@ -25,12 +25,11 @@ module EthilVan::App::Views
 
          def messages
             return [] if @page.nil?
-            base_url = "/membre/discussion/#{@discussion.id}"
             stats_max = MinecraftStats.maximum('version')
             @page.each_with_index.map do |message, index|
                account = @app.current_account
                if message.editable_by? account
-                  EditableMessage.new(message, index, stats_max, base_url)
+                  EditableMessage.new(message, index, stats_max)
                else
                   Message.new(message, index, stats_max)
                end

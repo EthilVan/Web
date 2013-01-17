@@ -25,6 +25,10 @@ module EthilVan::App::Views
             false
          end
 
+         def view_url
+            "/membre/message/#{@message.id}"
+         end
+
          def author_name
             @author.name
          end
