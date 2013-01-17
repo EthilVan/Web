@@ -25,8 +25,8 @@ namespace :db do
    end
 
    task :console do
-      require './app/database'
-      config = ActiveRecord::Base.configurations[EthilVan::ENV]
+      require './app/boot/database'
+      config = EthilVan::Config.database
       command =  'mysql'
       command << " -h #{config['host']}"
       command << " -u #{config['username']}"
