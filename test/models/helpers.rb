@@ -80,3 +80,11 @@ private
       hash.map { |n, v| "#{n}: #{mu_pp(v)}" } * ', '
    end
 end
+
+module MiniTest::Expectations
+
+   infect_an_assertion :assert_valid,      :must_be_valid     , :reverse
+   infect_an_assertion :assert_valid_with, :must_be_valid_with, :reverse
+   infect_an_assertion :refute_valid,      :wont_be_valid     , :reverse
+   infect_an_assertion :refute_valid_with, :wont_be_valid_with, :reverse
+end

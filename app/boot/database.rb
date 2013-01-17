@@ -8,7 +8,7 @@ Kaminari::Hooks.init
 class ActiveRecord::Base
 
    establish_connection EthilVan::Config.database
-   self.logger = Logging.logger[self]
+   self.logger = Logging.logger[self] if EthilVan::ENV != :test
 end
 
 require_all 'app/models'
