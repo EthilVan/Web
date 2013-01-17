@@ -44,4 +44,15 @@ class AccountTest < MiniTest::Spec
       @account.password_confirmation = "test"
       @account.must_be_valid :password
    end
+
+   def test_online_status
+      @account.last_visit = nil
+      @account.wont_be :online?
+
+      @account.last_visit = 6.minutes.ago
+      @account.wont_be :online?
+
+      @account.last_visit = 4.minutes.ago
+      @account.must_be :online?
+   end
 end
