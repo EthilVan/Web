@@ -22,8 +22,11 @@ module EthilVan
          skin_url(account, 'head', scale)
       end
 
-      def discussion(discussion_id)
-         "/membre/discussion/#{discussion_id}"
+      def discussion(discussion_id, page = nil, message = nil)
+         url = "/membre/discussion/#{discussion_id}"
+         url << "?page=#{page}" if page
+         url << "#msg#{message}" if message
+         url
       end
 
       def discussion_group(dg_name)
@@ -61,8 +64,8 @@ module EthilVan
          super(account.name, scale)
       end
 
-      def discussion(discussion)
-         super discussion.id
+      def discussion(discussion, page = nil, message = nil)
+         super(discussion.id, page, message.id)
       end
 
       def discussion_group(dg)

@@ -13,7 +13,7 @@ class Discussion < ActiveRecord::Base
    end
 
    def page(number)
-      Message.where(discussion_id: id).order('created_at ASC').page(number)
+      Message.where(discussion_id: id).by_date.page(number)
    end
 
    def total_pages
