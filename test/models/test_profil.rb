@@ -22,7 +22,7 @@ class ProfilTest < MiniTest::Spec
       @profil.must_be_valid_with sexe: 'masculin'
       @profil.must_be_valid_with sexe: 'feminin'
    end
-
+=begin
    def test_favorite_block_validation
       @profil.wont_be_valid_with favorite_block: nil
       @profil.wont_be_valid_with favorite_block: Block::Names.size + 1
@@ -36,7 +36,7 @@ class ProfilTest < MiniTest::Spec
       @profil.must_be_valid_with favorite_item: 0
       @profil.must_be_valid_with favorite_item: Item::Names.size / 2
    end
-
+=end
    def test_age
       @profil.birthdate = 22.year.ago
       @profil.age.must_equal 22
