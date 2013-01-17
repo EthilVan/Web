@@ -13,6 +13,11 @@ class Account < ActiveRecord::Base
    has_one :minecraft_stats, inverse_of: :account
    has_many :profil_tags,    foreign_key: :tagged_id
 
+   validates_format_of :name, with: /\A#{NAME}\Z/
+   validates_length_of :email, within: 3..100
+   validates_format_of :email,
+         with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
    before_save :encrypt_password, if: :new_password?
 
    scope :with_profil, includes(:profil)
@@ -47,8 +52,8 @@ class Account < ActiveRecord::Base
    end
 
    def online?
-     return false if last_visit.nil?
-     return last_visit >= 5.minutes.ago
+      return false if last_visit.nil?
+      return last_visit >= 5.minutes.ago
    end
 
    def check_password?(password)
@@ -59,15 +64,15 @@ class Account < ActiveRecord::Base
       Password.new(auth_token) == token
    end
 
-  def new_password?
-     crypted_password.blank? || password.present?
-  end
+   def new_password?
+      crypted_password.blank? || password.present?
+   end
 
-  def encrypt_password
-     self.crypted_password = Password.create(password)
-  end
+   def encrypt_password
+      self.crypted_password = Password.create(password)
+   end
 
-  def generate_auth_token
+   def generate_auth_token
       raw_auth_token = SecureRandom.base64(180)
       auth_token = Password.create(raw_auth_token, cost: AUTH_TOKEN_COST)
       update_attribute :auth_token, auth_token
