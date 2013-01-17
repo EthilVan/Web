@@ -1,6 +1,10 @@
 class Profil < ActiveRecord::Base
 
+   include EthilVan::Markdown::ActiveRecord
+
    belongs_to :account, inverse_of: :profil
+
+   markdown_pre_parse :signature
 
    def head_url(scale = nil)
       EthilVan::Urls.skin_head(account, scale)

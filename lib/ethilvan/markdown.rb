@@ -31,3 +31,4 @@ module EthilVan
 end
 
 require 'ethilvan/markdown/redcarpet'
+require 'ethilvan/markdown/active_record'
