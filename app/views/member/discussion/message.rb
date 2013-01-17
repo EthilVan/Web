@@ -38,8 +38,7 @@ module EthilVan::App::Views
          end
 
          def author_signature
-            signature = @author.profil.signature
-            signature.nil? ? nil : render_markdown(signature)
+            @author.profil.parsed_signature
          end
 
          def online
