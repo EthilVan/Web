@@ -1,13 +1,12 @@
 ENV['RACK_ENV'] = 'test'
 
 ARGV.clear
+require './app/boot/app'
+
 require 'minitest/spec'
 require 'minitest/autorun'
-
 require 'factory_girl'
 require 'database_cleaner'
-
-require './app/boot/app'
 
 module BCrypt
 
