@@ -1,4 +1,3 @@
-=begin
 FactoryGirl.define do
 
    screens_url = [
@@ -24,7 +23,6 @@ FactoryGirl.define do
       minecraft_name "new_minecraft_user"
       password "password"
       password_confirmation "password"
-      #minecraft_password "minecraft_password"
       birthdate_formatted "01/01/1998"
       sexe "feminin"
       minecraft_since <<-END
@@ -70,11 +68,11 @@ FactoryGirl.define do
 
    factory :postulation_with_microphone, :parent => :postulation do
       microphone true
-      mumble { Postulation::Mumble.first }
+      mumble { EthilVan::Data::Mumble.first }
    end
 
    factory :postulation_with_mumble_other, :parent => :postulation_with_microphone do
-      mumble Postulation::Mumble.last
+      mumble EthilVan::Data::Mumble.last
       mumble_other <<-END
          Je me connaitrais casiment tout le temps sauf quand H2O le sera parce qu'il
          me fais peur, j'ai l'impression qu'il veut me violer. En plus, j'ai vu sa photo sur
@@ -82,4 +80,3 @@ FactoryGirl.define do
       END
    end
 end
-=end
