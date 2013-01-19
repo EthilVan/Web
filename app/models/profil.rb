@@ -1,5 +1,15 @@
 class Profil < ActiveRecord::Base
 
+   include EthilVan::Markdown::ActiveRecord
+
+   # ==========================================================================
+   # * Relations
+   # ==========================================================================
+   belongs_to :account, inverse_of: :profil
+
+   # ==========================================================================
+   # * Validations
+   # ==========================================================================
    class BirthDateValidator < ActiveModel::Validator
 
       def validate(record)
@@ -11,17 +21,23 @@ class Profil < ActiveRecord::Base
       end
    end
 
-   include EthilVan::Markdown::ActiveRecord
-
-   belongs_to :account, inverse_of: :profil
-
    validates_inclusion_of :sexe, in: EthilVan::Data::Sexe.map(&:second)
    validates_with BirthDateValidator
 
-   markdown_pre_parse :signature
+   regexp = /\A[A-Za-z][\w\-_]{1,}\Z/
+   validates_format_of :youtube,  :with => regexp, :allow_blank => true
+   validates_format_of :twitter,  :with => regexp, :allow_blank => true
+   validates_format_of :steam_id, :with => regexp, :allow_blank => true
 
+   # ==========================================================================
+   # * Callbacks and scope
+   # ==========================================================================
+   markdown_pre_parse :signature
    before_save :parse_birthdate, if: :new_birthdate?
 
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
    attr_writer :birthdate_formatted
 
    def birthdate_formatted

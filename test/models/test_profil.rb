@@ -22,6 +22,7 @@ class ProfilTest < MiniTest::Spec
       @profil.must_be_valid_with sexe: 'masculin'
       @profil.must_be_valid_with sexe: 'feminin'
    end
+
 =begin
    def test_favorite_block_validation
       @profil.wont_be_valid_with favorite_block: nil
@@ -37,6 +38,33 @@ class ProfilTest < MiniTest::Spec
       @profil.must_be_valid_with favorite_item: Item::Names.size / 2
    end
 =end
+   def test_youtube_validation
+      @profil.must_be_valid_with youtube: nil
+      @profil.must_be_valid_with youtube: 'ac_count'
+      @profil.must_be_valid_with youtube: 'Account-1337'
+      @profil.wont_be_valid_with youtube: '2invalid'
+      @profil.wont_be_valid_with youtube: '_invalid'
+      @profil.wont_be_valid_with youtube: '-invalid'
+   end
+
+   def test_twitter_validation
+      @profil.must_be_valid_with twitter: nil
+      @profil.must_be_valid_with twitter: 'ac_count'
+      @profil.must_be_valid_with twitter: 'Account-1337'
+      @profil.wont_be_valid_with twitter: '2invalid'
+      @profil.wont_be_valid_with twitter: '_invalid'
+      @profil.wont_be_valid_with twitter: '-invalid'
+   end
+
+   def test_steam_id_validation
+      @profil.must_be_valid_with steam_id: nil
+      @profil.must_be_valid_with steam_id: 'ac_count'
+      @profil.must_be_valid_with steam_id: 'Account-1337'
+      @profil.wont_be_valid_with steam_id: '2invalid'
+      @profil.wont_be_valid_with steam_id: '_invalid'
+      @profil.wont_be_valid_with steam_id: '-invalid'
+   end
+
    def test_age
       @profil.birthdate = 22.year.ago
       @profil.age.must_equal 22
