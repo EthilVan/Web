@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module EthilVan::App::Views
 
    module Member::Discussion
@@ -74,11 +72,11 @@ module EthilVan::App::Views
          end
 
          def created
-            @message.created_at.strftime('%d/%m/%Y à %H:%M')
+            @message.created_at.strftime(EthilVan::Data::TIME_FORMAT)
          end
 
          def updated
-            @message.updated_at.strftime('%d/%m/%Y à %H:%M')
+            @message.updated_at.strftime(EthilVan::Data::TIME_FORMAT)
          end
       end
     end

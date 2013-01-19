@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module EthilVan::App::Views
 
    module Public::News
@@ -43,7 +41,7 @@ module EthilVan::App::Views
          end
 
          def created
-             @news.created_at.strftime('%d/%m/%Y à %H:%M')
+             @news.created_at.strftime(EthilVan::Data::TIME_FORMAT)
          end
       end
    end

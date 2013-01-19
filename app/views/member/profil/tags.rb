@@ -1,5 +1,3 @@
-#encoding: utf-8
-
 module EthilVan::App::Views
 
    module Member::Profil
@@ -18,7 +16,7 @@ module EthilVan::App::Views
             @tags.map { |tag| {
                contents: tag.contents,
                tagger: tag.tagger.name,
-               date: tag.created_at.strftime('%d/%m/%Y à %H:%M')
+               date: tag.created_at.strftime(EthilVan::Data::TIME_FORMAT)
             } }
          end
       end

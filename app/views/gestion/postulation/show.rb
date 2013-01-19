@@ -27,7 +27,7 @@ module EthilVan::App::Views
 
          presence_predicate :birthdate
          def birthdate
-            @postulation.birthdate.strftime("%d/%m/%Y")
+            @postulation.birthdate.strftime(EthilVan::Data::DATE_FORMAT)
          end
 
          presence_predicate :sexe

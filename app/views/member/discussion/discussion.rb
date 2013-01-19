@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module EthilVan::App::Views
 
    module Member::Discussion
@@ -16,7 +14,7 @@ module EthilVan::App::Views
          end
 
          def date
-            @discussion.created_at.strftime('%d/%m/%Y à %H:%M')
+            @discussion.created_at.strftime(EthilVan::Data::TIME_FORMAT)
          end
 
          def author

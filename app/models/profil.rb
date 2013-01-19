@@ -44,7 +44,7 @@ class Profil < ActiveRecord::Base
       if @birthdate_formatted.present? or birthdate.nil?
          @birthdate_formatted
       else
-         birthdate.strftime "%d/%m/%Y"
+         birthdate.strftime EthilVan::Data::DATE_FORMAT
       end
    end
 

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module EthilVan::App::Views
 
    module Member::Discussion
@@ -28,7 +26,7 @@ module EthilVan::App::Views
          end
 
          def created
-            @discussion.created_at.strftime('%d/%m/%Y à %H:%M')
+            @discussion.created_at.strftime(EthilVan::Data::TIME_FORMAT)
          end
 
          def author
@@ -40,12 +38,11 @@ module EthilVan::App::Views
          end
 
          def last_message_link
-            ''
-            #"#{@url}?page=#{@discussion.total_pages}#msg#{@last_message.id}"
+            "/membre/message/#{@last_message.id}"
          end
 
          def last_message
-            @discussion.updated_at.strftime('%d/%m/%Y à %H:%M')
+            @discussion.updated_at.strftime(EthilVan::Data::TIME_FORMAT)
          end
 
          def last_author
