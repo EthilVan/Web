@@ -4,27 +4,40 @@ require 'bcrypt'
 class Account < ActiveRecord::Base
 
    include BCrypt
-
    NAME = '[A-Za-z]\w+'
-
    AUTH_TOKEN_COST = 5
 
+   # ==========================================================================
+   # * Relations
+   # ==========================================================================
    has_one :profil,          inverse_of: :account
    has_one :minecraft_stats, inverse_of: :account
    has_many :profil_tags,    foreign_key: :tagged_id
 
+   # ==========================================================================
+   # * Validations
+   # ==========================================================================
    validates_format_of :name, with: /\A#{NAME}\Z/
+
    validates_length_of :email, within: 3..100
    validates_format_of :email,
          with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
    validates_presence_of     :password,              if: :new_password?
    validates_presence_of     :password_confirmation, if: :new_password?
    validates_confirmation_of :password,              if: :new_password?
 
-   before_save :encrypt_password, if: :new_password?
+   validates_inclusion_of :role_id, within: EthilVan::Role.ids.map(&:to_s)
 
+   # ==========================================================================
+   # * Callbacks and scope
+   # ==========================================================================
+   before_save :encrypt_password, if: :new_password?
    scope :with_profil, includes(:profil)
 
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
    def self.authenticate(name, password)
       return nil unless name.present?
       account = find_by_name name

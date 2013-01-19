@@ -22,6 +22,10 @@ module EthilVan
          @roles.find { |role| role.id == id}
       end
 
+      def self.ids
+         @roles.map &:id
+      end
+
       ADMIN = get :admin
       MODO = get :modo
       REDACTEUR = get :redacteur

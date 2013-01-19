@@ -45,6 +45,15 @@ class AccountTest < MiniTest::Spec
       @account.must_be_valid :password
    end
 
+   def test_role_id_validation
+      @account.must_be_valid_with role_id: 'default'
+      @account.must_be_valid_with role_id: 'ancien'
+      @account.must_be_valid_with role_id: 'admin'
+      @account.wont_be_valid_with role_id: nil
+      @account.wont_be_valid_with role_id: ''
+      @account.wont_be_valid_with role_id: 'notarole'
+   end
+
    def test_online_status
       @account.last_visit = nil
       @account.wont_be :online?
