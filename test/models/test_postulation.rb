@@ -30,12 +30,9 @@ class PostulationTest < MiniTest::Spec
    end
 
    def test_password_validation
-      @postulation.password = 'test'
       @postulation.password_confirmation = 'test2'
-      @postulation.wont_be_valid :password
-
-      @postulation.password_confirmation = 'test'
-      @postulation.must_be_valid_with :password
+      @postulation.wont_be_valid_with password: 'test'
+      @postulation.must_be_valid_with password: 'test2'
    end
 
    def test_birthdate_formatted_validation

@@ -20,7 +20,7 @@ class Postulation < ActiveRecord::Base
    validates_uniqueness_of :email
    validates_uniqueness_of :minecraft_name
 
-   # Uniqueness taking Account in account
+   # Uniqueness taking 'Account' in account
    validate do |record|
       exist = Account.where(name: record.name).size > 0
       record.errors[:name] = "Name already taken" if exist
@@ -37,9 +37,25 @@ class Postulation < ActiveRecord::Base
    validates_length_of :email, in: 3..100
    validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
+   # Password
+   validates_presence_of     :password,              if: :new_password?
+   validates_presence_of     :password_confirmation, if: :new_password?
+   validates_confirmation_of :password,              if: :new_password?
+
    # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
    scope :by_date, order('created_at DESC')
 
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
+   attr_accessor :password
+   attr_accessor :password_confirmation
+
+private
+
+   def new_password?
+      crypted_password.blank? || password.present?
+   end
 end
