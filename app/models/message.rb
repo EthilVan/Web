@@ -1,18 +1,31 @@
 class Message < ActiveRecord::Base
 
-   PER_PAGE = 8
-
    include EthilVan::Markdown::ActiveRecord
 
+   PER_PAGE = 8
+   paginates_per PER_PAGE
+
+   # ==========================================================================
+   # * Relations
+   # ==========================================================================
    belongs_to :discussion
    belongs_to :account
 
-   markdown_pre_parse :contents
+   # ==========================================================================
+   # * Validations
+   # ==========================================================================
+   validates_presence_of :contents
 
-   paginates_per PER_PAGE
+   # ==========================================================================
+   # * Callbacks and scope
+   # ==========================================================================
+   markdown_pre_parse :contents
 
    scope :by_date, order('created_at ASC')
 
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
    def page
       messages = Message.
             where(discussion_id: discussion.id).by_date.pluck(:id)
