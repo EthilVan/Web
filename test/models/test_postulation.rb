@@ -93,4 +93,86 @@ class PostulationTest < MiniTest::Spec
       @postulation.wont_be_valid_with rules_acceptance: ''
       @postulation.wont_be_valid_with rules_acceptance: '0'
    end
+
+   def test_old_server_validation_without_multi_minecraft
+      @postulation.multi_minecraft = false
+      @postulation.must_be_valid_with old_server: <<-TEXT
+         Je jouais sur MineLittlePony.fr avant, c'etait un serveur super avec pleins de
+         filles et meme qu'on faisait tout le temps des sculptures de poney en laines.
+         C'etait trop bien.
+      TEXT
+      @postulation.must_be_valid_with old_server: nil
+      @postulation.must_be_valid_with old_server: 'a'
+   end
+
+   def test_old_server_validation_with_multi_minecraft
+      @postulation.multi_minecraft = true
+      @postulation.must_be_valid_with old_server: <<-TEXT
+         Je jouais sur MineLittlePony.fr avant, c'etait un serveur super avec pleins de
+         filles et meme qu'on faisait tout le temps des sculptures de poney en laines.
+         C'etait trop bien.
+      TEXT
+      @postulation.wont_be_valid_with old_server: nil
+      @postulation.wont_be_valid_with old_server: 'a'
+   end
+
+   def test_old_server_reason_validation_without_multi_minecraft
+      @postulation.multi_minecraft = false
+      @postulation.must_be_valid_with old_server_reason: <<-TEXT
+         Un jour un garcon a dessine une bite sur une de mes sculptures de poney, (je
+         crois qu'il s'appelait EauTiste ou quelque chose comme ca). Du coup j'en ai eu
+         marre donc je suis parti ='(.
+      TEXT
+      @postulation.must_be_valid_with old_server_reason: nil
+      @postulation.must_be_valid_with old_server_reason: 'a'
+   end
+
+   def test_old_server_reason_validation_with_multi_minecraft
+      @postulation.multi_minecraft = true
+      @postulation.must_be_valid_with old_server_reason: <<-TEXT
+         Un jour un garcon a dessine une bite sur une de mes sculptures de poney, (je
+         crois qu'il s'appelait EauTiste ou quelque chose comme ca). Du coup j'en ai eu
+         marre donc je suis parti ='(.
+      TEXT
+      @postulation.wont_be_valid_with old_server_reason: nil
+      @postulation.wont_be_valid_with old_server_reason: 'a'
+   end
+
+   def test_mumble_validation_without_microphone
+      @postulation.microphone = false
+      @postulation.must_be_valid_with mumble: EthilVan::Data::Mumble.first
+      @postulation.must_be_valid_with mumble: nil
+      @postulation.must_be_valid_with mumble: 'a'
+   end
+
+   def test_mumble_validation_with_microphone
+      @postulation.microphone = true
+      @postulation.must_be_valid_with mumble: EthilVan::Data::Mumble.first
+      @postulation.wont_be_valid_with mumble: nil
+      @postulation.wont_be_valid_with mumble: 'a'
+   end
+
+   def test_mumble_other_validation_without_mumble_other
+      @postulation.microphone = true
+      @postulation.mumble = EthilVan::Data::Mumble.first
+      @postulation.must_be_valid_with mumble_other: <<-TEXT
+         Je me connaitrais casiment tout le temps sauf quand H2O le sera parce qu'il
+         me fais peur, j'ai l'impression qu'il veut me violer. En plus, j'ai vu sa photo sur
+         le trombi et il a un regard de pervers =O.
+      TEXT
+      @postulation.must_be_valid_with mumble_other: nil
+      @postulation.must_be_valid_with mumble_other: 'a'
+   end
+
+   def test_mumble_other_validation_with_mumble_other
+      @postulation.microphone = true
+      @postulation.mumble = EthilVan::Data::Mumble.last
+      @postulation.must_be_valid_with mumble_other: <<-TEXT
+         Je me connaitrais casiment tout le temps sauf quand H2O le sera parce qu'il
+         me fais peur, j'ai l'impression qu'il veut me violer. En plus, j'ai vu sa photo sur
+         le trombi et il a un regard de pervers =O.
+      TEXT
+      @postulation.wont_be_valid_with mumble_other: nil
+      @postulation.wont_be_valid_with mumble_other: 'a'
+   end
 end
