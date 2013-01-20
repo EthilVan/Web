@@ -10,6 +10,7 @@ class Account < ActiveRecord::Base
    # ==========================================================================
    # * Relations
    # ==========================================================================
+   belongs_to :postulation,  inverse_of: :account
    has_one :profil,          inverse_of: :account
    has_one :minecraft_stats, inverse_of: :account
    has_many :profil_tags,    foreign_key: :tagged_id
@@ -34,6 +35,8 @@ class Account < ActiveRecord::Base
    # ==========================================================================
    before_save :encrypt_password, if: :new_password?
    scope :with_profil, includes(:profil)
+   scope :with_everything, includes(:profil).includes(:postulation).
+         includes(:minecraft_stats)
 
    # ==========================================================================
    # * Methods
@@ -54,10 +57,6 @@ class Account < ActiveRecord::Base
    end
 
    attr_accessor :password, :password_confirmation
-
-   def postulation
-      Postulation.where(name: name).first
-   end
 
    def role
       EthilVan::Role.get role_id.to_sym

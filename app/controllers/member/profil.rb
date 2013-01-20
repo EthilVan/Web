@@ -3,7 +3,7 @@ class EthilVan::App < Sinatra::Base
    helpers do
 
       def account_for(name)
-         account = Account.with_profil.where(name: name).first
+         account = Account.with_everything.where(name: name).first
          raise Sinatra::NotFound if account.nil?
          account
       end
