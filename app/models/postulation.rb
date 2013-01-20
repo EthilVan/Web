@@ -64,6 +64,9 @@ class Postulation < ActiveRecord::Base
    validates_length_of :ethilvan_reason,       minimum: 120
    validates_length_of :availability_schedule, minimum:  20
 
+   # Rules acceptance
+   validates_acceptance_of :rules_acceptance, allow_nil: false
+
    # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
@@ -75,6 +78,7 @@ class Postulation < ActiveRecord::Base
    attr_accessor :password
    attr_accessor :password_confirmation
    attr_writer   :birthdate_formatted
+   attr_accessor :rules_acceptance
 
    def birthdate_formatted
       if @birthdate_formatted.present? or birthdate.nil?

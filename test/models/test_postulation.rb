@@ -87,8 +87,10 @@ class PostulationTest < MiniTest::Spec
       @postulation.wont_be_valid_with availability_schedule: 'a'
    end
 
-   def test_rules_acceptation_validation
-      @postulation.must_be_valid_with rules_acceptation: true
-      @postulation.wont_be_valid_with rules_acceptation: false
+   def test_rules_acceptance_validation
+      @postulation.must_be_valid_with rules_acceptance: '1'
+      @postulation.wont_be_valid_with rules_acceptance: nil
+      @postulation.wont_be_valid_with rules_acceptance: ''
+      @postulation.wont_be_valid_with rules_acceptance: '0'
    end
 end
