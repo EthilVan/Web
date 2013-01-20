@@ -11,6 +11,17 @@ class MessageTest < MiniTest::Spec
       @message.wont_be_valid_with contents: nil
       @message.wont_be_valid_with contents: ''
    end
+
+   def test_editable_by?
+      user =      Account.where(role_id: 'default'  ).first
+      redacteur = Account.where(role_id: 'redacteur').first
+      modo =      Account.where(role_id: 'modo'     ).first
+      @message.account = user
+
+      @message.must_be :editable_by?, user
+      @message.wont_be :editable_by?, redacteur
+      @message.must_be :editable_by?, modo
+   end
 end
 
 class MessageMarkdownTest < MiniTest::Spec
