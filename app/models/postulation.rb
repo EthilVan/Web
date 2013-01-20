@@ -58,6 +58,12 @@ class Postulation < ActiveRecord::Base
    # Sexe
    validates_inclusion_of :sexe, in: EthilVan::Data::Sexe.map(&:second)
 
+   # Length
+   validates_length_of :minecraft_since,       minimum:  20
+   validates_length_of :ethilvan_discovered,   minimum:  60
+   validates_length_of :ethilvan_reason,       minimum: 120
+   validates_length_of :availability_schedule, minimum:  20
+
    # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
