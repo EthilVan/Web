@@ -64,6 +64,13 @@ class Postulation < ActiveRecord::Base
    validates_length_of :ethilvan_reason,       minimum: 120
    validates_length_of :availability_schedule, minimum:  20
 
+   validates_length_of :old_server,        minimum: 100, if: :multi_minecraft
+   validates_length_of :old_server_reason, minimum: 100, if: :multi_minecraft
+   validates_length_of :mumble_other,      minimum:  20, if: :mumble_other?
+
+   # Mumble
+   validates_inclusion_of :mumble, in: EthilVan::Data::Mumble, if: :microphone
+
    # Rules acceptance
    validates_acceptance_of :rules_acceptance, allow_nil: false
 
@@ -92,5 +99,9 @@ private
 
    def new_password?
       crypted_password.blank? || password.present?
+   end
+
+   def mumble_other?
+      mumble == EthilVan::Data::Mumble.last
    end
 end
