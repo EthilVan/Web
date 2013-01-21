@@ -1,0 +1,21 @@
+fr:
+   activerecord:
+      attributes:
+         profil:
+            minecraft_since:   "Début dans Minecraft"
+            favorite_block:    "Bloc favori"
+            favorite_item:     "Objet favori"
+            skill:             "Compétence"
+            desc_rp:           "Description RP"
+            birthdate:         "Date de naissance"
+            sexe:              "Sexe"
+            localisation:      "Localisation"
+            website:           "Site Web"
+            twitter:           "Compte Twitter"
+            youtube:           "Compte Youtube"
+            steam_id:          "Compte Steam"
+            description:       "Description"
+            avatar:            "Avatar"
+            signature:         "Signature"
+            custom_cadre_url:  "Cadre de profil personnalisé"
+            show_email:        "Email public"

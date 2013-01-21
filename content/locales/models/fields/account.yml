@@ -1,0 +1,12 @@
+fr:
+   activerecord:
+      attributes:
+         account:
+            name:                     "Pseudo"
+            email:                    "Email"
+            password:                 "Mot de passe"
+            password_confirmation:    "Confirmation du mot de passe"
+            role_id:                  "Role"
+            minecraft_name:           "Pseudo Minecraft"
+            last_visit:               "Dernière visite"
+            vote_needed:              "Vote nécessaire"

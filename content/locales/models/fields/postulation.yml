@@ -1,0 +1,20 @@
+fr:
+   activerecord:
+      attributes:
+         postulation:
+            name:                   "Pseudo"
+            minecraft_name:         "Pseudo Minecraft"
+            email:                  "Email"
+            birthdate:              "Date de naissance"
+            sexe:                   "Sexe"
+            minecraft_since:        "Début dans Minecraft"
+            multi_minecraft:        "Minecraft en multi"
+            old_server:             "Ancien(s) serveur(s)"
+            old_server_reason:      "Raison pour l'avoir quitté"
+            ethilvan_discovered:    "Découverte d'Ethil Van"
+            ethilvan_reason:        "Pourquoi Ethil Van"
+            availability_schedule:  "Disponibilités"
+            microphone:             "Micro"
+            mumble:                 "TeamSpeak"
+            mumble_other:           "TeamSpeak - Autre Raison"
+            free_text:              "Champs libre"
