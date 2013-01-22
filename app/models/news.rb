@@ -24,5 +24,5 @@ class News < ActiveRecord::Base
    scope :with_account, includes(:account)
    scope :by_date,      order('created_at DESC')
    scope :public_only,  where(private: false)
-   scope :with_banners, where('banner != \'\'')
+   scope :has_banner, where('banner != \'\'')
 end

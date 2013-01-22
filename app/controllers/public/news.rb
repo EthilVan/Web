@@ -26,7 +26,7 @@ class EthilVan::App
    get '/news/banners' do
       content_type 'text/plain'
       private_icon = request.url.gsub(request.path, "/images/app/news/link.png")
-      banners = News.public_only.with_banners.pluck 'banner'
+      banners = News.public_only.has_banner.pluck 'banner'
       view Views::Public::News::Banners.new private_icon, banners
       layout false
       mustache 'public/news/banners'
