@@ -13,7 +13,10 @@ class News < ActiveRecord::Base
    # * Validations
    # ==========================================================================
    validates_presence_of :title
+   validates_presence_of :summary
    validates_presence_of :contents
+   validates_format_of   :banner, with: /^#{URI::regexp(%w(http https))}$/,
+         if: Proc.new { |m| m.banner.present? }
 
    # ==========================================================================
    # * Callbacks and scope
