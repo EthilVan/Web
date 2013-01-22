@@ -48,8 +48,7 @@ FactoryGirl.define do
       END
       microphone false
 
-      rules_acceptation "1"
-
+      rules_acceptance "1"
    end
 
    factory :postulation_with_multi_minecraft, :parent => :postulation do

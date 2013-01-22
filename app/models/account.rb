@@ -24,6 +24,24 @@ class Account < ActiveRecord::Base
    validates_format_of :email,
          with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
+   validates_presence_of   :minecraft_name
+
+   validates_uniqueness_of :name
+   validates_uniqueness_of :email
+   validates_uniqueness_of :minecraft_name
+
+   # Uniqueness taking 'Postulation' in account
+   validate do |record|
+      exist = Postulation.where(name: record.name).size > 0
+      record.errors[:name] = 'Name already taken' if exist
+
+      exist = Postulation.where(email: record.email).size > 0
+      record.errors[:email] = 'Email already taken' if exist
+
+      exist = Postulation.where(minecraft_name: record.minecraft_name).size > 0
+      record.errors[:minecraft_name] = 'Minecraft name already taken' if exist
+   end
+
    validates_presence_of     :password,              if: :new_password?
    validates_presence_of     :password_confirmation, if: :new_password?
    validates_confirmation_of :password,              if: :new_password?
