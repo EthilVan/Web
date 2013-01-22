@@ -33,9 +33,10 @@ class Postulation < ActiveRecord::Base
    end
 
    # Format
-   validates_format_of :name, with: /\A#{Account::NAME}\Z/
-   validates_length_of :email, in: 3..100
-   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+   validates_format_of :name, with: /\A#{Account::NAME}\Z/, allow_nil: true
+   validates_length_of :email, in: 5..100, allow_nil: true
+   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+      allow_nil: true
 
    # Password
    validates_presence_of     :password,              if: :new_password?
@@ -78,6 +79,7 @@ class Postulation < ActiveRecord::Base
    # * Callbacks and scope
    # ==========================================================================
    scope :by_date, order('created_at DESC')
+   scope :awaiting, where('`postulations`.`status` != 2')
 
    # ==========================================================================
    # * Methods

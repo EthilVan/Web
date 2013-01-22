@@ -32,13 +32,14 @@ class Account < ActiveRecord::Base
 
    # Uniqueness taking 'Postulation' in account
    validate do |record|
-      exist = Postulation.where(name: record.name).size > 0
+      awaiting_postulations = Postulation.awaiting
+      exist = awaiting_postulations.where(name: record.name).size > 0
       record.errors[:name] = 'Name already taken' if exist
 
-      exist = Postulation.where(email: record.email).size > 0
+      exist = awaiting_postulations.where(email: record.email).size > 0
       record.errors[:email] = 'Email already taken' if exist
 
-      exist = Postulation.where(minecraft_name: record.minecraft_name).size > 0
+      exist = awaiting_postulations.where(minecraft_name: record.minecraft_name).size > 0
       record.errors[:minecraft_name] = 'Minecraft name already taken' if exist
    end
 
