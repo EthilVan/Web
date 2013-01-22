@@ -1,0 +1,10 @@
+fr:
+   activerecord:
+      attributes:
+         news:
+            title:     "Titre"
+            contents:  "Contenu"
+            important: "Importante"
+            private:   "Privée"
+            banner:    "Bannière"
+            summary:   "Résumé"
