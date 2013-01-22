@@ -4,7 +4,7 @@ class Postulation < ActiveRecord::Base
    # * Relations
    # ==========================================================================
    belongs_to :account, inverse_of: :postulation
-   has_many :screens, :class_name => "PostulationScreen"
+   has_many   :screen,  class_name: 'PostulationScreen'
 
    # ==========================================================================
    # * Validations
@@ -16,21 +16,19 @@ class Postulation < ActiveRecord::Base
    validates_presence_of   :minecraft_name
 
    # Uniqueness
-   validates_uniqueness_of :name
-   validates_uniqueness_of :email
-   validates_uniqueness_of :minecraft_name
+   def self.validates_uniqueness_with_account_of(field_name)
+      validate do |record|
+         field = record[field_name]
+         exist = Postulation.where(field_name => field).size > 0
+         exist ||= Account.where(field_name => field).size > 0
 
-   # Uniqueness taking 'Account' in account
-   validate do |record|
-      exist = Account.where(name: record.name).size > 0
-      record.errors[:name] = 'Name already taken' if exist
-
-      exist = Account.where(email: record.email).size > 0
-      record.errors[:email] = 'Email already taken' if exist
-
-      exist = Account.where(minecraft_name: record.minecraft_name).size > 0
-      record.errors[:minecraft_name] = 'Minecraft name already taken' if exist
+         record.errors.add(field_name, :taken) if exist
+      end
    end
+
+   validates_uniqueness_with_account_of :name
+   validates_uniqueness_with_account_of :email
+   validates_uniqueness_with_account_of :minecraft_name
 
    # Format
    validates_format_of :name, with: /\A#{Account::NAME}\Z/, allow_nil: true

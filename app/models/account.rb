@@ -26,22 +26,20 @@ class Account < ActiveRecord::Base
 
    validates_presence_of   :minecraft_name
 
-   validates_uniqueness_of :name
-   validates_uniqueness_of :email
-   validates_uniqueness_of :minecraft_name
+   # Uniqueness
+   def self.validates_uniqueness_with_postulation_of(field_name)
+      validate do |record|
+         field = record[field_name]
+         exist = Account.where(field_name => field).size > 0
+         exist ||= Postulation.awaiting.where(field_name => field).size > 0
 
-   # Uniqueness taking 'Postulation' in account
-   validate do |record|
-      awaiting_postulations = Postulation.awaiting
-      exist = awaiting_postulations.where(name: record.name).size > 0
-      record.errors[:name] = 'Name already taken' if exist
-
-      exist = awaiting_postulations.where(email: record.email).size > 0
-      record.errors[:email] = 'Email already taken' if exist
-
-      exist = awaiting_postulations.where(minecraft_name: record.minecraft_name).size > 0
-      record.errors[:minecraft_name] = 'Minecraft name already taken' if exist
+         record.errors.add(field_name, :taken) if exist
+      end
    end
+
+   validates_uniqueness_with_postulation_of :name
+   validates_uniqueness_with_postulation_of :email
+   validates_uniqueness_with_postulation_of :minecraft_name
 
    validates_presence_of     :password,              if: :new_password?
    validates_presence_of     :password_confirmation, if: :new_password?
