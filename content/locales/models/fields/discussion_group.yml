@@ -1,0 +1,8 @@
+fr:
+   activerecord:
+      attributes:
+         general_discussion_group:
+            name:         'Nom'
+            description:  'Description'
+            priority:     'Priorité'
+            url:          'Url'
