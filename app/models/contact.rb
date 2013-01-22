@@ -7,19 +7,18 @@ class ContactEmail
    include ActiveModel::Validations
 
    validates_presence_of :name
+   validates_format_of   :name,
+         with: /\A[a-z][a-z0-9_ ]+\Z/i,
+         allow_nil: true,
+         if: Proc.new { |m| m.name.present? }
    validates_presence_of :email
+   validates_format_of   :email,
+         with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+         allow_nil: true,
+         if: Proc.new { |m| m.email.present? }
    validates_presence_of :subject
    validates_presence_of :message
-
-   validates_format_of :name,
-         with: /\A[a-z][a-z0-9_ ]+\Z/i,
-         allow_nil: true
-
-   validates_format_of :email,
-         with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
-         allow_nil: true
-
-   validate :validate_category
+   validates_inclusion_of :category, in: CATEGORIES
 
    def initialize(attributes = {})
       @attributes = attributes
@@ -67,12 +66,6 @@ class ContactEmail
 
    def read_attribute_for_validation(key)
       @attributes[key.to_s]
-   end
-
-   def validate_category
-      unless CATEGORIES.include? @attributes['category']
-         errors.add(:category, "Categorie invalide.")
-      end
    end
 
    def sender

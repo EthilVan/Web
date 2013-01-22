@@ -17,7 +17,7 @@ module EthilVan::App::Views
          end
 
          def errors
-            @contact_email.errors.map { |field, message| message }
+            @contact_email.errors.to_a
          end
 
          def name

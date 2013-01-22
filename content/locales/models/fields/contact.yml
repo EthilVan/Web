@@ -1,0 +1,9 @@
+fr:
+   activemodel:
+      attributes:
+         contact_email:
+            name:       "Nom"
+            email:      "Email"
+            category:   "Catégorie"
+            subject:    "Sujet"
+            message:    "Message"
