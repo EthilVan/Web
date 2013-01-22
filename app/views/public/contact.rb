@@ -8,7 +8,7 @@ module EthilVan::App::Views
 
          include EthilVan::Mustache::Form
 
-         def initialize(contact_email = EthilVan::ContactEmail.new)
+         def initialize(contact_email = ContactEmail.new)
             @contact_email = contact_email
          end
 
