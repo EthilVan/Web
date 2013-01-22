@@ -1,5 +1,8 @@
 class Discussion < ActiveRecord::Base
 
+   # ==========================================================================
+   # * Relations
+   # ==========================================================================
    has_many :messages
    belongs_to :group,
          polymorphic: true,
@@ -7,6 +10,14 @@ class Discussion < ActiveRecord::Base
          foreign_type: 'discussion_group_type'
    has_many :discussion_subscriptions
 
+   # ==========================================================================
+   # * Validations
+   # ==========================================================================
+   validates_presence_of :name
+
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
    def read_by?(account)
       discussion_view = DiscussionView.for(account, self)
       !discussion_view.nil? and discussion_view.date > updated_at
