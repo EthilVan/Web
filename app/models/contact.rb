@@ -9,13 +9,11 @@ class ContactEmail
    validates_presence_of :name
    validates_format_of   :name,
          with: /\A[a-z][a-z0-9_ ]+\Z/i,
-         allow_nil: true,
-         if: Proc.new { |m| m.name.present? }
+         allow_nil: true
    validates_presence_of :email
    validates_format_of   :email,
          with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
-         allow_nil: true,
-         if: Proc.new { |m| m.email.present? }
+         allow_nil: true
    validates_presence_of :subject
    validates_presence_of :message
    validates_inclusion_of :category, in: CATEGORIES
