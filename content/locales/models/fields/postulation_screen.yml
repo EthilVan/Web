@@ -1,0 +1,6 @@
+fr:
+   activerecord:
+      attributes:
+         postulation_screen:
+            url:          "Url"
+            description:  "Description"
