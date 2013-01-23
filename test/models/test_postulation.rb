@@ -108,10 +108,22 @@ class PostulationTest < MiniTest::Spec
       @new_user.must_be_valid_with minecraft_name: 'new_minecraft_user'
    end
 
-   def test_password_validation
+   def test_password_validation_for_new_record
+      @postulation.wont_be_valid_with password: nil
+      @postulation.wont_be_valid_with password: ''
+      @postulation.wont_be_valid_with password_confirmation: nil
+      @postulation.wont_be_valid_with password_confirmation: ''
+
       @postulation.password_confirmation = 'test2'
       @postulation.wont_be_valid_with password: 'test'
       @postulation.must_be_valid_with password: 'test2'
+   end
+
+   def test_password_validation_for_existing_record
+      @new_user = Postulation.where(name: 'new_user').first
+
+      @new_user.must_be_valid_with password: nil
+      @new_user.must_be_valid_with password_confirmation: nil
    end
 
    def test_birthdate_formatted_validation
@@ -166,11 +178,20 @@ class PostulationTest < MiniTest::Spec
       @postulation.wont_be_valid_with availability_schedule: 'a'
    end
 
-   def test_rules_acceptance_validation
+   def test_rules_acceptance_validation_for_new_record
       @postulation.must_be_valid_with rules_acceptance: '1'
       @postulation.wont_be_valid_with rules_acceptance: nil
       @postulation.wont_be_valid_with rules_acceptance: ''
       @postulation.wont_be_valid_with rules_acceptance: '0'
+   end
+
+   def test_rules_acceptance_validation_for_existing_record
+      @new_user = Postulation.where(name: 'new_user').first
+
+      @new_user.must_be_valid_with rules_acceptance: '1'
+      @new_user.must_be_valid_with rules_acceptance: nil
+      @new_user.must_be_valid_with rules_acceptance: ''
+      @new_user.must_be_valid_with rules_acceptance: '0'
    end
 
    def test_old_server_validation_without_multi_minecraft
