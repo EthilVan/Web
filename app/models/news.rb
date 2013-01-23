@@ -16,7 +16,7 @@ class News < ActiveRecord::Base
    validates_presence_of :summary
    validates_presence_of :contents
    validates_format_of   :banner, with: /^#{URI::regexp(%w(http https))}$/,
-         allow_nil: true
+         allow_blank: true
 
    # ==========================================================================
    # * Callbacks and scope

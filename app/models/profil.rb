@@ -33,11 +33,11 @@ class Profil < ActiveRecord::Base
 
    validates_format_of :website,
          with: /^#{URI::regexp(%w(http https))}$/,
-         allow_nil: true
+         allow_blank: true
 
    validates_format_of :custom_cadre_url,
          with: /^#{URI::regexp(%w(http https))}$/,
-         allow_nil: true
+         allow_blank: true
 
    # ==========================================================================
    # * Callbacks and scope

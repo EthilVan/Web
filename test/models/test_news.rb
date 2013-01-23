@@ -27,7 +27,7 @@ class NewsTest < MiniTest::Spec
    def test_banner_validation
       @news.must_be_valid_with banner: 'http://google.com'
       @news.must_be_valid_with banner: nil
-      @news.wont_be_valid_with banner: ''
+      @news.must_be_valid_with banner: ''
       @news.wont_be_valid_with banner: 'Notanurl'
       @news.wont_be_valid_with banner: 'git://notavaliduri'
    end

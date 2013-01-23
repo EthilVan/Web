@@ -47,7 +47,7 @@ class ProfilTest < MiniTest::Spec
    def test_website_validation
       @profil.must_be_valid_with website: 'http://google.com'
       @profil.must_be_valid_with website: nil
-      @profil.wont_be_valid_with website: ''
+      @profil.must_be_valid_with website: ''
       @profil.wont_be_valid_with website: 'notanurl'
       @profil.wont_be_valid_with website: 'git://notavalidurl.com'
    end
@@ -82,7 +82,7 @@ class ProfilTest < MiniTest::Spec
    def test_custom_cadre_url
       @profil.must_be_valid_with custom_cadre_url: 'http://google.com'
       @profil.must_be_valid_with custom_cadre_url: nil
-      @profil.wont_be_valid_with custom_cadre_url: ''
+      @profil.must_be_valid_with custom_cadre_url: ''
       @profil.wont_be_valid_with custom_cadre_url: 'notanurl'
       @profil.wont_be_valid_with custom_cadre_url: 'git://notavalidurl.com'
    end

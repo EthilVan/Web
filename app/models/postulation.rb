@@ -31,10 +31,10 @@ class Postulation < ActiveRecord::Base
    validates_uniqueness_with_account_of :minecraft_name
 
    # Format
-   validates_format_of :name, with: /\A#{Account::NAME}\Z/, allow_nil: true
-   validates_length_of :email, in: 5..100, allow_nil: true
+   validates_format_of :name, with: /\A#{Account::NAME}\Z/, allow_blank: true
+   validates_length_of :email, in: 5..100, allow_blank: true
    validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
-      allow_nil: true
+      allow_blank: true
 
    # Password
    validates_presence_of     :password,              if: :new_password?
