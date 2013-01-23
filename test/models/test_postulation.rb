@@ -6,11 +6,33 @@ class PostulationTest < MiniTest::Spec
       @postulation = Postulation.new
    end
 
-   def test_name_validation
+   def test_name_validation_when_awaiting
+      @postulation.status = 0
+
       @postulation.must_be_valid_with name: 'valid_name'
       @postulation.wont_be_valid_with name: nil
       @postulation.wont_be_valid_with name: '2djfsl'
       @postulation.wont_be_valid_with name: 'user'
+      @postulation.wont_be_valid_with name: 'a'
+   end
+
+   def test_name_validation_when_refused
+      @postulation.status = 1
+
+      @postulation.must_be_valid_with name: 'valid_name'
+      @postulation.must_be_valid_with name: 'user'
+      @postulation.wont_be_valid_with name: nil
+      @postulation.wont_be_valid_with name: '2djfsl'
+      @postulation.wont_be_valid_with name: 'a'
+   end
+
+   def test_name_validation_when_validated
+      @postulation.status = 2
+
+      @postulation.must_be_valid_with name: 'valid_name'
+      @postulation.must_be_valid_with name: 'user'
+      @postulation.wont_be_valid_with name: nil
+      @postulation.wont_be_valid_with name: '2djfsl'
       @postulation.wont_be_valid_with name: 'a'
    end
 
@@ -19,7 +41,9 @@ class PostulationTest < MiniTest::Spec
       @new_user.must_be_valid_with name: 'new_user'
    end
 
-   def test_email_validation
+   def test_email_validation_when_awaiting
+      @postulation.status = 0
+
       @postulation.must_be_valid_with email: 'email@example.com'
       @postulation.wont_be_valid_with email: nil
       @postulation.wont_be_valid_with email: ''
@@ -27,16 +51,56 @@ class PostulationTest < MiniTest::Spec
       @postulation.wont_be_valid_with email: 'user@ethilvan.fr'
    end
 
+   def test_email_validation_when_refused
+      @postulation.status = 1
+
+      @postulation.must_be_valid_with email: 'email@example.com'
+      @postulation.must_be_valid_with email: 'user@ethilvan.fr'
+      @postulation.wont_be_valid_with email: nil
+      @postulation.wont_be_valid_with email: ''
+      @postulation.wont_be_valid_with email: 'notanemail'
+   end
+
+   def test_email_validation_when_validated
+      @postulation.status = 2
+
+      @postulation.must_be_valid_with email: 'email@example.com'
+      @postulation.must_be_valid_with email: 'user@ethilvan.fr'
+      @postulation.wont_be_valid_with email: nil
+      @postulation.wont_be_valid_with email: ''
+      @postulation.wont_be_valid_with email: 'notanemail'
+   end
+
    def test_email_validation_with_self
       @new_user = Postulation.where(name: 'new_user').first
       @new_user.must_be_valid_with email: 'new_user@ethilvan.fr'
    end
 
-   def test_minecraft_name_validation
+   def test_minecraft_name_validation_when_awaiting
+      @postulation.status = 0
+
       @postulation.must_be_valid_with minecraft_name: 'Test'
       @postulation.wont_be_valid_with minecraft_name: nil
       @postulation.wont_be_valid_with minecraft_name: ''
       @postulation.wont_be_valid_with minecraft_name: 'minecraft_user'
+   end
+
+   def test_minecraft_name_validation_when_refused
+      @postulation.status = 1
+
+      @postulation.must_be_valid_with minecraft_name: 'Test'
+      @postulation.must_be_valid_with minecraft_name: 'minecraft_user'
+      @postulation.wont_be_valid_with minecraft_name: nil
+      @postulation.wont_be_valid_with minecraft_name: ''
+   end
+
+   def test_minecraft_name_validation_when_validated
+      @postulation.status = 2
+
+      @postulation.must_be_valid_with minecraft_name: 'Test'
+      @postulation.must_be_valid_with minecraft_name: 'minecraft_user'
+      @postulation.wont_be_valid_with minecraft_name: nil
+      @postulation.wont_be_valid_with minecraft_name: ''
    end
 
    def test_minecraft_name_validation_with_self
