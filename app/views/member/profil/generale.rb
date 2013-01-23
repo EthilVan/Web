@@ -34,18 +34,19 @@ module EthilVan::App::Views
          end
 
          def since
-            @profil.created_at.interval.format_since.capitalize
+            time_ago_in_words(@profil.created_at).capitalize
          end
 
          def last_visit
             return "Jamais" if @account.last_visit.nil?
             return "Actuellement Connecté" if @account.online?
-            "Il y a " + @account.last_visit.interval.format_ago
+            "Il y a " + time_ago_in_words(@account.last_visit)
          end
 
          def last_minecraft_visit
             return "Jamais" if @minecraft_stats.last_visit.nil?
-            "Il y a " + @minecraft_stats.last_visit.interval.format_ago
+            time_ago = @minecraft_stats.last_visit
+            "Il y a " + time_ago_in_words(@minecraft_stats.last_visit)
          end
 
          def minecraft_since

@@ -25,7 +25,7 @@ class Postulation < ActiveRecord::Base
    # * Relations
    # ==========================================================================
    belongs_to :account, inverse_of: :postulation
-   has_many   :screen,  class_name: 'PostulationScreen'
+   has_many   :screens,  class_name: 'PostulationScreen'
 
    # ==========================================================================
    # * Validations
