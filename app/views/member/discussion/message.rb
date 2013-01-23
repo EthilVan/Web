@@ -72,11 +72,11 @@ module EthilVan::App::Views
          end
 
          def created
-            @message.created_at.strftime(EthilVan::Data::TIME_FORMAT)
+            I18n.l @message.created_at
          end
 
          def updated
-            @message.updated_at.strftime(EthilVan::Data::TIME_FORMAT)
+            I18n.l @message.updated_at
          end
       end
     end

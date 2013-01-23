@@ -11,8 +11,7 @@ module EthilVan::App::Views
          def map(data)
             data.map { |postulation| {
                name: postulation.name,
-               date: postulation.created_at.
-                     strftime(EthilVan::Data::DATE_FORMAT),
+               date: I18n.l(postulation.created_at.to_date),
                url:  "/gestion/postulation/#{postulation.name}"
             } }
          end

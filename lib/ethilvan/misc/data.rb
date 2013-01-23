@@ -4,9 +4,6 @@ module EthilVan
 
    module Data
 
-      DATE_FORMAT = '%d/%m/%Y'
-      TIME_FORMAT = '%d/%m/%Y à % %H:%M'
-
       Sexe = {
          "Non communiqué" => "",
          "Masculin"       => "masculin",

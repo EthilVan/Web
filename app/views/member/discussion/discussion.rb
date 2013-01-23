@@ -14,7 +14,7 @@ module EthilVan::App::Views
          end
 
          def date
-            @discussion.created_at.strftime(EthilVan::Data::TIME_FORMAT)
+            I18n.l @discussion.created_at
          end
 
          def author

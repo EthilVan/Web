@@ -16,7 +16,7 @@ module EthilVan::App::Views
             @tags.map { |tag| {
                contents: tag.contents,
                tagger: tag.tagger.name,
-               date: tag.created_at.strftime(EthilVan::Data::TIME_FORMAT)
+               date: I18n.l(tag.created_at)
             } }
          end
       end

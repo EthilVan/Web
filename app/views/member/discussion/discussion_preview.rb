@@ -26,7 +26,7 @@ module EthilVan::App::Views
          end
 
          def created
-            @discussion.created_at.strftime(EthilVan::Data::TIME_FORMAT)
+            I18n.l @discussion.created_at
          end
 
          def author
@@ -42,7 +42,7 @@ module EthilVan::App::Views
          end
 
          def last_message
-            @discussion.updated_at.strftime(EthilVan::Data::TIME_FORMAT)
+            I18n.l @discussion.updated_at
          end
 
          def last_author

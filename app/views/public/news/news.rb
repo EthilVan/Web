@@ -9,39 +9,39 @@ module EthilVan::App::Views
          end
 
          def url
-             urls.news @news
+            urls.news @news
          end
 
          def title
-             @news.title
+            @news.title
          end
 
          def banner_url
-             @news.banner
+            @news.banner
          end
 
          def author
-             @news.account.name
+            @news.account.name
          end
 
          def private
-             @news.private
+            @news.private
          end
 
          def important_class
-             @news.important ? 'important' : ''
+            @news.important ? 'important' : ''
          end
 
          def summary
-             @news.parsed_summary
+            @news.parsed_summary
          end
 
          def contents
-             @news.parsed_contents
+            @news.parsed_contents
          end
 
          def created
-             @news.created_at.strftime(EthilVan::Data::TIME_FORMAT)
+            I18n.l @news.created_at
          end
       end
    end

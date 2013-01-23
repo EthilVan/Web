@@ -117,7 +117,7 @@ class Postulation < ActiveRecord::Base
       if @birthdate_formatted.present? or birthdate.nil?
          @birthdate_formatted
       else
-         birthdate.strftime EthilVan::Data::DATE_FORMAT
+         birthdate.strftime '%d/%m/%Y'
       end
    end
 
