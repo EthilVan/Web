@@ -1,5 +1,7 @@
 class Postulation < ActiveRecord::Base
 
+   include BCrypt
+
    # ==========================================================================
    # * Relations
    # ==========================================================================
@@ -75,11 +77,12 @@ class Postulation < ActiveRecord::Base
    validates_inclusion_of :mumble, in: EthilVan::Data::Mumble, if: :microphone
 
    # Rules acceptance
-   validates_acceptance_of :rules_acceptance, allow_nil: false
+   validates_acceptance_of :rules_acceptance, allow_nil: false, on: :create
 
    # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
+   before_save :encrypt_password, if: :new_password?
    scope :by_date, order('created_at DESC')
    scope :awaiting, where('`postulations`.`status` != 2')
 
@@ -103,6 +106,10 @@ private
 
    def new_password?
       crypted_password.blank? || password.present?
+   end
+
+   def encrypt_password
+      self.crypted_password = Password.create(password)
    end
 
    def mumble_other?
