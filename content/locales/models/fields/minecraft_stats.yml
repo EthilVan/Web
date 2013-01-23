@@ -1,0 +1,7 @@
+fr:
+   activerecord:
+      attributes:
+         minecraft_stats:
+            last_visit: "Dernière visite"
+            deaths:     "Morts"
+            max_level:  "Niveau maximum"
