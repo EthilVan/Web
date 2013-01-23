@@ -14,6 +14,11 @@ class PostulationTest < MiniTest::Spec
       @postulation.wont_be_valid_with name: 'a'
    end
 
+   def test_name_validation_with_self
+      @new_user = Postulation.where(name: 'new_user').first
+      @new_user.must_be_valid_with name: 'new_user'
+   end
+
    def test_email_validation
       @postulation.must_be_valid_with email: 'email@example.com'
       @postulation.wont_be_valid_with email: nil
@@ -22,11 +27,21 @@ class PostulationTest < MiniTest::Spec
       @postulation.wont_be_valid_with email: 'user@ethilvan.fr'
    end
 
+   def test_email_validation_with_self
+      @new_user = Postulation.where(name: 'new_user').first
+      @new_user.must_be_valid_with email: 'new_user@ethilvan.fr'
+   end
+
    def test_minecraft_name_validation
       @postulation.must_be_valid_with minecraft_name: 'Test'
       @postulation.wont_be_valid_with minecraft_name: nil
       @postulation.wont_be_valid_with minecraft_name: ''
       @postulation.wont_be_valid_with minecraft_name: 'minecraft_user'
+   end
+
+   def test_minecraft_name_validation_with_self
+      @new_user = Postulation.where(name: 'new_user').first
+      @new_user.must_be_valid_with minecraft_name: 'new_minecraft_user'
    end
 
    def test_password_validation

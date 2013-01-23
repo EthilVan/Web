@@ -15,6 +15,11 @@ class AccountTest < MiniTest::Spec
       @account.wont_be_valid_with name: 'new_user'
    end
 
+   def test_name_validation_with_self
+      @user = Account.where(name: 'user').first
+      @user.must_be_valid_with name: 'user'
+   end
+
    def test_email_validation
       @account.must_be_valid_with email: 'address@example.com'
       @account.wont_be_valid_with email: nil
@@ -24,12 +29,22 @@ class AccountTest < MiniTest::Spec
       @account.wont_be_valid_with email: 'new_user@ethilvan.fr'
    end
 
+   def test_email_validation_with_self
+      @user = Account.where(name: 'user').first
+      @user.must_be_valid_with email: 'user@ethilvan.fr'
+   end
+
    def test_minecraft_name_validation
       @account.must_be_valid_with minecraft_name: 'Test'
       @account.wont_be_valid_with minecraft_name: nil
       @account.wont_be_valid_with minecraft_name: ''
       @account.wont_be_valid_with minecraft_name: 'minecraft_user'
       @account.wont_be_valid_with minecraft_name: 'new_minecraft_user'
+   end
+
+   def test_minecraft_name_validation_with_self
+      @user = Account.where(name: 'user').first
+      @user.must_be_valid_with minecraft_name: 'minecraft_user'
    end
 
    def test_password_is_valid_when_absent_and_when_account_has_already_a_password
