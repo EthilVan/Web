@@ -30,7 +30,9 @@ class Account < ActiveRecord::Base
    def self.validates_uniqueness_with_postulation_of(field_name)
       validate do |record|
          field = record[field_name]
-         exist = Account.where(field_name => field).size > 0
+         query = Account.where(field_name => field)
+         query = query.where('id != ?', record.id) if record.persisted?
+         exist = query.size > 0
          exist ||= Postulation.awaiting.where(field_name => field).size > 0
 
          record.errors.add(field_name, :taken) if exist
