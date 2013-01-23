@@ -24,10 +24,20 @@ class Profil < ActiveRecord::Base
    validates_inclusion_of :sexe, in: EthilVan::Data::Sexe.map(&:second)
    validates_with BirthDateValidator
 
+   validates_length_of :minecraft_since, minimum: 20
+
    regexp = /\A[A-Za-z][\w\-_]{1,}\Z/
-   validates_format_of :youtube,  :with => regexp, :allow_blank => true
-   validates_format_of :twitter,  :with => regexp, :allow_blank => true
-   validates_format_of :steam_id, :with => regexp, :allow_blank => true
+   validates_format_of :youtube,  with: regexp, allow_blank: true
+   validates_format_of :twitter,  with: regexp, allow_blank: true
+   validates_format_of :steam_id, with: regexp, allow_blank: true
+
+   validates_format_of :website,
+         with: /^#{URI::regexp(%w(http https))}$/,
+         allow_nil: true
+
+   validates_format_of :custom_cadre_url,
+         with: /^#{URI::regexp(%w(http https))}$/,
+         allow_nil: true
 
    # ==========================================================================
    # * Callbacks and scope

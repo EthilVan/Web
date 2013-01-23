@@ -7,20 +7,19 @@ class ProfilTest < MiniTest::Spec
    end
 
    def test_birthdate_formatted_validation
-      @profil.wont_be_valid_with birthdate_formatted: '1999'
-      @profil.wont_be_valid_with birthdate_formatted: '30/02/1975'
-
       @profil.must_be_valid_with birthdate_formatted: ''
       @profil.must_be_valid_with birthdate_formatted: nil
       @profil.must_be_valid_with birthdate_formatted: '31/12/1986'
+      @profil.wont_be_valid_with birthdate_formatted: '1999'
+      @profil.wont_be_valid_with birthdate_formatted: '30/02/1975'
    end
 
    def test_sexe_validation
-      @profil.wont_be_valid_with sexe: nil
-      @profil.wont_be_valid_with sexe: 'hermaphrodite'
       @profil.must_be_valid_with sexe: ''
       @profil.must_be_valid_with sexe: 'masculin'
       @profil.must_be_valid_with sexe: 'feminin'
+      @profil.wont_be_valid_with sexe: nil
+      @profil.wont_be_valid_with sexe: 'hermaphrodite'
    end
 
 =begin
@@ -38,6 +37,21 @@ class ProfilTest < MiniTest::Spec
       @profil.must_be_valid_with favorite_item: Item::Names.size / 2
    end
 =end
+   def test_minecraft_since_validation
+      text20 = '01234' * 4
+      @profil.must_be_valid_with minecraft_since: text20
+      @profil.wont_be_valid_with minecraft_since: nil
+      @profil.wont_be_valid_with minecraft_since: text20[0..-2]
+   end
+
+   def test_website_validation
+      @profil.must_be_valid_with website: 'http://google.com'
+      @profil.must_be_valid_with website: nil
+      @profil.wont_be_valid_with website: ''
+      @profil.wont_be_valid_with website: 'notanurl'
+      @profil.wont_be_valid_with website: 'git://notavalidurl.com'
+   end
+
    def test_youtube_validation
       @profil.must_be_valid_with youtube: nil
       @profil.must_be_valid_with youtube: 'ac_count'
@@ -63,6 +77,14 @@ class ProfilTest < MiniTest::Spec
       @profil.wont_be_valid_with steam_id: '2invalid'
       @profil.wont_be_valid_with steam_id: '_invalid'
       @profil.wont_be_valid_with steam_id: '-invalid'
+   end
+
+   def test_custom_cadre_url
+      @profil.must_be_valid_with custom_cadre_url: 'http://google.com'
+      @profil.must_be_valid_with custom_cadre_url: nil
+      @profil.wont_be_valid_with custom_cadre_url: ''
+      @profil.wont_be_valid_with custom_cadre_url: 'notanurl'
+      @profil.wont_be_valid_with custom_cadre_url: 'git://notavalidurl.com'
    end
 
    def test_age
