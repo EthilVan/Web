@@ -5,6 +5,8 @@ class Message < ActiveRecord::Base
    PER_PAGE = 8
    paginates_per PER_PAGE
 
+   attr_accessible :contents
+
    # ==========================================================================
    # * Relations
    # ==========================================================================

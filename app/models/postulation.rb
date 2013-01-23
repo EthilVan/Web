@@ -2,6 +2,25 @@ class Postulation < ActiveRecord::Base
 
    include BCrypt
 
+   attr_accessible :name
+   attr_accessible :minecraft_name
+   attr_accessible :email
+   attr_accessible :password
+   attr_accessible :password_confirmation
+   attr_accessible :birthdate_formatted
+   attr_accessible :sexe
+   attr_accessible :minecraft_since
+   attr_accessible :multi_minecraft
+   attr_accessible :old_server
+   attr_accessible :old_server_reason
+   attr_accessible :ethilvan_discovered
+   attr_accessible :ethilvan_reason
+   attr_accessible :availability_schedule
+   attr_accessible :microphone
+   attr_accessible :mumble
+   attr_accessible :mumble_other
+   attr_accessible :free_text
+
    # ==========================================================================
    # * Relations
    # ==========================================================================

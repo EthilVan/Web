@@ -2,6 +2,24 @@ class Profil < ActiveRecord::Base
 
    include EthilVan::Markdown::ActiveRecord
 
+   attr_accessible :minecraft_since
+   attr_accessible :favorite_block
+   attr_accessible :favorite_item
+   attr_accessible :skill
+   attr_accessible :desc_rp
+   attr_accessible :birthdate_formatted
+   attr_accessible :sexe
+   attr_accessible :localisation
+   attr_accessible :website
+   attr_accessible :twitter
+   attr_accessible :youtube
+   attr_accessible :description
+   attr_accessible :avatar
+   attr_accessible :signature
+   attr_accessible :steam_id
+   attr_accessible :custom_cadre_url
+   attr_accessible :show_email
+
    # ==========================================================================
    # * Relations
    # ==========================================================================

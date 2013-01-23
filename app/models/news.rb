@@ -4,6 +4,13 @@ class News < ActiveRecord::Base
 
    self.table_name = 'newses'
 
+   attr_accessible :title
+   attr_accessible :banner
+   attr_accessible :summary
+   attr_accessible :contents
+   attr_accessible :important
+   attr_accessible :private
+
    # ==========================================================================
    # * Relations
    # ==========================================================================

@@ -1,5 +1,10 @@
 class GeneralDiscussionGroup < ActiveRecord::Base
 
+   attr_accessible :name
+   attr_accessible :description
+   attr_accessible :priority
+   attr_accessible :url
+
    # ==========================================================================
    # * Relations
    # ==========================================================================
