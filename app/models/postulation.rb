@@ -22,7 +22,9 @@ class Postulation < ActiveRecord::Base
          query = Postulation.where(field_name => field)
          query = query.where('id != ?', record.id) if record.persisted?
          exist = query.size > 0
-         exist ||= Account.where(field_name => field).size > 0
+         if record.status == 0
+            exist ||= Account.where(field_name => field).size > 0
+         end
 
          record.errors.add(field_name, :taken) if exist
       end
