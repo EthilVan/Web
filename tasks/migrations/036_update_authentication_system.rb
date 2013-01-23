@@ -7,7 +7,7 @@ class UpdateAuthenticationSystem < ActiveRecord::Migration
 
       Account.all.each do |account|
          account.generate_auth_token
-         account.save
+         account.save validate: false
       end
    end
 
