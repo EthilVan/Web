@@ -17,7 +17,7 @@ class Profil < ActiveRecord::Base
          if record.birthdate_formatted =~ /^(\d{2})\/(\d{2})\/(\d{4})$/
             return if Date.valid_civil?($3.to_i, $2.to_i, $1.to_i)
          end
-         record.errors[:birthdate_formatted] = 'Date de naissance invalide.'
+         record.errors.add(:birthdate_formatted, :invalid)
       end
    end
 
