@@ -6,6 +6,7 @@ class AddPostulationIdToAccount < ActiveRecord::Migration
       Account.reset_column_information
       Account.all.each do |account|
          postulation = Postulation.where(name: account.name).first
+         next if postulation.nil?
          account.postulation_id = postulation.id
          account.save validate: false
       end
