@@ -275,4 +275,18 @@ class PostulationTest < MiniTest::Spec
       @postulation.wont_be_valid_with mumble_other: nil
       @postulation.wont_be_valid_with mumble_other: 'a'
    end
+
+   def test_screens_validations
+      s1, s2, s3 = FactoryGirl.build_list(:postulation_screen_valid, 3)
+      s4 = PostulationScreen.new(url: 'notanurl', description: 'invalid')
+      @postulation.must_be_valid_with screens: [s1, s2, s3]
+      # None
+      @postulation.wont_be_valid_with screens: []
+      # Only Two
+      @postulation.wont_be_valid_with screens: [s1, s2]
+      # Only two different
+      @postulation.wont_be_valid_with screens: [s1, s1, s2]
+      # One invalid
+      @postulation.wont_be_valid_with screens: [s1, s2, s3, s4]
+   end
 end

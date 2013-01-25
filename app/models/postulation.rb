@@ -92,6 +92,21 @@ class Postulation < ActiveRecord::Base
    validates_length_of :old_server_reason, minimum: 100, if: :multi_minecraft
    validates_length_of :mumble_other,      minimum:  20, if: :mumble_other?
 
+   # Screens
+   class ScreensValidator < ActiveModel::Validator
+
+      def validate(record)
+         unless record.screens.all? &:valid?
+            record.errors.add(:screens, :invalid)
+            return
+         end
+         if record.screens.map(&:url).uniq.size < 3
+            record.errors.add(:screens, :too_short)
+         end
+      end
+   end
+   validates_with ScreensValidator
+
    # Mumble
    validates_inclusion_of :mumble, in: EthilVan::Data::Mumble, if: :microphone
 

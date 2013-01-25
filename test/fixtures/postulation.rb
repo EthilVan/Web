@@ -41,6 +41,8 @@ FactoryGirl.define do
          marrier avec lui et qu'il me fasse des enfants'
       END
 
+      screens FactoryGirl.build_list(:postulation_screen_valid, 3)
+
       availability_schedule <<-END
          Je suis disponible tous les jours le matin le midi et l'apres midi, sauf le dimanche
          matin parce que le dimanche matin je vais a la messe, et le soir parce que je
