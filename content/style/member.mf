@@ -1,6 +1,7 @@
 bootstrap/bootstrap.less
 layout/header.less
 layout/column.less
+layout/back-top.less
 layout/page.less
 layout/form.less
 membre/discussion/discussions.less
