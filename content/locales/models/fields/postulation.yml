@@ -15,9 +15,17 @@ fr:
             old_server_reason:      "Raison pour l'avoir quitté"
             ethilvan_discovered:    "Découverte d'Ethil Van"
             ethilvan_reason:        "Pourquoi Ethil Van"
+            screens:                "Screenshots"
             availability_schedule:  "Disponibilités"
             microphone:             "Micro"
             mumble:                 "TeamSpeak"
             mumble_other:           "TeamSpeak - Autre Raison"
             free_text:              "Champs libre"
             rules_acceptance:       "Réglement"
+      errors:
+         models:
+            postulation:
+               attributes:
+                  screens:
+                     invalid: "contient des screenshots invalides"
+                     too_short: "ne contient pas trois screenshots"
