@@ -21,8 +21,8 @@ class Discussion < ActiveRecord::Base
    # * Methods
    # ==========================================================================
    def read_by?(account)
-      discussion_view = DiscussionView.for(account, self)
-      !discussion_view.nil? and discussion_view.date > updated_at
+      date = DiscussionView.date_for(account, self)
+      !date.nil? and date > updated_at
    end
 
    def page(number)
