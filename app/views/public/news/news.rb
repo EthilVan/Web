@@ -24,8 +24,16 @@ module EthilVan::App::Views
             @news.account.name
          end
 
-         def private
+         def private?
             @news.private
+         end
+
+         def logged_in?
+            @logged_in ||= @app.logged_in?
+         end
+
+         def show?
+            !private? or logged_in?
          end
 
          def important_class

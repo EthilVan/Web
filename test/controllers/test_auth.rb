@@ -28,14 +28,21 @@ class AuthTest < MiniTest::Spec
 
    def test_news_index_does_not_display_private_news_when_not_logged_in
       get '/news'
-      response.body.must_include "News"
-      response.body.wont_include "Private News"
+      response.body.must_include parsed_summary :public
+      response.body.must_include 'Private News'
+      response.body.wont_include parsed_summary :private
    end
 
    def test_news_index_do_display_private_news_when_logged_in
       login 'user'
       get '/news'
-      response.body.must_include "News"
-      response.body.must_include "Private News"
+      response.body.must_include parsed_summary :public
+      response.body.must_include parsed_summary :private
+   end
+
+private
+
+   def parsed_summary(private)
+      News.where(private: private == :private).first.parsed_summary
    end
 end

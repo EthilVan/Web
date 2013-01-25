@@ -13,6 +13,9 @@ CONTENTS
 
    factory :private_news, parent: :news do
       title 'Private News'
+      summary <<-CONTENTS
+Here's come an awesome private news for super VIP only !!
+CONTENTS
       private true
    end
 end
