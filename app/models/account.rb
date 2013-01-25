@@ -34,8 +34,8 @@ class Account < ActiveRecord::Base
          field = record[field_name]
          query = Account.where(field_name => field)
          query = query.where('id != ?', record.id) if record.persisted?
-         exist = query.size > 0
-         exist ||= Postulation.awaiting.where(field_name => field).size > 0
+         exist = query.exists?
+         exist ||= Postulation.awaiting.where(field_name => field).exists?
 
          record.errors.add(field_name, :taken) if exist
       end
