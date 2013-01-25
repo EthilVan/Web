@@ -20,7 +20,7 @@ module EthilVan
 
          def linkify_mention(text)
             text.gsub(/@([A-Za-z]\w+)/) do |mention|
-               break(mention) unless Account.exists? name: $1
+               next(mention) unless Account.exists? name: $1
                <<-END
 <a class=\"membre_mention\" href=\"/membre/#{mention}\">#{mention}</a>
                END
@@ -31,4 +31,5 @@ module EthilVan
 end
 
 require 'ethilvan/markdown/redcarpet'
+require 'ethilvan/markdown/oembed'
 require 'ethilvan/markdown/active_record'
