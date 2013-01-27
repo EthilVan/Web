@@ -11,7 +11,7 @@ module EthilVan::Markdown::Helpers
          res = OEmbed::Providers.get(link)
          res.html
       rescue
-         img = "<img href=\"#{link}\""
+         img = "<img src=\"#{link}\""
          img << " alt=\"#{alt}\"" if alt
          img << " title=\"#{title}\"" if title
          img << "/>"

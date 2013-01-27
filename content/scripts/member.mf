@@ -5,6 +5,8 @@ bootstrap/bootstrap-tab.js
 bootstrap/bootstrap-dropdown.js
 bootstrap/bootstrap-collapse.js
 bootstrap/bootstrap-carousel.js
+lib/jquery.a-tools.js
+lib/mdeditor.js
 app/preload-images.js
 app/member-menu.js
 app/back-top.js

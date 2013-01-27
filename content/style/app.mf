@@ -4,6 +4,7 @@ layout/column.less
 layout/back-top.less
 layout/page.less
 layout/form.less
+layout/mdeditor.less
 public/login/login.less
 public/presentation/equipe.less
 public/news/news.less
