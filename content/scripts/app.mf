@@ -6,10 +6,10 @@ bootstrap/bootstrap-dropdown.js
 bootstrap/bootstrap-collapse.js
 bootstrap/bootstrap-carousel.js
 lib/epiceditor.js
-app/preload-images.ts
-app/public-menu.ts
+app/preload-images.js
+app/public-menu.js
 app/back-top.js
-app/tab.ts
-app/select.ts
-app/epiceditor.ts
+app/tab.js
+app/select.js
+app/epiceditor.js
 app/news.js
