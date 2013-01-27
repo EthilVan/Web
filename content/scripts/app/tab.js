@@ -1,6 +1,6 @@
 /// <reference path="../definitions/bootstrap.d.ts" />
 
-function tabNameFor(url): String {
+function tabNameFor(url) {
    var match = (/.+\/(.+?)$/g).exec(url);
    if (match == null) {
       return '';
@@ -9,8 +9,8 @@ function tabNameFor(url): String {
    }
 }
 
-function displayTab(tabName: String) {
-   var realTabName: String = tabName;
+function displayTab(tabName) {
+   var realTabName = tabName;
    if (realTabName == null || realTabName == '') {
       realTabName = $('.tab-pane-default').attr('id');
    }

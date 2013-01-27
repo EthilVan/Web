@@ -2,14 +2,14 @@
 
 this.cache = [];
 
-function preloadImages(...images: String[]) {
+function preloadImages(images) {
    for (var i = 0; i < images.length; i++) {
       var img = $('<img src="/images/layout/'+ images[i] + '" />');
       this.cache.push(img);
    }
 }
 
-preloadImages(
+preloadImages([
    'bouton-serveur.png',
    'bouton-serveur-2.png',
    'bouton-connexion.png',
@@ -46,4 +46,4 @@ preloadImages(
    'serveur/aide-2.png',
    'serveur/contact.png',
    'serveur/contact-2.png'
-);
+]);
