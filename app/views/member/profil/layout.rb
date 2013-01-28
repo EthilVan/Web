@@ -6,8 +6,9 @@ module EthilVan::App::Views
 
       class Layout < Page
 
-         def initialize(account)
+         def initialize(account, messages)
             @account = account
+            @messages = messages
          end
 
          def meta_page_title
@@ -23,6 +24,7 @@ module EthilVan::App::Views
                { id: 'generale',    name: 'Générale'    },
                { id: 'postulation', name: 'Postulation' },
                { id: 'tags',        name: 'Tags'        },
+               { id: 'messages',    name: 'Messages'    },
             ]
          end
 
@@ -40,6 +42,10 @@ module EthilVan::App::Views
 
          def tab_tags
             Tags.new(@account.profil_tags)
+         end
+
+         def tab_messages
+            Messages.new(@account, @messages)
          end
       end
    end

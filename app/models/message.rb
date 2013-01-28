@@ -2,6 +2,7 @@ class Message < ActiveRecord::Base
 
    include EthilVan::Markdown::ActiveRecord
 
+   DISCUSSION_GROUP_KEY = 'discussions.discussion_group_type'
    PER_PAGE = 8
    paginates_per PER_PAGE
 
@@ -28,6 +29,13 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    # * Methods
    # ==========================================================================
+   def self.for_account(account)
+      joins(:discussion)
+            .where(account_id: account.id)
+            .where(DISCUSSION_GROUP_KEY => Discussion::PUBLIC_GROUPS)
+            .order('created_at DESC')
+   end
+
    def page
       messages = Message.
             where(discussion_id: discussion.id).by_date.pluck(:id)
