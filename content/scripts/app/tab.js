@@ -14,7 +14,7 @@ function displayTab(tabName) {
    if (realTabName == null || realTabName == '') {
       realTabName = $('.tab-pane-default').attr('id');
    }
-   var tab = $('ul#nav .tab a[href="#' + realTabName + '"]');
+   var tab = $('ul#nav .tab a[data-target="#' + realTabName + '"]');
    tab.tab('show');
 }
 
@@ -22,7 +22,7 @@ $(function() {
    $('ul#nav .tab a').click(function(event) {
       event.preventDefault();
       $(this).tab('show');
-      var newTab = $(this).attr('href').substring(1);
+      var newTab = $(this).attr('data-target').substring(1);
       window.history.pushState({}, null, newTab);
    });
 
