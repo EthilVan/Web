@@ -166,8 +166,11 @@ MDEditor.Utils = {
          "    <a class=\"btn mde-image\" href=\"#mde-image\"><span></span></a>" +
          "    <a class=\"btn mde-list\" href=\"#mde-list\"><span></span></a>" +
          "    <a class=\"btn mde-title\" href=\"#mde-title\"><span></span></a>" +
+         "  </div>" +
+         "  <div class=\"btn-group\">" +
          "    <a class=\"btn mde-preview\" href=\"#mde-preview\"><span></span></a>" +
          "  </div>" +
+         "  <div class=\"clearfix\"></div>" +
          "</div>";
 
       return template;
