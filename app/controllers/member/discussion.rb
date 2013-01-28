@@ -32,8 +32,8 @@ class EthilVan::App < Sinatra::Base
    get %r{/membre/discussion/(\d{1,5})/reponse$} do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
-      view Views::Member::Discussion::Response.new
-      mustache 'membre/discussion/response'
+      view Views::Member::Discussion::MessageForm.new
+      mustache 'membre/discussion/message_form'
    end
 
    post %r{/membre/discussion/(\d{1,5})/reponse$} do |id|
@@ -48,8 +48,8 @@ class EthilVan::App < Sinatra::Base
       if message.save
          redirect urls.discussion(discussion, discussion.total_pages, message)
       else
-         view Views::Member::Discussion::Response.new(message)
-         mustache 'membre/discussion/response'
+         view Views::Member::Discussion::MessageForm.new(message)
+         mustache 'membre/discussion/message_form'
       end
    end
 end
