@@ -9,8 +9,13 @@ module EthilVan::App::Views
             @messages = messages
          end
 
-         def count
-            @messages.size
+         def messages
+            index = 0
+            @messages.map do |msg|
+               wrapped = Member::Discussion::Message.new(msg, index)
+               index += 1
+               wrapped
+            end
          end
       end
    end

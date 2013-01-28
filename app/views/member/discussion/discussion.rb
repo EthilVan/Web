@@ -29,7 +29,7 @@ module EthilVan::App::Views
                if message.editable_by? account
                   EditableMessage.new(message, index, stats_max)
                else
-                  Message.new(message, index, stats_max)
+                  DiscussionMessage.new(message, index, stats_max)
                end
             end
          end

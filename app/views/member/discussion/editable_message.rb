@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Member::Discussion
 
-      class EditableMessage < Message
+      class EditableMessage < DiscussionMessage
 
          def initialize(message, index, stats_max = nil)
             super(message, index, stats_max)

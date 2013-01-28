@@ -1,1 +1,9 @@
-<p>Messages : {{ count }}</p>
+{{# messages }}
+<div id="{{ anchor }}" class="message{{ even_class }}">
+   <div class="message-contents">
+      {{{ contents }}}
+   </div>
+   <a href="{{ view_url }}">Voir</a>
+</div>
+
+{{/ messages }}
