@@ -9,11 +9,11 @@ module EthilVan
       module Helpers
 
          def markdown(msg)
-            linkify_mention render_markdown msg
+            emojify linkify_mention render_markdown msg
          end
 
          def markdown_xhtml
-            linkify_mention render_xmarkdown msg
+            emojify linkify_mention render_xmarkdown msg
          end
 
       private
@@ -23,6 +23,15 @@ module EthilVan
                next(mention) unless Account.exists? name: $1
                <<-END
 <a class=\"membre_mention\" href=\"/membre/#{mention}\">#{mention}</a>
+               END
+            end
+         end
+
+         def emojify(text)
+            text.gsub(/:([a-z0-9\+\-_]+):/) do |match|
+               next(match) unless EthilVan::Emoji.names.include?($1)
+               <<-END
+<img class="emoji" alt=\"emoji-#{$1}" height="20" src="/images/emoji/#{$1}.png" />
                END
             end
          end
