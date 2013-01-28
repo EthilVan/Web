@@ -22,6 +22,7 @@ module EthilVan
          BetterErrors.application_root = EthilVan::ROOT
 
          require 'rack-mini-profiler'
+         Rack::MiniProfiler.config.position = 'right'
          use Rack::MiniProfiler
 
          require 'sinatra/reloader'
