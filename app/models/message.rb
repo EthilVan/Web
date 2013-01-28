@@ -36,6 +36,19 @@ class Message < ActiveRecord::Base
       index / PER_PAGE + 1 #/
    end
 
+   def following
+      messages = Message.where(discussion_id: discussion_id).
+            pluck(:id)
+      found = false
+      next_id = nil
+      messages.each do |msg_id|
+         next_id = msg_id unless msg_id == id
+         break if found
+         found = true if msg_id == id
+      end
+      Message.find_by_id next_id
+   end
+
    def editable_by?(account)
       account.role.inherit? EthilVan::Role::MODO or
             self.account == account

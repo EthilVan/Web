@@ -55,7 +55,11 @@ module EthilVan::Authorization
 
       def ensure_authorized(role)
          ensure_logged_in
-         halt 401 if !current_account.role.inherit?(role)
+         not_authorized if !current_account.role.inherit?(role)
+      end
+
+      def not_authorized
+         halt 401
       end
    end
 end

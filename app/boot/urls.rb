@@ -65,7 +65,7 @@ module EthilVan
       end
 
       def discussion(discussion, page = nil, message = nil)
-         super(discussion.id, page, message.id)
+         super(discussion.id, page, message.nil? ? nil : message.id)
       end
 
       def discussion_group(dg)
