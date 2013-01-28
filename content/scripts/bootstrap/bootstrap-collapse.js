@@ -107,6 +107,10 @@
       this.transitioning = 1
 
       this.$element[method]('in')
+      // EthilVan start
+      var trigger = $('[data-toggle=collapse][href="#' + this.$element.attr('id') + '"]');
+      trigger[method == 'removeClass' ? 'addClass' : 'removeClass']('collapsed');
+      // EthilVan end
 
       $.support.transition && this.$element.hasClass('collapse') ?
         this.$element.one($.support.transition.end, complete) :
@@ -150,7 +154,9 @@
           || e.preventDefault()
           || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
         , option = $(target).data('collapse') ? 'toggle' : $this.data()
-      $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      // EthilVan start
+      //$this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      // EthilVan end
       $(target).collapse(option)
     })
   })

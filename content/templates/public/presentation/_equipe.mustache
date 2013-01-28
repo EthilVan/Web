@@ -1,26 +1,25 @@
-<div id="roles">
-   {{#roles}}
-      {{#members?}}
-         <h4>{{role_name}}</h4>
-         <p>{{description}}</p>
-         <div class="accordion" id="role-{{role_name}}">
-               {{#members}}
-               <div class="accordion-group">
-                  <div class="membre accordion-heading">
-                     <a class="name accordion-toggle" data-toggle="collapse" data-parent="#role-{{role_name}}" href="#membre-{{name}}">
-                        <div class="icon"></div>
-                        {{name}}
-                     </a>
-                     <div class="description accordion-body collapse" id="membre-{{name}}">
-                        <div class="accordion-inner">
-                           <img class="avatar" src="{{{avatar}}}"/>
-                           <p>{{description}}</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               {{/members}}
+<div class="accordion" id="roles">
+   {{# roles }}
+   {{# members? }}
+   <h4>{{ role_name }}</h4>
+   <p>{{ description }}</p>
+   {{# members }}
+      <div class="accordion-group">
+         <div class="membre accordion-heading">
+            <a class="name accordion-toggle collapsed" data-toggle="collapse"
+                  data-parent="#roles" href="#membre-{{ name }}">
+               <div class="icon"></div>
+               {{ name }}
+            </a>
          </div>
-      {{/members?}}
-   {{/roles}}
+         <div id="membre-{{ name }}" class="accordion-body collapse">
+            <div class="accordion-inner">
+               <img class="avatar" src="{{{ avatar }}}"/>
+               <p>{{ description }}</p>
+            </div>
+         </div>
+      </div>
+   {{/ members }}
+   {{/ members? }}
+   {{/ roles }}
 </div>
