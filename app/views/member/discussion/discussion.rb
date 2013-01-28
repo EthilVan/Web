@@ -39,7 +39,7 @@ module EthilVan::App::Views
          end
 
          def response_link
-            "/membre/discussion/#{@discussion.id}/reponse"
+            "/membre/discussion/#{@discussion.id}/repondre"
          end
 
       private

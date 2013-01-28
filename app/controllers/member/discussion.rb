@@ -29,14 +29,14 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/discussion/discussion'
    end
 
-   get %r{/membre/discussion/(\d{1,5})/reponse$} do |id|
+   get %r{/membre/discussion/(\d{1,5})/repondre$} do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
       view Views::Member::Discussion::MessageForm.new
       mustache 'membre/discussion/message_form'
    end
 
-   post %r{/membre/discussion/(\d{1,5})/reponse$} do |id|
+   post %r{/membre/discussion/(\d{1,5})/repondre$} do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
 
