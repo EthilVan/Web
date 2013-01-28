@@ -31,9 +31,10 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    def self.for_account(account)
       joins(:discussion)
+            .includes(:discussion)
             .where(account_id: account.id)
             .where(DISCUSSION_GROUP_KEY => Discussion::PUBLIC_GROUPS)
-            .order('created_at DESC')
+            .order('messages.created_at DESC')
    end
 
    def page
