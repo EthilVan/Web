@@ -9,6 +9,10 @@ module EthilVan::App::Views
             @index = index
          end
 
+         def discussion_name
+            @message.discussion.name
+         end
+
          def anchor
             "msg#{@message.id}"
          end

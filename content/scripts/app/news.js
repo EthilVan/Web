@@ -1,12 +1,13 @@
 $(function() {
 
-   $newses = $('.newses');
-   if ($newses.children().size() < 2) {
+   var $container = $('.auto-fill');
+   if ($container.size() < 1) {
       return;
    }
 
-   var newsPage = 1;
-   var newsPageLoading = false;
+   var url = $container.data().autoFillUrl || '';
+   var currentPage = 1;
+   var isPageLoading = false;
 
    function nearBottomOfPage() {
       var $window = $(window);
@@ -17,16 +18,16 @@ $(function() {
    }
 
    $(window).scroll(function() {
-      if (newsPageLoading) {
+      if (isPageLoading) {
          return;
       }
 
       if (nearBottomOfPage()) {
-         newsPageLoading = true;
-         newsPage++;
-         $.get('/news?page=' + newsPage, function (html) {
-            $newses.append($(html).html());
-            newsPageLoading = false;
+         isPageLoading = true;
+         currentPage++;
+         $.get(url + '?page=' + currentPage, function (html) {
+            $container.append($(html).html());
+            isPageLoading = false;
          });
       }
    });

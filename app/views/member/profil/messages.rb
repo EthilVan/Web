@@ -10,11 +10,10 @@ module EthilVan::App::Views
          end
 
          def messages
-            index = 0
+            index = -1
             @messages.map do |msg|
-               wrapped = Member::Discussion::Message.new(msg, index)
                index += 1
-               wrapped
+               Member::Discussion::Message.new(msg, index)
             end
          end
       end

@@ -8,12 +8,13 @@ class EthilVan::App < Sinatra::Base
       redirect "/membre/@#{name}/generale"
    end
 
-   get %r{/membre/@(#{Account::NAME})/messages$} do
+   get %r{/membre/@(#{Account::NAME})/messages$} do |name|
       pass unless request.xhr?
       layout false
       account = Account.with_everything.where(name: name).first
       raise Sinatra::NotFound if account.nil?
       messages = Message.for_account(account).page(params[:page]).per(10)
+      raise Sinatra::NotFound if messages.empty?
 
       view Views::Member::Profil::Messages.new(account, messages)
       mustache 'membre/profil/_messages'

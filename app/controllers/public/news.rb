@@ -4,7 +4,6 @@ class EthilVan::App
       page = request.xhr? ? params['page'].to_i : 1
       newses = News.with_account.by_date.page(page).per(8)
       raise Sinatra::NotFound if newses.empty?
-      # newses = newses.public_only unless logged_in?
       view Views::Public::News::Index.new newses.all
       layout !request.xhr?
       mustache 'public/news/index'
