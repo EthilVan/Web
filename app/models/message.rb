@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
    # * Callbacks and scope
    # ==========================================================================
    markdown_pre_parse :contents
-
+   after_create :update_discussion
    scope :by_date, order('created_at ASC')
 
    # ==========================================================================
@@ -53,4 +53,11 @@ class Message < ActiveRecord::Base
       account.role.inherit? EthilVan::Role::MODO or
             self.account == account
    end
+
+private
+
+   def update_discussion
+      return if discussion.nil?
+      discussion.update_attribute :updated_at, created_at
+    end
 end
