@@ -1,16 +1,27 @@
 function MDEditor(inputElement) {
 
-   this.inputElement = inputElement;
-
    this.initialize = function() {
+      this.inputElement = inputElement;
+
       this.controlsElement = MDEditor.Utils.appendControls(inputElement);
       this.previewElement  = MDEditor.Utils.appendPreview(inputElement);
 
+      this.activatePreview(this.inputElement);
       this.activateControls(this.controlsElement);
       this.activateInput(this.inputElement, this.controlsElement, this.previewElement);
 
+      this.updating = false;
       this.updatePreview();
    };
+
+   this.activatePreview = function(inputElement) {
+      var _self = this;
+      $(inputElement).keypress(function(event) {
+         if (event.which == 13) {
+            _self.updatePreview();
+         }
+      });
+   }
 
    this.activateControls = function(controlsElement) {
       var _self = this;
@@ -43,21 +54,22 @@ function MDEditor(inputElement) {
    };
 
    this.updatePreview = function() {
-      var markdown = $(this.inputElement).val();
-      $(this.previewElement).html(this.convert(markdown));
-   };
+      if (this.updating) {
+         return;
+      }
 
-   this.convert = function(markdown) {
+      this.updating = true;
+      var markdown = $(this.inputElement).val();
+      var _self = this;
       $.ajax({
          url: '/markdown',
          type: 'POST',
-         async: false,
          data: { content: markdown },
          success: function(data, status, xhr) {
-            res = data;
+            $(_self.previewElement).html(data);
+            _self.updating = false;
          }
       });
-      return res;
    }
 
    this.action = function(actionName, event) {
