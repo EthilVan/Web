@@ -144,8 +144,6 @@ MDEditor.Utils = {
 
    appendPreview: function(inputElement) {
       var element = $(MDEditor.Utils.previewTemplate());
-      element.css("width", $(inputElement).css("width"));
-      element.css("font-size", $(inputElement).css("font-size"));
       $(inputElement).after(element);
 
       return element;

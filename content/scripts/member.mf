@@ -6,10 +6,10 @@ bootstrap/bootstrap-dropdown.js
 bootstrap/bootstrap-collapse.js
 bootstrap/bootstrap-carousel.js
 lib/jquery.a-tools.js
-lib/mdeditor.js
 app/preload-images.js
 app/member-menu.js
 app/back-top.js
 app/tab.js
 app/select.js
-app/news.js
+app/auto-fill.js
+app/mdeditor.js
