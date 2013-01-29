@@ -35,6 +35,7 @@ function MDEditor(inputElement) {
             _self.action(actionName, event)
          });
       });
+      this.previewBtn = $(controlsElement).find(".mde-preview");
    };
 
    this.activateInput = function(inputElement, controlsElement, previewElement) {
@@ -59,6 +60,8 @@ function MDEditor(inputElement) {
       }
 
       this.updating = true;
+      this.previewBtn.addClass('disabled');
+      this.previewBtn.find('.mde-spinner').spin(MDEditor.Utils.spinOptions());
       var markdown = $(this.inputElement).val();
       var _self = this;
       $.ajax({
@@ -68,6 +71,8 @@ function MDEditor(inputElement) {
          success: function(data, status, xhr) {
             $(_self.previewElement).html(data);
             _self.updating = false;
+            _self.previewBtn.removeClass('disabled');
+            _self.previewBtn.find('.mde-spinner').spin(false);
          }
       });
    }
@@ -170,15 +175,30 @@ MDEditor.Utils = {
       var template =
          "<div class=\"mde-buttons mde-control\">" +
          "  <div class=\"btn-group\">" +
-         "    <a class=\"btn mde-bold\" href=\"#mde-bold\"><span></span></a>" +
-         "    <a class=\"btn mde-italic\" href=\"#mde-italic\"><span></span></a>" +
-         "    <a class=\"btn mde-link\" href=\"#mde-link\"><span></span></a>" +
-         "    <a class=\"btn mde-image\" href=\"#mde-image\"><span></span></a>" +
-         "    <a class=\"btn mde-list\" href=\"#mde-list\"><span></span></a>" +
-         "    <a class=\"btn mde-title\" href=\"#mde-title\"><span></span></a>" +
+         "    <a class=\"btn mde-bold\" href=\"#mde-bold\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "    <a class=\"btn mde-italic\" href=\"#mde-italic\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "    <a class=\"btn mde-link\" href=\"#mde-link\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "    <a class=\"btn mde-image\" href=\"#mde-image\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "    <a class=\"btn mde-list\" href=\"#mde-list\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "    <a class=\"btn mde-title\" href=\"#mde-title\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
          "  </div>" +
          "  <div class=\"btn-group\">" +
-         "    <a class=\"btn mde-preview\" href=\"#mde-preview\"><span></span></a>" +
+         "    <a class=\"btn mde-preview\" href=\"#mde-preview\">" +
+         "        <span class=\"mde-btn-content\"></span>"+
+         "        <span class=\"mde-spinner\"></span>" +
+         "    </a>" +
          "  </div>" +
          "  <div class=\"clearfix\"></div>" +
          "</div>";
@@ -190,6 +210,25 @@ MDEditor.Utils = {
       var template = "<div class=\"mde-preview mde-control\"></div>";
 
       return template;
+   },
+
+   spinOptions: function() {
+      return {
+        lines: 11,
+        length: 1,
+        width: 3,
+        radius: 6,
+        corners: 1,
+        rotate: 0,
+        speed: 1,
+        trail: 60,
+        shadow: true,
+        hwaccel: false,
+        className: 'spinner',
+        zIndex: 2e9,
+        top: 'auto',
+        left: 'auto'
+      };
    }
 }
 

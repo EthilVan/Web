@@ -11,37 +11,42 @@
       }
    }
 
-   a span:after {
+   a .mde-btn-content:after {
+      font-style: normal;
       font-weight: normal;
    }
 
-   .mde-bold span:after {
+   .mde-bold .mde-btn-content:after {
       content: 'B';
       font-weight: bold;
    }
 
-   .mde-italic span:after {
+   .mde-italic .mde-btn-content:after {
       content: 'I';
       font-style: italic;
    }
 
-   .mde-link span:after {
+   .mde-link .mde-btn-content:after {
       content: 'Lien';
    }
 
-   .mde-image span:after {
+   .mde-image .mde-btn-content:after {
       content: 'Img';
    }
 
-   .mde-list span:after {
+   .mde-list .mde-btn-content:after {
       content: '\2022';
    }
 
-   .mde-title span:after {
+   .mde-title .mde-btn-content:after {
       content: 'Title';
    }
 
-   .mde-preview span:after {
+   .mde-preview .mde-btn-content:after {
       content: 'Prévisualiser';
+   }
+
+   .mde-preview.disabled .mde-btn-content {
+      padding-right: 14px;
    }
 }
