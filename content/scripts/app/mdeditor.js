@@ -3,12 +3,11 @@ function MDEditor(inputElement) {
    this.initialize = function() {
       this.inputElement = inputElement;
 
-      this.controlsElement = MDEditor.Utils.appendControls(inputElement);
+      var controlsElement = MDEditor.Utils.appendControls(inputElement);
       this.previewElement  = MDEditor.Utils.appendPreview(inputElement);
 
       this.activatePreview(this.inputElement);
-      this.activateControls(this.controlsElement);
-      this.activateInput(this.inputElement, this.controlsElement, this.previewElement);
+      this.activateControls(controlsElement);
 
       this.updating = false;
       this.updatePreview();
@@ -26,7 +25,7 @@ function MDEditor(inputElement) {
    this.activateControls = function(controlsElement) {
       var _self = this;
       [
-         "bold", "italic",
+         "bold", "italic", "strikethrough", "code",
          "link", "image",
          "title", "list",
          "preview"
@@ -36,22 +35,6 @@ function MDEditor(inputElement) {
          });
       });
       this.previewBtn = $(controlsElement).find(".mde-preview");
-   };
-
-   this.activateInput = function(inputElement, controlsElement, previewElement) {
-      $(inputElement).focus(function() {
-         $(controlsElement).addClass("focus");
-         $(previewElement).addClass("focus");
-         $(controlsElement).removeClass("blur");
-         $(previewElement).removeClass("blur");
-      });
-
-      $(inputElement).blur(function() {
-         $(controlsElement).removeClass("focus");
-         $(previewElement).removeClass("focus");
-         $(controlsElement).addClass("blur");
-         $(previewElement).addClass("blur");
-      });
    };
 
    this.updatePreview = function() {
@@ -79,8 +62,9 @@ function MDEditor(inputElement) {
 
    this.action = function(actionName, event) {
       event.preventDefault();
-      MDEditor.Actions[ actionName ](this.inputElement);
-      this.updatePreview();
+      if (MDEditor.Actions[ actionName ](this.inputElement)) {
+         this.updatePreview();
+      }
    };
 
    this.initialize();
@@ -91,50 +75,41 @@ function MDEditor(inputElement) {
   The logic of each of the control buttons
 */
 MDEditor.Actions = {
-   bold: function(inputElement) {
-      var selection = $(inputElement).getSelection();
-      $(inputElement).replaceSelection("**" + selection.text + "**");
-   },
-
-   italic: function(inputElement) {
-      var selection = $(inputElement).getSelection();
-      $(inputElement).replaceSelection("_" + selection.text + "_");
-   },
-
-   link: function(inputElement) {
-      var link = prompt("Link to URL", "http://");
-      var selection = $(inputElement).getSelection();
-      $(inputElement).replaceSelection("[" + selection.text + "](" + link + ")");
-   },
-
-   image: function(inputElement) {
-      var url = prompt("Image url", "http://");
-      var selection = $(inputElement).getSelection();
-      $(inputElement).replaceSelection("![" + selection.text + "](" + url + ")");
-   },
 
    title: function(inputElement) {
-      MDEditor.Utils.selectWholeLines(inputElement);
-      var selection = $(inputElement).getSelection();
-      var hash = (selection.text.charAt(0) == "#") ? "#" : "# ";
-      $(inputElement).replaceSelection(hash + selection.text);
+      return MDEditor.Utils.insertAtStart(inputElement, '#', true);
    },
 
    list: function(inputElement) {
-      MDEditor.Utils.selectWholeLines(inputElement);
-      var selection = $(inputElement).getSelection();
-      var text = selection.text;
-      var result = "";
-      var lines = text.split("\n");
-      for(var i = 0; i < lines.length; i++) {
-         var line = $.trim(lines[i]);
-         if(line.length > 0) result += "* " + line + "\n";
-      }
+      return MDEditor.Utils.insertAtStart(inputElement, '*', false);
+   },
 
-      $(inputElement).replaceSelection(result);
+   link: function(inputElement) {
+      return MDEditor.Utils.insertLinkOrMedia(inputElement, "[", "](", ")");
+   },
+
+   image: function(inputElement) {
+      return MDEditor.Utils.insertLinkOrMedia(inputElement, "![", "](", ")");
+   },
+
+   bold: function(inputElement) {
+      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '**');
+   },
+
+   italic: function(inputElement) {
+      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '_');
+   },
+
+   strikethrough: function(inputElement) {
+      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '~~');
+   },
+
+   code: function(inputElement) {
+      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '`');
    },
 
    preview: function(inputElement) {
+      return true;
    }
 }
 
@@ -154,26 +129,88 @@ MDEditor.Utils = {
       return element;
    },
 
-   selectWholeLines: function(inputElement) {
-      var content = $(inputElement).val();
+   wrapSelectionOrInsert: function(inputElement, chars) {
+      var $input = $(inputElement);
+      var selection = $input.getSelection();
+      if (selection.length == 0) {
+         $input.insertAtCaretPos(chars);
+         $input.insertAtCaretPos(chars);
+         $input.setCaretPos(selection.start + chars.length + 1);
+         return false;
+      }
+
+      var text = chars + selection.text + chars;
+      $input.replaceSelection(text);
+      $input.setSelection(selection.start, selection.start + text.length);
+      return true;
+   },
+
+   insertAtStart: function(inputElement, char, duplicate) {
+      var $input = $(inputElement);
+      var content = $input.val();
+      var selection = $input.getSelection();
+      var start = selection.start;
+
+      while (start >= 0 && content[start] != "\n") {
+         start--;
+      }
+
+      $input.setSelection(start + 1, start + 1);
+      var text = '';
+      if (content[start + 1] != char) {
+         text = char + ' ';
+      } else if (duplicate) {
+         text = char;
+      }
+
+      $input.insertAtCaretPos(text);
+      $input.setSelection(selection.start + text.length,
+            selection.end + text.length);
+      return text.length > 0;
+   },
+
+   insertLinkOrMedia: function(inputElement, chars1, chars2, chars3) {
+      var url = prompt("Url :", "http://");
+      if (url == null) {
+         return false;
+      }
+
       var selection = $(inputElement).getSelection();
-      var iniPosition = (selection.start > 0) ? (selection.start - 1) : 0;
-      var endPosition = selection.end;
-
-      while(content[iniPosition] != "\n" && iniPosition >= 0) {
-         iniPosition--;
+      var text = selection.text;
+      if (selection.length == 0) {
+         text = prompt("Texte :");
+         if (text == null) {
+            return false;
+         }
       }
 
-      while(content[endPosition] != "\n" && endPosition <= content.length) {
-         endPosition++;
+      if (selection.length == 0) {
+         $(inputElement).insertAtCaretPos(chars1 + text + chars2 + url + chars3);
+      } else {
+         $(inputElement).replaceSelection(chars1 + text + chars2 + url + chars3);
       }
-
-      $(inputElement).setSelection(iniPosition + 1, endPosition);
+      return true;
    },
 
    controlsTemplate: function() {
       var template =
          "<div class=\"mde-buttons mde-control\">" +
+         "  <div class=\"btn-group\">" +
+         "    <a class=\"btn mde-title\" href=\"#mde-title\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "    <a class=\"btn mde-list\" href=\"#mde-list\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "  </div>" +
+         "  <div class=\"btn-group\">" +
+         "    <a class=\"btn mde-link\" href=\"#mde-link\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "    <a class=\"btn mde-image\" href=\"#mde-image\">" +
+         "      <span class=\"mde-btn-content\"></span>" +
+         "    </a>" +
+         "  </div>" +
          "  <div class=\"btn-group\">" +
          "    <a class=\"btn mde-bold\" href=\"#mde-bold\">" +
          "      <span class=\"mde-btn-content\"></span>" +
@@ -181,16 +218,10 @@ MDEditor.Utils = {
          "    <a class=\"btn mde-italic\" href=\"#mde-italic\">" +
          "      <span class=\"mde-btn-content\"></span>" +
          "    </a>" +
-         "    <a class=\"btn mde-link\" href=\"#mde-link\">" +
+         "    <a class=\"btn mde-strikethrough\" href=\"#mde-strikethrough\">" +
          "      <span class=\"mde-btn-content\"></span>" +
          "    </a>" +
-         "    <a class=\"btn mde-image\" href=\"#mde-image\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "    <a class=\"btn mde-list\" href=\"#mde-list\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "    <a class=\"btn mde-title\" href=\"#mde-title\">" +
+         "    <a class=\"btn mde-code\" href=\"#mde-code\">" +
          "      <span class=\"mde-btn-content\"></span>" +
          "    </a>" +
          "  </div>" +
