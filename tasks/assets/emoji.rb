@@ -1,4 +1,5 @@
 require 'emoji'
+require 'json'
 
 module EthilVan::Emoji
 
@@ -37,6 +38,8 @@ module EthilVan::Emoji
       '+' => 'plus',
    }
 
+   JSON_PATH = EthilVan.path('static', 'markdown', 'emojis.json')
+
    def self.install
       Dir["#{::Emoji.images_path}/emoji/*.png"].each do |src|
          basename = File.basename src, '.png'
@@ -49,5 +52,8 @@ module EthilVan::Emoji
          dest = File.join(images_path, filename + '.png')
          FileUtils.cp(src, dest)
       end
+
+      FileUtils.mkdir_p File.dirname JSON_PATH
+      File.open(JSON_PATH, 'w') { |f| f << names.to_json }
    end
 end

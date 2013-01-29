@@ -6,6 +6,7 @@
 tmp
 static/scripts
 static/style
+static/markdown/emojis.json
 static/images/emoji/*.png
 
 # Config
