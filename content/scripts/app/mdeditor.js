@@ -8,6 +8,7 @@ function MDEditor(inputElement) {
 
       this.activatePreview(this.inputElement);
       this.activateControls(controlsElement);
+      this.activateMentions(this.inputElement);
 
       this.updating = false;
       this.updatePreview();
@@ -36,6 +37,31 @@ function MDEditor(inputElement) {
       });
       this.previewBtn = $(controlsElement).find(".mde-preview");
    };
+
+   this.activateMentions = function(inputElement) {
+      $.ajax({
+         url: '/markdown/membres.json',
+         success: function(raw_data, status, xhr) {
+            var data = $.map(raw_data, function(name, i) {
+               return { 'name': name };
+            });
+            $(inputElement).atwho('@', { data: data, limit: 5 });
+         }
+      });
+      $.ajax({
+         url: '/markdown/emojis.json',
+         success: function(raw_data, status, xhr) {
+            var data = $.map(raw_data, function(name, i) {
+               return { 'name': name };
+            });
+            $(inputElement).atwho(':', {
+               data: data,
+               limit: 10,
+               tpl: MDEditor.Utils.emojiPreviewTemplate(),
+            });
+         }
+      });
+   }
 
    this.updatePreview = function() {
       if (this.updating) {
@@ -239,6 +265,16 @@ MDEditor.Utils = {
 
    previewTemplate: function() {
       var template = "<div class=\"mde-preview mde-control\"></div>";
+
+      return template;
+   },
+
+   emojiPreviewTemplate: function() {
+      var template =
+         "<li data-value='${name}:'>" +
+         "  ${name} " +
+         "   <img src='/images/emoji/${name}.png' height='20' width='20' />" +
+         "</li>"
 
       return template;
    },
