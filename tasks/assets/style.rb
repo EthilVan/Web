@@ -25,9 +25,9 @@ module EthilVan::Assets
 
       def dirty?(file, cached)
          return true if super(file, cached)
-         self.class.included_files.map do |f|
-            File.mtime f
-         end.max > File.mtime(cached)
+         self.class.included_files.any? do |f|
+            File.mtime(f) > File.mtime(cached)
+         end
       end
 
       def compile_asset(file, dest)

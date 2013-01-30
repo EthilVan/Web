@@ -13,6 +13,7 @@ gem 'mustache'
 
 # Assets
 gem 'rainpress'
+gem 'closure-compiler'
 gem 'gemoji'
 
 # Librairies

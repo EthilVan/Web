@@ -1,4 +1,4 @@
-require 'net/http'
+require 'closure-compiler'
 
 module EthilVan::Assets
 
@@ -18,13 +18,9 @@ module EthilVan::Assets
       end
 
       def compress(source)
-         response = Net::HTTP.post_form(
-            URI.parse('http://closure-compiler.appspot.com/compile'),
-            output_info: 'compiled_code',
-            compilation_level: 'SIMPLE_OPTIMIZATIONS',
-            js_code: source
-         )
-         return response.body
+         compiler = Closure::Compiler.new(
+               compilation_level: 'SIMPLE_OPTIMIZATIONS')
+         return compiler.compile(source)
       end
    end
 end

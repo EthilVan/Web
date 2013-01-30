@@ -9,7 +9,6 @@ namespace :assets do
       require_relative 'assets/base'
       require_relative 'assets/style'
       require_relative 'assets/script'
-      require_relative 'assets/watchr'
       include EthilVan::Assets
    end
 
@@ -38,6 +37,7 @@ namespace :assets do
    end
 
    task :watch => :compile do
+      require_relative 'assets/watchr'
       watchr = EthilVan::Assets::Watchr.new(Style.all + Script.all)
       controller = ::Watchr::Controller.new(watchr, ::Watchr.handler.new)
       controller.run
