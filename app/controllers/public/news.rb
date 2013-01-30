@@ -76,4 +76,11 @@ class EthilVan::App
          mustache 'public/news/news_form'
       end
    end
+
+   get %r{/news/(\d{1,3})/supprimer$} do |id|
+      news = News.find_by_id id
+      raise Sinatra::NotFound if news.nil?
+      news.destroy
+      redirect '/news'
+   end
 end

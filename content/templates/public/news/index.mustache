@@ -1,23 +1,30 @@
 {{#title}}News{{/title}}
 
 <div class="newses auto-fill">
-    {{# newses }}
-    <div class="news {{ important_class }}">
-        <div class="titre">
-            {{# show? }}<a href="{{ url }}">{{ title }}</a>{{/ show? }}
-            {{^ show? }}{{ title }}{{/ show? }}
-        </div>
-        {{# show? }}
-        <div class="banner">
-          <a href="{{ url }}"><img src="{{ banner_url }}" /></a>
-        </div>
-        <div class="contenu">{{{ summary }}}</div>
-        <div class="suite">
-            <a href="{{ url }}">→ Lire la suite...</a>
-        </div>
-        {{/ show? }}
-        <div class="creation"> - Le {{ created }} par {{ author }} - </div>
-        <div class="ligne"> </div>
-    </div>
-    {{/ newses }}
+   {{# redacteur? }}
+      <a href="/news/creer">Créer une news</a>
+   {{/ redacteur? }}
+   {{# newses }}
+   <div class="news {{ important_class }}">
+      <div class="titre">
+         {{# show? }}<a href="{{ url }}">{{ title }}</a>{{/ show? }}
+         {{^ show? }}{{ title }}{{/ show? }}
+      </div>
+      {{# redacteur? }}
+         <a href="{{ edit_url }}">Editer</a>
+         <a href="{{ delete_url }}">Supprimer</a>
+      {{/ redacteur? }}
+      {{# show? }}
+      <div class="banner">
+         <a href="{{ url }}"><img src="{{ banner_url }}" /></a>
+      </div>
+      <div class="contenu">{{{ summary }}}</div>
+      <div class="suite">
+         <a href="{{ url }}">→ Lire la suite...</a>
+      </div>
+      {{/ show? }}
+      <div class="creation"> - Le {{ created }} par {{ author }} - </div>
+      <div class="ligne"> </div>
+   </div>
+   {{/ newses }}
 </div>
