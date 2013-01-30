@@ -18,6 +18,40 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/discussion/discussion_group'
    end
 
+   get %r{/membre/discussion/([A-Za-z_]+)/creer$} do |group_name|
+      group = GeneralDiscussionGroup.find_by_url group_name
+      raise Sinatra::NotFound if group.nil?
+
+      discussion = Discussion.new
+      discussion.group = group
+      message = Message.new
+      message.discussion = discussion
+
+      view Views::Member::Discussion::Create.new(discussion, message)
+      mustache 'membre/discussion/create'
+   end
+
+   post %r{/membre/discussion/([A-Za-z_]+)/creer$} do |group_name|
+      group = GeneralDiscussionGroup.find_by_url group_name
+      raise Sinatra::NotFound if group.nil?
+
+      discussion = Discussion.new
+      discussion.group = group
+      discussion.name = params[:name]
+      message = Message.new
+      message.discussion = discussion
+      message.account = current_account
+      message.contents = params[:message]
+
+      if discussion.valid? and message.valid?
+         discussion.save && message.save
+         redirect urls.discussion(discussion)
+      else
+         view Views::Member::Discussion::Create.new(discussion, message)
+         mustache 'membre/discussion/create'
+      end
+   end
+
    get %r{/membre/discussion/(\d{1,5})$} do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
