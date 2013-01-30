@@ -31,6 +31,24 @@ class EthilVan::App
       mustache 'public/news/banners'
    end
 
+   get '/news/creer' do
+      news = News.new
+      news.account = current_account
+      view Views::Public::News::Create.new news
+      mustache 'public/news/create'
+   end
+
+   post '/news/creer' do
+      news = News.new params[:news]
+      news.account = current_account
+      if news.save
+         redirect urls.news news
+      else
+         view Views::Public::News::Create.new news
+         mustache 'public/news/create'
+      end
+   end
+
    get %r{/news/(\d{1,3})$} do |id|
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?
