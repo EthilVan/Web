@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Public::News
 
-      class Create < Page
+      class NewsForm < Page
 
          include EthilVan::Mustache::Form
 

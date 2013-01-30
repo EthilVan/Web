@@ -34,8 +34,8 @@ class EthilVan::App
    get '/news/creer' do
       news = News.new
       news.account = current_account
-      view Views::Public::News::Create.new news
-      mustache 'public/news/create'
+      view Views::Public::News::NewsForm.new news
+      mustache 'public/news/news_form'
    end
 
    post '/news/creer' do
@@ -44,8 +44,8 @@ class EthilVan::App
       if news.save
          redirect urls.news news
       else
-         view Views::Public::News::Create.new news
-         mustache 'public/news/create'
+         view Views::Public::News::NewsForm.new news
+         mustache 'public/news/news_form'
       end
    end
 
@@ -55,5 +55,25 @@ class EthilVan::App
       halt 401 if !logged_in? and news.private
       view Views::Public::News::Show.new news
       mustache 'public/news/show'
+   end
+
+   get %r{/news/(\d{1,3})/editer$} do |id|
+      news = News.find_by_id id
+      raise Sinatra::NotFound if news.nil?
+
+      view Views::Public::News::NewsForm.new news
+      mustache 'public/news/news_form'
+   end
+
+   post %r{/news/(\d{1,3})/editer$} do |id|
+      news = News.find_by_id id
+      raise Sinatra::NotFound if news.nil?
+
+      if news.update_attributes params[:news]
+         redirect urls.news news
+      else
+         view Views::Public::News::NewsForm.new news
+         mustache 'public/news/news_form'
+      end
    end
 end
