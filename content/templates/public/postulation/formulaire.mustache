@@ -17,38 +17,48 @@
    <fieldset id="fields-account" class="tab-pane active">
 
       {{# name }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
          {{> form/hint }}
+      </div>
       {{/ name }}
 
       {{# password }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
          {{> form/hint }}
+      </div>
       {{/ password }}
 
       {{# password_confirmation }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
          {{> form/hint }}
+      </div>
       {{/ password_confirmation }}
 
       {{# email }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
          {{> form/hint }}
+      </div>
       {{/ email }}
 
       {{# sexe }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/select }}
          {{> form/hint }}
+      </div>
       {{/ sexe }}
 
    </fieldset>
@@ -56,17 +66,21 @@
    <fieldset id="fields-ethilvan" class="tab-pane">
 
       {{# ethilvan_discovered }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
          {{> form/hint }}
+      </div>
       {{/ ethilvan_discovered }}
 
       {{# ethilvan_reason }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
          {{> form/hint }}
+      </div>
       {{/ ethilvan_reason }}
 
    </fieldset>
@@ -74,31 +88,39 @@
    <fieldset id="fields-minecraft" class="tab-pane">
 
       {{# minecraft_since }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
          {{> form/hint }}
+      </div>
       {{/ minecraft_since }}
 
       {{# multi_minecraft }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/checkbox }}
          {{> form/hint }}
+      </div>
       {{/ multi_minecraft }}
 
       {{# old_server }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
          {{> form/hint }}
+      </div>
       {{/ old_server }}
 
       {{# old_server_reason }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
          {{> form/hint }}
+      </div>
       {{/ old_server_reason }}
 
    </fieldset>
@@ -110,31 +132,39 @@
    <fieldset id="fields-availability" class="tab-pane">
 
       {{# availability }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
          {{> form/hint }}
+      </div>
       {{/ availability }}
 
       {{# microphone }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/checkbox }}
          {{> form/hint }}
+      </div>
       {{/ microphone }}
 
       {{# mumble }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/select }}
          {{> form/hint }}
+      </div>
       {{/ mumble }}
 
       {{# mumble_other }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
          {{> form/hint }}
+      </div>
       {{/ mumble_other }}
 
    </fieldset>
@@ -142,10 +172,12 @@
    <fieldset id="fields-free" class="tab-pane">
 
       {{# free_text }}
+      <div class="field-{{ id }}">
          {{> form/errors }}
          {{> form/textarea }}
          {{> form/hint }}
-      {{/ free_text }}
+      </div>
+   {{/ free_text }}
 
    </fieldset>
 
