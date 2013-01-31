@@ -117,6 +117,10 @@ module EthilVan::App::Views
                ScreenForm.new(screen, @base_name, i + 1)
             end
          end
+
+         def rules_acceptance
+            checkbox :rules_acceptance
+         end
       end
    end
 end

@@ -229,6 +229,16 @@
 
    </fieldset>
 
+   {{# rules_acceptance }}
+   <div class="pull-right field-{{ id }}">
+      {{> form/errors }}
+      {{> form/label }}
+      {{> form/checkbox }}
+   </div>
+   {{/ rules_acceptance }}
+
+   <div class="clearfix"></div>
+
    <div><input type="submit" class="btn pull-right" value="Envoyer" /></div>
 </form>
 {{/ form }}
