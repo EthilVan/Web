@@ -35,7 +35,12 @@ module EthilVan::App::Views
          end
 
          def pager
-            @pager ||= Pager.new(@discussion, @page)
+            @pager ||= create_pager
+         end
+
+         def create_pager
+            pager = Pager.new(@discussion, @page)
+            pager.total > 1 ? pager : false
          end
 
          def response_link
