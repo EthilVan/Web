@@ -5,51 +5,91 @@ $(function() {
       return;
    }
 
-   var old_server = $form.find('.field-postulation_old_server');
-   var old_server_reason = $form.find('.field-postulation_old_server_reason');
-   var on_multi_minecraft_change = function(multi_minecraft) {
-      if (multi_minecraft.is(':checked')) {
-         old_server.slideDown(400);
-         old_server_reason.slideDown(400);
+   var oldServer = $form.find('.field-postulation_old_server');
+   var oldServerReason = $form.find('.field-postulation_old_server_reason');
+   var onMultiMinecraftChange = function(multiMinecraft) {
+      if (multiMinecraft.is(':checked')) {
+         oldServer.slideDown(400);
+         oldServerReason.slideDown(400);
       } else {
-         old_server.slideUp(400);
-         old_server_reason.slideUp(400);
+         oldServer.slideUp(400);
+         oldServerReason.slideUp(400);
       }
    }
 
-   var mumble_other = $form.find('.field-postulation_mumble_other');
-   var on_mumble_change = function(mumble_select) {
-      if (mumble_select.val() == 'Autre') {
-         mumble_other.slideDown(400);
+   var mumbleOther = $form.find('.field-postulation_mumble_other');
+   var onMumbleChange = function(mumbleSelect) {
+      if (mumbleSelect.val() == 'Autre') {
+         mumbleOther.slideDown(400);
       } else {
-         mumble_other.slideUp(400);
+         mumbleOther.slideUp(400);
       }
    }
 
    var mumble = $form.find('.field-postulation_mumble');
-   var on_microphone_change = function(microphone) {
+   var onMicrophoneChange = function(microphone) {
       if (microphone.is(':checked')) {
          mumble.slideDown(400);
-         on_mumble_change($form.find('.field-postulation_mumble select'));
+         onMumbleChange($form.find('.field-postulation_mumble select'));
       } else {
          mumble.slideUp(400);
-         mumble_other.slideUp(400);
+         mumbleOther.slideUp(400);
       }
    }
 
    $form.find('.field-postulation_multi_minecraft input[type=checkbox]').change(function() {
-      on_multi_minecraft_change($(this));
+      onMultiMinecraftChange($(this));
    });
    $form.find('.field-postulation_microphone input[type=checkbox]').change(function() {
-      on_microphone_change($(this));
+      onMicrophoneChange($(this));
    });
    $form.find('.field-postulation_mumble select').change(function() {
-      on_mumble_change($(this));
+      onMumbleChange($(this));
    });
 
-   on_multi_minecraft_change($form.find('.multi_minecraft input[type=checkbox]'));
-   on_microphone_change($form.find(' .microphone input[type=checkbox]'));
-   on_mumble_change($form.find('.mumble select'));
+   onMultiMinecraftChange($form.find('.multi_minecraft input[type=checkbox]'));
+   onMicrophoneChange($form.find(' .microphone input[type=checkbox]'));
+   onMumbleChange($form.find('.mumble select'));
+
+   var screensNextId = $form.find('fieldset.field-screen').size();
+   var screensCount = screensNextId;
+
+   var replaceScreenTitle = function(screen) {
+      var title = $(screen).find('h4');
+      title.html(title.html().replace(/Screenshot [0-9]+/,
+            'Screenshot ' + screensCount));
+   };
+
+   var onScreenRemove = function(event) {
+      event.preventDefault();
+      $(this).parent().remove();
+
+      screensCount = 0;
+      $form.find('fieldset.field-screen').each(function() {
+         screensCount += 1;
+         replaceScreenTitle($(this));
+      });
+   };
+
+   $('.add-screen').click(function(event) {
+      event.preventDefault();
+
+      screensNextId++;
+      screensCount++;
+      var template = $form.find('.field-screen-template').html();
+      template = template.replace(/postulation_screen_url_[0-9]+/g,
+            'postulation_screen_url_' + screensNextId);
+      template = template.replace(/postulation_screen_description_[0-9]+/g,
+            'postulation_screen_description_' + screensNextId);
+      var newScreen = $('<fieldset class="field-screen">' +
+            template +
+            '</fieldset>');
+      replaceScreenTitle(newScreen);
+      newScreen.find('.remove-screen').click(onScreenRemove);
+      $(this).before(newScreen);
+   });
+
+   $('.remove-screen').click(onScreenRemove);
 
    // Activate first tab pane which contains errors
    $form.find('.tab-pane').each(function() {

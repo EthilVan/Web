@@ -4,6 +4,34 @@ module EthilVan::App::Views
 
       class Formulaire::Form < EthilVan::Mustache::ModelForm
 
+         class ScreenForm < EthilVan::Mustache::ModelForm
+
+            def initialize(screen, base_name, index)
+               super(screen, base_name)
+               @index = index
+            end
+
+            def field_name(name)
+               "#@base_name[screens][][#{name}]"
+            end
+
+            def field_id(name)
+               "#{@base_name}_screen_#{name}_#@index"
+            end
+
+            def screen_title
+               "Screenshot #@index"
+            end
+
+            def url
+               text :url
+            end
+
+            def description
+               text :description
+            end
+         end
+
          def initialize(postulation)
             super(postulation)
          end
@@ -78,6 +106,16 @@ module EthilVan::App::Views
 
          def free_text
             text :free_text
+         end
+
+         def screen_template
+            ScreenForm.new(PostulationScreen.new, @base_name, 0)
+         end
+
+         def screens
+            @model.screens.each_with_index.map do |screen, i|
+               ScreenForm.new(screen, @base_name, i + 1)
+            end
          end
       end
    end

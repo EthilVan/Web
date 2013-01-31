@@ -127,6 +127,54 @@
 
    <fieldset id="fields-screens" class="tab-pane">
 
+      <div class="field-postulation_screens">
+         {{# screen_template }}
+         <fieldset class="field-screen-template" disabled style="display: none;">
+            <h4>{{ screen_title }}</h4>
+            {{# url }}
+            <div>
+               {{> form/errors }}
+               {{> form/label }}
+               {{> form/input }}
+               {{> form/hint }}
+            </div>
+            {{/ url }}
+            {{# description }}
+            <div>
+               {{> form/errors }}
+               {{> form/label }}
+               {{> form/textarea }}
+               {{> form/hint }}
+            </div>
+            {{/ description }}
+            <a href="#" class="btn remove-screen" >-</a>
+         </fieldset>
+         {{/ screen_template }}
+         {{# screens }}
+         <fieldset class="field-screen">
+            <h4>{{ screen_title }}</h4>
+            {{# url }}
+            <div>
+               {{> form/errors }}
+               {{> form/label }}
+               {{> form/input }}
+               {{> form/hint }}
+            </div>
+            {{/ url }}
+            {{# description }}
+            <div>
+               {{> form/errors }}
+               {{> form/label }}
+               {{> form/textarea }}
+               {{> form/hint }}
+            </div>
+            {{/ description }}
+            <a href="#" class="btn remove-screen" >-</a>
+         </fieldset>
+         {{/ screens }}
+         <a href="#" class="btn add-screen">+</a>
+      </div>
+
    </fieldset>
 
    <fieldset id="fields-availability" class="tab-pane">

@@ -20,6 +20,7 @@ class Postulation < ActiveRecord::Base
    attr_accessible :mumble
    attr_accessible :mumble_other
    attr_accessible :free_text
+   attr_accessible :screens
 
    # ==========================================================================
    # * Relations

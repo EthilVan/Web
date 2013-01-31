@@ -11,31 +11,35 @@ module EthilVan::Mustache
       def text(name, attributes = {})
          extract_base_data(attributes, name)
          extract_i18n_data(attributes, name, :placeholder)
-         super(model_name(name), value_for(name), attributes)
+         super(field_name(name), value_for(name), attributes)
       end
 
       def checkbox(name, attributes = {})
          extract_base_data(attributes, name)
-         super(model_name(name), value_for(name), attributes)
+         super(field_name(name), value_for(name), attributes)
       end
 
       def select(name, among, attributes = {})
          extract_base_data(attributes, name)
-         super(model_name(name), value_for(name), among, attributes)
+         super(field_name(name), value_for(name), among, attributes)
+      end
+
+      def field_name(name)
+         "#@base_name[#{name}]"
+      end
+
+      def field_id(name)
+         "#{@base_name}_#{name}"
       end
 
    private
-
-      def model_name(name)
-         "#@base_name[#{name}]"
-      end
 
       def value_for(name)
          @model.send name
       end
 
       def extract_base_data(attributes, name)
-         attributes[:id] ||= "#{@base_name}_#{name}"
+         attributes[:id] ||= field_id(name)
          errors = @model.errors
          attributes[:errors] ||= []
          attributes[:errors] += errors[name].map do |message|
