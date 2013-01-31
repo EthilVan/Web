@@ -1,5 +1,3 @@
-/// <reference path="../definitions/jquery.d.ts" />
-
 !function($) {
 
    var Selectpicker = function(element, options, e) {

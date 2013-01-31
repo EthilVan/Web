@@ -1,5 +1,3 @@
-/// <reference path="../definitions/jquery.d.ts" />
-
 this.cache = [];
 
 function preloadImages(images) {

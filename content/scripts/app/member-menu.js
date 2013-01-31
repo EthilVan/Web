@@ -1,5 +1,3 @@
-/// <reference path="../definitions/jquery.d.ts" />
-
 function display_submenu(event) {
    var name = event.data.name;
    var submenu = $('header #menu .submenu');
