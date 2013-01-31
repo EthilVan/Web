@@ -55,11 +55,12 @@ module EthilVan::App::Views
 
       include YamlHelpers
 
-      attr_reader :id, :url, :name
+      attr_reader :id, :url, :name, :tab_title
 
       def initialize(page, id, hash)
          @id = id
          @name = hash['nom']
+         @tab_title = @name + ' | ' + page.meta_page_title
          @url = page.url + '/' + (hash['url'] || id)
          add_helpers hash
       end

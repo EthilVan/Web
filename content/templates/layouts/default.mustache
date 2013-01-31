@@ -46,7 +46,7 @@
          </header>
 
          <div id="contents">
-            <ul id="nav">
+            <ul id="nav" class="page-tabs">
                {{^ tabs? }}
                   <li class="tab active">
                      <div class="onglet">{{ page_title }}</div>
@@ -54,7 +54,8 @@
                {{/ tabs? }}
                {{# tabs }}
                   <li class="tab">
-                     <a href="{{ id }}" data-target="#{{ id }}" data-toggle="tab">
+                     <a href="{{ id }}" data-target="#{{ id }}"
+                           data-toggle="tab" data-title="{{ tab_title }}">
                         <div class="onglet">{{ name }}</div>
                      </a>
                   </li>

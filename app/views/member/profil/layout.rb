@@ -6,6 +6,14 @@ module EthilVan::App::Views
 
       class Layout < Page
 
+         TABS = [
+            { id: 'generale',    name: 'Générale'    },
+            { id: 'postulation', name: 'Postulation' },
+            { id: 'tags',        name: 'Tags'        },
+            { id: 'messages',    name: 'Messages'    },
+         ]
+
+
          def initialize(account, messages)
             @account = account
             @messages = messages
@@ -20,12 +28,12 @@ module EthilVan::App::Views
          end
 
          def tabs
-            [
-               { id: 'generale',    name: 'Générale'    },
-               { id: 'postulation', name: 'Postulation' },
-               { id: 'tags',        name: 'Tags'        },
-               { id: 'messages',    name: 'Messages'    },
-            ]
+            base_title = meta_page_title
+            TABS.map do |tab_proto|
+               tab = tab_proto.clone
+               tab[:tab_title] = tab[:name] + ' | ' + base_title
+               tab
+            end
          end
 
          def tab_generale
