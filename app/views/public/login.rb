@@ -6,27 +6,40 @@ module EthilVan::App::Views
 
          class Login < Page
 
-            include EthilVan::Mustache::Form
+            class Form < EthilVan::Mustache::Form
+
+               def initialize(name, password, remember)
+                  super()
+                  @name = name
+                  @password = password
+                  @remember = remember
+               end
+
+               def name
+                  text :name, @name, placeholder: 'Pseudo'
+               end
+
+               def password
+                  text :password, @password, {
+                        placeholder: 'Mot de Passe',
+                        type: 'password'
+                  }
+               end
+
+               def remember
+                  checkbox :remember_me, @remember
+               end
+            end
 
             def initialize(name = nil, password = nil, remember = false,
                   invalid = false, banned = false)
-               @name = name
-               @password = password
-               @remember = remember
+               @form = Form.new(name, password, remember)
                @invalid = invalid
                @banned = banned
             end
 
-            def name
-               field @name
-            end
-
-            def password
-               field @password
-            end
-
-            def remember
-               checkbox @remember
+            def form
+               @form
             end
 
             def invalid?

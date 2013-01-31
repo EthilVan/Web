@@ -1,64 +1,67 @@
-{{#title}}Contact{{/title}}
+{{# title }}Contact{{/ title }}
 
-<form class="form-horizontal formulaire" method="POST" action="">
+{{# form }}
+<form class="form-horizontal formulaire" method="{{ method }}" action="{{ action }}">
 
-   {{#errors?}}
-      <ul class="errors">
-      {{#errors}}
-         <li>{{ . }}</li>
-      {{/errors}}
-      </ul>
-   {{/errors?}}
+   {{# label_common_class }}control-label{{/ label_common_class }}
 
+   {{# name }}
    <div class="control-group">
-      <label class="control-label" for="name">Nom</label>
+      {{> form/label }}
       <div class="controls">
-         <input id="name" name="name" class="input-xlarge"
-               type="text" {{{ name }}}/>
+         {{> form/input }}
+         {{> form/errors }}
       </div>
    </div>
+   {{/ name }}
 
+   {{# email }}
    <div class="control-group">
-      <label class="control-label" for="email">Email</label>
+      {{> form/label }}
       <div class="controls">
-         <input id="email" name="email" class="input-xlarge"
-               type="text" {{{ email }}}/>
+         {{> form/input }}
+         {{> form/errors }}
       </div>
    </div>
+   {{/ email }}
 
+   {{# category }}
    <div class="control-group">
-      <label class="control-label" for="category">Catégorie</label>
+      {{> form/label }}
       <div class="controls" id="category">
-         {{#category}}
-         <select name="category" type="text">
-            <option value="general" {{{ general? }}}>Général</option>
-            <option value="partnership" {{{ partnership? }}}>Partenariat</option>
-            <option value="development" {{{ development? }}}>Développement</option>
-         </select>
-         {{/category}}
+         {{> form/select }}
+         {{> form/errors }}
       </div>
    </div>
+   {{/ category }}
 
+   {{# subject }}
    <div class="control-group">
-      <label class="control-label" for="subject">Sujet</label>
+      {{> form/label }}
       <div class="controls">
-         <input id="subject" name="subject" class="input-xlarge"
-               type="text" {{{ subject }}}/>
+         {{> form/input }}
+         {{> form/errors }}
       </div>
    </div>
+   {{/ subject }}
 
+   {{# message }}
    <div class="control-group">
-      <label class="control-label" for="message">Message</label>
+      {{> form/label }}
       <div class="controls">
-         <textarea id="message" name="message" rows="7">{{{ message }}}</textarea>
+         {{> form/textarea }}
+         {{> form/errors }}
       </div>
    </div>
+   {{/ message }}
 
    <div class="pull-right">
       <input type="submit" class="btn" value="Envoyer" />
    </div>
 
 </form>
+{{/ form }}
+
 <div class="cleaner"></div>
 
 <hr>

@@ -38,7 +38,7 @@ module EthilVan::Authentication
       end
 
       def logout
-         account.delete_auth_token
+         current_account.delete_auth_token
          cookies[COOKIE_PSEUDO_NAME] = nil
          cookies[COOKIE_TOKEN_NAME] = nil
       end

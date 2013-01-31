@@ -1,42 +1,34 @@
 module EthilVan::Mustache
 
-   module Form
+   class Form < Partial
 
-      class Select < Partial
+      attr_reader :action, :method, :label_class, :field_class
 
-         def initialize(selected)
-            @selected = selected.map { |s| :"#{s}?" }
-         end
-
-         def respond_to?(name)
-            return false if name == :has_key?
-            super(name) || name[-1] == ??
-         end
-
-         def method_missing(name, *args)
-            if name[-1] == ??
-               @selected.include?(name) ? 'selected="selected"' : ''
-            else
-               super(name, *args)
-            end
-         end
+      def initialize(action = '', method = 'POST')
+         @action = action
+         @method = method
       end
 
-      def field(value)
-         return '' if value.nil?
-         return "value=\"#{escapeHTML value}\" "
+      def label_common_class
+         lambda { |_class| @label_class = _class; nil }
       end
 
-      def checkbox(value)
-         return 'value="1" ' unless value
-         return "value=\"1\" checked=\"checked\" "
+      def text(*args)
+         Text.new(self, *args)
       end
 
-      def select(*selected, among)
-         return {} if selected.nil?
-         selected.flatten!
-         return {} if selected.all? &:nil?
-         Select.new selected
+      def checkbox(*args)
+         Checkbox.new(self, *args)
+      end
+
+      def select(*args)
+         Select.new(self, *args)
       end
    end
 end
+
+require 'ethilvan/mustache/model_form'
+require 'ethilvan/mustache/form/field'
+require 'ethilvan/mustache/form/text'
+require 'ethilvan/mustache/form/checkbox'
+require 'ethilvan/mustache/form/select'

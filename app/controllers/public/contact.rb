@@ -6,8 +6,7 @@ class EthilVan::App
    end
 
    post '/contact' do
-      email = ContactEmail.new(params.extract!(
-            'name', 'email', 'category', 'subject', 'message'))
+      email = ContactEmail.new(params[:contact_email])
       if email.valid?
          mail do
             from     email.sender

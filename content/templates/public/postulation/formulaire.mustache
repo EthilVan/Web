@@ -1,0 +1,26 @@
+{{# title }}Formulaire de Postulation{{/ title }}
+
+{{# form }}
+   <form method="{{ method }}" action="{{ action }}">
+
+      {{# name }}
+         {{# errors? }}
+            <ul class="errors">
+               {{# errors }}<li>{{ . }}</li>{{/ errors }}
+            </ul>
+         {{/ errors? }}
+         <label for="name" />
+         <input id="name" name="{{ name }}" value="{{ value }}" />
+         {{# hint? }}<div class="hint">{{ hint }}</div>{{/ hint? }}
+      {{/ name }}
+
+      {{# sexe }}
+         {{# errors? }}
+            <ul class="errors">
+               {{# errors }}<li>{{ . }}</li>{{/ errors }}
+            </ul>
+         {{/ errors? }}
+      {{/ sexe }}
+
+   </form>
+{{/ form }}

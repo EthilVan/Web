@@ -34,8 +34,8 @@ class EthilVan::App
    get '/news/creer' do
       news = News.new
       news.account = current_account
-      view Views::Public::News::NewsForm.new news
-      mustache 'public/news/news_form'
+      view Views::Public::News::Create.new news
+      mustache 'public/news/create'
    end
 
    post '/news/creer' do
@@ -44,8 +44,8 @@ class EthilVan::App
       if news.save
          redirect urls.news news
       else
-         view Views::Public::News::NewsForm.new news
-         mustache 'public/news/news_form'
+         view Views::Public::News::Create.new news
+         mustache 'public/news/create'
       end
    end
 
@@ -61,8 +61,8 @@ class EthilVan::App
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?
 
-      view Views::Public::News::NewsForm.new news
-      mustache 'public/news/news_form'
+      view Views::Public::News::Edit.new news
+      mustache 'public/news/edit'
    end
 
    post %r{/news/(\d{1,3})/editer$} do |id|
@@ -72,8 +72,8 @@ class EthilVan::App
       if news.update_attributes params[:news]
          redirect urls.news news
       else
-         view Views::Public::News::NewsForm.new news
-         mustache 'public/news/news_form'
+         view Views::Public::News::Edit.new news
+         mustache 'public/news/edit'
       end
    end
 

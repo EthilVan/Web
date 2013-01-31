@@ -1,0 +1,40 @@
+<form action="{{ action }}" method="{{ method }}">
+
+   {{# news_title }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ news_title }}
+
+   {{# banner }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ banner }}
+
+   {{# summary }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/mdeditor }}
+   {{/ summary }}
+
+   {{# contents }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/mdeditor }}
+   {{/ contents }}
+
+   {{# private }}
+      {{> form/errors }}
+      {{> form/checkbox }}
+      {{> form/label }}
+   {{/ private }}
+
+   {{# important }}
+      {{> form/errors }}
+      {{> form/checkbox }}
+      {{> form/label }}
+   {{/ important }}
+
+   <input class="btn" type="submit" value="Poster" />
+</form
