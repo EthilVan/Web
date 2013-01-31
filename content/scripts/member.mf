@@ -16,3 +16,4 @@ app/tab.js
 app/select.js
 app/auto-fill.js
 app/mdeditor.js
+app/postulation.js

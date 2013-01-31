@@ -1,26 +1,154 @@
 {{# title }}Formulaire de Postulation{{/ title }}
 
+<ul class="nav nav-pills nav-postulation-form">
+   <li class="active">
+      <a href="#fields-account" data-toggle="pill">Compte</a>
+   </li>
+   <li><a href="#fields-ethilvan" data-toggle="pill">Ethil Van</a></li>
+   <li><a href="#fields-minecraft" data-toggle="pill">Minecraft</a></li>
+   <li><a href="#fields-screens" data-toggle="pill">Screenshots</a></li>
+   <li><a href="#fields-availability" data-toggle="pill">Disponibilités</a></li>
+   <li><a href="#fields-free" data-toggle="pill">Champ Libre</a></li>
+</ul>
+
 {{# form }}
-   <form method="{{ method }}" action="{{ action }}">
+<form id="postulation-form" class="tab-content" method="{{ method }}" action="{{ action }}">
+
+   <fieldset id="fields-account" class="tab-pane active">
 
       {{# name }}
-         {{# errors? }}
-            <ul class="errors">
-               {{# errors }}<li>{{ . }}</li>{{/ errors }}
-            </ul>
-         {{/ errors? }}
-         <label for="name" />
-         <input id="name" name="{{ name }}" value="{{ value }}" />
-         {{# hint? }}<div class="hint">{{ hint }}</div>{{/ hint? }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/hint }}
       {{/ name }}
 
+      {{# password }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/hint }}
+      {{/ password }}
+
+      {{# password_confirmation }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/hint }}
+      {{/ password_confirmation }}
+
+      {{# email }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/hint }}
+      {{/ email }}
+
       {{# sexe }}
-         {{# errors? }}
-            <ul class="errors">
-               {{# errors }}<li>{{ . }}</li>{{/ errors }}
-            </ul>
-         {{/ errors? }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/select }}
+         {{> form/hint }}
       {{/ sexe }}
 
-   </form>
+   </fieldset>
+
+   <fieldset id="fields-ethilvan" class="tab-pane">
+
+      {{# ethilvan_discovered }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ ethilvan_discovered }}
+
+      {{# ethilvan_reason }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ ethilvan_reason }}
+
+   </fieldset>
+
+   <fieldset id="fields-minecraft" class="tab-pane">
+
+      {{# minecraft_since }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ minecraft_since }}
+
+      {{# multi_minecraft }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/checkbox }}
+         {{> form/hint }}
+      {{/ multi_minecraft }}
+
+      {{# old_server }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ old_server }}
+
+      {{# old_server_reason }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ old_server_reason }}
+
+   </fieldset>
+
+   <fieldset id="fields-screens" class="tab-pane">
+
+   </fieldset>
+
+   <fieldset id="fields-availability" class="tab-pane">
+
+      {{# availability }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ availability }}
+
+      {{# microphone }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/checkbox }}
+         {{> form/hint }}
+      {{/ microphone }}
+
+      {{# mumble }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/select }}
+         {{> form/hint }}
+      {{/ mumble }}
+
+      {{# mumble_other }}
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ mumble_other }}
+
+   </fieldset>
+
+   <fieldset id="fields-free" class="tab-pane">
+
+      {{# free_text }}
+         {{> form/errors }}
+         {{> form/textarea }}
+         {{> form/hint }}
+      {{/ free_text }}
+
+   </fieldset>
+
+   <div><input type="submit" class="btn pull-right" value="Envoyer" /></div>
+</form>
 {{/ form }}
