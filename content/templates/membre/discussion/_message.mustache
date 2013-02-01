@@ -20,17 +20,13 @@
          <div class="ligne-signature"></div>
          <div class="signature-membre">
             <div class="boutons">
-               <a href="{{ view_url }}">Lien</a>
+               <a class="btn" href="{{ view_url }}">Lien</a>
                {{# can_edit }}
-               <a href="{{ edit_url }}">
-                  <div class="edit">
-                     <input type="button" value="Editer" />
-                  </div>
+               <a class="btn" href="{{ edit_url }}">
+                  Editer
                </a>
-               <a href="{{ delete_url }}">
-                  <div class="suppr">
-                     <input type="button" value="Supprimer" />
-                  </div>
+               <a class="need-confirmation btn" href="{{ delete_url }}">
+                  Supprimer
                </a>
                {{/ can_edit }}
             </div>

@@ -9,6 +9,8 @@ bootstrap/bootstrap-tab.js
 bootstrap/bootstrap-dropdown.js
 bootstrap/bootstrap-collapse.js
 bootstrap/bootstrap-carousel.js
+bootstrap/bootstrap-modal.js
+lib/bootbox.js
 app/preload-images.js
 app/member-menu.js
 app/back-top.js
@@ -16,4 +18,5 @@ app/tab.js
 app/select.js
 app/auto-fill.js
 app/mdeditor.js
+app/confirmation.js
 app/postulation.js

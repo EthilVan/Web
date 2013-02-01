@@ -6,7 +6,7 @@
       <div class="titre">{{ title }}</div>
       {{# redacteur? }}
          <a href="{{ edit_url }}">Editer</a>
-         <a href="{{ delete_url }}">Supprimer</a>
+         <a class="need-confirmation" href="{{ delete_url }}">Supprimer</a>
       {{/ redacteur? }}
       <div class="banner"><img src="{{ banner_url }}" /></div>
       <div class="contenu">{{{ contents }}}</div>
