@@ -143,6 +143,7 @@ MDEditor.Utils = {
 
    appendControls: function(inputElement) {
       var element = $(MDEditor.Utils.controlsTemplate());
+      element.find('a').attr('tabindex', '-1');
       $(inputElement).before(element);
 
       return element;
