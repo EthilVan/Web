@@ -4,11 +4,18 @@
    Marquer toutes les discussions comme lues
 </a>
 
+{{# modo? }}
+<a href="/membre/discussion/!creer_espace">
+   Créer une espace de discussion
+</a>
+{{/ modo? }}
+
 {{# groups }}
    <div class="discussion-group">
       <a href="{{ url }}" title="{{ description }}">
          <div class="titre-espace">{{ name }}</div>
       </a>
+      {{# modo? }}<a href="{{ edit_url }}">Editer</a>{{/ modo? }}
       {{> membre/discussion_group/_discussion_previews }}
       {{# remaining? }}
       <a href="{{ url }}" title="{{ description }}">

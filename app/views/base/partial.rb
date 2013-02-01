@@ -16,6 +16,18 @@ module EthilVan::App::Views
          app.logged_in?
       end
 
+      def has_role?(role)
+         @app.current_account.role.inherit?(role)
+      end
+
+      def modo?
+         @has_role_modo ||= has_role?(EthilVan::Role::MODO)
+      end
+
+      def redacteur?
+         @has_role_redacteur ||= has_role?(EthilVan::Role::REDACTEUR)
+      end
+
       def render_markdown(text)
          @app.markdown(text)
       end

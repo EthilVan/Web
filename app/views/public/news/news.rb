@@ -8,11 +8,6 @@ module EthilVan::App::Views
             @news = news
          end
 
-         def redacteur?
-            @redacteur = @app.current_account.role
-                  .inherit? EthilVan::Role::REDACTEUR
-         end
-
          def url
             urls.news @news
          end

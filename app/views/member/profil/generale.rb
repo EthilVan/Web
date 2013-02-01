@@ -21,8 +21,7 @@ module EthilVan::App::Views
          end
 
          def show_email?
-            role = @app.current_account.role
-            role.inherit? EthilVan::Role::MODO
+            modo?
          end
 
          def email
