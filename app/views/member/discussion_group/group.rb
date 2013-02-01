@@ -1,8 +1,8 @@
 module EthilVan::App::Views
 
-   module Member::Discussion
+   module Member::DiscussionGroup
 
-      class DiscussionGroup < Page
+      class Show < Page
 
          def initialize(group, limit = false)
             @group = group

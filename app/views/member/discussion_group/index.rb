@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   module Member::Discussion
+   module Member::DiscussionGroup
 
       class Index < Page
 
@@ -13,7 +13,7 @@ module EthilVan::App::Views
          end
 
          def groups
-            @groups.map { |group| DiscussionGroup.new(group, 5) }
+            @groups.map { |group| Show.new(group, 5) }
          end
       end
    end

@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   module Member::Discussion
+   module Member::DiscussionGroup
 
       class DiscussionPreview < Partial
 
