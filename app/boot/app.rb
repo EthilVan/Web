@@ -17,13 +17,11 @@ module EthilVan
             'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
 
       EthilVan.development? do
-         before do
-            I18n.reload!
-         end
+         before { I18n.reload! }
 
-         require 'better_errors'
-         use BetterErrors::Middleware
-         BetterErrors.application_root = EthilVan::ROOT
+         #require 'better_errors'
+         #use BetterErrors::Middleware
+         #BetterErrors.application_root = EthilVan::ROOT
 
          require 'rack-mini-profiler'
          Rack::MiniProfiler.config.position = 'right'
