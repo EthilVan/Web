@@ -46,14 +46,16 @@ module EthilVan::Mustache
             errors.full_message(name, message)
          end
 
-         extract_i18n_data(attributes, :label, name)
+         puts attributes[:label]
+         extract_i18n_data(attributes, name, :label)
+         puts attributes[:label]
          attributes[:label] ||= @model.class.human_attribute_name(name)
-         extract_i18n_data(attributes, :hint, name)
+         extract_i18n_data(attributes, name, :hint)
       end
 
       def extract_i18n_data(attributes, field_name, data_name)
          return if attributes.key? data_name
-         data = i18n_data(data_name, field_name)
+         data = i18n_data(field_name, data_name)
          attributes[data_name] = data unless data.nil?
       end
 

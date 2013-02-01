@@ -1,0 +1,79 @@
+fr:
+   form:
+      postulation:
+         label:
+            name: "Pseudo (Site)"
+            password: "Mot de Passe"
+            password_confirmation: "Confirmation du Mot de Passe"
+            minecraft_name: "Pseudo (Minecraft)"
+            birthdate_formatted: "Date de naissance"
+            minecraft_since: "Depuis combien de temps jouez-vous à Minecraft"
+            multi_minecraft: "Avez-vous déjà joué en multi-joueurs sur Minecraft"
+            old_server: "Quel est votre ancien serveur"
+            old_server_reason: "Pourquoi l'avoir quitté ou pourquoi en avoir cherché un nouveau"
+            ethilvan_discovered: "Comment avez-vous connu notre serveur"
+            ethilvan_reason: "Qu'est-ce qui vous a poussé à postuler sur Ethil Van"
+            screens: "Screenshots"
+            availability_schedule: "Quels sont vos jours et horaires de connexion habituels"
+            microphone: "Disposez-vous d'un microphone"
+            mumble: "Nous rejoindrez-vous sur TeamSpeak"
+            mumble_other: "Précisez"
+            free_text: "Dites-nous en un peu plus"
+            rules_acceptance: "Avez-vous lu et accepté le règlement du serveur"
+
+         hint:
+            name: >
+               Ce pseudo sera utilisé sur le site et remplacera votre pseudo Minecraft habituel
+               sur le serveur dans le chat et au-dessus de votre personnage. A choisir avec soin,
+               il ne pourra être changé que par les administrateurs.
+               Le pseudo ne doit pas contenir d'espaces ou de caractères spéciaux, et de
+               préférence pas de chiffres.
+            email: >
+               Adresse e-mail utilisée pour la création de votre compte mais aussi pour vous
+               informer de changements importants sur le site, de la validation ou du refus
+               de votre candidature.
+               Cette adresse ne sera pas révélée aux autres utilisateurs.
+            password: >
+               Choissisez le mot de passe qui sera utilisé lors de la création de votre compte.
+            password_confirmation: >
+               Confirmez votre mot de passe.
+            minecraft_name: >
+               Il s'agit de votre pseudo Minecraft, celui correspondant à votre compte sur
+               Minecraft.net, il doit être exactement identique, majuscules et minuscules
+               comprises.
+            minecraft_password: >
+               Il ne sera en aucun cas sauvegardé ou utilisé à d'autres fins. Ce mot de passe
+               est juste automatiquement envoyé a minecraft.net afin de vérifier que le compte
+               Minecraft indiqué vous appartient bien.
+            birthdate_formatted: >
+               Suivant le format "jj/mm/aaaa".
+            minecraft_since: >
+               Date approximative, version
+            old_server: >
+               Nom du serveur, type de serveur (privé/public, RP/semi-RP/FreeBuild, taille,
+               etc.), brève description.
+            old_server_reason: >
+               Raisons diverses (problèmes avec d'autres membres, fermeture du serveur,
+               bannissement, trop grande communauté, trop peu d'activité, etc.)
+            ethilvan_discovered: >
+               Liste de serveur, Chaîne Youtube, Bouche à oreille, etc.
+            ethilvan_reason: >
+               Type de serveur, règlement,  présence d'un ou plusieurs membres, etc.
+            screens: ""
+            availability_schedule: >
+               Disponibilités approximatives en semaine, le week-end et pendant les vacances
+               (scolaires ou non).
+            mumble: >
+               Choisir dans la liste, préciser dans le champ de texte si "Autre"
+            free_text: >
+               Les questions précédentes sont loin de nous en apprendre beaucoup sur vous, donc
+               vous pouvez nous en dire un peu plus ici (quel type de Minecraftien êtes-vous,
+               avez-vous des compétences particulières (Redstone, développement de plugins, musicien,
+               graphiste, etc.), êtes-vous plutôt petites constructions ou projets d'envergure, ....)
+               C'est un champ facultatif mais qui n'est cependant pas négligeable.
+
+         placeholder:
+            name: Pseudo
+            email: email@example.org
+            minecraft _name: Pseudo Minecraft
+            birthdate_formatted: "jj/mm/aaaa"

@@ -12,7 +12,8 @@
 </ul>
 
 {{# form }}
-<form id="postulation-form" class="tab-content" method="{{ method }}" action="{{ action }}">
+<form id="postulation-form" class="tab-content"
+      method="{{ method }}" action="{{ action }}" novalidate>
 
    <fieldset id="fields-account" class="tab-pane active">
 
@@ -24,6 +25,15 @@
          {{> form/hint }}
       </div>
       {{/ name }}
+
+      {{# minecraft_name }}
+      <div class="field-{{ id }}">
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/hint }}
+      </div>
+      {{/ minecraft_name }}
 
       {{# password }}
       <div class="field-{{ id }}">
@@ -51,6 +61,15 @@
          {{> form/hint }}
       </div>
       {{/ email }}
+
+      {{# birthdate }}
+      <div class="field-{{ id }}">
+         {{> form/errors }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/hint }}
+      </div>
+      {{/ birthdate }}
 
       {{# sexe }}
       <div class="field-{{ id }}">
