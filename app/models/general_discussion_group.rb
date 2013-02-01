@@ -34,6 +34,11 @@ class GeneralDiscussionGroup < ActiveRecord::Base
       discussions_query.count
    end
 
+   def destroy_with_everything
+      discussions.each &:destroy_with_messages
+      destroy
+   end
+
 private
 
    def discussions_query

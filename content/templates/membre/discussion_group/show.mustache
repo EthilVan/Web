@@ -7,7 +7,10 @@
    <div class="ligne"></div>
    <div class="entete-espace">
       <div class="titre-espace">{{ name }}</div>
-      {{# modo? }}<a href="{{ edit_url }}">Editer</a>{{/ modo? }}
+      {{# modo? }}
+         <a href="{{ edit_url }}">Editer</a>
+         <a href="{{ delete_url }}">Supprimer</a>
+      {{/ modo? }}
       <p>{{ description }}</p>
    </div>
    {{> membre/discussion_group/_discussion_previews }}

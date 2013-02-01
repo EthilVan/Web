@@ -39,4 +39,9 @@ class Discussion < ActiveRecord::Base
    def total_pages
       page(1).total_pages
    end
- end
+
+   def destroy_with_messages
+      Message.where(discussion_id: id).destroy_all
+      destroy
+   end
+end

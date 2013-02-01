@@ -56,4 +56,15 @@ class EthilVan::App < Sinatra::Base
       view Views::Member::DiscussionGroup::Edit.new group
       mustache 'membre/discussion_group/edit'
    end
+
+   discussion_group_delete = %r{^#{DISCUSSION_GROUP_BASE_URL}/supprimer$}
+
+   protect discussion_group_delete, EthilVan::Role::MODO
+
+   get discussion_group_delete do |group_url|
+      group = GeneralDiscussionGroup.find_by_url group_url
+      raise Sinatra::NotFound if group.nil?
+      group.destroy_with_everything
+      redirect '/membre/discussion'
+   end
 end

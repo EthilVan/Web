@@ -13,7 +13,7 @@ class EthilVan::App < Sinatra::Base
       raise Sinatra::NotFound if message.nil?
       not_authorized unless message.editable_by? current_account
       view Views::Member::Discussion::MessageForm.new(message)
-      mustache 'membre/discussion/message_form'
+      mustache 'membre/discussion/respond'
    end
 
    post '/membre/message/:id/editer' do |id|
@@ -28,7 +28,7 @@ class EthilVan::App < Sinatra::Base
          redirect urls.discussion(message.discussion, page, message)
       else
          view Views::Member::Discussion::MessageForm.new(message)
-         mustache 'membre/discussion/message_form'
+         mustache 'membre/discussion/respond'
       end
    end
 
