@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Member::Discussion
 
-      class Discussion < Page
+      class Show < Page
 
          def initialize(discussion, page = nil)
             @discussion = discussion
@@ -18,7 +18,7 @@ module EthilVan::App::Views
          end
 
          def author
-            _messages.first.account.name
+            @discussion.author.name
          end
 
          def messages
@@ -45,12 +45,6 @@ module EthilVan::App::Views
 
          def response_link
             "/membre/discussion/#{@discussion.id}/repondre"
-         end
-
-      private
-
-         def _messages
-            @messages ||= @discussion.messages
          end
       end
    end

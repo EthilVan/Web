@@ -41,15 +41,15 @@ class EthilVan::App < Sinatra::Base
             includes(account: [ :profil, :minecraft_stats ])
       raise Sinatra::NotFound unless page.present?
       DiscussionView.update_for(current_account, discussion)
-      view Views::Member::Discussion::Discussion.new(discussion, page)
-      mustache 'membre/discussion/discussion'
+      view Views::Member::Discussion::Show.new(discussion, page)
+      mustache 'membre/discussion/show'
    end
 
    get %r{/membre/discussion/(\d{1,5})/repondre$} do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
-      view Views::Member::Discussion::MessageForm.new
-      mustache 'membre/discussion/message_form'
+      view Views::Member::Discussion::Respond.new
+      mustache 'membre/discussion/respond'
    end
 
    post %r{/membre/discussion/(\d{1,5})/repondre$} do |id|
@@ -64,8 +64,8 @@ class EthilVan::App < Sinatra::Base
       if message.save
          redirect urls.discussion(discussion, discussion.total_pages, message)
       else
-         view Views::Member::Discussion::MessageForm.new(message)
-         mustache 'membre/discussion/message_form'
+         view Views::Member::Discussion::Respond.new(message)
+         mustache 'membre/discussion/respond'
       end
    end
 end

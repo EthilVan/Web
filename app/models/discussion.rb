@@ -22,6 +22,11 @@ class Discussion < ActiveRecord::Base
    # ==========================================================================
    # * Methods
    # ==========================================================================
+   def author
+      Message.order('messages.created_at ASC').where(discussion_id: id)
+            .first.account
+   end
+
    def read_by?(account)
       date = DiscussionView.date_for(account, self)
       !date.nil? and date > updated_at
