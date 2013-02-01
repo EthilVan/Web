@@ -75,5 +75,5 @@ fr:
          placeholder:
             name: Pseudo
             email: email@example.org
-            minecraft _name: Pseudo Minecraft
+            minecraft_name: Pseudo Minecraft
             birthdate_formatted: "jj/mm/aaaa"
