@@ -1,5 +1,7 @@
 class GeneralDiscussionGroup < ActiveRecord::Base
 
+   URL_PATTERN = '[a-z][a-z0-9_]*'
+
    attr_accessible :name
    attr_accessible :description
    attr_accessible :priority
@@ -14,7 +16,7 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    # * Validations
    # ==========================================================================
    validates_presence_of :name
-   validates_format_of   :url, with: /\A[A-Za-z_]+\Z/
+   validates_format_of   :url, with: /\A#{URL_PATTERN}\Z/
 
    # ==========================================================================
    # * Callbacks and scope

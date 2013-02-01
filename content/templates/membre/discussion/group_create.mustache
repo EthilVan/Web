@@ -1,0 +1,34 @@
+{{# title }}Création d'un espace de discussion{{/ title }}
+
+{{# form }}
+<form method="{{ method }}" action={{ action }}>
+
+   {{# name }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ name }}
+
+   {{# url }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ url }}
+
+   {{# description }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/textarea }}
+   {{/ description }}
+
+   {{# priority }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ priority }}
+
+   <div>
+      <input class="btn" type="submit" value="Enregistrer" />
+   </div>
+</form>
+{{/ form }}
