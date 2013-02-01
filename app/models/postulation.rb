@@ -119,6 +119,7 @@ class Postulation < ActiveRecord::Base
    # * Callbacks and scope
    # ==========================================================================
    before_save :encrypt_password, if: :new_password?
+   before_save :parse_birthdate,  if: :new_birthdate?
    scope :by_date, order('created_at DESC')
    scope :awaiting, where('`postulations`.`status` != 2')
 
@@ -138,6 +139,10 @@ class Postulation < ActiveRecord::Base
       end
    end
 
+   def agreements
+      []
+   end
+
 private
 
    def new_password?
@@ -146,6 +151,15 @@ private
 
    def encrypt_password
       self.crypted_password = Password.create(password)
+   end
+
+   def new_birthdate?
+      @birthdate_formatted.present?
+   end
+
+   def parse_birthdate
+      a = birthdate_formatted.split("/").map { |s| s.to_i }
+      self.birthdate = Date.civil(*a.reverse)
    end
 
    def mumble_other?

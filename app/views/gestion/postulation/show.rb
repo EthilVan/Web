@@ -110,7 +110,7 @@ module EthilVan::App::Views
          def can_vote?
             PostulationVote.where(
                postulation_id: @postulation.id,
-               account_id: current_account.id,
+               account_id: @app.current_account.id,
             ).empty?
          end
       end

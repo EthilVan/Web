@@ -13,8 +13,12 @@ class EthilVan::App
          PostulationScreen.new(hash)
       end
       postulation = Postulation.new(param)
-      postulation.valid?
-      view Views::Public::Postulation::Formulaire.new postulation
-      mustache 'public/postulation/formulaire'
+      if postulation.save
+         view Views::Public::Postulation::Validation.new
+         mustache 'public/postulation/validation'
+      else
+         view Views::Public::Postulation::Formulaire.new postulation
+         mustache 'public/postulation/formulaire'
+      end
    end
 end
