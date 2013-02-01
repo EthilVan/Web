@@ -14,6 +14,8 @@ class EthilVan::App < Sinatra::Base
       redirect '/membre/discussion'
    end
 
+   protect %r{^/membre/discussion/!creer_espace$}, EthilVan::Role::MODO
+
    get '/membre/discussion/!creer_espace' do
       group = GeneralDiscussionGroup.new
       view Views::Member::DiscussionGroup::Create.new group
@@ -34,14 +36,18 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/discussion_group/show'
    end
 
-   get %r{#{DISCUSSION_GROUP_BASE_URL}/editer$} do |group_url|
+   discussion_group_edit = %r{^#{DISCUSSION_GROUP_BASE_URL}/editer$}
+
+   protect discussion_group_edit, EthilVan::Role::MODO
+
+   get discussion_group_edit do |group_url|
       group = GeneralDiscussionGroup.find_by_url group_url
       raise Sinatra::NotFound if group.nil?
       view Views::Member::DiscussionGroup::Edit.new group
       mustache 'membre/discussion_group/edit'
    end
 
-   post %r{#{DISCUSSION_GROUP_BASE_URL}/editer$} do |group_url|
+   post discussion_group_edit do |group_url|
       group = GeneralDiscussionGroup.find_by_url group_url
       raise Sinatra::NotFound if group.nil?
       if group.update_attributes params[:general_discussion_group]

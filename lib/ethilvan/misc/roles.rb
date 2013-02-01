@@ -30,5 +30,13 @@ module EthilVan
       MODO = get :modo
       REDACTEUR = get :redacteur
       MEMBER = get :default
+
+      GUEST = Object.new
+      def GUEST.id
+         :guest
+      end
+      def GUEST.inherit?(role)
+         role == self
+      end
    end
 end

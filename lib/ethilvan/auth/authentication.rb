@@ -60,6 +60,12 @@ module EthilVan::Authentication
    def Guest.logged_in?
       false
    end
+   def Guest.role
+      EthilVan::Role::GUEST
+   end
+   def Guest.role_id
+      role.id
+   end
 
    class CaesarCipher
 

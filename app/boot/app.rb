@@ -46,10 +46,6 @@ module EthilVan
       set :remember_for, 2.months
 
       register EthilVan::Authorization
-      logged_only %r{^/membre}
-      logged_only %r{^/markdown$}
-      protect %r{^/news/creer}, EthilVan::Role::REDACTEUR
-      protect %r{^/gestion}, EthilVan::Role::MODO
 
       register EthilVan::Markdown
    end

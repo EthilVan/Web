@@ -8,6 +8,8 @@ class EthilVan::App < Sinatra::Base
       redirect '/presentation/generale'
    end
 
+   logged_only %r{^/markdown}
+
    post '/markdown' do
       markdown params['content']
    end
