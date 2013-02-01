@@ -17,6 +17,10 @@ module EthilVan
             'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
 
       EthilVan.development? do
+         before do
+            I18n.reload!
+         end
+
          require 'better_errors'
          use BetterErrors::Middleware
          BetterErrors.application_root = EthilVan::ROOT
