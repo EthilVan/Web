@@ -19,11 +19,17 @@ module EthilVan::App::Views
             end
 
             def name
-               text :name
+               text :name, validations: {
+                  required: true,
+                  regexp: "^[A-Za-z][A-Za-z0-9_ ]+$",
+               }
             end
 
             def email
-               text :email, type: :email
+               text :email, validations: {
+                  required: true,
+                  type: 'email',
+               }
             end
 
             def category
@@ -31,11 +37,15 @@ module EthilVan::App::Views
             end
 
             def subject
-               text :subject
+               text :subject, validations: {
+                  required: true,
+               }
             end
 
             def message
-               text :message
+               text :message, validations: {
+                  required: true,
+               }
             end
          end
 
