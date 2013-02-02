@@ -5,35 +5,49 @@ $(function() {
       return;
    }
 
+   var disableField = function(fieldContainer) {
+      var field = fieldContainer.find('textarea, select');
+      field.prop('disabled', true);
+      field.parsley('validate');
+      fieldContainer.slideUp(400);
+   }
+
+   var enableField = function(fieldContainer) {
+      var field = fieldContainer.find('textarea, select');
+      field.prop('disabled', false);
+      field.parsley('validate');
+      fieldContainer.slideDown(400);
+   }
+
    var oldServer = $form.find('.field-postulation_old_server');
    var oldServerReason = $form.find('.field-postulation_old_server_reason');
    var onMultiMinecraftChange = function(multiMinecraft) {
       if (multiMinecraft.is(':checked')) {
-         oldServer.slideDown(400);
-         oldServerReason.slideDown(400);
+         enableField(oldServer);
+         enableField(oldServerReason);
       } else {
-         oldServer.slideUp(400);
-         oldServerReason.slideUp(400);
+         disableField(oldServer);
+         disableField(oldServerReason);
       }
    }
 
    var mumbleOther = $form.find('.field-postulation_mumble_other');
    var onMumbleChange = function(mumbleSelect) {
       if (mumbleSelect.val() == 'Autre') {
-         mumbleOther.slideDown(400);
+         enableField(mumbleOther);
       } else {
-         mumbleOther.slideUp(400);
+         disableField(mumbleOther);
       }
    }
 
    var mumble = $form.find('.field-postulation_mumble');
    var onMicrophoneChange = function(microphone) {
       if (microphone.is(':checked')) {
-         mumble.slideDown(400);
+         enableField(mumble);
          onMumbleChange($form.find('.field-postulation_mumble select'));
       } else {
-         mumble.slideUp(400);
-         mumbleOther.slideUp(400);
+         disableField(mumble);
+         disableField(mumbleOther);
       }
    }
 
@@ -92,13 +106,25 @@ $(function() {
    $('.remove-screen').click(onScreenRemove);
 
    // Activate first tab pane which contains errors
-   $form.find('.tab-pane').each(function() {
-      var tabPane = $(this);
+   var activateFirstTabWithErrors = function() {
+      $form.find('.tab-pane').each(function() {
+         var tabPane = $(this);
 
-      if (tabPane.find('.errors').size() > 0) {
-         var tab = $('.nav-postulation-form a[href="#' + tabPane.attr('id') + '"]');
-         tab.tab('show');
-         return false;
+         if (tabPane.find('.errors, .parsley-error-list').size() > 0) {
+            var tab = $('.nav-postulation-form a[href="#' + tabPane.attr('id') + '"]');
+            tab.tab('show');
+            return false;
+         }
+      });
+   };
+
+   window.ParsleyConfig = $.extend(true, {}, window.ParsleyConfig, {
+      listeners: {
+         onFormSubmit: function(isFormValid, event, ParsleyForm) {
+            activateFirstTabWithErrors();
+         }
       }
    });
+
+   activateFirstTabWithErrors();
 });

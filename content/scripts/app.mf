@@ -20,5 +20,5 @@ app/select.js
 app/auto-fill.js
 app/mdeditor.js
 app/confirmation.js
-app/parsley.fr.js
+app/parsley.js
 app/postulation.js
