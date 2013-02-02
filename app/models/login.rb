@@ -10,13 +10,11 @@ class Login
    attr_accessor :password
    attr_accessor :remember
    attr_reader   :account
-   attr_reader   :banned
 
    def initialize(params = {})
       @name = params[:name]
       @password = params[:password]
       @remember = params[:remember] || false
-      @banned = false
    end
 
    def read_attribute_for_validation(key)
@@ -25,8 +23,7 @@ class Login
    end
 
    def has_credentials?
-      @name.present?
-      @password.present?
+      @name.present? && @password.present?
    end
 
    def authentication
@@ -34,8 +31,7 @@ class Login
       if @account.nil?
          errors.add(:credentials, :invalid)
       elsif @account.banned
-         @banned = true
-         errors.add(:credentials, :banned)
+         errors.add(:banned, :banned)
       end
    end
 end

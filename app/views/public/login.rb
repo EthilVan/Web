@@ -35,11 +35,11 @@ module EthilVan::App::Views
             end
 
             def invalid?
-               @login.account.nil?
+               not @login.errors[:credentials].empty?
             end
 
             def banned?
-               @login.banned
+               not @login.errors[:banned].empty?
             end
          end
       end
