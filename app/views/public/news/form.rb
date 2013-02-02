@@ -9,19 +9,27 @@ module EthilVan::App::Views
          end
 
          def news_title
-            text :title
+            text :title, validations: {
+               required: true,
+            }
          end
 
          def banner
-            text :banner
+            text :banner, validations: {
+               type: 'urlstrict'
+            }
          end
 
          def summary
-            text :summary
+            text :summary, validations: {
+               required: true,
+            }
          end
 
          def contents
-            text :contents
+            text :contents, validations: {
+               required: true,
+            }
          end
 
          def private
