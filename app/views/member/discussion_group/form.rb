@@ -9,15 +9,22 @@ module EthilVan::App::Views
          end
 
          def name
-            text :name
+            text :name, validations: {
+               required: true,
+            }
          end
 
          def url
-            text :url
+            text :url, validations: {
+               required: true,
+               regexp: "^#{GeneralDiscussionGroup::URL_PATTERN}$",
+            }
          end
 
          def priority
-            text :priority
+            text :priority, validations: {
+               min: 0,
+            }
          end
 
          def description
