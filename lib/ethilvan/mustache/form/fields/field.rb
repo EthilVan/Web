@@ -6,12 +6,15 @@ class EthilVan::Mustache::Form
       attr_reader :name
       attr_reader :errors
       attr_reader :validations
+      attr_reader :id
 
       def initialize(fieldset, name, validations, errors, attributes)
          @fieldset    = fieldset
          @name        = name
          @validations = Array(validations) + Array(attributes[:validations])
          @errors      = errors
+
+         @id = attributes[:id] || @name
       end
 
       def errors?
@@ -23,7 +26,7 @@ class EthilVan::Mustache::Form
       end
 
       def field_id
-         fieldset.field_id @name
+         fieldset.field_id @id
       end
 
       def validations

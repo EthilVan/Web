@@ -23,5 +23,13 @@ class EthilVan::Mustache::Form
       def label_for(field)
          l10n_for(field, :label) || model.class.human_attribute_name(field)
       end
+
+   private
+
+      def _l10n_for(ns, field, data)
+         I18n.translate!(["form", ns, data, field] * '.')
+      rescue I18n::MissingTranslationData
+         nil
+      end
    end
 end

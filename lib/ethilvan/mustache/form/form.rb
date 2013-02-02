@@ -6,6 +6,7 @@ module EthilVan::Mustache
 
       attr_reader :model
       attr_reader :name
+      attr_reader :id
 
       def initialize(model, params = {})
          @model = model
@@ -37,7 +38,7 @@ module EthilVan::Mustache
 
       def validation_attributes
          return '' if @validation == 'html5'
-         return ' novalidate' if ['false', 'nil'].include? @validation.to_s
+         return ' novalidate' if @validation == 'none'
          " novalidate data-validate=\"#@validation\""
       end
    end

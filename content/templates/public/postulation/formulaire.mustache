@@ -17,7 +17,7 @@
    <fieldset id="fields-account" class="tab-pane active">
 
       {{# name }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
@@ -26,7 +26,7 @@
       {{/ name }}
 
       {{# minecraft_name }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
@@ -35,7 +35,7 @@
       {{/ minecraft_name }}
 
       {{# password }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
@@ -44,7 +44,7 @@
       {{/ password }}
 
       {{# password_confirmation }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
@@ -53,7 +53,7 @@
       {{/ password_confirmation }}
 
       {{# email }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
@@ -62,7 +62,7 @@
       {{/ email }}
 
       {{# birthdate }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/input }}
@@ -71,7 +71,7 @@
       {{/ birthdate }}
 
       {{# sexe }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/select }}
@@ -84,7 +84,7 @@
    <fieldset id="fields-ethilvan" class="tab-pane">
 
       {{# ethilvan_discovered }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
@@ -93,7 +93,7 @@
       {{/ ethilvan_discovered }}
 
       {{# ethilvan_reason }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
@@ -106,7 +106,7 @@
    <fieldset id="fields-minecraft" class="tab-pane">
 
       {{# minecraft_since }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
@@ -115,7 +115,7 @@
       {{/ minecraft_since }}
 
       {{# multi_minecraft }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/checkbox }}
@@ -124,7 +124,7 @@
       {{/ multi_minecraft }}
 
       {{# old_server }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
@@ -133,7 +133,7 @@
       {{/ old_server }}
 
       {{# old_server_reason }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
@@ -146,51 +146,53 @@
    <fieldset id="fields-screens" class="tab-pane">
 
       <div class="field-postulation_screens">
-         {{# screen_template }}
-         <fieldset class="field-screen-template" disabled style="display: none;">
-            <h4>{{ screen_title }}</h4>
-            {{# url }}
-            <div>
-               {{> form/errors }}
-               {{> form/label }}
-               {{> form/input }}
-               {{> form/hint }}
-            </div>
-            {{/ url }}
-            {{# description }}
-            <div>
-               {{> form/errors }}
-               {{> form/label }}
-               {{> form/textarea }}
-               {{> form/hint }}
-            </div>
-            {{/ description }}
-            <a href="#" class="btn remove-screen" >-</a>
-         </fieldset>
-         {{/ screen_template }}
          {{# screens }}
-         {{# values }}
-         <fieldset class="field-screen">
-            <h4>{{ screen_title }}</h4>
-            {{# url }}
-            <div>
-               {{> form/errors }}
-               {{> form/label }}
-               {{> form/input }}
-               {{> form/hint }}
-            </div>
-            {{/ url }}
-            {{# description }}
-            <div>
-               {{> form/errors }}
-               {{> form/label }}
-               {{> form/textarea }}
-               {{> form/hint }}
-            </div>
-            {{/ description }}
-            <a href="#" class="btn remove-screen" >-</a>
-         </fieldset>
-         {{/ values}}
+            {{> form/errors }}
+
+            {{# template }}
+            <fieldset class="field-screen-template" disabled style="display: none;">
+               <h4>Screenshot {{ index }}</h4>
+               {{# url }}
+               <div>
+                  {{> form/errors }}
+                  {{> form/label }}
+                  {{> form/input }}
+                  {{> form/hint }}
+               </div>
+               {{/ url }}
+               {{# description }}
+               <div>
+                  {{> form/errors }}
+                  {{> form/label }}
+                  {{> form/textarea }}
+                  {{> form/hint }}
+               </div>
+               {{/ description }}
+               <a href="#" class="btn remove-screen" >-</a>
+            </fieldset>
+            {{/ template }}
+            {{# values }}
+            <fieldset class="field-screen">
+               <h4>Screenshot {{ index }}</h4>
+               {{# url }}
+               <div>
+                  {{> form/errors }}
+                  {{> form/label }}
+                  {{> form/input }}
+                  {{> form/hint }}
+               </div>
+               {{/ url }}
+               {{# description }}
+               <div>
+                  {{> form/errors }}
+                  {{> form/label }}
+                  {{> form/textarea }}
+                  {{> form/hint }}
+               </div>
+               {{/ description }}
+               <a href="#" class="btn remove-screen" >-</a>
+            </fieldset>
+            {{/ values }}
          {{/ screens }}
          <a href="#" class="btn add-screen">+</a>
       </div>
@@ -200,7 +202,7 @@
    <fieldset id="fields-availability" class="tab-pane">
 
       {{# availability }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
@@ -209,7 +211,7 @@
       {{/ availability }}
 
       {{# microphone }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/checkbox }}
@@ -218,7 +220,7 @@
       {{/ microphone }}
 
       {{# mumble }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/select }}
@@ -227,7 +229,7 @@
       {{/ mumble }}
 
       {{# mumble_other }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/label }}
          {{> form/textarea }}
@@ -240,7 +242,7 @@
    <fieldset id="fields-free" class="tab-pane">
 
       {{# free_text }}
-      <div class="field-{{ id }}">
+      <div class="field-{{ field_id }}">
          {{> form/errors }}
          {{> form/textarea }}
          {{> form/hint }}
@@ -250,7 +252,7 @@
    </fieldset>
 
    {{# rules_acceptance }}
-   <div class="pull-right field-{{ id }}">
+   <div class="pull-right field-{{ field_id }}">
       {{> form/errors }}
       {{> form/label }}
       {{> form/checkbox }}

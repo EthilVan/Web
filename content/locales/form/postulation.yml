@@ -13,7 +13,7 @@ fr:
             old_server_reason: "Pourquoi l'avoir quitté ou pourquoi en avoir cherché un nouveau"
             ethilvan_discovered: "Comment avez-vous connu notre serveur"
             ethilvan_reason: "Qu'est-ce qui vous a poussé à postuler sur Ethil Van"
-            screens: "Screenshots"
+            screens_attributes: "Screenshots"
             availability_schedule: "Quels sont vos jours et horaires de connexion habituels"
             microphone: "Disposez-vous d'un microphone"
             mumble: "Nous rejoindrez-vous sur TeamSpeak"

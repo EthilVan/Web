@@ -6,6 +6,10 @@ module EthilVan::App::Views
 
          class ScreenFields < EthilVan::Mustache::Form::Association
 
+            def self.model_template
+               PostulationScreen.new
+            end
+
             def url
                text :url, validations: {
                   required: true,
@@ -133,10 +137,6 @@ module EthilVan::App::Views
 
          def free_text
             text :free_text
-         end
-
-         def screen_template
-            nil # associationScreenFields.new(PostulationScreen.new, @base_name, 0)
          end
 
          def screens

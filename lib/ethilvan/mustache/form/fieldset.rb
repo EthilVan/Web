@@ -50,13 +50,8 @@ class EthilVan::Mustache::Form
       end
 
       def errors_for(name)
-         model.errors[name]
-      end
-
-      def _l10n_for(ns, field, data)
-         I18n.translate!(["form", ns, data, field] * '.')
-      rescue I18n::MissingTranslationData
-         nil
+         errors = model.errors
+         errors[name].map { |error| errors.full_message(name, error) }
       end
    end
 end

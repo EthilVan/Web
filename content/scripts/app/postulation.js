@@ -7,15 +7,13 @@ $(function() {
 
    var disableField = function(fieldContainer) {
       var field = fieldContainer.find('textarea, select');
-      field.prop('disabled', true);
-      field.parsley('validate');
+      field.parsley('destroy');
       fieldContainer.slideUp(400);
    }
 
    var enableField = function(fieldContainer) {
       var field = fieldContainer.find('textarea, select');
-      field.prop('disabled', false);
-      field.parsley('validate');
+      field.parsley();
       fieldContainer.slideDown(400);
    }
 
@@ -91,10 +89,7 @@ $(function() {
       screensNextId++;
       screensCount++;
       var template = $form.find('.field-screen-template').html();
-      template = template.replace(/postulation_screen_url_[0-9]+/g,
-            'postulation_screen_url_' + screensNextId);
-      template = template.replace(/postulation_screen_description_[0-9]+/g,
-            'postulation_screen_description_' + screensNextId);
+      template = template.replace(/%%template%%/g, screensNextId);
       var newScreen = $('<fieldset class="field-screen">' +
             template +
             '</fieldset>');
