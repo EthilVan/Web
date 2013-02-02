@@ -1,9 +1,25 @@
 {{# title }}Nouvelle Discussion{{/ title }}
 
-<form action="" method="POST">
-   <label for="name">Nom</label>
-   <input id="name" name="name" type="text" value="{{ name }}" />
-   <label for="message">Message</label>
-   <textarea id="message" name="message" class="mdeditor">{{ message }}</textarea>
+{{# form }}
+<form {{{ attributes }}}>
+
+   {{# name }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ name }}
+
+   {{# messages }}
+      {{# values }}
+      {{# contents }}
+         {{> form/label }}
+         {{> form/errors }}
+         {{> form/mdeditor }}
+      {{/ contents }}
+      {{/ values }}
+   {{/ messages }}
+
    <input class="btn" type="submit" value="Enregistrer" />
+
 </form>
+{{/ form }}

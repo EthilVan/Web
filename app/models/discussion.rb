@@ -2,7 +2,7 @@ class Discussion < ActiveRecord::Base
 
    PUBLIC_GROUPS = ['GeneralDiscussionGroup']
 
-   attr_accessible :name
+   attr_accessible :name, :messages_attributes
 
    # ==========================================================================
    # * Relations
@@ -13,6 +13,8 @@ class Discussion < ActiveRecord::Base
          foreign_key: 'discussion_group_id',
          foreign_type: 'discussion_group_type'
    has_many :discussion_subscriptions
+
+   accepts_nested_attributes_for :messages
 
    # ==========================================================================
    # * Validations

@@ -6,10 +6,9 @@ class EthilVan::App < Sinatra::Base
 
       discussion = Discussion.new
       discussion.group = group
-      message = Message.new
-      message.discussion = discussion
+      discussion.messages = [Message.new]
 
-      view Views::Member::Discussion::Create.new(discussion, message)
+      view Views::Member::Discussion::Create.new(discussion)
       mustache 'membre/discussion/create'
    end
 
@@ -17,19 +16,15 @@ class EthilVan::App < Sinatra::Base
       group = GeneralDiscussionGroup.find_by_url group_url
       raise Sinatra::NotFound if group.nil?
 
-      discussion = Discussion.new
+      discussion = Discussion.new params[:discussion]
       discussion.group = group
-      discussion.name = params[:name]
-      message = Message.new
-      message.discussion = discussion
-      message.account = current_account
-      message.contents = params[:message]
+      discussion.messages.each { |m| m.account = current_account }
 
-      if discussion.valid? and message.valid?
-         discussion.save && message.save
+      if discussion.valid? and discussion.messages.all?(&:valid?)
+         discussion.save && discussion.messages.each(&:save)
          redirect urls.discussion(discussion)
       else
-         view Views::Member::Discussion::Create.new(discussion, message)
+         view Views::Member::Discussion::Create.new(discussion)
          mustache 'membre/discussion/create'
       end
    end
