@@ -8,34 +8,26 @@ module EthilVan::App::Views
 
             class Form < EthilVan::Mustache::Form
 
-               def initialize(name, password, remember)
-                  super()
-                  @name = name
-                  @password = password
-                  @remember = remember
+               def initialize(login)
+                  super(login)
                end
 
                def name
-                  text :name, @name, placeholder: 'Pseudo'
+                  text :name
                end
 
                def password
-                  text :password, @password, {
-                        placeholder: 'Mot de Passe',
-                        type: 'password'
-                  }
+                  password_f :password
                end
 
                def remember
-                  checkbox :remember_me, @remember
+                  checkbox :remember
                end
             end
 
-            def initialize(name = nil, password = nil, remember = false,
-                  invalid = false, banned = false)
-               @form = Form.new(name, password, remember)
-               @invalid = invalid
-               @banned = banned
+            def initialize(login)
+               @form = Form.new(login)
+               @login = login
             end
 
             def form
@@ -43,11 +35,11 @@ module EthilVan::App::Views
             end
 
             def invalid?
-               @invalid
+               @login.account.nil?
             end
 
             def banned?
-               @banned
+               @login.banned
             end
          end
       end

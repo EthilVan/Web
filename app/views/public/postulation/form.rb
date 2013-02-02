@@ -2,26 +2,9 @@ module EthilVan::App::Views
 
    module Public::Postulation
 
-      class Formulaire::Form < EthilVan::Mustache::ModelForm
+      class Formulaire::Form < EthilVan::Mustache::Form
 
-         class ScreenForm < EthilVan::Mustache::ModelForm
-
-            def initialize(screen, base_name, index)
-               super(screen, base_name)
-               @index = index
-            end
-
-            def field_name(name)
-               "#@base_name[screens][][#{name}]"
-            end
-
-            def field_id(name)
-               "#{@base_name}_screen_#{name}_#@index"
-            end
-
-            def screen_title
-               "Screenshot #@index"
-            end
+         class ScreenFields < EthilVan::Mustache::Form::Association
 
             def url
                text :url, validations: {
@@ -63,13 +46,13 @@ module EthilVan::App::Views
          end
 
          def password
-            text :password, type: :password, validations: {
+            password_f :password, validations: {
                required: true,
             }
          end
 
          def password_confirmation
-            text :password_confirmation, type: :password, validations: {
+            password_f :password_confirmation, validations: {
                required: true,
                equalTo: '#postulation_password',
             }
@@ -82,7 +65,9 @@ module EthilVan::App::Views
          end
 
          def sexe
-            select :sexe, Hash[*EthilVan::Data::Sexe.map(&:reverse).flatten]
+            select :sexe, {
+               among: Hash[*EthilVan::Data::Sexe.map(&:reverse).flatten]
+            }
          end
 
          def minecraft_since
@@ -136,7 +121,7 @@ module EthilVan::App::Views
          end
 
          def mumble
-            select :mumble, EthilVan::Data::Mumble
+            select :mumble, among: EthilVan::Data::Mumble
          end
 
          def mumble_other
@@ -151,13 +136,11 @@ module EthilVan::App::Views
          end
 
          def screen_template
-            ScreenForm.new(PostulationScreen.new, @base_name, 0)
+            nil # associationScreenFields.new(PostulationScreen.new, @base_name, 0)
          end
 
          def screens
-            @model.screens.each_with_index.map do |screen, i|
-               ScreenForm.new(screen, @base_name, i + 1)
-            end
+            association ScreenFields, :screens
          end
 
          def rules_acceptance

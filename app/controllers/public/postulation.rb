@@ -8,11 +8,7 @@ class EthilVan::App
    end
 
    post '/postulation/formulaire' do
-      param = params[:postulation]
-      param[:screens] = param[:screens].map do |hash|
-         PostulationScreen.new(hash)
-      end
-      postulation = Postulation.new(param)
+      postulation = Postulation.new params[:postulation]
       if postulation.save
          view Views::Public::Postulation::Validation.new
          mustache 'public/postulation/validation'

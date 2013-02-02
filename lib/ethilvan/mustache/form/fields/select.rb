@@ -1,6 +1,6 @@
-module EthilVan::Mustache
+class EthilVan::Mustache::Form
 
-   class Form::Select < Form::Field
+   class Select < Field
 
       class Option
 
@@ -20,10 +20,11 @@ module EthilVan::Mustache
       attr_reader :among
       alias options among
 
-      def initialize(form, name, value = '', among = {}, attributes = {})
-         super(form, name, attributes)
-         @value = value
-         @among = among.map { |args| Option.new(value, *args) }
+      def initialize(fieldset, name, value, validations, errors, attributes)
+         super(fieldset, name, validations, errors, attributes)
+         @among = (attributes[:among] || []).map do |args|
+            Option.new(value, *args)
+         end
       end
    end
 end

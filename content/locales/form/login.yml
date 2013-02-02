@@ -1,0 +1,8 @@
+fr:
+   form:
+      login:
+         label:
+            remember: "Se souvenir de moi"
+         placeholder:
+            name:     "Pseudo"
+            password: "Mot de Passe"

@@ -1,0 +1,7 @@
+fr:
+   activemodel:
+      attributes:
+         login:
+            name:        "Nom"
+            password:    "Mot de Passe"
+            remember:    "Se souvenir"

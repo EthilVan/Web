@@ -20,7 +20,7 @@ class Postulation < ActiveRecord::Base
    attr_accessible :mumble
    attr_accessible :mumble_other
    attr_accessible :free_text
-   attr_accessible :screens
+   attr_accessible :screens_attributes
    attr_accessible :rules_acceptance
 
    # ==========================================================================
@@ -28,6 +28,8 @@ class Postulation < ActiveRecord::Base
    # ==========================================================================
    belongs_to :account, inverse_of: :postulation
    has_many   :screens,  class_name: 'PostulationScreen'
+
+   accepts_nested_attributes_for :screens
 
    # ==========================================================================
    # * Validations

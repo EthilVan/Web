@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Member::DiscussionGroup
 
-      class Form < EthilVan::Mustache::ModelForm
+      class Form < EthilVan::Mustache::Form
 
          def initialize(group)
             super(group)

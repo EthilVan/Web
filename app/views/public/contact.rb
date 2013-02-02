@@ -6,7 +6,7 @@ module EthilVan::App::Views
 
       class Index < Page
 
-         class Form < EthilVan::Mustache::ModelForm
+         class Form < EthilVan::Mustache::Form
 
             CATEGORIES = {
                general: 'Général',
@@ -33,7 +33,7 @@ module EthilVan::App::Views
             end
 
             def category
-               select :category, CATEGORIES
+               select :category, among: CATEGORIES
             end
 
             def subject

@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Public::News
 
-      class Form < EthilVan::Mustache::ModelForm
+      class Form < EthilVan::Mustache::Form
 
          def initialize(news)
             super(news)

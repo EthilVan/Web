@@ -10,17 +10,19 @@
 {{# form }}
 <form id="login" class="formulaire" {{{ attributes }}}>
    {{# name }}
-      {{> form/label }}
+      {{> form/errors }}
       {{> form/input }}
    {{/ name }}
+
    {{# password }}
-      {{> form/label }}
+      {{> form/errors }}
       {{> form/input }}
    {{/ password }}
+
    {{# remember }}
       <div class="remember">
          {{> form/checkbox }}
-         <span>Se souvenir de moi</span>
+         {{> form/label }}
       </div>
    {{/ remember }}
    <div class="cleaner"></div>
