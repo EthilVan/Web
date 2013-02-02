@@ -2,11 +2,18 @@ module EthilVan::Mustache
 
    class Form < Partial
 
-      attr_reader :action, :method, :label_class, :field_class
+      attr_reader :label_class, :field_class
 
-      def initialize(action = '', method = 'POST')
-         @action = action
-         @method = method
+      def initialize(attributes = {})
+         @action = attributes[:action] || ''
+         @method = attributes[:method] || 'POST'
+         @validation = attributes[:validation] || 'parsley'
+      end
+
+      def attributes
+         attrs = "method=\"#@method\" action=\"#@action\""
+         attrs << validation_attributes
+         attrs
       end
 
       def label_common_class
@@ -23,6 +30,15 @@ module EthilVan::Mustache
 
       def select(*args)
          Select.new(self, *args)
+      end
+
+   private
+
+      def validation_attributes
+         if @validation == "parsley"
+            return " novalidate data-validate=\"parsley\""
+         end
+         ''
       end
    end
 end

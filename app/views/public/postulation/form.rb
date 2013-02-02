@@ -45,7 +45,7 @@ module EthilVan::App::Views
          end
 
          def email
-            text :email, type: :email
+            text :email
          end
 
          def password

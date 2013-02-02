@@ -11,6 +11,7 @@ module EthilVan::Mustache
          @label = attributes[:label]
          @errors = attributes[:errors]
          @hint = attributes[:hint]
+         @validations = attributes[:validations] || {}
       end
 
       def label_class
@@ -19,6 +20,13 @@ module EthilVan::Mustache
 
       def field_class
          @form.field_class
+      end
+
+      def validations
+         return '' if @validations.empty?
+         ' ' + @validations.map do |name, value|
+            "data-#{name}=\"#{value}\""
+         end * ' '
       end
 
       def errors?

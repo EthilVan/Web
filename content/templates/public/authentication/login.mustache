@@ -8,7 +8,7 @@
 {{/ banned? }}
 
 {{# form }}
-<form id="login" class="formulaire" action="{{ action }}" method="{{ method }}">
+<form id="login" class="formulaire" {{{ attributes }}}>
    {{# name }}
       {{> form/label }}
       {{> form/input }}

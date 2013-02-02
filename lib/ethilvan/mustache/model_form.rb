@@ -2,9 +2,9 @@ module EthilVan::Mustache
 
    class ModelForm < Form
 
-      def initialize(model, base_name = nil, action = '', method = 'POST')
+      def initialize(model, base_name = nil, attributes = {})
          @base_name = base_name || model.class.model_name.param_key
-         super(action, method)
+         super(attributes)
          @model = model
       end
 
@@ -46,9 +46,7 @@ module EthilVan::Mustache
             errors.full_message(name, message)
          end
 
-         puts attributes[:label]
          extract_i18n_data(attributes, name, :label)
-         puts attributes[:label]
          attributes[:label] ||= @model.class.human_attribute_name(name)
          extract_i18n_data(attributes, name, :hint)
       end
