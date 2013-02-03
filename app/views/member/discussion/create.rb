@@ -21,8 +21,8 @@ module EthilVan::App::Views
                text :name
             end
 
-            def messages
-               association MessageFields, :messages
+            def first_message
+               association MessageFields, :first_message
             end
          end
 

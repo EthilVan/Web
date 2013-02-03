@@ -26,7 +26,7 @@ class EthilVan::Mustache::Form
 
       def association(klass, name, attributes = {})
          reflection = @model.reflections[name]
-         if reflection.macro == :has_many
+         if !reflection.nil? and reflection.macro == :has_many
             ManyAssociation.new(self, name, value_for(name), klass, validations_for(name),
                errors_for(name), attributes)
          else

@@ -6,7 +6,7 @@ class EthilVan::App < Sinatra::Base
 
       discussion = Discussion.new
       discussion.group = group
-      discussion.messages = [Message.new]
+      discussion.first_message = Message.new
 
       view Views::Member::Discussion::Create.new(discussion)
       mustache 'membre/discussion/create'
@@ -18,10 +18,10 @@ class EthilVan::App < Sinatra::Base
 
       discussion = Discussion.new params[:discussion]
       discussion.group = group
-      discussion.messages.each { |m| m.account = current_account }
+      discussion.first_message.account = current_account
 
-      if discussion.valid? and discussion.messages.all?(&:valid?)
-         discussion.save && discussion.messages.each(&:save)
+      if discussion.valid?
+         discussion.save
          redirect urls.discussion(discussion)
       else
          view Views::Member::Discussion::Create.new(discussion)

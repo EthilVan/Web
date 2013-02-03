@@ -9,15 +9,13 @@
       {{> form/input }}
    {{/ name }}
 
-   {{# messages }}
-      {{# values }}
+   {{# first_message }}
       {{# contents }}
          {{> form/label }}
          {{> form/errors }}
          {{> form/mdeditor }}
       {{/ contents }}
-      {{/ values }}
-   {{/ messages }}
+   {{/ first_message }}
 
    <input class="btn" type="submit" value="Enregistrer" />
 
