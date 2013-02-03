@@ -1,0 +1,51 @@
+{{# title }}Postulation{{/ title }}
+
+<ul class="nav nav-pills nav-postulation-form">
+   <li class="active">
+      <a href="#postulation-tab-infos" data-toggle="pill">Informations</a>
+   </li>
+   <li><a href="#postulation-tab-account" data-toggle="pill">Compte</a></li>
+   <li><a href="#postulation-tab-ethilvan" data-toggle="pill">Ethil Van</a></li>
+   <li><a href="#postulation-tab-minecraft" data-toggle="pill">Minecraft</a></li>
+   <li><a href="#postulation-tab-screens" data-toggle="pill">Screenshots</a></li>
+   <li><a href="#postulation-tab-availability" data-toggle="pill">Disponibilités</a></li>
+   <li><a href="#postulation-tab-free" data-toggle="pill">Champ Libre</a></li>
+</ul>
+
+{{# form }}
+<form id="postulation-form" class="tab-content" {{{ attributes }}}>
+
+   <div id="postulation-tab-infos" class="tab-pane active">
+      {{> public/postulation/_informations }}
+   </div>
+
+   <fieldset id="postulation-tab-account" class="tab-pane">
+      {{> public/postulation/_account }}
+   </fieldset>
+
+   <fieldset id="postulation-tab-ethilvan" class="tab-pane">
+      {{> public/postulation/_ethilvan }}
+   </fieldset>
+
+   <fieldset id="postulation-tab-minecraft" class="tab-pane">
+      {{> public/postulation/_minecraft }}
+   </fieldset>
+
+   <fieldset id="postulation-tab-screens" class="tab-pane">
+      {{> public/postulation/_screens }}
+   </fieldset>
+
+   <fieldset id="postulation-tab-availability" class="tab-pane">
+      {{> public/postulation/_availability }}
+   </fieldset>
+
+   <fieldset id="postulation-tab-free" class="tab-pane">
+      {{> public/postulation/_free }}
+   </fieldset>
+
+   <div class="clearfix"></div>
+
+   <div><input type="submit" class="btn pull-right" value="Poursuivre" /></div>
+
+</form>
+{{/ form }}

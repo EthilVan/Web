@@ -1,0 +1,51 @@
+<div class="field-postulation_screens">
+   {{# screens }}
+      {{> form/errors }}
+
+      {{# template }}
+      <fieldset class="field-screen-template" disabled style="display: none;">
+         <h4>Screenshot {{ index }}</h4>
+         {{# url }}
+         <div>
+            {{> form/errors }}
+            {{> form/label }}
+            {{> form/input }}
+            {{> form/hint }}
+         </div>
+         {{/ url }}
+         {{# description }}
+         <div>
+            {{> form/errors }}
+            {{> form/label }}
+            {{> form/textarea }}
+            {{> form/hint }}
+         </div>
+         {{/ description }}
+         <a href="#" class="btn remove-screen" >-</a>
+      </fieldset>
+      {{/ template }}
+      {{# values }}
+      <fieldset class="field-screen">
+         <h4>Screenshot {{ index }}</h4>
+         {{# url }}
+         <div>
+            {{> form/errors }}
+            {{> form/label }}
+            {{> form/input }}
+            {{> form/hint }}
+         </div>
+         {{/ url }}
+         {{# description }}
+         <div>
+            {{> form/errors }}
+            {{> form/label }}
+            {{> form/textarea }}
+            {{> form/hint }}
+         </div>
+         {{/ description }}
+         <a href="#" class="btn remove-screen" >-</a>
+      </fieldset>
+      {{/ values }}
+   {{/ screens }}
+   <a href="#" class="btn add-screen">+</a>
+</div>

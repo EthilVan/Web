@@ -41,10 +41,6 @@ reglement:
       evasion:
          nom: "Evasion"
 
-postulation:
-   titre: "Postulation"
-   template: "public/postulation/index"
-
 aide:
    titre: "Aide"
    template: "public/aide/index"
