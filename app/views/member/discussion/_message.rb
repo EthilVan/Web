@@ -4,12 +4,21 @@ module EthilVan::App::Views
 
       class Message < Member::Message::Show
 
-         def initialize(message, index, stats_max = nil)
+         def initialize(message, index, can_edit, stats_max = nil)
             super(message, index, stats_max)
+            @can_edit = can_edit
          end
 
          def can_edit
-            false
+            @can_edit
+         end
+
+         def edit_url
+            "/membre/message/#{@message.id}/editer"
+         end
+
+         def delete_url
+            "/membre/message/#{@message.id}/supprimer"
          end
       end
    end
