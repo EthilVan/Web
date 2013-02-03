@@ -24,16 +24,12 @@ class MessageTest < MiniTest::Spec
    end
 end
 
-class MessageMarkdownTest < MiniTest::Spec
+class MessageDatabaseTest < DatabaseTest::Spec
 
    def setup
-      DatabaseCleaner.start
+      super
       @message = Message.new
       @message.account = Account.first
-   end
-
-   def teardown
-      DatabaseCleaner.clean
    end
 
    def test_contents_is_automatically_parsed_when_saved

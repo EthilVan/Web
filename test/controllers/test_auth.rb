@@ -1,14 +1,6 @@
 require_relative 'helpers'
 
-class AuthTest < MiniTest::Spec
-
-   def setup
-      DatabaseCleaner.start
-   end
-
-   def teardown
-      DatabaseCleaner.clean
-   end
+class AuthTest < DatabaseTest::Spec
 
    def test_login_is_accessible
       get '/login'

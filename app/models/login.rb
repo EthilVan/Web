@@ -11,7 +11,8 @@ class Login
    attr_accessor :remember
    attr_reader   :account
 
-   def initialize(params = {})
+   def initialize(params = nil)
+      params ||= {}
       @name = params[:name]
       @password = params[:password]
       @remember = params[:remember] || false

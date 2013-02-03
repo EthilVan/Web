@@ -30,3 +30,22 @@ end
 DatabaseCleaner.clean_with :truncation
 require_relative 'fixtures'
 DatabaseCleaner.strategy = :transaction
+
+module DatabaseTest
+
+   module Helpers
+
+      def setup
+         DatabaseCleaner.start
+      end
+
+      def teardown
+         DatabaseCleaner.clean
+      end
+   end
+
+   class Spec < MiniTest::Spec
+
+      include Helpers
+   end
+end

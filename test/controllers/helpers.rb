@@ -13,7 +13,7 @@ class MiniTest::Unit::TestCase
 
    def login(user, &block)
       name = user.is_a?(Account) ? user.name : user
-      post '/login', name: name, password: 'password'
+      post '/login', 'login[name]' => name, 'login[password]' => 'password'
       if block_given?
          block.call
          logout

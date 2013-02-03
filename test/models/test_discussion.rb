@@ -12,3 +12,7 @@ class DiscussionTest < MiniTest::Spec
       @discussion.wont_be_valid_with name: ''
    end
 end
+
+class DiscussionDatabaseTest < DatabaseTest::Spec
+
+end
