@@ -2,7 +2,7 @@ class EthilVan::App
 
    get '/contact' do
       view Views::Public::Contact::Index.new
-      mustache 'public/contact/index'
+      mustache 'public/contact'
    end
 
    post '/contact' do
@@ -17,7 +17,7 @@ class EthilVan::App
          redirect '/'
       else
          view Views::Public::Contact::Index.new email
-         mustache 'public/contact/index'
+         mustache 'public/contact'
       end
    end
 end

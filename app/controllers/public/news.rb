@@ -6,7 +6,7 @@ class EthilVan::App
       raise Sinatra::NotFound if newses.empty?
       view Views::Public::News::List.new newses.all
       layout !request.xhr?
-      mustache 'public/news/index'
+      mustache 'public/news/list'
    end
 
    get '/news/launcher' do

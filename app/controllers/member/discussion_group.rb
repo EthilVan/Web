@@ -6,7 +6,7 @@ class EthilVan::App < Sinatra::Base
    get '/membre/discussion' do
       groups = GeneralDiscussionGroup.by_priority
       view Views::Member::DiscussionGroup::List.new groups
-      mustache 'membre/discussion_group/index'
+      mustache 'membre/discussion_group/list'
    end
 
    get '/membre/discussion/!toutes_lues' do
