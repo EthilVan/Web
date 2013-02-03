@@ -4,8 +4,9 @@ module EthilVan::App::Views
 
       class List < Page
 
-         def initialize(groups)
+         def initialize(groups, views)
             @groups = groups
+            @views = views
          end
 
          def groups?
@@ -13,7 +14,7 @@ module EthilVan::App::Views
          end
 
          def groups
-            @groups.map { |group| Show.new(group, 5) }
+            @groups.map { |group| Show.new(group, @views, 5) }
          end
       end
    end

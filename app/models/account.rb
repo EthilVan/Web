@@ -16,6 +16,7 @@ class Account < ActiveRecord::Base
    has_one :profil,          inverse_of: :account
    has_one :minecraft_stats, inverse_of: :account
    has_many :profil_tags,    foreign_key: :tagged_id
+   has_many :discussion_views
 
    # ==========================================================================
    # * Validations
@@ -81,6 +82,10 @@ class Account < ActiveRecord::Base
 
    def role
       EthilVan::Role.get role_id.to_sym
+   end
+
+   def views_by_discussion_id
+      discussion_views.group_by { |view| view.discussion_id }
    end
 
    def logged_in?

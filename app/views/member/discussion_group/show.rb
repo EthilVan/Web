@@ -4,14 +4,16 @@ module EthilVan::App::Views
 
       class Show < Page
 
-         def initialize(group, limit = false)
+         def initialize(group, views, limit = false)
             @group = group
+            @views = views
 
+            query = @group.discussions_ordered.includes(messages: :account)
             if limit
-               @discussions = @group.discussions_with_limit(limit)
+               @discussions = query.limit(limit).all
                @remaining = @group.discussions_count - @discussions.size
             else
-               @discussions = @group.discussions
+               @discussions = query.all
                @remaining = 0
             end
          end
@@ -50,7 +52,7 @@ module EthilVan::App::Views
 
          def discussions
             @discussions.map do |discussion|
-               DiscussionPreview.new(discussion, @app.current_account)
+               DiscussionPreview.new(discussion, @app.current_account, @views)
             end
          end
       end

@@ -1,5 +1,7 @@
 class DiscussionView < ActiveRecord::Base
 
+   include Comparable
+
    belongs_to :account
    belongs_to :discussion
 
@@ -18,8 +20,7 @@ class DiscussionView < ActiveRecord::Base
       end
    end
 
-   def self.date_for(account, discussion)
-      where(account_id: account.id, discussion_id: [nil, discussion.id]).
-            maximum(:date)
+   def <=>(discussion)
+      date.<=>(discussion.updated_at)
    end
 end

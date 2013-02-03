@@ -4,8 +4,9 @@ module EthilVan::App::Views
 
       class DiscussionPreview < Partial
 
-         def initialize(discussion, current_account)
+         def initialize(discussion, current_account, views)
             @discussion = discussion
+            @viewed = viewed? views
             messages = discussion.messages
             @first_message = messages.first
             @last_message = messages.last
@@ -22,7 +23,7 @@ module EthilVan::App::Views
          end
 
          def status_class
-            @discussion.read_by?(@account) ? 'read' : 'unread'
+            @viewed ? 'read' : 'unread'
          end
 
          def name
@@ -55,6 +56,15 @@ module EthilVan::App::Views
 
          def last_author_link
             urls.profil @last_message.account
+         end
+
+      private
+
+         def viewed?(views)
+            view = views[nil]
+            return true if !view.nil? and view.first > @discussion
+            view = views[@discussion.id]
+            return (!view.nil? and view.first > @discussion)
          end
       end
    end

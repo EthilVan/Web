@@ -46,11 +46,6 @@ class Discussion < ActiveRecord::Base
             .first.account
    end
 
-   def read_by?(account)
-      date = DiscussionView.date_for(account, self)
-      !date.nil? and date > updated_at
-   end
-
    def page(number)
       Message.where(discussion_id: id).by_date.page(number)
    end
