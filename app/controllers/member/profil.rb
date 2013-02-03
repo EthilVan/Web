@@ -26,7 +26,7 @@ class EthilVan::App < Sinatra::Base
       raise Sinatra::NotFound if account.nil?
       messages = Message.for_account(account).page(params[:page]).per(10)
 
-      view Views::Member::Profil::Layout.new(account, messages)
-      mustache 'membre/profil/layout'
+      view Views::Member::Profil::Tabs.new(account, messages)
+      mustache 'membre/profil/tabs'
    end
 end

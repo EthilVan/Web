@@ -4,7 +4,7 @@ module EthilVan::App::Views
 
    module Member::Profil
 
-      class Layout < Page
+      class Tabs < Page
 
          TABS = [
             { id: 'generale',    name: 'Générale'    },

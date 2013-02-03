@@ -1,6 +1,6 @@
 presentation:
    titre: "Présentation"
-   template: "public/presentation/layout"
+   template: "public/presentation/tabs"
    principal: "generale"
    onglets:
       generale:
@@ -15,7 +15,7 @@ presentation:
 
 apercu:
    titre: "Aperçu"
-   template: "public/apercu/layout"
+   template: "public/apercu/tabs"
    principal: "presentation"
    onglets:
       presentation:
@@ -29,7 +29,7 @@ apercu:
 
 reglement:
    titre: "Règlement"
-   template: "public/reglement/layout"
+   template: "public/reglement/tabs"
    principal: "general"
    onglets:
       general:
@@ -52,7 +52,7 @@ aide:
 aide_nouveautes:
    url: "aide/nouveautes"
    titre: ["Aide", "Nouveautés"]
-   template: "public/aide/nouveautes/layout"
+   template: "public/aide/nouveautes/tabs"
    principal: "crafts"
    onglets:
       crafts:
