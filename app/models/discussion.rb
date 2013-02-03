@@ -7,7 +7,7 @@ class Discussion < ActiveRecord::Base
    # ==========================================================================
    # * Relations
    # ==========================================================================
-   has_many :messages
+   has_many :messages, dependent: :destroy
    belongs_to :group,
          polymorphic: true,
          foreign_key: 'discussion_group_id',
@@ -20,6 +20,7 @@ class Discussion < ActiveRecord::Base
    # * Validations
    # ==========================================================================
    validates_presence_of :name
+   validates_length_of :messages, minimum: 1
 
    # ==========================================================================
    # * Methods
@@ -40,10 +41,5 @@ class Discussion < ActiveRecord::Base
 
    def total_pages
       page(1).total_pages
-   end
-
-   def destroy_with_messages
-      Message.where(discussion_id: id).destroy_all
-      destroy
    end
 end

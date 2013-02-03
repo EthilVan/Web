@@ -10,7 +10,9 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    # ==========================================================================
    # * Relations
    # ==========================================================================
-   has_many :discussions, as: :discussion_group, order: 'updated_at DESC'
+   has_many :discussions, as: :discussion_group,
+         order: 'updated_at DESC',
+         dependent: :destroy
 
    # ==========================================================================
    # * Validations
@@ -32,11 +34,6 @@ class GeneralDiscussionGroup < ActiveRecord::Base
 
    def discussions_count
       discussions_query.count
-   end
-
-   def destroy_with_everything
-      discussions.each &:destroy_with_messages
-      destroy
    end
 
 private

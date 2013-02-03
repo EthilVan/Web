@@ -64,7 +64,7 @@ class EthilVan::App < Sinatra::Base
    get discussion_group_delete do |group_url|
       group = GeneralDiscussionGroup.find_by_url group_url
       raise Sinatra::NotFound if group.nil?
-      group.destroy_with_everything
+      group.destroy
       redirect '/membre/discussion'
    end
 end

@@ -23,3 +23,24 @@ class DiscussionGroupTest < MiniTest::Spec
       @group.wont_be_valid_with url: 'a%'
    end
 end
+
+class DiscussionDatabaseTest < DatabaseTest::Spec
+
+   def setup
+      super
+      @group = FactoryGirl.build :discussion_group
+   end
+
+   def test_discussions_persistence
+      @group.wont_be :persisted?
+      @group.discussions.each { |discussion| discussion.wont_be :persisted? }
+
+      @group.save
+      @group.must_be :persisted?
+      @group.discussions.each { |discussion| discussion.must_be :persisted? }
+
+      @group.destroy
+      @group.wont_be :persisted?
+      @group.discussions.each { |discussion| discussion.wont_be :persisted? }
+   end
+end
