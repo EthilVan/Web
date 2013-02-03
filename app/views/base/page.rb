@@ -32,7 +32,7 @@ module EthilVan::App::Views
 
       def member_page?
          path = app.request.path
-         !(path =~ %r{^/m(embre|oderation)}).nil?
+         !(path =~ %r{^/(?:membre|gestion)}).nil?
       end
 
       def stylesheet_name
