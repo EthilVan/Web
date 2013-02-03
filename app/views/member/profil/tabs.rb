@@ -13,9 +13,9 @@ module EthilVan::App::Views
             { id: 'messages',    name: 'Messages'    },
          ]
 
-
-         def initialize(account, messages)
+         def initialize(account, new_tag, messages)
             @account = account
+            @new_tag = new_tag
             @messages = messages
          end
 
@@ -49,7 +49,7 @@ module EthilVan::App::Views
          end
 
          def tab_tags
-            Tags.new(@account.profil_tags)
+            Tags.new(@account, @new_tag)
          end
 
          def tab_messages

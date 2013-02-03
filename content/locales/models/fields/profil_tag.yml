@@ -1,0 +1,12 @@
+fr:
+   activerecord:
+      attributes:
+         profil_tag:
+            contents: "Contenu"
+            tagger:   ""
+      errors:
+         models:
+            profil_tag:
+               attributes:
+                  tagger:
+                     invalid: "Impossible de se tagger soi même."

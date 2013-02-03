@@ -15,7 +15,7 @@ class Account < ActiveRecord::Base
    belongs_to :postulation,  inverse_of: :account
    has_one :profil,          inverse_of: :account
    has_one :minecraft_stats, inverse_of: :account
-   has_many :profil_tags,    foreign_key: :tagged_id
+   has_many :profil_tags,    foreign_key: :tagged_id, order: 'created_at DESC'
    has_many :discussion_views
 
    # ==========================================================================

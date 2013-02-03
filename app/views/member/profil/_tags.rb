@@ -4,8 +4,33 @@ module EthilVan::App::Views
 
       class Tags < Partial
 
-         def initialize(tags)
-            @tags = tags
+         class Form < EthilVan::Mustache::Form
+
+            def initialize(tag, action)
+               super(tag, action: action)
+            end
+
+            def tagger
+               text :tagger
+            end
+
+            def contents
+               text :contents, validations: {
+                  minlength: 2,
+                  maxlength: 120,
+               }
+            end
+         end
+
+         def initialize(account, new_tag)
+            unless new_tag.nil?
+               @form = Form.new new_tag, urls.profil('tags', account)
+            end
+            @tags = account.profil_tags
+         end
+
+         def form
+            @form
          end
 
          def tags?

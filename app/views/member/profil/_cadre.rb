@@ -41,7 +41,7 @@ module EthilVan::App::Views
             end
 
             def skin_url
-               urls.skin_preview @account, 5
+               # urls.skin_preview @account, 5
             end
 
             def deaths
