@@ -43,8 +43,16 @@ module EthilVan::App::Views
             pager.total > 1 ? pager : false
          end
 
-         def response_link
-            "/membre/discussion/#{@discussion.id}/repondre"
+         def url
+            "/membre/discussion/#{@discussion.id}"
+         end
+
+         def response_url
+            "#{url}/repondre"
+         end
+
+         def delete_url
+            "#{url}/supprimer"
          end
       end
    end

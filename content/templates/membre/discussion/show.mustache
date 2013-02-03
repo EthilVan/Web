@@ -1,6 +1,9 @@
 {{#title}}Discussion{{/title}}
 
 <div class="titre">{{ name }}</div>
+{{# modo? }}
+   <a class="need-confirmation" href="{{ delete_url }}">Supprimer</a>
+{{/ modo? }}
 <div class="ligne"></div>
 <div class="date">Discussion crée le {{ date }} par {{ author }}</div>
 
@@ -21,7 +24,7 @@
 {{/ pager }}
 
 <div class="button-right">
-   <a href="{{ response_link }}">
+   <a href="{{ response_url }}">
       <input type="button" value="Répondre" />
    </a>
 </div>

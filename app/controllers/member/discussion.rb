@@ -63,4 +63,15 @@ class EthilVan::App < Sinatra::Base
          mustache 'membre/discussion/respond'
       end
    end
+
+   discussion_delete = %r{/membre/discussion/(\d{1,5})/supprimer$}
+
+   protect discussion_delete, EthilVan::Role::MODO
+
+   get discussion_delete do |id|
+      discussion = Discussion.find_by_id id
+      raise Sinatra::NotFound if discussion.nil?
+      discussion.destroy
+      redirect '/membre/discussion'
+   end
 end

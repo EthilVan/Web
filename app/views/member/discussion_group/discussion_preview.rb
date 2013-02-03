@@ -13,8 +13,12 @@ module EthilVan::App::Views
             @account = current_account
          end
 
-         def url_discussion
+         def url
             @url
+         end
+
+         def delete_url
+            "#@url/supprimer"
          end
 
          def status_class

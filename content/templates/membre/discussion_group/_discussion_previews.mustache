@@ -4,10 +4,13 @@
    <li>
       <div class="discussion">
          <div class="lien">
-            <a href="{{ url_discussion }}">
+            <a href="{{ url }}">
                <div class="icone {{ status_class }}"></div>
                <div class="titre-discussion">{{ name }}</div>
             </a>
+            {{# modo? }}
+               <a class="need-confirmation" href="{{ delete_url }}">Supprimer</a>
+            {{/ modo? }}
          </div>
          <div class="creation">
             Discussion créée le {{ created }} par
