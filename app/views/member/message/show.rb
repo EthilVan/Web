@@ -4,13 +4,18 @@ module EthilVan::App::Views
 
       class Show < Partial
 
-         def initialize(message, index)
+         def initialize(message, index, stats_max = nil)
             @message = message
             @index = index
+            @stats_max = stats_max
          end
 
          def discussion_name
             @message.discussion.name
+         end
+
+         def cadre
+            Cadre.new(@message.account, @stats_max)
          end
 
          def anchor

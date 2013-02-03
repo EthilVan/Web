@@ -1,13 +1,6 @@
 <div id="{{ anchor }}" class="message{{ even_class }}">
 
-   <a href="{{ author_profil }}">
-      <div class="profil-cadre mini">
-         <div class="jauge" style="top: {{ gauge_top }}px; height: {{ gauge_height }}px;"> </div>
-         <div class="avatar" style="background-image: url('{{ author_avatar }}')"> </div>
-         <div class="pseudo"> - {{ author_name }} - </div>
-         <div class="online-status {{ online }}"> </div>
-      </div>
-   </a>
+   {{> membre/message/_cadre }}
 
    <div class="message-contenu">
       <div class="texte">{{{ contents }}}</div>
@@ -22,7 +15,7 @@
             <div class="boutons">
                <a class="btn" href="{{ view_url }}">Lien</a>
                {{# can_edit }}
-               <a class="btn" href="{{ edit_url }}" data-inline-target=".message-contenu">
+               <a class="btn" href="{{ edit_url }}" data-inline-target="#{{ anchor }}">
                   Editer
                </a>
                <a class="need-confirmation btn" href="{{ delete_url }}">
