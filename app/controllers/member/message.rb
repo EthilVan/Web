@@ -23,7 +23,9 @@ class EthilVan::App < Sinatra::Base
       message.discussion = discussion
       message.account = current_account
 
-      view Views::Member::Message::Create.new message
+      url = request.xhr? ? request.path : ''
+      view Views::Member::Message::Create.new message, url
+      layout !request.xhr?
       mustache 'membre/message/create'
    end
 
@@ -48,7 +50,9 @@ class EthilVan::App < Sinatra::Base
       raise Sinatra::NotFound if message.nil?
       not_authorized unless message.editable_by? current_account
 
-      view Views::Member::Message::Edit.new message
+      url = request.xhr? ? request.path : ''
+      view Views::Member::Message::Edit.new message, url
+      layout !request.xhr?
       mustache 'membre/message/edit'
    end
 

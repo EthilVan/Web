@@ -4,8 +4,8 @@ module EthilVan::App::Views
 
       class Edit < Page
 
-         def initialize(message)
-            @form = Form.new(message)
+         def initialize(message, url = '')
+            @form = Form.new(message, url)
          end
 
          def form

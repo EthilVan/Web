@@ -23,8 +23,9 @@
 {{> membre/discussion/_pager }}
 {{/ pager }}
 
-<div class="button-right">
-   <a href="{{ response_url }}">
-      <input type="button" value="Répondre" />
+<div id="champ-reponse">
+   <a class="btn pull-right" href="{{ response_url }}"
+         data-inline-target="#champ-reponse">
+      Répondre
    </a>
 </div>

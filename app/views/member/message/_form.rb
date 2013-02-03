@@ -4,8 +4,8 @@ module EthilVan::App::Views
 
       class Form < EthilVan::Mustache::Form
 
-         def initialize(message)
-            super(message)
+         def initialize(message, action)
+            super(message, action: action)
          end
 
          def contents

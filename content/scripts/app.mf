@@ -21,4 +21,5 @@ app/auto-fill.js
 app/mdeditor.js
 app/confirmation.js
 app/parsley.js
+app/inline.js
 app/postulation.js

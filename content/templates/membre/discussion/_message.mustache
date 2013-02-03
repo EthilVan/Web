@@ -9,7 +9,7 @@
       </div>
    </a>
 
-   <div class="contenu">
+   <div class="message-contenu">
       <div class="texte">{{{ contents }}}</div>
       <div class="signature-block">
          {{# dates? }}
@@ -22,7 +22,7 @@
             <div class="boutons">
                <a class="btn" href="{{ view_url }}">Lien</a>
                {{# can_edit }}
-               <a class="btn" href="{{ edit_url }}">
+               <a class="btn" href="{{ edit_url }}" data-inline-target=".message-contenu">
                   Editer
                </a>
                <a class="need-confirmation btn" href="{{ delete_url }}">
