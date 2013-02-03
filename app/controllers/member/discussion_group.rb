@@ -4,7 +4,7 @@ class EthilVan::App < Sinatra::Base
    DISCUSSION_GROUP_BASE_URL  << "(#{GeneralDiscussionGroup::URL_PATTERN})"
 
    get '/membre/discussion' do
-      groups = GeneralDiscussionGroup.by_priority
+      groups = GeneralDiscussionGroup.by_priority.with_everything
       views = current_account.views_by_discussion_id
       view Views::Member::DiscussionGroup::List.new groups, views
       mustache 'membre/discussion_group/list'
@@ -31,7 +31,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    get %r{#{DISCUSSION_GROUP_BASE_URL}$} do |group_url|
-      group = GeneralDiscussionGroup.find_by_url group_url
+      group = GeneralDiscussionGroup.with_everything.find_by_url group_url
       views = current_account.views_by_discussion_id
       raise Sinatra::NotFound if group.nil?
       view Views::Member::DiscussionGroup::Show.new group, views

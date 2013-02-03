@@ -8,13 +8,11 @@ module EthilVan::App::Views
             @group = group
             @views = views
 
-            query = @group.discussions_ordered.includes(messages: :account)
+            @discussions = @group.discussions
+            @remaining = 0
             if limit
-               @discussions = query.limit(limit).all
-               @remaining = @group.discussions_count - @discussions.size
-            else
-               @discussions = query.all
-               @remaining = 0
+               @remaining = @discussions.size - limit
+               @discussions = @discussions[0...5]
             end
          end
 

@@ -22,6 +22,10 @@ module EthilVan::App::Views
             "msg#{@message.id}"
          end
 
+         def first?
+            @message.first_message?
+         end
+
          def view_url
             "/membre/message/#{@message.id}"
          end

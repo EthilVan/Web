@@ -72,6 +72,7 @@ class EthilVan::App < Sinatra::Base
    get '/membre/message/:id/supprimer' do |id|
       message = Message.find_by_id id
       raise Sinatra::NotFound if message.nil?
+      raise Sinatra::NotFound if message.first_message?
       not_authorized unless message.editable_by? current_account
 
       following = message.following

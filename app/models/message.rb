@@ -11,8 +11,14 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    # * Relations
    # ==========================================================================
-   belongs_to :discussion
    belongs_to :account
+   belongs_to :discussion
+   has_one :discussion_as_first,
+         foreign_key: :first_message_id,
+         class_name: 'Discussion'
+   has_one :discussion_as_last,
+         foreign_key: :last_message_id,
+         class_name: 'Discussion'
 
    # ==========================================================================
    # * Validations
@@ -23,7 +29,8 @@ class Message < ActiveRecord::Base
    # * Callbacks and scope
    # ==========================================================================
    markdown_pre_parse :contents
-   after_create :update_discussion
+   after_create  :update_discussion
+
    scope :by_date, order('created_at ASC')
 
    # ==========================================================================
@@ -35,6 +42,10 @@ class Message < ActiveRecord::Base
             .where(account_id: account.id)
             .where(DISCUSSION_GROUP_KEY => Discussion::PUBLIC_GROUPS)
             .order('messages.created_at DESC')
+   end
+
+   def first_message?
+      not discussion_as_first.nil?
    end
 
    def page
@@ -63,10 +74,21 @@ class Message < ActiveRecord::Base
             self.account == account
    end
 
+   def destroy
+      super
+      update_discussion_last
+   end
+
 private
 
    def update_discussion
       return if discussion.nil?
-      discussion.update_attribute :updated_at, created_at
-    end
+      discussion.last_message_id = id
+      discussion.save
+   end
+
+   def update_discussion_last
+      return if discussion_as_last.nil?
+      discussion_as_last.update_last_message
+   end
 end

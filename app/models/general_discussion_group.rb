@@ -24,6 +24,8 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    # * Callbacks and scope
    # ==========================================================================
    scope :by_priority, order('priority ASC')
+   scope :with_everything, includes(discussions:
+         { first_message: :account, last_message: :account})
 
    # ==========================================================================
    # * Methods

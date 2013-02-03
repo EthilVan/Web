@@ -7,9 +7,8 @@ module EthilVan::App::Views
          def initialize(discussion, current_account, views)
             @discussion = discussion
             @viewed = viewed? views
-            messages = discussion.messages
-            @first_message = messages.first
-            @last_message = messages.last
+            @first_message = discussion.first_message
+            @last_message = discussion.last_message
             @url = "/membre/discussion/#{discussion.id}"
             @account = current_account
          end

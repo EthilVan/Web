@@ -18,9 +18,11 @@
                <a class="btn" href="{{ edit_url }}" data-inline-target="#{{ anchor }}">
                   Editer
                </a>
+               {{^ first? }}
                <a class="need-confirmation btn" href="{{ delete_url }}">
                   Supprimer
                </a>
+               {{/ first? }}
                {{/ can_edit }}
             </div>
             <div class="signature"> {{{ author_signature }}} </div>

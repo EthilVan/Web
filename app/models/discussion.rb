@@ -8,12 +8,16 @@ class Discussion < ActiveRecord::Base
    # ==========================================================================
    # * Relations
    # ==========================================================================
-   has_many :messages, dependent: :destroy
+   belongs_to :first_message, class_name: 'Message', include: :account
+   belongs_to :last_message,  class_name: 'Message', include: :account
+   has_many :messages, order: 'created_at ASC', dependent: :destroy
    belongs_to :group,
          polymorphic: true,
          foreign_key: 'discussion_group_id',
          foreign_type: 'discussion_group_type'
    has_many :discussion_subscriptions
+
+   accepts_nested_attributes_for :first_message
 
    # ==========================================================================
    # * Validations
@@ -30,20 +34,8 @@ class Discussion < ActiveRecord::Base
    # ==========================================================================
    # * Methods
    # ==========================================================================
-   attr_accessor :first_message
-
-   def first_message_attributes
-      @first_message_attributes
-   end
-
-   def first_message_attributes=(attributes)
-      @first_message = Message.new(attributes)
-      @first_message_attributes = attributes
-   end
-
    def author
-      Message.order('messages.created_at ASC').where(discussion_id: id)
-            .first.account
+      first_message.account
    end
 
    def page(number)
@@ -55,6 +47,11 @@ class Discussion < ActiveRecord::Base
    end
 
    def assign_first_message
-      self.messages = [@first_message]
+      self.messages = [first_message]
+      self.last_message = first_message
+   end
+
+   def update_last_message
+      update_attribute :last_message_id, messages.last.id
    end
 end
