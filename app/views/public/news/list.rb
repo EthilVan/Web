@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Public::News
 
-      class Index < Page
+      class List < Page
 
          def initialize(newses)
             @newses = newses

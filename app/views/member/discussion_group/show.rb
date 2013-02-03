@@ -28,6 +28,14 @@ module EthilVan::App::Views
             "/membre/discussion/#{@group.url}"
          end
 
+         def edit_url
+            "#{url}/editer"
+         end
+
+         def delete_url
+            "#{url}/supprimer"
+         end
+
          def remaining?
             @remaining > 0
          end

@@ -5,7 +5,7 @@ class EthilVan::App < Sinatra::Base
 
    get '/membre/discussion' do
       groups = GeneralDiscussionGroup.by_priority
-      view Views::Member::DiscussionGroup::Index.new groups
+      view Views::Member::DiscussionGroup::List.new groups
       mustache 'membre/discussion_group/index'
    end
 

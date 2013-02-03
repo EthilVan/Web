@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Member::DiscussionGroup
 
-      class Index < Page
+      class List < Page
 
          def initialize(groups)
             @groups = groups
