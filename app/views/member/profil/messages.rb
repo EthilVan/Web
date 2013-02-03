@@ -13,7 +13,7 @@ module EthilVan::App::Views
             index = -1
             @messages.map do |msg|
                index += 1
-               Member::Discussion::Message.new(msg, index)
+               Member::Message::Show.new(msg, index)
             end
          end
       end

@@ -1,0 +1,14 @@
+{{# title }}Edition du Message{{/ title }}
+
+{{# form }}
+<form {{{ attributes }}}>
+
+   {{# contents }}
+      {{> form/errors }}
+      {{> form/mdeditor }}
+   {{/ contents }}
+
+   <input class="btn" type="submit" value="Enregistrer" />
+
+</form>
+{{/ form }}

@@ -2,44 +2,54 @@ module EthilVan::App::Views
 
    module Member::Discussion
 
-      class Message < Partial
+      class Message < Member::Message::Show
 
-         def initialize(message, index)
-            @message = message
-            @index = index
+         def initialize(message, index, stats_max = nil)
+            super(message, index)
+            @author = message.account
+            @stats_max = stats_max
          end
 
-         def discussion_name
-            @message.discussion.name
+         def stats_max
+            @stats_max ||= MinecraftStats.maximum('version')
          end
 
-         def anchor
-            "msg#{@message.id}"
+         def can_edit
+            false
          end
 
-         def view_url
-            "/membre/message/#{@message.id}"
+         def author_name
+            @author.name
          end
 
-         def even_class
-            (@index % 2 == 0) ? ' odd' : ' even'
+         def author_avatar
+            @author.profil.avatar_url
          end
 
-         def contents
-            @message.parsed_contents
+         def author_profil
+            urls.profil @author
          end
 
-         def dates?
-            !@message.new_record?
+         def author_signature
+            @author.profil.parsed_signature
          end
 
-         def created
-            I18n.l @message.created_at
+         def online
+            @author.online? ? 'online' : 'offline'
          end
 
-         def updated
-            I18n.l @message.updated_at
+         def presence
+            @presence ||= @author.minecraft_stats.version.to_f / stats_max
          end
+
+         def gauge_top
+            129 - presence * 120
+         end
+
+         def gauge_height
+            120 * presence
+         end
+
       end
-    end
+   end
 end
