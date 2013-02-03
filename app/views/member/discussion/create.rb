@@ -33,6 +33,10 @@ module EthilVan::App::Views
          def form
             @form
          end
+
+         def cadre
+            @cadre = Member::Message::Cadre.new(@app.current_account)
+         end
       end
    end
 end
