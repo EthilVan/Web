@@ -1,5 +1,6 @@
-task :clean => 'skins:clean'
-task :cron => 'skins:update'
+task :install => 'skins:update'
+task :clean   => 'skins:clean'
+task :cron    => 'skins:update'
 
 namespace :skins do
 
