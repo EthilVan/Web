@@ -52,6 +52,6 @@ class Discussion < ActiveRecord::Base
    end
 
    def update_last_message
-      update_attribute :last_message_id, messages.last.id
+      update_attribute :last_message_id, messages.last(2)[0].id
    end
 end

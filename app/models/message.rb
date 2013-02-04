@@ -30,6 +30,7 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    markdown_pre_parse :contents
    after_create  :update_discussion
+   before_destroy :update_discussion_last
 
    scope :by_date, order('created_at ASC')
 
@@ -72,11 +73,6 @@ class Message < ActiveRecord::Base
    def editable_by?(account)
       account.role.inherit? EthilVan::Role::MODO or
             self.account == account
-   end
-
-   def destroy
-      super
-      update_discussion_last
    end
 
 private
