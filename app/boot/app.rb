@@ -19,9 +19,10 @@ module EthilVan
       EthilVan.development? do
          before { I18n.reload! }
 
-         #require 'better_errors'
-         #use BetterErrors::Middleware
-         #BetterErrors.application_root = EthilVan::ROOT
+         require 'better_errors'
+         use BetterErrors::Middleware
+         BetterErrors.application_root = EthilVan::ROOT
+         BetterErrors.editor = :sublime
 
          require 'rack-mini-profiler'
          Rack::MiniProfiler.config.position = 'right'
