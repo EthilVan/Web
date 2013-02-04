@@ -9,7 +9,7 @@
                <div class="titre-discussion">{{ name }}</div>
             </a>
             {{# modo? }}
-               <a class="need-confirmation" href="{{ delete_url }}">Supprimer</a>
+               <a href="{{ delete_url }}" data-remove-target=".discussion">Supprimer</a>
             {{/ modo? }}
          </div>
          <div class="creation">

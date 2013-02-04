@@ -67,6 +67,7 @@ class EthilVan::App < Sinatra::Base
       group = GeneralDiscussionGroup.find_by_url group_url
       raise Sinatra::NotFound if group.nil?
       group.destroy
+      halt(200) if request.xhr?
       redirect '/membre/discussion'
    end
 end

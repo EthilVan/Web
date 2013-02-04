@@ -19,7 +19,7 @@
                   Editer
                </a>
                {{^ first? }}
-               <a class="need-confirmation btn" href="{{ delete_url }}">
+               <a class="btn" data-remove-target="#{{ anchor }}" href="{{ delete_url }}">
                   Supprimer
                </a>
                {{/ first? }}

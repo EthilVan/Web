@@ -48,6 +48,7 @@ class EthilVan::App < Sinatra::Base
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
       discussion.destroy
+      halt(200) if request.xhr?
       redirect '/membre/discussion'
    end
 end

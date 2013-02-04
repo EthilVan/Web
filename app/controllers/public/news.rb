@@ -81,6 +81,7 @@ class EthilVan::App
       news = News.find_by_id id
       raise Sinatra::NotFound if news.nil?
       news.destroy
+      halt(200) if request.xhr?
       redirect '/news'
    end
 end

@@ -77,6 +77,7 @@ class EthilVan::App < Sinatra::Base
 
       following = message.following
       message.destroy
-      redirect urls.discussion(message.discussion, following.page, following)
+      halt(200) if request.xhr?
+      redirect urls.discussion(message.discussion, following.page,following)
    end
 end
