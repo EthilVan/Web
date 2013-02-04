@@ -1,77 +1,102 @@
-require 'fileutils'
-require 'ethilvan/skins/chunky_png'
+require 'pathname'
 
 module EthilVan::Skins
 
-   MINECRAFT_BASE_URL = 'http://s3.amazonaws.com/MinecraftSkins/'
+   SKINS_DIRECTORY = Pathname.new(EthilVan::ROOT).join('tmp', 'skins')
 
-   DEFAULT_SCALE = 4
-   DEFAULT_CACHE = 6.hour.to_i
+   class Skin
 
-   SKINS_DIRECTORY = File.join EthilVan::ROOT, 'tmp', 'skins'
-   FileUtils.mkdir_p SKINS_DIRECTORY
+      def self.directory
+         @directory
+      end
 
-   module Helpers
+      def self.dirname(dirname)
+         @directory = SKINS_DIRECTORY.join(dirname)
+         @directory.mkpath
+      end
 
-      def get(username, scale = nil)
-         scale ||= DEFAULT_SCALE
+      dirname 'raw'
 
-         filename = filename_for(username, scale)
-         return filename unless update?(filename)
+      def self.raw_for(username)
+         raw = Skin.new(username)
+         raw = Skin.new('char') unless raw.exist?
+         return raw
+      end
 
-         response = Net::HTTP.get_response skin_uri_for username
-         return char_skin(scale) unless response.code == '200'
+      attr_reader :username
+      attr_reader :scale
 
-         last_modified = Time.parse response['Last-Modified']
-         if generate?(filename, last_modified)
-            generate response.body, scale, filename
-         end
+      def initialize(username)
+         @username = username
+         @file = self.class.directory.join filename username
+      end
 
-         filename
+      def get
+         @file.to_s
+      end
+
+      def exist?
+         @file.exist?
+      end
+
+      def mtime
+         @file.mtime
+      end
+
+      def need_update?(time)
+         !exist? or mtime < time
+      end
+
+      def replace(contents)
+         @file.open('wb') { |f| f << contents }
       end
 
    private
 
-      def filename_for(username, scale)
-         "#{File.join(self::DIR, username)}_x#{scale}.png"
+      def dir
+         'raw'
       end
 
-      def update?(filename)
-         !File.exists?(filename) || (Time.now - File.mtime(filename)) >= DEFAULT_CACHE
+      def filename(name)
+         name + '.png'
+      end
+   end
+
+   class GeneratedSkin < Skin
+
+      def initialize(username, scale, raw = nil)
+         @scale = scale
+         super(username)
+         @raw ||= Skin.raw_for(username)
       end
 
-      def skin_uri_for(username)
-         URI("#{MINECRAFT_BASE_URL}#{username}.png")
-      end
-
-      def char_skin(scale)
-         filename = filename_for('char', scale)
-         unless File.exists? filename
-            response = Net::HTTP.get skin_uri_for 'char'
-            generate response, scale, filename
+      def get
+         if !exist? or need_update? @raw.mtime
+            generate
          end
 
-         filename
+         return super
       end
 
-      def generate?(filename, last_modified)
-         !File.exists?(filename) or File.mtime(filename) < last_modified
+      def filename(name)
+         "#{name}_x#@scale.png"
       end
    end
 
-   module Preview
+   class Preview < GeneratedSkin
 
-      extend Helpers
-
-      DIR = File.join SKINS_DIRECTORY, 'preview'
-      FileUtils.mkdir_p DIR
+      dirname 'preview'
    end
 
-   module Head
+   class Head < GeneratedSkin
 
-      extend Helpers
-
-      DIR = File.join SKINS_DIRECTORY, 'head'
-      FileUtils.mkdir_p DIR
+      dirname 'head'
    end
+
+   PREGENERATED = {
+      Head    => [ 8 ],
+      Preview => [ 5 ]
+   }
 end
+
+require 'ethilvan/skins/chunky_png'

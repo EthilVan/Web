@@ -4,12 +4,14 @@ class EthilVan::App < Sinatra::Base
 
    helpers do
 
-      def skin_image(type, username, scale)
-         expires 6.hours.to_i, :public
-         account = Account.find_by_name username
-         raise Sinatra::NotFound if account.nil?
-         scale = scale.to_i unless scale.nil?
-         send_file type.get(account.minecraft_name, scale)
+      def skin_image(type, name, scale)
+         expires 4.hours.to_i, :public
+         content_type 'image/png'
+         minecraft_name = Account.where(name: name)
+               .pluck(:minecraft_name).first
+         raise Sinatra::NotFound if minecraft_name.nil?
+         scale = (scale || 1).to_i
+         send_file type.new(minecraft_name, scale).get
       end
    end
 

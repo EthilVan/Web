@@ -5,6 +5,7 @@ task :default => :console
 task :console
 task :install
 task :clean
+task :cron
 
 require_relative 'tasks/console'
 require_relative 'tasks/database'
