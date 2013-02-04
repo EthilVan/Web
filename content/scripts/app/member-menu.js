@@ -16,12 +16,6 @@ function display_submenu(event) {
 }
 
 $(function() {
-   $('.cartes').mousedown(function(event) {
-      if (event.which == 2) {
-         window.open('http://map.ethilvan.fr', '_blank');
-      }
-   });
-
    $('#button1').click({ name: "server" }, display_submenu);
    $('#button2').click({ name: "member" }, display_submenu);
 });

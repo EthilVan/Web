@@ -16,17 +16,15 @@ function displayTab(tab) {
    tab.tab('show');
 }
 
-$(function() {
-   $('ul#nav.page-tabs .tab a').click(function(event) {
-      event.preventDefault();
-      displayTab($(this));
-      var newTab = $(this).attr('data-target').substring(1);
-      window.history.pushState({}, null, newTab);
-   });
-
-   window.onpopstate = function(event) {
-      displayTab(tabFor(window.location.pathname));
-   }
-
-   displayTab(tabFor(window.location.pathname));
+$(document).on('click.ethilvan.page-tab', 'ul#nav.page-tabs .tab a', function (event) {
+   event.preventDefault();
+   displayTab($(this));
+   var newTab = $(this).attr('data-target').substring(1);
+   window.history.pushState({}, null, newTab);
 });
+
+window.onpopstate = function(event) {
+   displayTab(tabFor(window.location.pathname));
+}
+
+$(function() { displayTab(tabFor(window.location.pathname)); });

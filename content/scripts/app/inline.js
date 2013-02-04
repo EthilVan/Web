@@ -1,42 +1,32 @@
-$(function() {
+$(document).on('click.ethivan.inline', 'a[data-inline-target]', function (event) {
+   var $this = $(this);
+   event.preventDefault();
 
-   $('a[data-inline-target]').each(function() {
-      var $this = $(this);
-
-      $this.click(function(event) {
-         event.preventDefault();
-
-         $.ajax({
-            url: $this.attr('href'),
-            success: function(data, status, xhr) {
-               var target = $this.closest($this.data().inlineTarget);
-               target.html(data);
-               target.find(".mdeditor").mdeditor();
-            }
-         });
-      });
+   $.ajax({
+      url: $this.attr('href'),
+      success: function(data, status, xhr) {
+         var target = $this.closest($this.data().inlineTarget);
+         target.html(data);
+         target.find(".mdeditor").mdeditor();
+      }
    });
+});
 
-   $('a[data-remove-target]').each(function() {
+$(document).on('click.ethilvan.remove', 'a[data-remove-target]', function (event) {
+   var $this = $(this);
+   event.preventDefault();
 
-      var $this = $(this);
+   bootbox.confirm("Etes vous sûr ?", "Annuler", "Confirmer", function(result) {
+      if (!result) {
+         return;
+      }
 
-      $this.click(function(event) {
-         event.preventDefault();
-
-         bootbox.confirm("Etes vous sûr ?", "Annuler", "Confirmer", function(result) {
-            if (!result) {
-               return;
-            }
-
-            $.ajax({
-               url: $this.attr('href'),
-               success: function(data, status, xhr) {
-                  var target = $this.closest($this.data().removeTarget);
-                  target.remove();
-               }
-            });
-         });
+      $.ajax({
+         url: $this.attr('href'),
+         success: function(data, status, xhr) {
+            var target = $this.closest($this.data().removeTarget);
+            target.remove();
+         }
       });
    });
 });
