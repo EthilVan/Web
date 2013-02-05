@@ -7,9 +7,12 @@ module EthilVan::Markdown::Helpers
 
    class ToHTML < Redcarpet::Render::HTML
 
+      OEMBED_CACHE = {}
+
       def image(link, title, alt)
+         return OEMBED_CACHE[link] if OEMBED_CACHE.key?(link)
          res = OEmbed::Providers.get(link)
-         res.html
+         OEMBED_CACHE[link] = res.html
       rescue
          img = "<img src=\"#{link}\""
          img << " alt=\"#{alt}\"" if alt
@@ -18,4 +21,8 @@ module EthilVan::Markdown::Helpers
          img
       end
    end
+end
+
+EthilVan::Cron.task do
+   EthilVan::Markdown::Helpers::ToHTML::OEMBED_CACHE.clear
 end
