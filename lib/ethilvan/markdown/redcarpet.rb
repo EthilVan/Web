@@ -8,22 +8,13 @@ module EthilVan::Markdown::Helpers
          filter_html:     true,
          with_toc_data:   true,
          hard_wrap:       true,
+         xhtml:           true,
       }
 
       include Redcarpet::Render::SmartyPants
 
       def initialize(options = HtmlOptions)
          super(options)
-      end
-   end
-
-   class ToXHTML < ToHTML
-
-      XHtmlOptions = HtmlOptions.clone
-      XHtmlOptions[:xhtml] = true
-
-      def initialize
-         super(XHtmlOptions)
       end
    end
 
@@ -38,9 +29,5 @@ module EthilVan::Markdown::Helpers
 
    def render_markdown(source)
       Redcarpet::Markdown.new(ToHTML,  Options).render(source)
-   end
-
-   def render_xmarkdown(source)
-      Redcarpet::Markdown.new(ToXHTML, Options).render(source)
    end
 end

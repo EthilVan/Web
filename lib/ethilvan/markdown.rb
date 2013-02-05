@@ -12,10 +12,6 @@ module EthilVan
             emojify linkify_mention render_markdown msg
          end
 
-         def markdown_xhtml
-            emojify linkify_mention render_xmarkdown msg
-         end
-
       private
 
          def linkify_mention(text)
