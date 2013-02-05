@@ -14,6 +14,12 @@ module EthilVan
          url
       end
 
+      def profil_edit(page = nil, account_name)
+         url = "/membre/@#{account_name}/editer"
+         url << '/' << page unless page.nil?
+         url
+      end
+
       def skin_preview(account, scale)
          skin_url(account, 'preview', scale)
       end
@@ -53,6 +59,10 @@ module EthilVan
       end
 
       def profil(page = nil, account)
+         super(page, account.name)
+      end
+
+      def profil_edit(page = nil, account)
          super(page, account.name)
       end
 
