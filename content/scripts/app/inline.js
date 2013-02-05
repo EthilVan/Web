@@ -7,6 +7,7 @@ $(document).on('click.ethivan.inline', 'a[data-inline-target]', function (event)
       success: function(data, status, xhr) {
          var target = $this.closest($this.data().inlineTarget);
          target.html(data);
+         $(document).trigger('insert');
       }
    });
 });

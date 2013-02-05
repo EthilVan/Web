@@ -112,4 +112,8 @@
    $(function() {
       $('select').selectpicker();
    });
+
+   $(document).on('insert', function() {
+      $('select').selectpicker();
+   });
 }(jQuery);

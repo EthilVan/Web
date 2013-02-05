@@ -37,5 +37,6 @@ $(document).on('click.page-scroller.bottom',
 
 $(document).ready(function() {
    $(window).scroll(updateTopBottom);
+   $(document).on('insert', updateTopBottom);
    updateTopBottom(window);
 });

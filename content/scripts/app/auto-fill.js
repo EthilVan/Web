@@ -27,6 +27,7 @@ $(function() {
          currentPage++;
          $.get(url + '?page=' + currentPage, function (html) {
             $container.append($(html).html());
+            $(document).trigger('insert');
             isPageLoading = false;
          });
       }
