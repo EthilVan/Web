@@ -110,10 +110,10 @@
    };
 
    $(function() {
-      $('select').selectpicker();
+      $('select.bootstrap-select').selectpicker();
    });
 
    $(document).on('insert', function() {
-      $('select').selectpicker();
+      $('select.bootsrap-select').selectpicker();
    });
 }(jQuery);
