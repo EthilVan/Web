@@ -15,7 +15,7 @@ module EthilVan::App::Views
             end
 
             def group
-               groups = model.group.class.select('id, name').all
+               groups = model.group.class.by_priority.select('id, name').all
                groups_select = groups.each_with_object({}) do |group, hash|
                   hash[group.id] = group.name
                end
