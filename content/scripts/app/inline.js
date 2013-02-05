@@ -5,9 +5,13 @@ $(document).on('click.ethivan.inline', 'a[data-inline-target]', function (event)
    $.ajax({
       url: $this.attr('href'),
       success: function(data, status, xhr) {
-         var target = $this.closest($this.data().inlineTarget);
-         target.html(data);
-         $(document).trigger('insert');
+         var $target = $this.closest($this.data().inlineTarget);
+         var $element = $(data);
+         $element.css('display', 'none');
+         $target.fadeOut(800, function() {
+            $target.replaceWith($element);
+            $element.fadeIn(800);
+         });
       }
    });
 });
@@ -24,8 +28,10 @@ $(document).on('click.ethilvan.remove', 'a[data-remove-target]', function (event
       $.ajax({
          url: $this.attr('href'),
          success: function(data, status, xhr) {
-            var target = $this.closest($this.data().removeTarget);
-            target.remove();
+            var $target = $this.closest($this.data().removeTarget);
+            $target.slideUp(800, function() {
+               $target.remove();
+            });
          }
       });
    });
