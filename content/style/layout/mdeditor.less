@@ -1,67 +1,44 @@
-.mdeditor {
-   width: 740px;
-   height: 240px;
-   max-width: 95%;
-}
+#subcontents .mdeditor {
 
-.mde-buttons.mde-control {
 
-   margin-bottom: 6px;
+   .mde-input {
+      width: 740px;
+      height: 240px;
+      max-width: 95%;
+   }
 
-   .btn-group {
-      float: left;
-      margin-left: 15px;
+   .mde-buttons.mde-control {
 
-      &:first-child {
-         margin-left: 0px;
+      margin-bottom: 6px;
+
+      .btn-group {
+         float: left;
+         margin-left: 15px;
+
+         &:first-child {
+            margin-left: 0px;
+         }
       }
-   }
 
-   a .mde-btn-content:after {
-      font-style: normal;
-      font-weight: normal;
-   }
+      a {
+         font-style: normal;
+         font-weight: normal;
+      }
 
-   .mde-bold .mde-btn-content:after {
-      content: 'G';
-      font-weight: bold;
-   }
+      .mde-bold {
+         font-weight: bold;
+      }
 
-   .mde-italic .mde-btn-content:after {
-      content: 'I';
-      font-style: italic;
-   }
+      .mde-italic {
+         font-style: italic;
+      }
 
-   .mde-strikethrough .mde-btn-content:after {
-      content: 'B';
-      text-decoration: line-through;
-   }
+      .mde-strikethrough {
+         text-decoration: line-through;
+      }
 
-   .mde-code .mde-btn-content:after {
-      content: 'Code';
-   }
-
-   .mde-link .mde-btn-content:after {
-      content: 'Lien';
-   }
-
-   .mde-image .mde-btn-content:after {
-      content: 'Média';
-   }
-
-   .mde-list .mde-btn-content:after {
-      content: 'Liste';
-   }
-
-   .mde-title .mde-btn-content:after {
-      content: 'Titre';
-   }
-
-   .mde-preview .mde-btn-content:after {
-      content: 'Prévisualiser';
-   }
-
-   .mde-preview.disabled .mde-btn-content {
-      padding-right: 14px;
+      .mde-dopreview.disabled .mde-spinner  {
+         margin-left: 14px;
+      }
    }
 }

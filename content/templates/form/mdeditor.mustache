@@ -1,2 +1,31 @@
-<textarea id="{{ field_id }}" class="mdeditor" name="{{ field_name }}"
-      {{{ validations }}}>{{ value }}</textarea>
+<div class="mdeditor">
+   <div class="mde-buttons mde-control">
+      <div class="btn-group">
+         <a class="btn mde-title" href="#mde-title" tabindex="-1">Titre</a>
+         <a class="btn mde-list" href="#mde-list" tabindex="-1">Liste</a>
+      </div>
+      <div class="btn-group">
+         <a class="btn mde-link" href="#mde-link" tabindex="-1">Lien</a>
+         <a class="btn mde-image" href="#mde-image" tabindex="-1">M&eacute;dia</a>
+      </div>
+      <div class="btn-group">
+         <a class="btn mde-bold" href="#mde-bold" tabindex="-1">G</a>
+         <a class="btn mde-italic" href="#mde-italic" tabindex="-1">I</a>
+         <a class="btn mde-strikethrough" href="#mde-strikethrough" tabindex="-1">B</a>
+         <a class="btn mde-code" href="#mde-code" tabindex="-1">Code</a>
+      </div>
+      <div class="btn-group">
+         <a class="btn mde-dopreview" href="#mde-dopreview" tabindex="-1">
+            Pr&eacute;visualiser
+            <span class="mde-spinner"></span>
+         </a>
+      </div>
+      <div class="clearfix"></div>
+   </div>
+
+   <textarea id="{{ field_id }}" class="mde-input" name="{{ field_name }}"
+         {{{ validations }}}>{{ value }}</textarea>
+
+   <div class="mde-preview mde-control"></div>
+
+</div>

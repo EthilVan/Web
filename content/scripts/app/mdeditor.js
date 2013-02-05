@@ -1,66 +1,34 @@
-function MDEditor(inputElement) {
+function MDEditor(wrapper) {
 
-   this.initialize = function() {
-      this.inputElement = inputElement;
+   this.initialize = function(wrapper) {
+      this.$input      = wrapper.find('.mde-input');
+      this.$preview    = wrapper.find('.mde-preview');
+      this.$previewBtn = wrapper.find('.mde-dopreview');
+      this.$spinner    = wrapper.find('.mde-spinner');
 
-      var controlsElement = MDEditor.Utils.appendControls(inputElement);
-      this.previewElement  = MDEditor.Utils.appendPreview(inputElement);
-
-      this.activatePreview(this.inputElement);
-      this.activateControls(controlsElement);
-      this.activateMentions(this.inputElement);
-
-      this.updating = false;
-      this.updatePreview();
+      this.membresMentions = false;
+      this.emojisMentions  = false;
+      this.updating        = false;
    };
 
-   this.activatePreview = function(inputElement) {
-      var _self = this;
-      $(inputElement).keypress(function(event) {
-         if (event.which == 13) {
-            _self.updatePreview();
-         }
-      });
-   }
-
-   this.activateControls = function(controlsElement) {
-      var _self = this;
-      [
-         "bold", "italic", "strikethrough", "code",
-         "link", "image",
-         "title", "list",
-         "preview"
-      ].forEach(function(actionName) {
-         $(controlsElement).find(".mde-" + actionName).click(function(event) {
-            _self.action(actionName, event)
+   this.activateMentions = function() {
+      var mdeditor = this;
+      var $input = mdeditor.$input
+      if (!mdeditor.membresMentions) {
+         MDEditor.Utils.fetchMembresMentions(function(data) {
+            $input.atwho('@', { data: data, limit: 5 });
+            mdeditor.membresMentions = true;
          });
-      });
-      this.previewBtn = $(controlsElement).find(".mde-preview");
-   };
-
-   this.activateMentions = function(inputElement) {
-      $.ajax({
-         url: '/markdown/membres.json',
-         success: function(raw_data, status, xhr) {
-            var data = $.map(raw_data, function(name, i) {
-               return { 'name': name };
-            });
-            $(inputElement).atwho('@', { data: data, limit: 5 });
-         }
-      });
-      $.ajax({
-         url: '/markdown/emojis.json',
-         success: function(raw_data, status, xhr) {
-            var data = $.map(raw_data, function(name, i) {
-               return { 'name': name };
-            });
-            $(inputElement).atwho(':', {
-               data: data,
-               limit: 10,
+      }
+      if (!mdeditor.emojisMentions) {
+         MDEditor.Utils.fetchEmojisMentions(function(data) {
+            $input.atwho(':', {
+               data: data, limit: 10,
                tpl: MDEditor.Utils.emojiPreviewTemplate(),
             });
-         }
-      });
+            mdeditor.emojisMentions = true;
+         });
+      }
    }
 
    this.updatePreview = function() {
@@ -69,95 +37,80 @@ function MDEditor(inputElement) {
       }
 
       this.updating = true;
-      this.previewBtn.addClass('disabled');
-      this.previewBtn.find('.mde-spinner').spin(MDEditor.Utils.spinOptions());
-      var markdown = $(this.inputElement).val();
-      var _self = this;
+      this.$previewBtn.addClass('disabled');
+      this.$spinner.spin(MDEditor.Utils.spinOptions());
+
+      var $mdeditor = this;
       $.ajax({
          url: '/markdown',
          type: 'POST',
-         data: { content: markdown },
+         data: { content: $mdeditor.$input.val() },
          success: function(data, status, xhr) {
-            $(_self.previewElement).html(data);
-            _self.updating = false;
-            _self.previewBtn.removeClass('disabled');
-            _self.previewBtn.find('.mde-spinner').spin(false);
+            $mdeditor.$preview.html(data);
+            $mdeditor.updating = false;
+            $mdeditor.$previewBtn.removeClass('disabled');
+            $mdeditor.$spinner.spin(false);
          }
       });
    }
 
-   this.action = function(actionName, event) {
-      event.preventDefault();
-      if (MDEditor.Actions[ actionName ](this.inputElement)) {
+   this.action = function(actionName) {
+      var actionMethod = MDEditor.Actions[actionName];
+      if (!actionMethod) {
+         return;
+      }
+
+      if (actionMethod(this.$input)) {
          this.updatePreview();
       }
    };
 
-   this.initialize();
+   this.initialize(wrapper);
 }
 
 
-/*
-  The logic of each of the control buttons
-*/
 MDEditor.Actions = {
 
-   title: function(inputElement) {
-      return MDEditor.Utils.insertAtStart(inputElement, '#', true);
+   title: function($input) {
+      return MDEditor.Utils.insertAtStart($input, '#', true);
    },
 
-   list: function(inputElement) {
-      return MDEditor.Utils.insertAtStart(inputElement, '*', false);
+   list: function($input) {
+      return MDEditor.Utils.insertAtStart($input, '*', false);
    },
 
-   link: function(inputElement) {
-      return MDEditor.Utils.insertLinkOrMedia(inputElement, "[", "](", ")");
+   link: function($input) {
+      return MDEditor.Utils.insertLinkOrMedia($input, "[", "](", ")");
    },
 
-   image: function(inputElement) {
-      return MDEditor.Utils.insertLinkOrMedia(inputElement, "![", "](", ")");
+   image: function($input) {
+      return MDEditor.Utils.insertLinkOrMedia($input, "![", "](", ")");
    },
 
-   bold: function(inputElement) {
-      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '**');
+   bold: function($input) {
+      return MDEditor.Utils.wrapSelectionOrInsert($input, '**');
    },
 
-   italic: function(inputElement) {
-      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '_');
+   italic: function($input) {
+      return MDEditor.Utils.wrapSelectionOrInsert($input, '_');
    },
 
-   strikethrough: function(inputElement) {
-      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '~~');
+   strikethrough: function($input) {
+      return MDEditor.Utils.wrapSelectionOrInsert($input, '~~');
    },
 
-   code: function(inputElement) {
-      return MDEditor.Utils.wrapSelectionOrInsert(inputElement, '`');
+   code: function($input) {
+      return MDEditor.Utils.wrapSelectionOrInsert($input, '`');
    },
 
-   preview: function(inputElement) {
+   dopreview: function($input) {
       return true;
    }
 }
 
 MDEditor.Utils = {
 
-   appendControls: function(inputElement) {
-      var element = $(MDEditor.Utils.controlsTemplate());
-      element.find('a').attr('tabindex', '-1');
-      $(inputElement).before(element);
-
-      return element;
-   },
-
-   appendPreview: function(inputElement) {
-      var element = $(MDEditor.Utils.previewTemplate());
-      $(inputElement).after(element);
-
-      return element;
-   },
-
-   wrapSelectionOrInsert: function(inputElement, chars) {
-      var $input = $(inputElement);
+   wrapSelectionOrInsert: function($input, chars) {
       var selection = $input.getSelection();
       if (selection.length == 0) {
          $input.insertAtCaretPos(chars);
@@ -172,8 +125,7 @@ MDEditor.Utils = {
       return true;
    },
 
-   insertAtStart: function(inputElement, char, duplicate) {
-      var $input = $(inputElement);
+   insertAtStart: function($input, char, duplicate) {
       var content = $input.val();
       var selection = $input.getSelection();
       var start = selection.start;
@@ -196,13 +148,13 @@ MDEditor.Utils = {
       return text.length > 0;
    },
 
-   insertLinkOrMedia: function(inputElement, chars1, chars2, chars3) {
+   insertLinkOrMedia: function($input, chars1, chars2, chars3) {
       var url = prompt("Url :", "http://");
-      if (url == null) {
+      if (url == null || url == "http://") {
          return false;
       }
 
-      var selection = $(inputElement).getSelection();
+      var selection = $input.getSelection();
       var text = selection.text;
       if (selection.length == 0) {
          text = prompt("Texte :");
@@ -212,62 +164,37 @@ MDEditor.Utils = {
       }
 
       if (selection.length == 0) {
-         $(inputElement).insertAtCaretPos(chars1 + text + chars2 + url + chars3);
+         $input.insertAtCaretPos(chars1 + text + chars2 + url + chars3);
       } else {
-         $(inputElement).replaceSelection(chars1 + text + chars2 + url + chars3);
+         $input.replaceSelection(chars1 + text + chars2 + url + chars3);
       }
       return true;
    },
 
-   controlsTemplate: function() {
-      var template =
-         "<div class=\"mde-buttons mde-control\">" +
-         "  <div class=\"btn-group\">" +
-         "    <a class=\"btn mde-title\" href=\"#mde-title\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "    <a class=\"btn mde-list\" href=\"#mde-list\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "  </div>" +
-         "  <div class=\"btn-group\">" +
-         "    <a class=\"btn mde-link\" href=\"#mde-link\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "    <a class=\"btn mde-image\" href=\"#mde-image\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "  </div>" +
-         "  <div class=\"btn-group\">" +
-         "    <a class=\"btn mde-bold\" href=\"#mde-bold\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "    <a class=\"btn mde-italic\" href=\"#mde-italic\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "    <a class=\"btn mde-strikethrough\" href=\"#mde-strikethrough\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "    <a class=\"btn mde-code\" href=\"#mde-code\">" +
-         "      <span class=\"mde-btn-content\"></span>" +
-         "    </a>" +
-         "  </div>" +
-         "  <div class=\"btn-group\">" +
-         "    <a class=\"btn mde-preview\" href=\"#mde-preview\">" +
-         "        <span class=\"mde-btn-content\"></span>"+
-         "        <span class=\"mde-spinner\"></span>" +
-         "    </a>" +
-         "  </div>" +
-         "  <div class=\"clearfix\"></div>" +
-         "</div>";
-
-      return template;
+   fetchMembresMentions: function(callback) {
+      this.fetchMentions('/markdown/membres.json', callback);
    },
 
-   previewTemplate: function() {
-      var template = "<div class=\"mde-preview mde-control\"></div>";
+   fetchEmojisMentions: function(callback) {
+      this.fetchMentions('/markdown/emojis.json', callback);
+   },
 
-      return template;
+   fetchMentions: function(url, callback) {
+      var utils = this;
+      if (utils[url]) {
+         callback(utils[url]);
+      } else {
+         $.ajax({
+            url: url,
+            success: function(raw_data, status, xhr) {
+               var data = $.map(raw_data, function(name, i) {
+                  return { 'name': name };
+               });
+               utils[url] = data;
+               callback(data);
+            }
+         });
+      }
    },
 
    emojiPreviewTemplate: function() {
@@ -300,12 +227,49 @@ MDEditor.Utils = {
    }
 }
 
-$(function() {
-   jQuery.fn.mdeditor = function() {
-      this.each(function(index, inputElement) {
-         var mde = new MDEditor(inputElement);
-      });
-   };
+var actionsSelector = [
+   "bold", "italic", "strikethrough", "code",
+   "link", "image",
+   "title", "list",
+   "dopreview"
+].map(function(action) { return '[href=#mde-' + action + ']'; }).join(', ');
 
-   $(".mdeditor").mdeditor();
+$(document).on('click.mdeditor.actions',
+      actionsSelector, function(event) {
+   event.preventDefault();
+   var $control = $(this);
+   var actionName = (/^#mde-(.+)$/).exec($control.attr('href'))[1];
+   $control.mdeditor('action', actionName);
 });
+
+
+$(document).on('keypress.mdeditor.preview.shortcut',
+      '.mde-input', function(event) {
+   if (event.which == 13) {
+      $(this).mdeditor('updatePreview');
+   }
+});
+
+$(document).on('focus.mdeditor.atwho',
+      '.mde-input', function(event) {
+   $(this).mdeditor('activateMentions');
+});
+
+$.fn.mdeditor = function(method, arg) {
+   return this.each(function() {
+      var $mdeditor = $(this).parents('.mdeditor');
+      if (!$mdeditor) {
+         return null;
+      }
+
+      var data = $mdeditor.data('mdeditor');
+      if (!data) {
+         data = new MDEditor($mdeditor);
+         $mdeditor.data('mdeditor', data);
+      }
+
+      if (method) {
+         data[method](arg);
+      }
+  });
+}
