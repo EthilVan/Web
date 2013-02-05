@@ -18,6 +18,7 @@ module EthilVan
    require 'ethilvan'
    require 'ethilvan/require'
    require 'ethilvan/logger'
+   require 'ethilvan/cron'
    require 'ethilvan/mustache'
    require 'ethilvan/auth'
    require 'ethilvan/misc'
