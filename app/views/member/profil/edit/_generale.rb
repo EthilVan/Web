@@ -4,19 +4,71 @@ module EthilVan::App::Views
 
       class Generale < Partial
 
-         class Form < EthilVan::Mustache::Form
-
-            def initialize(account, action)
-               super(account, action: action)
-            end
+         def initialize(account, params)
+            @form = Form.new(account.profil,
+                  urls.profil_edit('generale', account))
+            @params = params
          end
 
-         def initialize(account)
-            @form = Form.new(account, urls.profil_edit('generale', account))
+         def ok?
+            @params[:generale_ok]
          end
 
          def form
             @form
+         end
+      end
+
+      class Generale::Form < EthilVan::Mustache::Form
+
+         def initialize(profil, action)
+            super(profil, action: action)
+         end
+
+         def birthdate
+            text :birthdate_formatted
+         end
+
+         def sexe
+            select :sexe, {
+               among: Hash[*EthilVan::Data::Sexe.map(&:reverse).flatten]
+            }
+         end
+
+         def localisation
+            text :localisation
+         end
+
+         def minecraft_since
+            text :minecraft_since
+         end
+
+         def skill
+            text :skill
+         end
+
+         def desc_rp
+            text :desc_rp
+         end
+
+         def website
+            text :website
+         end
+
+         def twitter
+            text :twitter
+         end
+
+         def youtube
+            text :youtube
+         end
+
+         def steam_id
+            text :steam_id
+         end
+
+         def description
+            text :description
          end
       end
    end

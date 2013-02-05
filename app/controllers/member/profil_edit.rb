@@ -14,7 +14,7 @@ class EthilVan::App
    end
 
    get %r{/membre/@(#{Account::NAME})/editer$} do |name|
-      redirect urls.profil_edit('generale', current_account)
+      redirect "/membre/@#{name}/editer/generale"
    end
 
    get %r{/membre/@(#{Account::NAME})/editer/generale$} do |name|
@@ -26,8 +26,15 @@ class EthilVan::App
    post %r{/membre/@(#{Account::NAME})/editer/generale$} do |name|
       account = profil_edit_account name
 
-      view Views::Member::Profil::Edit::Tabs.new account
-      mustache 'membre/profil/edit/tabs'
+      if account.profil.update_attributes params[:profil]
+         view Views::Member::Profil::Edit::Tabs.new account, {
+            generale_ok: true
+         }
+         mustache 'membre/profil/edit/tabs'
+      else
+         view Views::Member::Profil::Edit::Tabs.new account
+         mustache 'membre/profil/edit/tabs'
+      end
    end
 
    get %r{/membre/@(#{Account::NAME})/editer/compte$} do |name|
@@ -46,7 +53,9 @@ class EthilVan::App
          mustache 'membre/profil/edit/tabs'
       elsif account.update_attributes params[:account]
          account.clear_new_password
-         view Views::Member::Profil::Edit::Tabs.new account, { ok: true }
+         view Views::Member::Profil::Edit::Tabs.new account, {
+            account_ok: true
+         }
          mustache 'membre/profil/edit/tabs'
       else
          view Views::Member::Profil::Edit::Tabs.new account

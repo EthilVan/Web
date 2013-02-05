@@ -11,9 +11,9 @@ module EthilVan::App::Views
             { id: 'compte',      name: 'Compte'   },
          ]
 
-         def initialize(account, account_params = {})
+         def initialize(account, params = {})
             @account = account
-            @account_params = account_params
+            @params = params
          end
 
          def meta_page_title
@@ -34,11 +34,11 @@ module EthilVan::App::Views
          end
 
          def tab_generale
-            Generale.new(@account)
+            Generale.new(@account, @params)
          end
 
          def tab_account
-            Account.new(@account, @account_params)
+            Account.new(@account, @params)
          end
       end
    end

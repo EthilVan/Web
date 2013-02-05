@@ -1,5 +1,79 @@
+{{# ok? }}
+<div class="flash success">
+   Modifications enregistrées
+</div>
+{{/ ok? }}
+
 {{# form }}
 <form {{{ attributes }}}>
+
+   {{# birthdate }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ birthdate }}
+
+   {{# sexe }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/select }}
+   {{/ sexe }}
+
+   {{# localisation }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ localisation }}
+
+   {{# minecraft_since }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/textarea }}
+   {{/ minecraft_since }}
+
+   {{# skill }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ skill }}
+
+   {{# desc_rp }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/textarea }}
+   {{/ desc_rp }}
+
+   {{# website }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ website }}
+
+   {{# twitter }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ twitter }}
+
+   {{# youtube }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ youtube }}
+
+   {{# steam_id }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ steam_id }}
+
+   {{# description }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/textarea }}
+   {{/ description }}
+
+   <div class="clearfix"></div>
 
    <input class="btn" type="submit" value="Enregistrer" />
 </form>
