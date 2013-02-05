@@ -75,6 +75,10 @@ MDEditor.Actions = {
       return MDEditor.Utils.insertAtStart($input, '#', true);
    },
 
+   quote: function($input) {
+      return MDEditor.Utils.insertAtStart($input, '>', false);
+   },
+
    list: function($input) {
       return MDEditor.Utils.insertAtStart($input, '*', false);
    },
@@ -227,12 +231,9 @@ MDEditor.Utils = {
    }
 }
 
-var actionsSelector = [
-   "bold", "italic", "strikethrough", "code",
-   "link", "image",
-   "title", "list",
-   "dopreview"
-].map(function(action) { return '[href=#mde-' + action + ']'; }).join(', ');
+var actionsSelector = Object.keys(MDEditor.Actions).map(function(action) {
+   return '[href=#mde-' + action + ']';
+}).join(', ');
 
 $(document).on('click.mdeditor.actions',
       actionsSelector, function(event) {
