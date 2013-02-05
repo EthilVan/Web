@@ -15,7 +15,7 @@ bootstrap/bootstrap-modal.js
 lib/bootbox.js
 app/preload-images.js
 app/public-menu.js
-app/back-top.js
+app/page-scroller.js
 app/tab.js
 app/select.js
 app/auto-fill.js
