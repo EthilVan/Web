@@ -39,7 +39,18 @@ class EthilVan::App
    post %r{/membre/@(#{Account::NAME})/editer/compte$} do |name|
       account = profil_edit_account name
 
-      view Views::Member::Profil::Edit::Tabs.new account
-      mustache 'membre/profil/edit/tabs'
+      if not account.check_password?(params[:current_password])
+         view Views::Member::Profil::Edit::Tabs.new account, {
+            invalid_current_password: true
+         }
+         mustache 'membre/profil/edit/tabs'
+      elsif account.update_attributes params[:account]
+         account.clear_new_password
+         view Views::Member::Profil::Edit::Tabs.new account, { ok: true }
+         mustache 'membre/profil/edit/tabs'
+      else
+         view Views::Member::Profil::Edit::Tabs.new account
+         mustache 'membre/profil/edit/tabs'
+      end
    end
 end

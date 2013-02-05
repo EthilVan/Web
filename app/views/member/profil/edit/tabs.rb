@@ -7,12 +7,13 @@ module EthilVan::App::Views
       class Tabs < Page
 
          TABS = [
-            { id: 'generale',    name: 'Générale'    },
-            { id: 'compte',      name: 'Compte'      },
+            { id: 'generale',    name: 'Générale' },
+            { id: 'compte',      name: 'Compte'   },
          ]
 
-         def initialize(account)
+         def initialize(account, account_params = {})
             @account = account
+            @account_params = account_params
          end
 
          def meta_page_title
@@ -37,7 +38,7 @@ module EthilVan::App::Views
          end
 
          def tab_account
-            Account.new(@account)
+            Account.new(@account, @account_params)
          end
       end
    end

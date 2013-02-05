@@ -7,7 +7,9 @@ class Account < ActiveRecord::Base
    NAME = '[A-Za-z]\w+'
    AUTH_TOKEN_COST = 5
 
-   attr_accessible
+   attr_accessible :email
+   attr_accessible :password
+   attr_accessible :password_confirmation
 
    # ==========================================================================
    # * Relations
@@ -107,6 +109,10 @@ class Account < ActiveRecord::Base
 
    def new_password?
       crypted_password.blank? || password.present?
+   end
+
+   def clear_new_password
+      self.password = self.password_confirmation = nil
    end
 
    def encrypt_password

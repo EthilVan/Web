@@ -4,7 +4,40 @@ module EthilVan::App::Views
 
       class Account < Partial
 
-         def initialize(account)
+         class Form < EthilVan::Mustache::Form
+
+            def initialize(account, action)
+               super(account, action: action)
+            end
+
+            def email
+               text :email
+            end
+
+            def password
+               password_f :password
+            end
+
+            def password_confirmation
+               password_f :password_confirmation
+            end
+         end
+
+         def initialize(account, params)
+            @form = Form.new(account, urls.profil_edit('compte', account))
+            @params = params
+         end
+
+         def ok?
+            @params[:ok]
+         end
+
+         def invalid_current_password?
+            @params[:invalid_current_password]
+         end
+
+         def form
+            @form
          end
       end
    end
