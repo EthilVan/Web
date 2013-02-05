@@ -54,13 +54,18 @@ function MDEditor(wrapper) {
       });
    }
 
-   this.action = function(actionName) {
+   this.action = function(options) {
+      var actionName = options['name'];
       var actionMethod = MDEditor.Actions[actionName];
       if (!actionMethod) {
          return;
       }
 
-      if (actionMethod(this.$input)) {
+      if (options['event'].preventDefault) {
+         options['event'].preventDefault();
+      }
+
+      if (actionMethod(this.$input, options)) {
          this.updatePreview();
       }
    };
@@ -71,43 +76,49 @@ function MDEditor(wrapper) {
 
 MDEditor.Actions = {
 
-   title: function($input) {
-      return MDEditor.Utils.insertAtStart($input, '#', true);
+   title: function($input, options) {
+      var $control = options['control'];
+      var level = parseInt($control.data().mdeTitle);
+      if (isNaN(level)) {
+         level = 1;
+      }
+
+      return MDEditor.Utils.insertAtStart($input, '#', true, level);
    },
 
-   quote: function($input) {
+   quote: function($input, options) {
       return MDEditor.Utils.insertAtStart($input, '>', false);
    },
 
-   list: function($input) {
+   list: function($input, options) {
       return MDEditor.Utils.insertAtStart($input, '*', false);
    },
 
-   link: function($input) {
+   link: function($input, options) {
       return MDEditor.Utils.insertLinkOrMedia($input, "[", "](", ")");
    },
 
-   image: function($input) {
+   image: function($input, options) {
       return MDEditor.Utils.insertLinkOrMedia($input, "![", "](", ")");
    },
 
-   bold: function($input) {
+   bold: function($input, options) {
       return MDEditor.Utils.wrapSelectionOrInsert($input, '**');
    },
 
-   italic: function($input) {
+   italic: function($input, options) {
       return MDEditor.Utils.wrapSelectionOrInsert($input, '_');
    },
 
-   strikethrough: function($input) {
+   strikethrough: function($input, options) {
       return MDEditor.Utils.wrapSelectionOrInsert($input, '~~');
    },
 
-   code: function($input) {
+   code: function($input, options) {
       return MDEditor.Utils.wrapSelectionOrInsert($input, '`');
    },
 
-   dopreview: function($input) {
+   dopreview: function($input, options) {
       return true;
    }
 }
@@ -129,10 +140,11 @@ MDEditor.Utils = {
       return true;
    },
 
-   insertAtStart: function($input, char, duplicate) {
+   insertAtStart: function($input, char, duplicate, countArg) {
       var content = $input.val();
       var selection = $input.getSelection();
       var start = selection.start;
+      var count = duplicate ? countArg : 1;
 
       while (start >= 0 && content[start] != "\n") {
          start--;
@@ -141,15 +153,19 @@ MDEditor.Utils = {
       $input.setSelection(start + 1, start + 1);
       var text = '';
       if (content[start + 1] != char) {
-         text = char + ' ';
+         text = this.repeatString(char, count) + ' ';
       } else if (duplicate) {
-         text = char;
+         text = this.repeatString(char, count);
       }
 
       $input.insertAtCaretPos(text);
       $input.setSelection(selection.start + text.length,
             selection.end + text.length);
       return text.length > 0;
+   },
+
+   repeatString: function(string, count) {
+      return new Array(count + 1).join(string);
    },
 
    insertLinkOrMedia: function($input, chars1, chars2, chars3) {
@@ -237,10 +253,13 @@ var actionsSelector = Object.keys(MDEditor.Actions).map(function(action) {
 
 $(document).on('click.mdeditor.actions',
       actionsSelector, function(event) {
-   event.preventDefault();
    var $control = $(this);
    var actionName = (/^#mde-(.+)$/).exec($control.attr('href'))[1];
-   $control.mdeditor('action', actionName);
+   $control.mdeditor('action', {
+      name: actionName,
+      event: event,
+      control: $control,
+   });
 });
 
 
