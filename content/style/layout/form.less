@@ -14,32 +14,31 @@
       color: @gris-form;
    }
 
-   .bootstrap-select {
+   .dropdown-toggle {
+      color: @gris-form;
+      font-weight: normal;
 
-      .dropdown-toggle {
+      .caret {
+         border-top-color: @gris-form;
+      }
+   }
+
+   .bootstrap-select .dropdown-toggle .caret {
+      margin-left: 14px;
+   }
+
+   .dropdown-menu {
+      #gradient .vertical(@formulaire-1, @formulaire-2);
+      border: solid black 1px;
+
+      a, a:hover {
          color: @gris-form;
          font-weight: normal;
-
-         .caret {
-            margin-left: 14px;
-            border-top-color: @gris-form;
-         }
       }
 
-      .dropdown-menu {
-         #gradient .vertical(@formulaire-1, @formulaire-2);
-         border: solid black 1px;
-
-         a, a:hover {
-            color: @gris-form;
-            font-weight: normal;
-         }
-
-         li > a:hover {
-            #gradient .vertical(@gris-medium, @gris-colonne);
-         }
+      li > a:hover {
+         #gradient .vertical(@gris-medium, @gris-colonne);
       }
-
    }
 
    .button-left, .button-right {
