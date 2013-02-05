@@ -3,3 +3,4 @@ fr:
       attributes:
          discussion:
             name:         'Nom'
+            new_group_id: 'Espace'

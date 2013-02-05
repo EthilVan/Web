@@ -9,7 +9,7 @@ class EthilVan::Mustache::Form
          def initialize(current, name, value = name)
             @name = name
             @value = value
-            @selected = current == name.to_s
+            @selected = current.to_s == name.to_s
          end
 
          def selected

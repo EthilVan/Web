@@ -9,6 +9,7 @@
                <div class="titre-discussion">{{ name }}</div>
             </a>
             {{# modo? }}
+               <a href="{{ edit_url }}" >Editer</a>
                <a href="{{ delete_url }}" data-remove-target=".discussion">Supprimer</a>
             {{/ modo? }}
          </div>

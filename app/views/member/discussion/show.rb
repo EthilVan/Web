@@ -47,6 +47,10 @@ module EthilVan::App::Views
             "#{url}/repondre"
          end
 
+         def edit_url
+            "#{url}/editer"
+         end
+
          def delete_url
             "#{url}/supprimer"
          end

@@ -1,0 +1,23 @@
+{{# title }}Edition de la discussion{{/ title }}
+
+{{# form }}
+<form {{{ attributes }}}>
+
+   {{# name }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/input }}
+   {{/ name }}
+
+   {{# group }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/select }}
+   {{/ group }}
+
+   <div class="clearfix"></div>
+
+   <input class="btn" type="submit" value="Enregistrer" />
+
+</form>
+{{/ form }}

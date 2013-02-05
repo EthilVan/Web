@@ -4,6 +4,7 @@ class Discussion < ActiveRecord::Base
 
    attr_accessible :name
    attr_accessible :first_message_attributes
+   attr_accessible :new_group_id
 
    # ==========================================================================
    # * Relations
@@ -23,6 +24,7 @@ class Discussion < ActiveRecord::Base
    # * Validations
    # ==========================================================================
    validates_presence_of :name
+   validate :new_group_existence, if: :new_group?
    validates_associated :first_message, on: :create
    validates_length_of :messages, minimum: 1
 
@@ -30,10 +32,13 @@ class Discussion < ActiveRecord::Base
    # * Callbacks and scope
    # ==========================================================================
    before_validation :assign_first_message, on: :create
+   before_save :update_group, if: :new_group?
 
    # ==========================================================================
    # * Methods
    # ==========================================================================
+   attr_accessor :new_group_id
+
    def author
       first_message.account
    end
@@ -46,12 +51,28 @@ class Discussion < ActiveRecord::Base
       page(1).total_pages
    end
 
+   def update_last_message
+      update_attribute :last_message_id, messages.last(2)[0].id
+   end
+
+private
+
+   def new_group?
+      persisted? and @new_group_id.present?
+   end
+
+   def new_group_existence
+      new_group = group.class.find_by_id @new_group_id
+      return unless new_group.nil?
+      errors.add(:new_group_id, :inclusion)
+   end
+
+   def update_group
+      self.discussion_group_id = @new_group_id
+   end
+
    def assign_first_message
       self.messages = [first_message]
       self.last_message = first_message
-   end
-
-   def update_last_message
-      update_attribute :last_message_id, messages.last(2)[0].id
    end
 end

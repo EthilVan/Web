@@ -21,6 +21,6 @@ class DiscussionView < ActiveRecord::Base
    end
 
    def <=>(discussion)
-      date.<=>(discussion.updated_at)
+      date.<=>(discussion.last_message.updated_at)
    end
 end

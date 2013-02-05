@@ -40,10 +40,29 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/discussion/show'
    end
 
+   discussion_edit = %r{/membre/discussion/(\d{1,5})/editer$}
+   protect discussion_edit, EthilVan::Role::MODO
+   get discussion_edit do |id|
+      discussion = Discussion.find_by_id id
+      raise Sinatra::NotFound if discussion.nil?
+      view Views::Member::Discussion::Edit.new(discussion)
+      mustache 'membre/discussion/edit'
+   end
+
+   post discussion_edit do |id|
+      discussion = Discussion.find_by_id id
+      raise Sinatra::NotFound if discussion.nil?
+
+      if discussion.update_attributes params[:discussion]
+         redirect '/membre/discussion'
+      else
+         view Views::Member::Discussion::Edit.new(discussion)
+         mustache 'membre/discussion/edit'
+      end
+   end
+
    discussion_delete = %r{/membre/discussion/(\d{1,5})/supprimer$}
-
    protect discussion_delete, EthilVan::Role::MODO
-
    get discussion_delete do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?

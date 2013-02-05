@@ -17,6 +17,10 @@ module EthilVan::App::Views
             @url
          end
 
+         def edit_url
+            "#@url/editer"
+         end
+
          def delete_url
             "#@url/supprimer"
          end
