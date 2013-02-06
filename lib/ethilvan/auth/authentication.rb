@@ -8,7 +8,8 @@ module EthilVan::Authentication
 
    def self.registered(app)
       app.helpers Sinatra::Cookies
-      app.send :include, Helpers
+      app.helpers Helpers
+      app.set :cookie_options, { domain: nil }
       app.set :remember_for, 1.month
    end
 
