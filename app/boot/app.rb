@@ -13,9 +13,9 @@ module EthilVan
       register EthilVan::Logging
       register EthilVan::Cron
 
-      enable :sessions
-      set :session_secret,
-            'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
+      #enable :sessions
+      #set :session_secret,
+      #      'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
 
       EthilVan.development? do
          before { I18n.reload! }
