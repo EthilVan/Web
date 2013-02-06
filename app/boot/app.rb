@@ -11,7 +11,7 @@ module EthilVan
       set :public_folder, 'static'
 
       register EthilVan::Logging
-      register EthilVan::Cron
+      register EthilVan::Cron::Sinatra
 
       #enable :sessions
       #set :session_secret,
