@@ -65,6 +65,27 @@ class Account < ActiveRecord::Base
    # ==========================================================================
    # * Methods
    # ==========================================================================
+   def self.create_from_postulation(postulation)
+      account = new
+      account.name              = postulation.name
+      account.email             = postulation.email
+      account.crypted_password  = postulation.crypted_password
+      account.minecraft_name    = postulation.minecraft_name
+      account.postulation_id     = postulation.id
+      account.role_id           = 'default'
+      profil = account.profil   = Profil.create
+      profil.minecraft_since    = postulation.minecraft_since
+      profil.birthdate          = postulation.birthdate
+      profil.sexe               = postulation.sexe
+      account.minecraft_stats   = MinecraftStats.create
+
+      if account.save and profil.save and account.minecraft_stats.save
+         account
+      else
+         nil
+      end
+   end
+
    def self.authenticate(name, password)
       return nil unless name.present?
       account = find_by_name name
