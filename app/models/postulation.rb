@@ -28,6 +28,7 @@ class Postulation < ActiveRecord::Base
    # ==========================================================================
    belongs_to :account, inverse_of: :postulation
    has_many   :screens,  class_name: 'PostulationScreen'
+   has_many   :votes,    class_name: 'PostulationVote'
 
    accepts_nested_attributes_for :screens
 
@@ -142,7 +143,15 @@ class Postulation < ActiveRecord::Base
    end
 
    def agreements
-      []
+      votes.where(agreement: true)
+   end
+
+   def agreements_needed
+      agreements.joins(:account).where('accounts.vote_needed' => true)
+   end
+
+   def pending?
+      status == 0
    end
 
 private

@@ -53,27 +53,49 @@
 <p>{{ free_text }}</p>
 
 {{# pending? }}
-    <h4>{{ agreements_number }} approbation(s)</h4>
-    {{# agreements? }}
-        {{# agreements }}
-            <ul>
-                <li>{{ name }}</li>
-            </ul>
-        {{/ agreements }}
-    {{/ agreements? }}
-
-    {{# can_vote? }}
-        <div id="vote">
-            <input id="agreement" type="button" value="Approuver" />
-            <input id="refus" type="button" value="Refuser" />
-            <form id="form login" action="{{url}}" method="post"  style="display: none;"/>
-                <h4>Motif :</h4>
-                <input id="agreement_field" name="agreement" value="0" type="hidden" />
-                <textarea id="reason" name="reason"></textarea>
-                <div class="submit">
-                    <input type="submit" value="Envoyer" />
-                </div>
-            </form>
-        </div>
-    {{/ can_vote? }}
+<p>
+   <strong>{{ agreements_count }}</strong>
+    approbation{{# agreements_plural? }}s{{/ agreements_plural? }} /
+   <strong>{{ votes_needed }}</strong>
+</p>
 {{/ pending? }}
+<ul>
+{{# votes }}
+   <li class="{{ agreement_class }}">
+      <div>{{ account }}</div>
+      {{# message? }}
+      <p>{{ message }}</p>
+      {{/ message? }}
+   </li>
+{{/ votes }}
+</ul>
+
+{{# can_vote? }}
+   <div id="vote">
+
+      <a href="#agreement" class="postulation-vote-button btn">Accepter</a>
+      <a href="#refusal"   class="postulation-vote-button btn">Refuser</a>
+
+      {{# vote_form }}
+      <form id="form-postulation-vote" {{{ attributes }}} style="display: none;">
+
+         <div style="display: none;">
+         {{# agreement }}
+            {{> form/checkbox }}
+         {{/ agreement }}
+         </div>
+
+         {{# message }}
+            {{> form/label }}
+            {{> form/errors }}
+            {{> form/textarea }}
+         {{/ message }}
+
+         <div class="clearfix"></div>
+
+         <input class="btn" type="submit" value="Envoyer" />
+      </form>
+      {{/ vote_form }}
+
+   </div>
+{{/ can_vote? }}

@@ -4,8 +4,9 @@ module EthilVan::App::Views
 
       class Show < Page
 
-         def initialize(postulation)
+         def initialize(postulation, vote)
             @postulation = postulation
+            @vote = vote
          end
 
          def meta_page_title
@@ -94,24 +95,32 @@ module EthilVan::App::Views
             @postulation.free_text
          end
 
-         presence_predicate :agreements
-         def agreements_number
-            agreements.size
+         def agreements_count
+            @agreements_count ||= @postulation.agreements_needed.size
          end
 
-         def agreements
-            @agreements ||= @postulation.agreements.map { |a| a.account }
+         def agreements_plural?
+            agreements_count > 1
+         end
+
+         def votes_needed
+            PostulationVote.total_needed
+         end
+
+         def votes
+            @votes ||= @postulation.votes.map { |vote| Vote.new(vote) }
          end
 
          def pending?
-            @postulation.status == 0
+            @postulation.pending?
          end
 
          def can_vote?
-            PostulationVote.where(
-               postulation_id: @postulation.id,
-               account_id: @app.current_account.id,
-            ).empty?
+            @vote.present?
+         end
+
+         def vote_form
+            VoteForm.new(@vote)
          end
       end
    end

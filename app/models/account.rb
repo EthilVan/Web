@@ -71,7 +71,7 @@ class Account < ActiveRecord::Base
       account.email             = postulation.email
       account.crypted_password  = postulation.crypted_password
       account.minecraft_name    = postulation.minecraft_name
-      account.postulation_id     = postulation.id
+      account.postulation_id    = postulation.id
       account.role_id           = 'default'
       profil = account.profil   = Profil.create
       profil.minecraft_since    = postulation.minecraft_since

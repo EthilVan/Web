@@ -7,7 +7,7 @@ module EthilVan
    layout = ::Logging.layouts.pattern(
          pattern: pattern, date_pattern: date_pattern)
 
-   ::Logging.logger.root.appenders = Logging.appenders.stdout(
+   ::Logging.logger.root.appenders = ::Logging.appenders.stdout(
          layout: layout)
 
    module Logging
@@ -23,4 +23,6 @@ module EthilVan
          end
       end
    end
+
+   extend EthilVan::Logging::Helpers
 end
