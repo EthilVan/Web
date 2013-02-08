@@ -1,25 +1,5 @@
 ## Installation
 
-### Windows
-
-#### [JRuby][jruby]
-Utiliser l'installateur approprié : [JRuby Downloads][jruby_download]
-
-Il est aussi nécessaire d'installer Bundler. Pour cela, dans une console :
-
-`jruby -S gem install bundler`
-
-
-#### [Node.js][node]
-[Node.js][node] est nécessaire pour la compilation des assets (css avec
-less et javascript avec typescript). Utiliser l'installateur disponible
-[ici][node_download].
-
-Une fois installé, dans une console taper :
-
-`npm install -g less typescript`
-
-
 #### Configuration
 
 Le site web utilise un fichier de configuration `config.yml` pour
@@ -41,11 +21,6 @@ database:
 
 Note : Les commandes ci-dessous assument que vous vous trouver dans
 le dossier du projet.
-
-Note 2 : Les commandes ci-dessous utilisent des programmes ruby.
-Avec jruby il est necéssaire de prefixer les commandes avec `jruby -S `.
-Il est expliqué dans une section plus bas comment éviter d'avoir à utiliser
-ce préfixe à chaque fois.
 
 ### Dépendances
 
@@ -134,20 +109,16 @@ rake assets:clean:script
 
 
 ### Accéder au site web
+
 Afin de pouvoir accéder au site web via votre navigateur, il est
 nécessaire d'utiliser un serveur de développement.
-Pour jruby le serveur recommandé est puma.
-Installable grâce à la commande :
+La commande pour le lancer :
 
-`jruby -S gem install puma`
+```
+rackup
+```
 
-Une fois installé pour le lancer :
-
-`jruby -s puma`
-
-L'addresse d'accés sera affiché dans la console.
-(en générale http://localhost:9292 pour puma)
-
+Le site est ensuite accessible en utilisant l'url http://localhost:9180
 
 
 ## Tricks
@@ -167,7 +138,7 @@ Quelques packages utiles :
   Signale les lignes modifiés depuis le dernier commit.
 * **LESS** :
   Coloration syntaxique pour les fichiers less.
-* **Mustache** ([Lien Github][mustacthe] pas de package avec PackageControl) :
+* **Mustache** ([Lien Github][mustache] pas de package avec PackageControl) :
   Coloration syntaxique pour les fichiers mustache.
 
 
@@ -181,19 +152,12 @@ pour raccourcir des commandes très utilisés et longues.
 
 Exemples :
 
-* `alias bundle="jruby -S bundle install"`
-* `alias rake="jruby -S rake"`
-* `alias assets="jruby -S rake assets:compile"`
-* `alias watch="jruby -S rake assets:watch"`
-* `alias puma="jruby -S puma"`
+* `alias watch="rake assets:watch"`
+* `alias s="rackup"`
 
 
-[jruby]: http://jruby.org/
-[jruby_download]: http://jruby.org/download
-[node]: http://nodejs.org/
-[node_download]: http://nodejs.org/download
 [bundler]: http://gembundler.com/
 [rake]: http://rake.rubyforge.org/
 [sublimetext2]: http://sublimetext.com/2
 [packagecontrol]: http://wbond.net/sublime_packages/package_control/installation
-[mustacthe]: https://github.com/defunkt/Mustache.tmbundle
+[mustache]: https://github.com/defunkt/Mustache.tmbundle
