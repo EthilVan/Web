@@ -8,10 +8,10 @@ module EthilVan
    class App < Sinatra::Base
       set :environment, EthilVan::ENV
       set :root, EthilVan::ROOT
-      set :public_folder, 'static'
 
       register EthilVan::Logging
       register EthilVan::Cron::Sinatra
+      register EthilVan::Static
 
       #enable :sessions
       #set :session_secret,

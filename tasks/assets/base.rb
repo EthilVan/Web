@@ -4,10 +4,10 @@ module EthilVan::Assets
 
    class Base
 
-      SRC = 'content'
+      SOURCE = 'content'
       CACHE = 'tmp'
       MANIFEST_EXT = '.mf'
-      DEST = 'static'
+      DEST = EthilVan::Static::SOURCE_DIR
 
       class << self
 
@@ -23,7 +23,7 @@ module EthilVan::Assets
       private
 
          def manifest_paths
-            File.join SRC, self::DirName, '*' + MANIFEST_EXT
+            File.join SOURCE, self::DirName, '*' + MANIFEST_EXT
          end
       end
 
@@ -38,7 +38,7 @@ module EthilVan::Assets
 
       def files
          File.read(manifest).split("\n").map do |filepath|
-            File.join SRC, self.class::DirName, filepath.strip
+            File.join SOURCE, self.class::DirName, filepath.strip
          end
       end
 
@@ -73,7 +73,7 @@ module EthilVan::Assets
       def compiled(file)
          return File.read(file) unless compile? file
 
-         cached = file.gsub(/^#{SRC}/, "#{CACHE}/")
+         cached = file.gsub(/^#{SOURCE}/, "#{CACHE}/")
          if dirty?(file, cached)
             FileUtils.mkdir_p File.dirname cached
             if compile_asset(file, cached)

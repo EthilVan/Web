@@ -12,15 +12,20 @@ namespace :assets do
       include EthilVan::Assets
    end
 
-   task :install => ['install:emoji', :compile]
+   task :install => ['install:emoji', :compile, 'install:static']
    namespace :install do
 
       task :emoji => :init
-      task :emoji => 'clean:emoji'
       task :emoji do
          require_relative 'assets/emoji'
          puts 'Installation des emojis'
          EthilVan::Emoji.install
+      end
+
+      task :static do
+         require './app/boot/env'
+         require_relative 'assets/static'
+         EthilVan::Static.install
       end
    end
 
@@ -46,6 +51,7 @@ namespace :assets do
    task :clean => 'clean:emoji'
    task :clean => 'clean:style'
    task :clean => 'clean:script'
+   task :clean => 'clean:static'
    namespace :clean do
 
       task :emoji => :init do
@@ -60,6 +66,9 @@ namespace :assets do
       task :script => :init do
          FileUtilsV.rm_rf File.join(Base::CACHE, 'scripts')
          Script.each { |style| FileUtilsV.rm_f style.output_file }
+      end
+      task :static => :init do
+         FileUtilsV.rm_rf EthilVan::Static::PRODUCTION_DIR
       end
       task :cache => :init do
          FileUtilsV.rm_rf Base::CACHE

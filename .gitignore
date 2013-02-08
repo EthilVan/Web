@@ -3,11 +3,12 @@
 .bundle/
 
 # Generated
-tmp
-static/scripts
-static/style
-static/markdown/emojis.json
-static/images/emoji/*.png
+/tmp
+/content/static/scripts
+/content/static/style
+/content/static/markdown/emojis.json
+/content/static/images/emoji/*.png
+/static/
 
 # Config
-config.yml
+/config.yml

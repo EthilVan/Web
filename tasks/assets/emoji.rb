@@ -38,9 +38,8 @@ module EthilVan::Emoji
       '+' => 'plus',
    }
 
-   JSON_PATH = EthilVan.path('static', 'markdown', 'emojis.json')
-
    def self.install
+      FileUtils.mkdir_p source_path
       Dir["#{::Emoji.images_path}/emoji/*.png"].each do |src|
          basename = File.basename src, '.png'
          next if BLACKLIST.any? { |regexp| basename =~ regexp }
@@ -49,11 +48,11 @@ module EthilVan::Emoji
             name.gsub(*filter)
          end
 
-         dest = File.join(images_path, filename + '.png')
+         dest = File.join(source_path, filename + '.png')
          FileUtils.cp(src, dest)
       end
 
-      FileUtils.mkdir_p File.dirname JSON_PATH
-      File.open(JSON_PATH, 'w') { |f| f << names.to_json }
+      FileUtils.mkdir_p File.dirname json_path
+      File.open(json_path, 'w') { |f| f << names.to_json }
    end
 end

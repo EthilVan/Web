@@ -16,6 +16,7 @@ module EthilVan::App::Views
       end
 
       include EthilVan::Urls::Sinatra::Helpers
+      include EthilVan::Static::Helpers
 
       def logged_in?
          app.logged_in?

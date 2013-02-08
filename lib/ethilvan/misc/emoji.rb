@@ -1,7 +1,17 @@
 module EthilVan::Emoji
 
+   DIRECTORIES = ['images', 'emoji']
+
+   def self.json_path
+      File.join(EthilVan::Static::SOURCE_DIR, 'markdown', 'emojis.json')
+   end
+
+   def self.source_path
+      File.join(EthilVan::Static::SOURCE_DIR, *DIRECTORIES)
+   end
+
    def self.images_path
-      File.join(EthilVan::ROOT, 'static', 'images', 'emoji')
+      File.join(EthilVan::Static::STATIC_DIR, *DIRECTORIES)
    end
 
    def self.names

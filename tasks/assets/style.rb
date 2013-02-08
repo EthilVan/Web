@@ -7,8 +7,8 @@ module EthilVan::Assets
       DirName = 'style'
       OutputExt = 'css'
       IncludePath = [
-         "#{SRC}/style/bootstrap",
-         "#{SRC}/#{DirName}/include"
+         "#{SOURCE}/#{DirName}/bootstrap",
+         "#{SOURCE}/#{DirName}/include",
       ]
 
       def self.included_files
@@ -24,6 +24,7 @@ module EthilVan::Assets
       end
 
       def dirty?(file, cached)
+         return true if EthilVan.production?
          return true if super(file, cached)
          self.class.included_files.any? do |f|
             File.mtime(f) > File.mtime(cached)
@@ -32,7 +33,11 @@ module EthilVan::Assets
 
       def compile_asset(file, dest)
          include_path = IncludePath * File::PATH_SEPARATOR
-         system "lessc --include-path=#{include_path} #{file} #{dest}"
+         cmd = 'lessc'
+         cmd << " --include-path=#{include_path}"
+         cmd << " --rootpath=#{EthilVan::Static::BASE_URL}"
+         cmd << " #{file} #{dest}"
+         system cmd
       end
 
       def compress(source)
