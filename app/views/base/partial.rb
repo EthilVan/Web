@@ -1,16 +1,21 @@
 module EthilVan::App::Views
 
-   class Partial < EthilVan::Mustache::Partial
+   module PartialHelpers
+
+      extend ActiveSupport::Concern
+
+      module ClassMethods
+
+         def presence_predicate(name, method = name)
+            class_eval <<-END
+               def #{name}?
+                  return #{method}.present?
+               end
+            END
+         end
+      end
 
       include EthilVan::Urls::Sinatra::Helpers
-
-      def self.presence_predicate(name, method = name)
-        class_eval <<-END
-          def #{name}?
-            return #{method}.present?
-          end
-        END
-      end
 
       def logged_in?
          app.logged_in?
@@ -31,6 +36,11 @@ module EthilVan::App::Views
       def render_markdown(text)
          @app.markdown(text)
       end
+   end
 
+   Partial = EthilVan::Mustache::Partial
+
+   class Partial
+      include PartialHelpers
    end
 end
