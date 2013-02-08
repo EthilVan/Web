@@ -41,7 +41,7 @@ module EthilVan
    Bundler.setup(:default, EthilVan::ENV)
 
    require 'i18n'
-   I18n.load_path += glob('content/locales/**/*.yml')
+   I18n.load_path += glob('content/data/locales/**/*.yml')
    I18n.default_locale = 'fr'
 
    $LOAD_PATH.unshift path('lib')
