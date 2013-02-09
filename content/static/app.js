@@ -14821,3 +14821,24 @@ $(function() {
 
    activateFirstTabWithErrors();
 });
+
+$(document).on('click', 'a[data-toggle="next-pill"]', function(event) {
+   event.preventDefault();
+
+   var $nav = $($(this).data().navTarget);
+   var $active = $nav.find('.active');
+   if ($active.size() < 1) {
+      var $nextPill = $nav.find('li').first();
+   } else {
+      var $nextPill = $active.next();
+   }
+
+   if ($nextPill.size() < 1) {
+      return;
+   }
+
+   $nextPill.find('a[data-toggle]').trigger('click');
+   $('body,html').animate({
+      scrollTop: $nav.offset().top - 10
+   }, 800);
+});
