@@ -9,6 +9,10 @@ module EthilVan::App::Views
             @page = page
          end
 
+         def page_title?
+            false
+         end
+
          def name
             @discussion.name
          end

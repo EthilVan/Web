@@ -5,6 +5,10 @@ module EthilVan::App::Views
       STYLESHEET = EthilVan::Static::Helpers.asset 'app.css'
       JAVASCRIPT = EthilVan::Static::Helpers.asset 'app.js'
 
+      def page_title?
+         true
+      end
+
       def page_title
          return 'Ethil Van' if @page_title.blank?
          @page_title * ' - '

@@ -48,6 +48,7 @@
          </header>
 
          <div id="contents">
+            {{# page_title? }}
             <ul id="nav" class="page-tabs">
                {{^ tabs? }}
                   <li class="tab active">
@@ -64,6 +65,7 @@
                {{/ tabs }}
             </ul>
             <div class="cleaner"></div>
+            {{/ page_title? }}
             <div id="subcontents">
                {{{ yield }}}
                <div class="cleaner"></div>
