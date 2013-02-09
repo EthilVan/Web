@@ -2,6 +2,9 @@ module EthilVan::App::Views
 
    class Page < Partial
 
+      STYLESHEET = EthilVan::Static::Helpers.asset 'app.css'
+      JAVASCRIPT = EthilVan::Static::Helpers.asset 'app.js'
+
       def page_title
          return 'Ethil Van' if @page_title.blank?
          @page_title * ' - '
@@ -30,23 +33,42 @@ module EthilVan::App::Views
          nil
       end
 
-      def member_page?
-         path = app.request.path
-         !(path =~ %r{^/(?:membre|gestion)}).nil?
-      end
-
       def stylesheet
          name = member_page? ? 'member' : 'app'
          asset "style/#{name}.css"
       end
 
       def javascript
-         name = logged_in? ? 'member' : 'app'
-         asset "scripts/#{name}.js"
+         JAVASCRIPT
       end
 
-      def member_menu?
-         member_page?
+      def member_page?
+         path = app.request.path
+         !(path =~ %r{^/(?:membre|gestion)}).nil?
+      end
+
+      def data_logged_in
+         logged_in? ? 'member' : 'guest'
+      end
+
+      def button_server_url
+         member_page? ? '#' : '/'
+      end
+
+      def button_member_url
+         member_page? ? '#' : '/login'
+      end
+
+      def button_login_class
+         logged_in? ? '' : ' button-login'
+      end
+
+      def submenu_server_visibility
+         member_page? ? ' submenu-hidden' : ' submenu-visible'
+      end
+
+      def submenu_member_visibility
+         member_page? ? ' submenu-visible' : ' submenu-hidden'
       end
    end
 

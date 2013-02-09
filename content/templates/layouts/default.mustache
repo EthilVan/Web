@@ -15,7 +15,7 @@
       <link href="{{ stylesheet }}" rel="stylesheet" type="text/css" />
    </head>
 
-   <body>
+   <body data-logged-in="{{ data_logged_in }}">
 
       <div id="page">
          <img class="motif_bg left" src="{{ static }}images/layout/motif-g.png" />
@@ -35,17 +35,15 @@
                </a>
             </div>
             <div id="menu">
-               <div id="button1" class="buttons"></div>
-               <div id="button2"
-                     class="buttons{{^ logged_in? }} button-login{{/ logged_in? }}">
-               </div>
+               <a href="{{ button_server_url }}">
+                  <div id="button1" class="buttons"></div>
+               </a>
+               <a href="{{ button_member_url }}">
+                  <div id="button2" class="buttons {{ button_login_class }}"></div>
+               </a>
                <div class="submenu_bg"></div>
-               {{# member_menu? }}
-                  {{> layouts/submenu_member }}
-               {{/ member_menu? }}
-               {{^ member_menu? }}
-                  {{> layouts/submenu_server }}
-               {{/ member_menu? }}
+               {{> layouts/submenu_server }}
+               {{> layouts/submenu_member }}
             </div>
          </header>
 
@@ -75,13 +73,6 @@
             <a href="/apropos">-- Ethil Van --</a>
          </div>
       </div>
-
-      {{# logged_in? }}
-         <div class="submenu-templates" style="display: none;">
-            {{> layouts/submenu_server }}
-            {{> layouts/submenu_member }}
-         </div>
-      {{/ logged_in? }}
 
       <script src="{{ javascript }}"></script>
    </body>

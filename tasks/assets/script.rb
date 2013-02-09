@@ -7,6 +7,10 @@ module EthilVan::Assets
       DirName = 'scripts'
       OutputExt = 'js'
 
+      def output_file
+         File.join DEST, "#@name.#{self.class::OutputExt}"
+      end
+
       def compile?(file)
          File.extname(file) == '.ts'
       end

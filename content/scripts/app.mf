@@ -14,8 +14,8 @@ bootstrap/bootstrap-carousel.js
 bootstrap/bootstrap-modal.js
 lib/bootbox.js
 app/preload-images.js
-app/public-menu.js
 app/page-scroller.js
+app/submenu.js
 app/tab.js
 app/select.js
 app/auto-fill.js
