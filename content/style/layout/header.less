@@ -55,17 +55,17 @@ header {
          right: 0px;
          background-image: url("images/layout/bouton-membre.png");
 
-         &.button-login {
-            background-image: url("images/layout/bouton-connexion.png");
-         }
-
          &:hover,
          &:focus {
             background-image: url("images/layout/bouton-membre-2.png");
          }
+      }
 
-         &.button-login:hover,
-         &.button-login:focus {
+      a[href="/login"] #button2 {
+         background-image: url("images/layout/bouton-connexion.png");
+
+         &:hover,
+         &:focus {
             background-image: url("images/layout/bouton-connexion-2.png");
          }
       }

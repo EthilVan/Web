@@ -56,15 +56,11 @@ module EthilVan::App::Views
       end
 
       def button_server_url
-         member_page? ? '#' : '/'
+         '/'
       end
 
       def button_member_url
-         member_page? ? '#' : '/login'
-      end
-
-      def button_login_class
-         logged_in? ? '' : ' button-login'
+         logged_in? ? '/membre' : '/login'
       end
 
       def submenu_server_visibility
