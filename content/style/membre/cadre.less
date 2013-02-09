@@ -1,0 +1,101 @@
+.profil-cadre {
+
+  float: right;
+  width: 161px;
+  position: relative;
+
+  .jauge {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 15px;
+    background-image: url("/images/membre/profil/jauge.png");
+    background-position: 0% 100%;
+  }
+
+   .avatar {
+    position: absolute;
+    top: 9px;
+    left: 32px;
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .pseudo {
+    position: absolute;
+    top: 137px;
+    left: 9px;
+    width: 143px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    color: #77654D;
+    font-size: 18px;
+  }
+
+  .online-status {
+    position: absolute;
+    top: 163px;
+    left: 10px;
+    width: 141px;
+    height: 26px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    &.online {
+      background-image: url("/images/membre/profil/online.png");
+    }
+
+    &.offline {
+      background-image: url("/images/membre/profil/offline.png");
+    }
+
+  }
+
+}
+
+.profil-cadre.mini {
+  height: 197px;
+  background-image: url("/images/membre/discussion/cadre.png");
+  margin-bottom: -12px;
+}
+
+.profil-cadre.full {
+
+  height: 525px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  .skin {
+    position: absolute;
+    top: 198px;
+    left: 40px;
+  }
+
+  .stat {
+    position: absolute;
+    left: 30px;
+    width: 101px;
+    height: 32px;
+    color: #77654D;
+    font-size: 18px;
+    text-align: center;
+
+    img {
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    &.deaths {
+      top: 424px;
+    }
+
+    &.max-level {
+      top: 471px;
+    }
+
+  }
+
+}

@@ -7,4 +7,7 @@ layout/form.less
 layout/jquery.atwho.css
 layout/mdeditor.less
 membre/discussion/discussions.less
+membre/discussion/discussion.less
+membre/discussion/message.less
+membre/cadre.less
 membre/membres/list.less

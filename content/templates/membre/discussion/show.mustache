@@ -1,16 +1,25 @@
 {{#title}}Discussion{{/title}}
 
-<div class="titre">{{ name }}</div>
-{{# modo? }}
-   <a href="{{ edit_url }}">Editer</a>
-   <a class="need-confirmation" href="{{ delete_url }}">Supprimer</a>
-{{/ modo? }}
-<div class="ligne"></div>
-<div class="date">Discussion crée le {{ date }} par {{ author }}</div>
+<div class="bloc-titre">
+   {{# modo? }}
+      <a class="need-confirmation" href="{{ delete_url }}">
+         <div class="suppr"></div>
+      </a>
+      <a href="{{ edit_url }}">
+         <div class="edit"></div>
+      </a>
+   {{/ modo? }}
+   <div class="titre">{{ name }}</div>
+   <div class="cleaner"></div>
+   <div class="ligne"></div>
+   <div class="date">Discussion crée le {{ date }} par {{ author }}</div>
+</div>
 
-{{# pager }}
-{{> membre/discussion/_pager }}
-{{/ pager }}
+<div class="pages">
+   {{# pager }}
+   {{> membre/discussion/_pager }}
+   {{/ pager }}
+</div>
 
 <div class="cleaner"></div>
 
@@ -20,12 +29,14 @@
 {{/ messages }}
 </div>
 
-{{# pager }}
-{{> membre/discussion/_pager }}
-{{/ pager }}
+<div class="pages">
+   {{# pager }}
+   {{> membre/discussion/_pager }}
+   {{/ pager }}
+</div>
 
 <div id="champ-reponse">
-   <a class="btn pull-right" href="{{ response_url }}"
+   <a class="btn pull-right repondre" href="{{ response_url }}"
          data-inline-target="#champ-reponse">
       Répondre
    </a>

@@ -4,7 +4,7 @@
 
    <div class="message-contenu">
       <div class="texte">{{{ contents }}}</div>
-      <div class="signature-block">
+      <div class="bloc-signature">
          {{# dates? }}
             <div class="dates creation">Posté le {{ created }}</div>
             <div class="dates edition">Dernière édition le {{ updated }}</div>
@@ -13,24 +13,24 @@
          <div class="ligne-signature"></div>
          <div class="signature-membre">
             <div class="boutons">
-               <a class="btn" href="{{ view_url }}">Lien</a>
+               <a href="{{ view_url }}">
+                  <div class="lien"></div>
+               </a>
                {{# can_edit }}
-               <a class="btn" href="{{ edit_url }}" data-inline-target="#{{ anchor }}">
-                  Editer
+               <a class="edit" href="{{ edit_url }}" data-inline-target="#{{ anchor }}">
+                  <div class="edit"></div>
                </a>
                {{^ first? }}
-               <a class="btn" data-remove-target="#{{ anchor }}" href="{{ delete_url }}">
-                  Supprimer
+               <a class="suppr" data-remove-target="#{{ anchor }}" href="{{ delete_url }}">
+                  <div class="suppr"></div>
                </a>
                {{/ first? }}
                {{/ can_edit }}
             </div>
             <div class="signature"> {{{ author_signature }}} </div>
+            <div class="cleaner"></div>
          </div>
       </div>
    </div>
-
-   <div class="cleaner"> </div>
-   <div class="ligne"> </div>
 
 </div>

@@ -2,125 +2,122 @@
 
 #subcontents {
 
-    .discussion-group {
-        background-color: @gris-medium;
-        padding: 10px;
-        border-radius: 6px;
-        box-shadow: 1px 1px 0px 0px @gris-relief;
-        margin-bottom: 25px;
+   .discussion-group {
+      background-color: @gris-medium;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 1px 1px 0px 0px @gris-relief;
+      margin-bottom: 25px;
 
-        .ligne {
-            border-bottom: 2px solid;
-            margin-top: 2px;
-        }
+      .ligne {
+         border-bottom: 2px solid;
+         margin-top: 2px;
+      }
 
-        .entete-espace {
-            padding: 20px 10px 2px 10px;
+      .entete-espace {
+         padding: 20px 10px 2px 10px;
 
-            .titre-espace {
-                font-weight: bold;
-            }
+         .titre-espace {
+            font-weight: bold;
+         }
 
-            p {
-                text-indent: 25px;
-                margin-right: 10px;
-                margin-left: 10px;
-            }
-        }
-
-        .titre-espace {
-            font-size: 28px;
-            padding: 5px;
-            text-shadow: 0px 0px 8px black;
-
-            &:before {
-                content: "- ";
-            }
-
-            &:after {
-                content: " -";
-            }
-
-        }
-
-
-        ul {
-            margin-left: 0px;
-            color: @vert;
-            margin-bottom: 0px;
-
-            li {
-                list-style-type: none;
-            }
-
-        }
-
-
-        .discussion {
-            background-color: @gris-colonne;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 6px;
-            box-shadow: 1px 1px 0px 0px @gris-relief inset;
-
-            .lien {
-                margin-bottom: 2px;
-            }
-
-            .icone {
-                width: 32px;
-                height: 32px;
-                float: left;
-                margin-right: 10px;
-
-                &.read {
-                    background-image: url(/images/membre/discussion/lue.png);
-                }
-
-                &.unread {
-                    background-image: url(/images/membre/discussion/non-lue.png);
-                }
-
-            }
-
-
-
-            .titre-discussion {
-                font-size: 20px;
-                line-height: 32px;
-            }
-
-            .creation {
-                float:left;
-                margin-left: 4px;
-            }
-
-            .dernier {
-                text-align: right;
-                margin-right: 4px;
-            }
-
-        }
-
-        .button {
-            float: right;
+         p {
+            text-indent: 25px;
+            margin-right: 10px;
             margin-left: 10px;
-            margin-top: 30px;
-        }
+         }
+      }
 
-        .restantes, .nouvelle {
-            padding-top: 5px;
-            margin: 0px 10px;
-            text-shadow: 0px 0px 5px black;
-        }
+      .titre-espace {
+         font-size: 28px;
+         padding: 5px;
+         text-shadow: 0px 0px 8px black;
 
-        .restantes {
+         &:before {
+            content: "- ";
+         }
+
+         &:after {
+            content: " -";
+         }
+
+      }
+
+      ul {
+         margin-left: 0px;
+         color: @vert;
+         margin-bottom: 0px;
+
+         li {
+            list-style-type: none;
+         }
+
+      }
+
+      .discussion {
+         background-color: @gris-colonne;
+         padding: 10px;
+         margin-top: 10px;
+         border-radius: 6px;
+         box-shadow: 1px 1px 0px 0px @gris-relief inset;
+
+         .lien {
+            margin-bottom: 2px;
+         }
+
+         .icone {
+            width: 32px;
+            height: 32px;
             float: left;
-        }
+            margin-right: 10px;
 
-        .nouvelle {
-            float: right;
-        }
-    }
+            &.read {
+               background-image: url(/images/membre/discussion/lue.png);
+            }
+
+            &.unread {
+               background-image: url(/images/membre/discussion/non-lue.png);
+            }
+
+         }
+
+
+         .titre-discussion {
+            font-size: 20px;
+            line-height: 32px;
+         }
+
+         .creation {
+            float:left;
+            margin-left: 4px;
+         }
+
+         .dernier {
+            text-align: right;
+            margin-right: 4px;
+         }
+
+      }
+
+      .button {
+         float: right;
+         margin-left: 10px;
+         margin-top: 30px;
+      }
+
+      .restantes, .nouvelle {
+         padding-top: 5px;
+         margin: 0px 10px;
+         text-shadow: 0px 0px 5px black;
+      }
+
+      .restantes {
+         float: left;
+      }
+
+      .nouvelle {
+         float: right;
+      }
+   }
 
 }
