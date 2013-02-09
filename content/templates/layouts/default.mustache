@@ -8,19 +8,18 @@
       {{# page_description? }}
       <meta name="description" content="{{ get_page_description }}" />
       {{/ page_description? }}
-      <link rel="icon" type="image/png" href="/favicon.png" />
+      <link rel="icon" type="image/png" href="{{ static }}favicon.png" />
       <link rel="author" href="humans.txt" />
       <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic"
             rel="stylesheet" type="text/css" />
-      <link href="/style/{{ stylesheet_name }}.css"
-            rel="stylesheet" type="text/css" />
+      <link href="{{ stylesheet }}" rel="stylesheet" type="text/css" />
    </head>
 
    <body>
 
       <div id="page">
-         <img class="motif_bg left" src="/images/layout/motif-g.png" />
-         <img class="motif_bg right" src="/images/layout/motif-d.png" />
+         <img class="motif_bg left" src="{{ static }}images/layout/motif-g.png" />
+         <img class="motif_bg right" src="{{ static }}images/layout/motif-d.png" />
          <div id="page-scroller">
             <a id="page-scroller-top" style="display: none" href="#top">
                <i class="icon-chevron-up icon-white"></i>
@@ -32,7 +31,7 @@
          <header>
             <div id="banner">
                <a href="/">
-                  <img src="/images/layout/titre.png" />
+                  <img src="{{ static }}images/layout/titre.png" />
                </a>
             </div>
             <div id="menu">
@@ -84,7 +83,7 @@
          </div>
       {{/ logged_in? }}
 
-      <script src="/scripts/{{ javascript_name }}.js"></script>
+      <script src="{{ javascript }}"></script>
    </body>
 
 </html>

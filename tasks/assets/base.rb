@@ -47,6 +47,7 @@ module EthilVan::Assets
       end
 
       def dirty?(file, cached)
+         return true if EthilVan.production?
          !File.exists?(cached) or File.mtime(file) > File.mtime(cached)
       end
 
@@ -64,6 +65,7 @@ module EthilVan::Assets
 
          result = ''
          files.each { |file| result << compiled(file) }
+         result.gsub!('%%CACHE_BUSTER%%', EthilVan::Static::BASE_URL)
          result = compress result if compress?
 
          File.open(out, 'w') { |f| f << result }

@@ -35,12 +35,14 @@ module EthilVan::App::Views
          !(path =~ %r{^/(?:membre|gestion)}).nil?
       end
 
-      def stylesheet_name
-         member_page? ? 'member' : 'app'
+      def stylesheet
+         name = member_page? ? 'member' : 'app'
+         asset "style/#{name}.css"
       end
 
-      def javascript_name
-         logged_in? ? 'member' : 'app'
+      def javascript
+         name = logged_in? ? 'member' : 'app'
+         asset "scripts/#{name}.js"
       end
 
       def member_menu?

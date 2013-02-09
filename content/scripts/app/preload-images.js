@@ -2,7 +2,7 @@ this.cache = [];
 
 function preloadImages(images) {
    for (var i = 0; i < images.length; i++) {
-      var img = $('<img src="/images/layout/'+ images[i] + '" />');
+      var img = $('<img src="%%CACHE_BUSTER%%images/layout/'+ images[i] + '" />');
       this.cache.push(img);
    }
 }

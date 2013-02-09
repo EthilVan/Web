@@ -93,7 +93,7 @@ class Profil < ActiveRecord::Base
      if custom_cadre_url.present?
          custom_cadre_url
      else
-         '/images/membre/profil/cadre.png'
+         EthilVan::Static::Helpers.asset 'images/membre/profil/cadre.png'
      end
    end
 

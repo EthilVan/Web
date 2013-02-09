@@ -24,7 +24,6 @@ module EthilVan::Assets
       end
 
       def dirty?(file, cached)
-         return true if EthilVan.production?
          return true if super(file, cached)
          self.class.included_files.any? do |f|
             File.mtime(f) > File.mtime(cached)

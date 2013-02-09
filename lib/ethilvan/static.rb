@@ -30,6 +30,8 @@ module EthilVan::Static
 
    module Helpers
 
+      extend self
+
       def static
          BASE_URL
       end
