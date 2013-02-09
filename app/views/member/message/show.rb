@@ -44,6 +44,10 @@ module EthilVan::App::Views
          def updated
             I18n.l @message.updated_at
          end
+
+         def author_signature
+            @message.account.profil.parsed_signature
+         end
       end
     end
 end
