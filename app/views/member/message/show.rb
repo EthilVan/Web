@@ -4,9 +4,8 @@ module EthilVan::App::Views
 
       class Show < Partial
 
-         def initialize(message, index, stats_max = nil)
+         def initialize(message, stats_max = nil)
             @message = message
-            @index = index
             @stats_max = stats_max
          end
 
@@ -28,10 +27,6 @@ module EthilVan::App::Views
 
          def view_url
             "/membre/message/#{@message.id}"
-         end
-
-         def even_class
-            (@index % 2 == 0) ? ' odd' : ' even'
          end
 
          def contents

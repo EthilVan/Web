@@ -30,7 +30,7 @@ module EthilVan::App::Views
             stats_max = MinecraftStats.maximum('version')
             @page.each_with_index.map do |message, index|
                editable = modo? || message.editable_by?(@app.current_account)
-               Message.new(message, index, editable, stats_max)
+               Message.new(message, editable, stats_max)
             end
          end
 

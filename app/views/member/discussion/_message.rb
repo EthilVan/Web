@@ -4,8 +4,8 @@ module EthilVan::App::Views
 
       class Message < Member::Message::Show
 
-         def initialize(message, index, can_edit, stats_max = nil)
-            super(message, index, stats_max)
+         def initialize(message, can_edit, stats_max = nil)
+            super(message, stats_max)
             @can_edit = can_edit
          end
 
