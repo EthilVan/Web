@@ -4,8 +4,13 @@ module EthilVan::App::Views
 
       class Form < EthilVan::Mustache::Form
 
-         def initialize(message, action)
+         def initialize(message, inline = false, action = '')
             super(message, action: action)
+            @inline = inline
+         end
+
+         def inline?
+            @inline
          end
 
          def contents

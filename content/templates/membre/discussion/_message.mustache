@@ -16,16 +16,16 @@
                <a href="{{ view_url }}">
                   <div class="lien"></div>
                </a>
-               {{# can_edit }}
+               {{# can_edit? }}
                <a class="edit" href="{{ edit_url }}" data-inline-target="#{{ anchor }}">
                   <div class="edit"></div>
                </a>
                {{^ first? }}
-               <a class="suppr" data-remove-target="#{{ anchor }}" href="{{ delete_url }}">
+               <a class="suppr" data-remove-target="#{{ anchor }}" data-remove-method="hide" href="{{ delete_url }}">
                   <div class="suppr"></div>
                </a>
                {{/ first? }}
-               {{/ can_edit }}
+               {{/ can_edit? }}
             </div>
             <div class="signature"> {{{ author_signature }}} </div>
             <div class="cleaner"></div>

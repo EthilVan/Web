@@ -27,17 +27,15 @@
 {{# messages }}
    {{> membre/discussion/_message }}
 {{/ messages }}
+
+<div id="champ-reponse">
+   <a class="btn pull-right repondre" href="{{ response_url }}"
+         data-inline-target="#champ-reponse">Répondre</a>
+</div>
 </div>
 
 <div class="pages">
    {{# pager }}
    {{> membre/discussion/_pager }}
    {{/ pager }}
-</div>
-
-<div id="champ-reponse">
-   <a class="btn pull-right repondre" href="{{ response_url }}"
-         data-inline-target="#champ-reponse">
-      Répondre
-   </a>
 </div>

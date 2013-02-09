@@ -1,22 +1,41 @@
-$(document).on('click.ethivan.inline', 'a[data-inline-target]', function (event) {
+function inlineAjax($element, success) {
+   if ($element.is('a')) {
+      var ajaxArgs = {
+         url: $element.attr('href'),
+      }
+   } else if ($element.is('input')) {
+      $form = $element.parent('form');
+      var ajaxArgs = {
+         url: $form.attr('action'),
+         type: $form.attr('method') || 'GET',
+         data: $form.serialize(),
+      }
+   } else {
+      return;
+   }
+
+   ajaxArgs.success = success;
+   $.ajax(ajaxArgs);
+}
+
+$(document).on('click.ethivan.inline', '[data-inline-target]', function (event) {
    var $this = $(this);
    event.preventDefault();
 
-   $.ajax({
-      url: $this.attr('href'),
-      success: function(data, status, xhr) {
-         var $target = $this.closest($this.data().inlineTarget);
-         var $element = $(data);
-         $element.css('display', 'none');
-         $target.fadeOut(800, function() {
-            $target.replaceWith($element);
-            $element.fadeIn(800);
+   inlineAjax($this, function(data, status, xhr) {
+      var $target = $this.closest($this.data().inlineTarget);
+      var $element = $(data.trim());
+      $element.css('display', 'none');
+      $target.fadeOut(800, function() {
+         $target.replaceWith($element);
+         $element.fadeIn(800, function() {
+            $element.css('display', 'block');
          });
-      }
+      });
    });
 });
 
-$(document).on('click.ethilvan.remove', 'a[data-remove-target]', function (event) {
+$(document).on('click.ethilvan.remove', '[data-remove-target]', function (event) {
    var $this = $(this);
    event.preventDefault();
 
@@ -25,14 +44,13 @@ $(document).on('click.ethilvan.remove', 'a[data-remove-target]', function (event
          return;
       }
 
-      $.ajax({
-         url: $this.attr('href'),
-         success: function(data, status, xhr) {
-            var $target = $this.closest($this.data().removeTarget);
-            $target.slideUp(800, function() {
+      inlineAjax($this, function(data, status, xhr) {
+         var $target = $this.closest($this.data().removeTarget);
+         $target.slideUp(800, function() {
+            if ($this.data().removeMethod != 'hide') {
                $target.remove();
-            });
-         }
+            }
+         });
       });
    });
 });

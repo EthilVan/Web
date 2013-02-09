@@ -24,7 +24,7 @@ class EthilVan::App < Sinatra::Base
       message.account = current_account
 
       url = request.xhr? ? request.path : ''
-      view Views::Member::Message::Create.new message, url
+      view Views::Member::Message::Create.new message, request.xhr?, url
       layout !request.xhr?
       mustache 'membre/message/create'
    end
@@ -38,7 +38,13 @@ class EthilVan::App < Sinatra::Base
       message.account = current_account
 
       if message.save
-         redirect urls.discussion(discussion, discussion.total_pages, message)
+         if request.xhr?
+            layout false
+            view Views::Member::Discussion::Response.new discussion, message, true
+            mustache 'membre/discussion/_response'
+         else
+            redirect urls.discussion(discussion, discussion.total_pages, message)
+         end
       else
          view Views::Member::Message::Create.new message
          mustache 'membre/message/create'
@@ -51,7 +57,7 @@ class EthilVan::App < Sinatra::Base
       not_authorized unless message.editable_by? current_account
 
       url = request.xhr? ? request.path : ''
-      view Views::Member::Message::Edit.new message, url
+      view Views::Member::Message::Edit.new message, request.xhr?, url
       layout !request.xhr?
       mustache 'membre/message/edit'
    end
@@ -62,7 +68,13 @@ class EthilVan::App < Sinatra::Base
       not_authorized unless message.editable_by? current_account
 
       if message.update_attributes params[:message]
-         redirect discussion_url message
+         if request.xhr?
+            layout false
+            view Views::Member::Discussion::Message.new message, true
+            mustache 'membre/discussion/_message'
+         else
+            redirect discussion_url message
+         end
       else
          view Views::Member::Message::Edit.new message
          mustache 'membre/message/edit'

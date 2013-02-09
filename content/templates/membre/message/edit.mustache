@@ -1,6 +1,6 @@
 {{# title }}Edition du Message{{/ title }}
 
-<div>
+<div class="message-form">
 {{> membre/message/_cadre }}
 
 {{# form }}
@@ -11,7 +11,8 @@
       {{> form/mdeditor }}
    {{/ contents }}
 
-   <input class="btn" type="submit" value="Enregistrer" />
+   <input class="btn" {{# inline? }}data-inline-target=".message-form"{{/ inline? }}
+         type="submit" value="Enregistrer" />
 
 </form>
 {{/ form }}

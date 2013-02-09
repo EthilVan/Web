@@ -9,7 +9,7 @@ module EthilVan::App::Views
             @can_edit = can_edit
          end
 
-         def can_edit
+         def can_edit?
             @can_edit
          end
 

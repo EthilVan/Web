@@ -4,8 +4,8 @@ module EthilVan::App::Views
 
       class Edit < Page
 
-         def initialize(message, url = '')
-            @form = Form.new(message, url)
+         def initialize(message, inline = false, url = '')
+            @form = Form.new(message, inline, url)
             @cadre = Cadre.new(message.account)
          end
 
