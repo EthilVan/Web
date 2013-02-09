@@ -125,6 +125,7 @@ class Account < ActiveRecord::Base
    end
 
    def check_token?(token)
+      return false if auth_token.nil?
       Password.new(auth_token) == token
    end
 

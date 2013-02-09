@@ -10,10 +10,9 @@ module EthilVan
    module Mustache
 
       def self.registered(app)
-         app.const_set :Views, Module.new
-         app.set :mustache_template_path, File.join('content', 'templates')
-
-         app.send :include, Helpers
+         app.const_set(:Views, Module.new) unless app.const_defined? :Views
+         app.helpers Helpers
+         app.set :mustache_templates, 'templates'
       end
 
       module Helpers
@@ -43,7 +42,7 @@ module EthilVan
 
          def mustache_template_for(name)
             @template_cache.fetch(:mustache_template, name) do
-               path = File.join(settings.mustache_template_path, name.to_s) +
+               path = File.join(settings.mustache_templates, name.to_s) +
                      '.mustache'
                ::Mustache::CachedTemplate.new File.read path
             end

@@ -1,15 +1,9 @@
-require 'securerandom'
-require 'sinatra/cookies'
-
 module EthilVan::Authentication
 
-   COOKIE_PSEUDO_NAME = :CYd1Zj6wab9ff1K8gbWNu4cJLQtjqg5MJgGbCI
-   COOKIE_TOKEN_NAME =  :IZq3tuP6qQbHwflEXoLByl3sJGZ2n4tjMdWZA5
-
    def self.registered(app)
-      app.helpers Sinatra::Cookies
       app.helpers Helpers
-      app.set :cookie_options, { domain: nil }
+      app.set :pseudo_cookie_name, 'auth_pseudo'
+      app.set :token_cookie_name,  'auth_token'
       app.set :remember_for, 1.month
    end
 
@@ -23,49 +17,26 @@ module EthilVan::Authentication
          @current_account ||= find_current_account
       end
 
-      def login(account, remember)
-         pseudo = CaesarCipher.obfuscate(account.name)
-         auth_token = account.generate_auth_token
-         if remember
-            default_expires = cookies.options[:expires]
-            cookies.options[:expires] = Time.now + settings.remember_for
-            cookies[COOKIE_PSEUDO_NAME] = pseudo
-            cookies[COOKIE_TOKEN_NAME]  = auth_token
-            cookies.options[:expires] = default_expires
-         else
-            cookies[COOKIE_PSEUDO_NAME] = pseudo
-            cookies[COOKIE_TOKEN_NAME]  = auth_token
-         end
+      def login(pseudo, token , remember)
+         obf_pseudo = CaesarCipher.obfuscate(pseudo)
+         expires = remember ? settings.remember_for.from_now : nil
+         set_cookie(settings.pseudo_cookie_name, obf_pseudo, expires)
+         set_cookie(settings.token_cookie_name,  token,      expires)
       end
 
       def logout
-         current_account.delete_auth_token
-         cookies[COOKIE_PSEUDO_NAME] = nil
-         cookies[COOKIE_TOKEN_NAME] = nil
+         delete_cookie(settings.pseudo_cookie_name)
+         delete_cookie(settings.token_cookie_name)
       end
 
    private
 
       def find_current_account
-         pseudo = cookies[COOKIE_PSEUDO_NAME]
-         return Guest if pseudo.nil?
-         pseudo = CaesarCipher.deobfuscate(pseudo)
-         token = cookies[COOKIE_TOKEN_NAME]
-         return Guest if token.nil?
-         account = Account.authenticate_by_token(pseudo, token)
-         account.nil? ? Guest : account
+         pseudo = request.cookies[settings.pseudo_cookie_name]
+         pseudo &&= CaesarCipher.deobfuscate(pseudo)
+         token = request.cookies[settings.token_cookie_name]
+         authenticate(pseudo, token)
       end
-   end
-
-   Guest = Object.new
-   def Guest.logged_in?
-      false
-   end
-   def Guest.role
-      EthilVan::Role::GUEST
-   end
-   def Guest.role_id
-      role.id
    end
 
    class CaesarCipher

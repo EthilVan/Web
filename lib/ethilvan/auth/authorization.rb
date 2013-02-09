@@ -1,9 +1,8 @@
 module EthilVan::Authorization
 
-   AFTER_LOGIN_KEY = 'Iino2yBxlYqY0FaRImfk'
-
    def self.registered(app)
       app.set :login_path, "/login"
+      app.set :after_login_cookie_name, 'after_login'
 
       class << app
          attr :logged_only_paths
@@ -39,23 +38,22 @@ module EthilVan::Authorization
    module Helpers
 
       def redirect_after_login
-         redirect_path = session[AFTER_LOGIN_KEY]
-         unless redirect_path.nil?
-            session[AFTER_LOGIN_KEY] = nil
-            redirect redirect_path
-         end
+         redirect_path = request.cookies[settings.after_login_cookie_name]
+         return if redirect_path.nil?
+         delete_cookie(settings.after_login_cookie_name)
+         redirect redirect_path
       end
 
       def ensure_logged_in
-         if !logged_in?
-            session[AFTER_LOGIN_KEY] = request.path
-            redirect settings.login_path
-         end
+         return if logged_in?
+         set_cookie(settings.after_login_cookie_name, request.path)
+         redirect settings.login_path
       end
 
       def ensure_authorized(role)
          ensure_logged_in
-         not_authorized if !current_account.role.inherit?(role)
+         return if current_account.role.inherit?(role)
+         not_authorized
       end
 
       def not_authorized

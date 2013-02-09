@@ -46,4 +46,5 @@ module EthilVan
 
    $LOAD_PATH.unshift path('lib')
    require 'ethilvan'
+   require 'sinatra/base'
 end

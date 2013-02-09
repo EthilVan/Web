@@ -6,16 +6,6 @@ require_relative 'database'
 module EthilVan
 
    class App < Sinatra::Base
-      set :environment, EthilVan::ENV
-      set :root, EthilVan::ROOT
-
-      register EthilVan::Logging
-      register EthilVan::Cron::Sinatra
-      register EthilVan::Static
-
-      #enable :sessions
-      #set :session_secret,
-      #      'FDzUODfLBuvgoPpb7ZVIDAcfOoMMsoyW6u_ob-VRirVBBZ7xvoYj5l0DO7bOyyNJ'
 
       EthilVan.development? do
          before { I18n.reload! }
@@ -24,6 +14,8 @@ module EthilVan
          use BetterErrors::Middleware
          BetterErrors.application_root = EthilVan::ROOT
          BetterErrors.editor = :sublime
+         enable :sessions
+         set :raise_errors, true
 
          require 'rack-mini-profiler'
          Rack::MiniProfiler.config.position = 'right'
@@ -35,19 +27,25 @@ module EthilVan
          also_reload 'app/**/*'
       end
 
+      register EthilVan::Logging
+      register EthilVan::Cron::Sinatra
+      register EthilVan::Static
       register EthilVan::Urls::Sinatra
-
+      register EthilVan::Cookies
+      register EthilVan::Authentication
+      register EthilVan::Authorization
+      register EthilVan::Mustache
+      register EthilVan::Markdown
       register EthilVan::Mail
 
-      register EthilVan::Mustache
-      set :layout, 'layouts/default'
-
-      register EthilVan::Authentication
-      set :remember_for, 2.months
-
-      register EthilVan::Authorization
-
-      register EthilVan::Markdown
+      set :environment,         EthilVan::ENV
+      set :root,                EthilVan::ROOT
+      set :show_exceptions,     false
+      set :pseudo_cookie_name,  'CYd1Zj6wab9ff1K8gbWNu4cJLQtjqg5MJgGbCI'
+      set :token_cookie_name,   'IZq3tuP6qQbHwflEXoLByl3sJGZ2n4tjMdWZA5'
+      set :remember_for,        2.months
+      set :layout,              'layouts/default'
+      set :mustache_templates,  'content/templates'
    end
 end
 

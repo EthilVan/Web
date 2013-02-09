@@ -3,7 +3,6 @@ source :rubygems
 # Core
 gem 'rake'
 gem 'sinatra'
-gem 'sinatra-contrib'
 gem 'logging'
 gem 'i18n'
 gem 'activerecord'
@@ -33,6 +32,7 @@ gem 'thin'
 group :development do
    gem 'pry'
    gem 'watchr'
+   gem 'sinatra-contrib'
    gem 'better_errors'
    gem 'binding_of_caller'
    gem 'rack-mini-profiler'
