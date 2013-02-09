@@ -25,7 +25,11 @@ $(function() {
       if (nearBottomOfPage()) {
          isPageLoading = true;
          currentPage++;
-         $.get(url + '?page=' + currentPage, function (html) {
+         $.get(url + '?page=' + currentPage, function (html, status, xhr) {
+            if (xhr.status == 204) {
+               return;
+            }
+
             $container.append($(html).html());
             $(document).trigger('insert');
             isPageLoading = false;

@@ -33,7 +33,7 @@ class EthilVan::App < Sinatra::Base
       pass unless request.xhr?
       account =  profil_account  name
       messages = profil_messages account, params[:page]
-      raise Sinatra::NotFound if messages.empty?
+      halt(204) if messages.empty?
 
       layout false
       view Views::Member::Profil::Messages.new(account, messages)

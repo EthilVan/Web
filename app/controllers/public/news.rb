@@ -3,7 +3,7 @@ class EthilVan::App
    get '/news' do
       page = request.xhr? ? params['page'].to_i : 1
       newses = News.with_account.by_date.page(page).per(8)
-      raise Sinatra::NotFound if newses.empty?
+      halt(204) if newses.empty?
       view Views::Public::News::List.new newses.all
       layout !request.xhr?
       mustache 'public/news/list'
