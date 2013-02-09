@@ -3,11 +3,9 @@
 {{# form }}
 <form class="form-horizontal formulaire" {{{ attributes }}}>
 
-   {{# label_common_class }}control-label{{/ label_common_class }}
-
    {{# name }}
    <div class="control-group">
-      {{> form/label }}
+      <div class="control-label">{{> form/label }}</div>
       <div class="controls">
          {{> form/input }}
          {{> form/errors }}
@@ -17,7 +15,7 @@
 
    {{# email }}
    <div class="control-group">
-      {{> form/label }}
+      <div class="control-label">{{> form/label }}</div>
       <div class="controls">
          {{> form/input }}
          {{> form/errors }}
@@ -27,7 +25,7 @@
 
    {{# category }}
    <div class="control-group">
-      {{> form/label }}
+      <div class="control-label">{{> form/label }}</div>
       <div class="controls" id="category">
          {{> form/select }}
          {{> form/errors }}
@@ -37,7 +35,7 @@
 
    {{# subject }}
    <div class="control-group">
-      {{> form/label }}
+      <div class="control-label">{{> form/label }}</div>
       <div class="controls">
          {{> form/input }}
          {{> form/errors }}
@@ -47,7 +45,7 @@
 
    {{# message }}
    <div class="control-group">
-      {{> form/label }}
+      <div class="control-label">{{> form/label }}</div>
       <div class="controls">
          {{> form/textarea }}
          {{> form/errors }}
