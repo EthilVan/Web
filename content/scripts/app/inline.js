@@ -28,6 +28,7 @@ $(document).on('click.ethivan.inline', '[data-inline-target]', function (event) 
       $element.css('display', 'none');
       $target.fadeOut(800, function() {
          $target.replaceWith($element);
+         $(document).trigger('insert');
          $element.fadeIn(800, function() {
             $element.css('display', 'block');
          });

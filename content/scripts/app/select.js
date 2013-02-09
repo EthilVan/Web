@@ -114,6 +114,6 @@
    });
 
    $(document).on('insert', function() {
-      $('select.bootsrap-select').selectpicker();
+      $('select.bootstrap-select').selectpicker();
    });
 }(jQuery);
