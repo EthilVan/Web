@@ -196,7 +196,7 @@ MDEditor.Utils = {
    },
 
    fetchEmojisMentions: function(callback) {
-      this.fetchMentions('/markdown/emojis.json', callback);
+      this.fetchMentions('%%CACHE_BUSTER%%markdown/emojis.json', callback);
    },
 
    fetchMentions: function(url, callback) {

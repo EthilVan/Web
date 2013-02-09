@@ -2,7 +2,6 @@ module EthilVan::Static
 
    BLACKLIST = [
       'robots.txt',
-      'markdown/emojis.json',
       'images/emoji/.+',
    ].map { |s| /^#{s}$/ }
 
