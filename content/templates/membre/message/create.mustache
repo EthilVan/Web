@@ -1,19 +1,18 @@
 {{# title }}Réponse{{/ title }}
 
 <div class="message-form">
-{{> membre/message/_cadre }}
 
-{{# form }}
-<form {{{ attributes }}}>
+   {{# form }}
+      <form {{{ attributes }}}>
 
-   {{# contents }}
-      {{> form/errors }}
-      {{> form/mdeditor }}
-   {{/ contents }}
+         {{# contents }}
+            {{> form/errors }}
+            {{> form/mdeditor }}
+         {{/ contents }}
 
-   <input class="btn" {{# inline? }}data-inline-target=".message-form"{{/ inline? }}
-         type="submit" value="Répondre" />
+         <input class="btn pull-right" {{# inline? }}data-inline-target=".message-form"{{/ inline? }}
+               type="submit" value="Répondre" />
 
-</form>
-{{/ form }}
+      </form>
+   {{/ form }}
 </div>

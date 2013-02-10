@@ -1,23 +1,31 @@
 {{# title }}Edition de la discussion{{/ title }}
 
 {{# form }}
-<form {{{ attributes }}}>
+<form class="form-horizontal formulaire" {{{ attributes }}}>
 
    {{# name }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls large">
+            {{> form/input }}
+            {{> form/errors }}
+         </div>
+      </div>
    {{/ name }}
 
    {{# group }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/select }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/select }}
+            {{> form/errors }}
+         </div>
+      </div>
    {{/ group }}
 
    <div class="clearfix"></div>
 
-   <input class="btn" type="submit" value="Enregistrer" />
+   <input class="btn pull-right" type="submit" value="Enregistrer" />
 
 </form>
 {{/ form }}

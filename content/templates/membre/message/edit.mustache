@@ -1,19 +1,20 @@
 {{# title }}Edition du Message{{/ title }}
 
 <div class="message-form">
-{{> membre/message/_cadre }}
 
-{{# form }}
-<form {{{ attributes }}}>
+   {{# form }}
+      <form {{{ attributes }}}>
 
-   {{# contents }}
-      {{> form/errors }}
-      {{> form/mdeditor }}
-   {{/ contents }}
+         {{# contents }}
+            {{> form/errors }}
+            {{> form/mdeditor }}
+         {{/ contents }}
 
-   <input class="btn" {{# inline? }}data-inline-target=".message-form"{{/ inline? }}
-         type="submit" value="Enregistrer" />
+         <input class="btn pull-right" {{# inline? }}data-inline-target=".message-form"{{/ inline? }}
+               type="submit" value="Enregistrer" />
 
-</form>
-{{/ form }}
+         <div class="cleaner"></div>
+
+      </form>
+   {{/ form }}
 </div>

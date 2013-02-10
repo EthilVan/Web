@@ -6,10 +6,10 @@
    {{# name }}
       {{> form/label }}
       {{> form/errors }}
-      {{> form/input }}
+      <div class="large">
+         {{> form/input }}
+      </div>
    {{/ name }}
-
-   {{> membre/message/_cadre }}
 
    {{# first_message }}
       {{# contents }}
@@ -19,7 +19,7 @@
       {{/ contents }}
    {{/ first_message }}
 
-   <input class="btn" type="submit" value="Enregistrer" />
+   <input class="btn pull-right" type="submit" value="Enregistrer" />
 
 </form>
 {{/ form }}
