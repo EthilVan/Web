@@ -69,13 +69,14 @@ aide_teamspeak:
    titre: ["Aide", "TeamSpeak"]
    template: "public/aide/teamspeak"
 
-aide_markdown:
-   url: "aide/markdown"
+aide_mise_en_forme:
+   url: "aide/mise_en_forme"
    titre: ["Aide", "Mise en forme"]
-   template: "public/aide/markdown"
-
-aide_emoji:
-   url: 'aide/emoji'
-   titre: ['Aide', 'Emojis']
-   helpers: ['Help::Emoji']
-   template: 'public/aide/emoji'
+   template: "public/aide/mise_en_forme/tabs"
+   principal: "markdown"
+   onglets:
+      markdown:
+         nom: "Markdown"
+      emoji:
+         nom: "Emoticones"
+         helpers: ['Help::Emoji']
