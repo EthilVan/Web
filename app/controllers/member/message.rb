@@ -21,14 +21,12 @@ class EthilVan::App < Sinatra::Base
       message.discussion = discussion
       message.account = current_account
 
-      url = request.xhr? ? request.path : ''
-      inline &&= request.xhr?
-      view Views::Member::Message::Create.new message, inline, url
-      layout !request.xhr?
+      inline &&= xhr?
+      view Views::Member::Message::Create.new message, inline, request.path
       mustache 'membre/message/create'
    end
 
-   post %r{/membre/discussion/(\d{1,5})/repondre(?:/enplace)?$} do |id|
+   post %r{/membre/discussion/(\d{1,5})/repondre(/enplace)?$} do |id, inline|
       discussion = resource Discussion.find_by_id id
 
       message = Message.new params[:message]
@@ -36,15 +34,13 @@ class EthilVan::App < Sinatra::Base
       message.account = current_account
 
       if message.save
-         if request.xhr?
-            layout false
-            view Views::Member::Discussion::Response.new discussion, message, true
-            mustache 'membre/discussion/_response'
-         else
-            redirect urls.discussion(discussion, discussion.total_pages, message)
-         end
+         redirect_not_xhr urls.discussion(discussion,
+               discussion.total_pages, message)
+         view Views::Member::Discussion::Response.new discussion, message, true
+         mustache 'membre/discussion/_response'
       else
-         view Views::Member::Message::Create.new message
+         inline &&= xhr?
+         view Views::Member::Message::Create.new message, inline, request.path
          mustache 'membre/message/create'
       end
    end
@@ -53,9 +49,7 @@ class EthilVan::App < Sinatra::Base
       message = resource Message.find_by_id id
       not_authorized unless message.editable_by? current_account
 
-      url = request.xhr? ? request.path : ''
-      view Views::Member::Message::Edit.new message, request.xhr?, url
-      layout !request.xhr?
+      view Views::Member::Message::Edit.new message, xhr?, request.path
       mustache 'membre/message/edit'
    end
 
@@ -64,15 +58,11 @@ class EthilVan::App < Sinatra::Base
       not_authorized unless message.editable_by? current_account
 
       if message.update_attributes params[:message]
-         if request.xhr?
-            layout false
-            view Views::Member::Discussion::Message.new message, true
-            mustache 'membre/discussion/_message'
-         else
-            redirect discussion_url message
-         end
+         redirect_not_xhr discussion_url message
+         view Views::Member::Discussion::Message.new message, true
+         mustache 'membre/discussion/_message'
       else
-         view Views::Member::Message::Edit.new message
+         view Views::Member::Message::Edit.new message, xhr?, request.path
          mustache 'membre/message/edit'
       end
    end
@@ -84,7 +74,7 @@ class EthilVan::App < Sinatra::Base
 
       following = message.following
       message.destroy
-      halt(200) if request.xhr?
-      redirect urls.discussion(message.discussion, following.page,following)
+      xhr_ok_or_redirect urls.discussion(message.discussion,
+            following.page, following)
    end
 end

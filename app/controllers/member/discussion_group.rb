@@ -64,7 +64,6 @@ class EthilVan::App < Sinatra::Base
    get discussion_group_delete do |group_url|
       group = resource GeneralDiscussionGroup.find_by_url group_url
       group.destroy
-      halt(200) if request.xhr?
-      redirect '/membre/discussion'
+      xhr_ok_or_redirect '/membre/discussion'
    end
 end

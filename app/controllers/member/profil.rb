@@ -6,8 +6,8 @@ class EthilVan::App < Sinatra::Base
          resource Account.with_everything.where(name: name).first
       end
 
-      def profil_messages(account, page = nil)
-         Message.for_account(account).page(page).per(10)
+      def profil_messages(account)
+         resources Message.for_account(account).page(params[:msgpage]).per(10)
       end
 
       def profil_tag(account, params = {})
@@ -27,13 +27,10 @@ class EthilVan::App < Sinatra::Base
       redirect "/membre/@#{name}/generale"
    end
 
-   get %r{/membre/@(#{Account::NAME})/messages$} do |name|
-      pass unless request.xhr?
+   xhr_get %r{/membre/@(#{Account::NAME})/messages$} do |name|
       account  = profil_account  name
-      messages = profil_messages account, params[:page]
-      halt(204) if messages.empty?
+      messages = profil_messages account
 
-      layout false
       view Views::Member::Profil::Messages.new(account, messages)
       mustache 'membre/profil/_messages'
    end

@@ -63,7 +63,6 @@ class EthilVan::App < Sinatra::Base
    get discussion_delete do |id|
       discussion = resource Discussion.find_by_id id
       discussion.destroy
-      halt(200) if request.xhr?
-      redirect '/membre/discussion'
+      xhr_ok_or_redirect '/membre/discussion'
    end
 end

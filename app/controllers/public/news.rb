@@ -1,10 +1,9 @@
 class EthilVan::App
 
    get '/news' do
-      newses = News.with_account.by_date.page(params[:page]).per(8)
-      halt(204) if newses.empty?
+      newses = resources News.with_account.by_date.
+            page(params[:page]).per(8)
       view Views::Public::News::List.new newses.all
-      layout !request.xhr?
       mustache 'public/news/list'
    end
 
@@ -53,7 +52,7 @@ class EthilVan::App
 
    get %r{/news/(\d{1,3})$} do |id|
       news = resource News.find_by_id id
-      halt 401 if !logged_in? and news.private
+      not_authorized if news.private and guest?
       view Views::Public::News::Show.new news
       mustache 'public/news/show'
    end
@@ -81,7 +80,6 @@ class EthilVan::App
    get %r{/news/(\d{1,3})/supprimer$} do |id|
       news = resource News.find_by_id id
       news.destroy
-      halt(200) if request.xhr?
-      redirect '/news'
+      xhr_ok_or_redirect '/news'
    end
 end
