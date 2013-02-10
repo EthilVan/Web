@@ -4,7 +4,7 @@ class EthilVan::App < Sinatra::Base
 
    # Public
    get '/' do
-      redirect '/presentation/generale'
+      redirect logged_in? ? '/membre/discussion' : '/presentation/generale'
    end
 
    # Membre
