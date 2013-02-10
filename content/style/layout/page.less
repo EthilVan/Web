@@ -105,17 +105,13 @@
    blockquote {
       padding: 22px;
       padding-top: 30px;
-      background-color: @vert-medium;
-      #gradient .vertical(@vert-clair, @vert-sombre);
-      border: solid 2px black;
-      color: @vert;
+      background-color: @formulaire-1;
+      #gradient .vertical(@formulaire-1, @formulaire-2);
+      border: solid 1px black;
+      color: @gris-form;
 
       blockquote {
-         #gradient .vertical(@vert-sombre, @vert-clair);
-      }
-
-      p, ul {
-         color: @vert;
+         #gradient .vertical(@formulaire-2, @formulaire-1);
       }
 
       &:before, &:after {
@@ -126,15 +122,20 @@
       &:before {
          content: "\201C";
          float: left;
-         margin-top: -27px;
       }
 
       &:after {
          content: "\201D";
          float: right;
-         margin-top: -8px;
+         margin-top: 6px;
       }
 
+   }
+
+   pre {
+      #gradient .vertical(@formulaire-1, @formulaire-2);
+      color: @gris-form;
+      border: solid black 1px;
    }
 
 
