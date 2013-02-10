@@ -32,6 +32,8 @@ class EthilVan::App
       mustache 'public/news/banners'
    end
 
+   protect %r{^/news/creer$}, EthilVan::Role::REDACTEUR
+
    get '/news/creer' do
       news = News.new
       news.account = current_account
@@ -57,6 +59,9 @@ class EthilVan::App
       view Views::Public::News::Show.new news
       mustache 'public/news/show'
    end
+
+   protect %r{^/news/\d{1,3}/editer$},    EthilVan::Role::REDACTEUR
+   protect %r{^/news/\d{1,3}/supprimer$}, EthilVan::Role::REDACTEUR
 
    get %r{/news/(\d{1,3})/editer$} do |id|
       news = News.find_by_id id

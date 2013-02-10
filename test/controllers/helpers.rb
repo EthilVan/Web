@@ -1,6 +1,17 @@
 require_relative '../helpers'
 require 'rack/test'
 
+module Rack::Response::Helpers
+
+   def redirecting_to_login?
+      redirect? and location =~ %r{/login$}
+   end
+
+   def not_authorized?
+      status == 401
+   end
+end
+
 class MiniTest::Unit::TestCase
 
    include Rack::Test::Methods

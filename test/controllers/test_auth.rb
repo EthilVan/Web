@@ -8,8 +8,8 @@ class AuthTest < DatabaseTest::Spec
    end
 
    def test_member_dons_is_not_accessible_when_not_logged
-      get '/membre/dons'
-      response.wont_be :ok?
+      get '/membre'
+      response.must_be :redirecting_to_login?
    end
 
    def test_member_is_accessible_when_logged
@@ -29,7 +29,60 @@ class AuthTest < DatabaseTest::Spec
       login 'user'
       get '/news'
       response.body.must_include parsed_summary :public
+      response.body.must_include 'Private News'
       response.body.must_include parsed_summary :private
+   end
+
+   def test_news_creer_is_not_accessible_as_guest
+      get '/news/creer'
+      response.must_be :redirecting_to_login?
+   end
+
+   def test_news_creer_is_not_accessible_for_default_user
+      login 'user'
+      get '/news/creer'
+      response.must_be :not_authorized?
+   end
+
+   def test_news_creer_is_accessible_for_redacteur
+      login 'redacteur'
+      get '/news/creer'
+      response.must_be :ok?
+   end
+
+   def test_news_editer_is_not_accessible_as_guest
+      get "/news/#{News.first.id}/editer"
+      response.must_be :redirecting_to_login?
+   end
+
+   def test_news_editer_is_not_accessible_for_default_user
+      login 'user'
+      get "/news/#{News.first.id}/editer"
+      response.must_be :not_authorized?
+   end
+
+   def test_news_editer_is_accessible_for_redacteur
+      login 'redacteur'
+      get "/news/#{News.first.id}/editer"
+      response.must_be :ok?
+   end
+
+   def test_news_supprimer_is_not_accessible_as_guest
+      get "/news/#{News.first.id}/supprimer"
+      response.must_be :redirecting_to_login?
+   end
+
+   def test_news_supprimer_is_not_accessible_for_default_user
+      login 'user'
+      get "/news/#{News.first.id}/supprimer"
+      response.must_be :not_authorized?
+   end
+
+   def test_news_supprimer_is_accessible_for_redacteur
+      login 'redacteur'
+      get "/news/#{News.first.id}/supprimer"
+      response.wont_be :redirecting_to_login?
+      response.wont_be :not_authorized?
    end
 
 private
