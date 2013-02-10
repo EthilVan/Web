@@ -15,7 +15,7 @@ class EthilVan::App < Sinatra::Base
       redirect discussion_url message
    end
 
-   get %r{/membre/discussion/(\d{1,5})/repondre$} do |id|
+   get %r{/membre/discussion/(\d{1,5})/repondre(/enplace)?$} do |id, inline|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
 
@@ -24,13 +24,13 @@ class EthilVan::App < Sinatra::Base
       message.account = current_account
 
       url = request.xhr? ? request.path : ''
-      inline = request.xhr? && params[:inline]
+      inline &&= request.xhr?
       view Views::Member::Message::Create.new message, inline, url
       layout !request.xhr?
       mustache 'membre/message/create'
    end
 
-   post %r{/membre/discussion/(\d{1,5})/repondre$} do |id|
+   post %r{/membre/discussion/(\d{1,5})/repondre(?:/enplace)?$} do |id|
       discussion = Discussion.find_by_id id
       raise Sinatra::NotFound if discussion.nil?
 

@@ -40,7 +40,7 @@ module EthilVan::App::Views
 
          def create_pager
             pager = Pager.new(@discussion, @page)
-            pager.total > 1 ? pager : false
+            pager.total > 1 ? pager : nil
          end
 
          def url
@@ -49,7 +49,7 @@ module EthilVan::App::Views
 
          def response_url
             _url = "#{url}/repondre"
-            _url << '?inline=1' if pager.current == pager.total
+            _url << '/enplace' if pager.nil? or pager.current == pager.total
             _url
          end
 
