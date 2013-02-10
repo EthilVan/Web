@@ -24,7 +24,8 @@ class EthilVan::App < Sinatra::Base
       message.account = current_account
 
       url = request.xhr? ? request.path : ''
-      view Views::Member::Message::Create.new message, request.xhr?, url
+      inline = request.xhr? && params[:inline]
+      view Views::Member::Message::Create.new message, inline, url
       layout !request.xhr?
       mustache 'membre/message/create'
    end

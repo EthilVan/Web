@@ -48,7 +48,9 @@ module EthilVan::App::Views
          end
 
          def response_url
-            "#{url}/repondre"
+            _url = "#{url}/repondre"
+            _url << '?inline=1' if pager.current == pager.total
+            _url
          end
 
          def edit_url
