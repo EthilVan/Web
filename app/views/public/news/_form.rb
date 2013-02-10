@@ -21,13 +21,13 @@ module EthilVan::App::Views
          end
 
          def summary
-            text :summary, validations: {
+            markdown :summary, validations: {
                required: true,
             }
          end
 
          def contents
-            text :contents, validations: {
+            markdown :contents, validations: {
                required: true,
             }
          end

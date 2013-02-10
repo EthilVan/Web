@@ -4,11 +4,15 @@ module EthilVan::Markdown::ActiveRecord
 
    included do
       include EthilVan::Markdown::Helpers
+      @markdown_fields = {}
    end
 
    module ClassMethods
 
+      attr_reader :markdown_fields
+
       def markdown_pre_parse(field, parsed_field = "parsed_#{field}")
+         @markdown_fields[field] = parsed_field
          self.class_eval(<<-EVAL)
             def #{field}=(new_value)
                write_attribute :#{field}, new_value

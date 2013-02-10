@@ -14,7 +14,7 @@ module EthilVan::App::Views
          end
 
          def contents
-            text :contents
+            markdown :contents
          end
       end
    end
