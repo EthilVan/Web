@@ -7,8 +7,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    get '/gestion/postulation/:name' do |name|
-      postulation = Postulation.where(name: name).first
-      raise Sinatra::NotFound if postulation.nil?
+      postulation = resource Postulation.where(name: name).first
 
       vote = nil
       if postulation.pending? and
@@ -23,11 +22,9 @@ class EthilVan::App < Sinatra::Base
    end
 
    post '/gestion/postulation/:name' do |name|
-      postulation = Postulation.where(name: name).first
-      if postulation.nil? or !postulation.pending? or
+      postulation = resource Postulation.where(name: name).first
+      not found if !postulation.pending? or
             PostulationVote.for?(current_account, postulation)
-         raise Sinatra::NotFound
-      end
 
       vote = PostulationVote.new(params[:postulation_vote])
       vote.account = current_account

@@ -4,11 +4,8 @@ class EthilVan::App
 
       def profil_edit_account(name)
          account = profil_account(name)
-         unless current_account.role.inherit? EthilVan::Role::MODO or
-               current_account.id == account.id
-            not_authorized
-         end
-
+         not_authorized unless current_account.id == account.id or
+               current_account.role.inherit? EthilVan::Role::MODO
          account
       end
    end

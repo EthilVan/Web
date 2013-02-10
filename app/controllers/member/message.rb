@@ -10,14 +10,12 @@ class EthilVan::App < Sinatra::Base
    end
 
    get '/membre/message/:id' do |id|
-      message = Message.find_by_id id
-      raise Sinatra::NotFound if message.nil?
+      message = resource Message.find_by_id id
       redirect discussion_url message
    end
 
    get %r{/membre/discussion/(\d{1,5})/repondre(/enplace)?$} do |id, inline|
-      discussion = Discussion.find_by_id id
-      raise Sinatra::NotFound if discussion.nil?
+      discussion = resource Discussion.find_by_id id
 
       message = Message.new
       message.discussion = discussion
@@ -31,8 +29,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    post %r{/membre/discussion/(\d{1,5})/repondre(?:/enplace)?$} do |id|
-      discussion = Discussion.find_by_id id
-      raise Sinatra::NotFound if discussion.nil?
+      discussion = resource Discussion.find_by_id id
 
       message = Message.new params[:message]
       message.discussion = discussion
@@ -53,8 +50,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    get '/membre/message/:id/editer' do |id|
-      message = Message.find_by_id id
-      raise Sinatra::NotFound if message.nil?
+      message = resource Message.find_by_id id
       not_authorized unless message.editable_by? current_account
 
       url = request.xhr? ? request.path : ''
@@ -64,8 +60,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    post '/membre/message/:id/editer' do |id|
-      message = Message.find_by_id id
-      raise Sinatra::NotFound if message.nil?
+      message = resource Message.find_by_id id
       not_authorized unless message.editable_by? current_account
 
       if message.update_attributes params[:message]
@@ -83,9 +78,8 @@ class EthilVan::App < Sinatra::Base
    end
 
    get '/membre/message/:id/supprimer' do |id|
-      message = Message.find_by_id id
-      raise Sinatra::NotFound if message.nil?
-      raise Sinatra::NotFound if message.first_message?
+      message = resource Message.find_by_id id
+      not_found if message.first_message?
       not_authorized unless message.editable_by? current_account
 
       following = message.following

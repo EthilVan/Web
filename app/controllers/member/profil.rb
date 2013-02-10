@@ -3,9 +3,7 @@ class EthilVan::App < Sinatra::Base
    helpers do
 
       def profil_account(name)
-         account = Account.with_everything.where(name: name).first
-         raise if account.nil?
-         account
+         resource Account.with_everything.where(name: name).first
       end
 
       def profil_messages(account, page = nil)
@@ -31,7 +29,7 @@ class EthilVan::App < Sinatra::Base
 
    get %r{/membre/@(#{Account::NAME})/messages$} do |name|
       pass unless request.xhr?
-      account =  profil_account  name
+      account  = profil_account  name
       messages = profil_messages account, params[:page]
       halt(204) if messages.empty?
 
@@ -42,8 +40,8 @@ class EthilVan::App < Sinatra::Base
 
    tabs = [:generale, :postulation, :tags, :messages]
    get %r{/membre/@(#{Account::NAME})/(?:#{tabs *  '|'})$} do |name|
-      account =  profil_account  name
-      tag =      profil_tag      account
+      account  = profil_account  name
+      tag      = profil_tag      account
       messages = profil_messages account
 
       view Views::Member::Profil::Tabs.new(account, tag, messages)
@@ -52,7 +50,7 @@ class EthilVan::App < Sinatra::Base
 
    post %r{/membre/@(#{Account::NAME})/tags$} do |name|
       account = profil_account name
-      tag =     profil_tag     account, params[:profil_tag]
+      tag     = profil_tag     account, params[:profil_tag]
 
       if tag.save
          redirect urls.profil('tags', account)

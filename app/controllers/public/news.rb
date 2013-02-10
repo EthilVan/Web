@@ -52,8 +52,7 @@ class EthilVan::App
    end
 
    get %r{/news/(\d{1,3})$} do |id|
-      news = News.find_by_id id
-      raise Sinatra::NotFound if news.nil?
+      news = resource News.find_by_id id
       halt 401 if !logged_in? and news.private
       view Views::Public::News::Show.new news
       mustache 'public/news/show'
@@ -63,16 +62,13 @@ class EthilVan::App
    protect %r{^/news/\d{1,3}/supprimer$}, EthilVan::Role::REDACTEUR
 
    get %r{/news/(\d{1,3})/editer$} do |id|
-      news = News.find_by_id id
-      raise Sinatra::NotFound if news.nil?
-
+      news = resource News.find_by_id id
       view Views::Public::News::Edit.new news
       mustache 'public/news/edit'
    end
 
    post %r{/news/(\d{1,3})/editer$} do |id|
-      news = News.find_by_id id
-      raise Sinatra::NotFound if news.nil?
+      news = resource News.find_by_id id
 
       if news.update_attributes params[:news]
          redirect urls.news news
@@ -83,8 +79,7 @@ class EthilVan::App
    end
 
    get %r{/news/(\d{1,3})/supprimer$} do |id|
-      news = News.find_by_id id
-      raise Sinatra::NotFound if news.nil?
+      news = resource News.find_by_id id
       news.destroy
       halt(200) if request.xhr?
       redirect '/news'

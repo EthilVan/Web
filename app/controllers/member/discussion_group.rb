@@ -31,9 +31,9 @@ class EthilVan::App < Sinatra::Base
    end
 
    get %r{#{DISCUSSION_GROUP_BASE_URL}$} do |group_url|
-      group = GeneralDiscussionGroup.with_everything.find_by_url group_url
+      group = resource GeneralDiscussionGroup.with_everything.
+            find_by_url group_url
       views = current_account.views_by_discussion_id
-      raise Sinatra::NotFound if group.nil?
       view Views::Member::DiscussionGroup::Show.new group, views
       mustache 'membre/discussion_group/show'
    end
@@ -43,15 +43,13 @@ class EthilVan::App < Sinatra::Base
    protect discussion_group_edit, EthilVan::Role::MODO
 
    get discussion_group_edit do |group_url|
-      group = GeneralDiscussionGroup.find_by_url group_url
-      raise Sinatra::NotFound if group.nil?
+      group = resource GeneralDiscussionGroup.find_by_url group_url
       view Views::Member::DiscussionGroup::Edit.new group
       mustache 'membre/discussion_group/edit'
    end
 
    post discussion_group_edit do |group_url|
-      group = GeneralDiscussionGroup.find_by_url group_url
-      raise Sinatra::NotFound if group.nil?
+      group = resource GeneralDiscussionGroup.find_by_url group_url
       if group.update_attributes params[:general_discussion_group]
          redirect urls.discussion_group(group)
       end
@@ -64,8 +62,7 @@ class EthilVan::App < Sinatra::Base
    protect discussion_group_delete, EthilVan::Role::MODO
 
    get discussion_group_delete do |group_url|
-      group = GeneralDiscussionGroup.find_by_url group_url
-      raise Sinatra::NotFound if group.nil?
+      group = resource GeneralDiscussionGroup.find_by_url group_url
       group.destroy
       halt(200) if request.xhr?
       redirect '/membre/discussion'
