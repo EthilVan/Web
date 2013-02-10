@@ -1,12 +1,22 @@
 $(function() {
 
-   var $container = $('.auto-fill');
+   var $container = $('[data-autofill]');
    if ($container.size() < 1) {
       return;
    }
 
-   var url = $container.data().autoFillUrl || '';
-   var currentPage = 1;
+   var url = $container.data().autofill || '';
+   var param = $container.data().autofillParam || 'page';
+
+   if ($container.data().autofillPage) {
+      var currentPage = $container.data().autofillPage;
+   } else {
+      var match = new RegExp('[?&]' + param + '=([0-9]+)').
+         exec(window.location.search);
+      var currentPage = (match == null) ? 1 : parseInt(match[1]);
+   }
+
+   var paramUrl = url + '?' + param + '='
    var isPageLoading = false;
 
    function nearBottomOfPage() {
@@ -25,7 +35,7 @@ $(function() {
       if (nearBottomOfPage()) {
          isPageLoading = true;
          currentPage++;
-         $.get(url + '?page=' + currentPage, function (html, status, xhr) {
+         $.get(paramUrl + currentPage, function (html, status, xhr) {
             if (xhr.status == 204) {
                return;
             }

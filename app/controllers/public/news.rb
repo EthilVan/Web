@@ -1,8 +1,7 @@
 class EthilVan::App
 
    get '/news' do
-      page = request.xhr? ? params['page'].to_i : 1
-      newses = News.with_account.by_date.page(page).per(8)
+      newses = News.with_account.by_date.page(params[:page]).per(8)
       halt(204) if newses.empty?
       view Views::Public::News::List.new newses.all
       layout !request.xhr?
