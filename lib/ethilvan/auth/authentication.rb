@@ -13,6 +13,10 @@ module EthilVan::Authentication
          current_account.logged_in?
       end
 
+      def guest?
+         !logged_in?
+      end
+
       def current_account
          @current_account ||= find_current_account
       end

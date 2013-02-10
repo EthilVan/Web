@@ -19,7 +19,11 @@ module EthilVan::App::Views
       include EthilVan::Static::Helpers
 
       def logged_in?
-         app.logged_in?
+         @app.logged_in?
+      end
+
+      def guest?
+         @app.guest?
       end
 
       def has_role?(role)

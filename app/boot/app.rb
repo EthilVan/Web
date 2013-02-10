@@ -27,6 +27,7 @@ module EthilVan
          also_reload 'app/**/*'
       end
 
+      register EthilVan::SinatraHelpers
       register EthilVan::Logging
       register EthilVan::Cron::Sinatra
       register EthilVan::Static

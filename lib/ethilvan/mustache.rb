@@ -31,7 +31,7 @@ module EthilVan
             rendered = mustache_template_for(template).render(ctx)
 
             layout = @mustache_layout
-            layout = settings.layout if layout.nil? or layout == true
+            layout = settings.layout if layout.nil? and !xhr?
             if layout
                ctx.set_yield rendered
                rendered = mustache_template_for(layout).render(ctx)

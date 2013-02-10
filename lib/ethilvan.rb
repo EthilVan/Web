@@ -17,6 +17,7 @@ module EthilVan
    # Libs
    require 'ethilvan'
    require 'ethilvan/require'
+   require 'ethilvan/sinatra'
    require 'ethilvan/logger'
    require 'ethilvan/cron'
    require 'ethilvan/static'
