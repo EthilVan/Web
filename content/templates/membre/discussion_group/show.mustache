@@ -1,18 +1,20 @@
 {{#title}}Discussions{{/title}}
 
-<div class="discussion-group">
+<div class="discussion-group seul">
    <a href="/membre/discussion">
       ← Retour à la liste des espaces de discussion
    </a>
    <div class="ligne"></div>
    <div class="entete-espace">
-      <div class="titre-espace">{{ name }}</div>
       {{# modo? }}
-         <a href="{{ edit_url }}">Editer</a>
          <a class="need-confirmation" href="{{ delete_url }}">
-            Supprimer
+            <div class="suppr"></div>
+         </a>
+         <a href="{{ edit_url }}">
+            <div class="edit"></div>
          </a>
       {{/ modo? }}
+      <div class="titre-espace">{{ name }}</div>
       <p>{{ description }}</p>
    </div>
    {{> membre/discussion_group/_discussion_previews }}

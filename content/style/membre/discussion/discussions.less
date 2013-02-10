@@ -2,12 +2,20 @@
 
 #subcontents {
 
+   .creer-espace {
+      float: right;
+   }
+
    .discussion-group {
       background-color: @gris-medium;
       padding: 10px;
       border-radius: 6px;
       box-shadow: 1px 1px 0px 0px @gris-relief;
       margin-bottom: 25px;
+
+      &.seul {
+         margin-bottom: 0px;
+      }
 
       .ligne {
          border-bottom: 2px solid;
@@ -43,6 +51,34 @@
 
       }
 
+      .edit, .suppr {
+         width: 24px;
+         float: right;
+      }
+
+      .edit {
+         background-image: url(images/membre/discussion/edit.png);
+         height: 21px;
+         margin-top: 4px;
+
+         &:hover {
+            background-image: url(images/membre/discussion/edit-2.png);
+         }
+
+      }
+
+      .suppr {
+         background-image: url(images/membre/discussion/suppr.png);
+         height: 18px;
+         margin-top: 7px;
+         margin-left: 10px;
+
+         &:hover {
+            background-image: url(images/membre/discussion/suppr-2.png);
+         }
+
+      }
+
       ul {
          margin-left: 0px;
          color: @vert;
@@ -63,6 +99,7 @@
 
          .lien {
             margin-bottom: 2px;
+            max-width: 90%;
          }
 
          .icone {

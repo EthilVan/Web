@@ -5,25 +5,29 @@
 </a>
 
 {{# modo? }}
-<a href="/membre/discussion/!creer_espace">
+<a class="creer-espace" href="/membre/discussion/!creer_espace">
    Créer un espace de discussion
 </a>
 {{/ modo? }}
 
 {{# groups }}
    <div class="discussion-group">
+      {{# modo? }}
+         <a href="{{ delete_url }}"  data-remove-target=".discussion-group">
+            <div class="suppr"></div>
+         </a>
+         <a href="{{ edit_url }}">
+            <div class="edit"></div>
+         </a>
+      {{/ modo? }}
       <a href="{{ url }}" title="{{ description }}">
          <div class="titre-espace">{{ name }}</div>
       </a>
-      {{# modo? }}
-         <a href="{{ edit_url }}">Editer</a>
-         <a href="{{ delete_url }}"  data-remove-target=".discussion-group">Supprimer</a>
-      {{/ modo? }}
       {{> membre/discussion_group/_discussion_previews }}
       {{# remaining? }}
       <a href="{{ url }}" title="{{ description }}">
          <div class="restantes">
-            Nombre de discussions restantes : {{ remaining }}
+            Discussions restantes : {{ remaining }}
          </div>
       </a>
       {{/ remaining? }}
