@@ -16,6 +16,10 @@ module EthilVan::App::Views
          def contents
             markdown :contents
          end
+
+         def author_signature
+            @model.account.profil.parsed_signature
+         end
       end
    end
 end
