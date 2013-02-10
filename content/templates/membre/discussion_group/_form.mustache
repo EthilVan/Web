@@ -1,32 +1,48 @@
 {{# form }}
-<form {{{ attributes }}}>
+<form class="form-horizontal formulaire" {{{ attributes }}}>
 
    {{# name }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/input }}
+            {{> form/errors }}
+         </div>
+      </div>
    {{/ name }}
 
    {{# url }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/input }}
+            {{> form/errors }}
+         </div>
+      </div>
    {{/ url }}
 
    {{# description }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/textarea }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/textarea }}
+            {{> form/errors }}
+         </div>
+      </div>
    {{/ description }}
 
    {{# priority }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls priorite">
+            {{> form/input }}
+            {{> form/errors }}
+         </div>
+      </div>
    {{/ priority }}
 
    <div>
-      <input class="btn" type="submit" value="Enregistrer" />
+      <input class="btn button-right" type="submit" value="Enregistrer" />
    </div>
 </form>
 {{/ form }}
