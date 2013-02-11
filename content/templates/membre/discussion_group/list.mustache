@@ -20,9 +20,11 @@
             <div class="edit"></div>
          </a>
       {{/ modo? }}
-      <a href="{{ url }}" title="{{ description }}">
-         <div class="titre-espace">{{ name }}</div>
-      </a>
+      <div class="lien-espace">
+         <a href="{{ url }}" title="{{ description }}">
+            <div class="titre-espace">{{ name }}</div>
+         </a>
+      </div>
       {{> membre/discussion_group/_discussion_previews }}
       {{# remaining? }}
       <a href="{{ url }}" title="{{ description }}">

@@ -36,6 +36,10 @@
          }
       }
 
+      .lien-espace {
+         margin-right: 80px;
+      }
+
       .titre-espace {
          font-size: 28px;
          padding: 5px;
@@ -54,6 +58,13 @@
       .edit, .suppr {
          width: 24px;
          float: right;
+         display: none;
+      }
+
+      &:hover {
+         .edit, .suppr {
+            display: block;
+         }
       }
 
       .edit {
@@ -99,7 +110,7 @@
 
          .lien {
             margin-bottom: 2px;
-            max-width: 90%;
+            margin-right: 80px;
          }
 
          .icone {
@@ -122,6 +133,16 @@
          .titre-discussion {
             font-size: 20px;
             line-height: 32px;
+         }
+
+         .edit, .suppr {
+            display: none;
+         }
+
+         &:hover {
+            .edit, .suppr {
+               display: block;
+            }
          }
 
          .creation {
