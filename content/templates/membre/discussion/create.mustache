@@ -4,10 +4,12 @@
 <form {{{ attributes }}}>
 
    {{# name }}
-      {{> form/label }}
-      {{> form/errors }}
-      <div class="large">
-         {{> form/input }}
+      <div class="nom-discussion">
+         {{> form/label }}
+         {{> form/errors }}
+         <div class="large">
+            {{> form/input }}
+         </div>
       </div>
    {{/ name }}
 
@@ -19,7 +21,7 @@
       {{/ contents }}
    {{/ first_message }}
 
-   <input class="btn pull-right" type="submit" value="Enregistrer" />
+   <input class="btn pull-right valider" type="submit" value="Enregistrer" />
 
 </form>
 {{/ form }}
