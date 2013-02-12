@@ -17,6 +17,41 @@
          margin-bottom: 0px;
       }
 
+      .edit, .suppr {
+         width: 24px;
+         float: right;
+         display: none;
+      }
+
+      &:hover {
+         .edit, .suppr {
+            display: block;
+         }
+      }
+
+      .edit {
+         background-image: url(images/membre/discussion/edit.png);
+         height: 21px;
+         margin-top: 4px;
+
+         &:hover {
+            background-image: url(images/membre/discussion/edit-2.png);
+         }
+
+      }
+
+      .suppr {
+         background-image: url(images/membre/discussion/suppr.png);
+         height: 18px;
+         margin-top: 7px;
+         margin-left: 10px;
+
+         &:hover {
+            background-image: url(images/membre/discussion/suppr-2.png);
+         }
+
+      }
+
       .titre {
          font-size: 28px;
          font-weight: bold;

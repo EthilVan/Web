@@ -3,11 +3,15 @@
 {{# news }}
 <div class="newses">
    <div class="news {{ important_class }}">
-      <div class="titre">{{ title }}</div>
       {{# redacteur? }}
-         <a href="{{ edit_url }}">Editer</a>
-         <a class="need-confirmation" href="{{ delete_url }}">Supprimer</a>
+         <a class="need-confirmation" href="{{ delete_url }}">
+            <div class="suppr"></div>
+         </a>
+         <a href="{{ edit_url }}">
+            <div class="edit"></div>
+         </a>
       {{/ redacteur? }}
+      <div class="titre">{{ title }}</div>
       <div class="banner"><img src="{{ banner_url }}" /></div>
       <div class="contenu">{{{ contents }}}</div>
       <div class="creation">- Le {{ created }} par {{ author }} -</div>
