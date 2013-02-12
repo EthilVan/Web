@@ -83,7 +83,8 @@ module EthilVan::Skins
          end
 
          def left_arm(scale)
-            @image.crop_rescale(44, 20, 4, 12, scale)
+            @left_arm ||= {}
+            @left_arm[scale] ||= @image.crop_rescale(44, 20, 4, 12, scale)
          end
 
          def right_arm(scale)
@@ -91,7 +92,8 @@ module EthilVan::Skins
          end
 
          def left_leg(scale)
-            @image.crop_rescale(4, 20, 4, 12, scale)
+            @left_leg ||= {}
+            @left_leg[scale] ||= @image.crop_rescale(4, 20, 4, 12, scale)
          end
 
          def right_leg(scale)
