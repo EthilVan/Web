@@ -11,16 +11,16 @@ class EthilVan::App
    end
 
    get %r{/membre/@(#{Account::NAME})/editer$} do |name|
-      redirect "/membre/@#{name}/editer/generale"
+      redirect "/membre/@#{name}/editer/general"
    end
 
-   get %r{/membre/@(#{Account::NAME})/editer/generale$} do |name|
+   get %r{/membre/@(#{Account::NAME})/editer/general$} do |name|
       account = profil_edit_account name
       view Views::Member::Profil::Edit::Tabs.new account
       mustache 'membre/profil/edit/tabs'
    end
 
-   post %r{/membre/@(#{Account::NAME})/editer/generale$} do |name|
+   post %r{/membre/@(#{Account::NAME})/editer/general$} do |name|
       account = profil_edit_account name
 
       if account.profil.update_attributes params[:profil]

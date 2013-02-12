@@ -2,11 +2,11 @@ module EthilVan::App::Views
 
    module Member::Profil::Edit
 
-      class Generale < Partial
+      class General < Partial
 
          def initialize(account, params)
             @form = Form.new(account.profil,
-                  urls.profil_edit('generale', account))
+                  urls.profil_edit('general', account))
             @params = params
          end
 
@@ -19,7 +19,7 @@ module EthilVan::App::Views
          end
       end
 
-      class Generale::Form < EthilVan::Mustache::Form
+      class General::Form < EthilVan::Mustache::Form
 
          def initialize(profil, action)
             super(profil, action: action)

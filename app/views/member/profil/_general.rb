@@ -4,7 +4,7 @@ module EthilVan::App::Views
 
    module Member::Profil
 
-      class Generale < Partial
+      class General < Partial
 
          def initialize(account)
             @account = account
