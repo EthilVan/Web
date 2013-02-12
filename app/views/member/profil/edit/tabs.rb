@@ -7,8 +7,9 @@ module EthilVan::App::Views
       class Tabs < Page
 
          TABS = [
-            { id: 'general',     name: 'Général' },
-            { id: 'compte',      name: 'Compte'   },
+            { id: 'general',     name: 'Général'   },
+            { id: 'apparence',   name: 'Apparence' },
+            { id: 'compte',      name: 'Compte'    },
          ]
 
          def initialize(account, params = {})
@@ -35,6 +36,10 @@ module EthilVan::App::Views
 
          def tab_general
             General.new(@account, @params)
+         end
+
+         def tab_appearance
+            Appearance.new(@account, @params)
          end
 
          def tab_account

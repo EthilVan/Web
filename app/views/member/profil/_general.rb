@@ -25,7 +25,7 @@ module EthilVan::App::Views
          end
 
          def show_email?
-            modo?
+            modo? or @profil.show_email
          end
 
          def email

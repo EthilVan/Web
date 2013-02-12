@@ -49,13 +49,10 @@ class Profil < ActiveRecord::Base
    validates_format_of :twitter,  with: regexp, allow_blank: true
    validates_format_of :steam_id, with: regexp, allow_blank: true
 
-   validates_format_of :website,
-         with: /^#{URI::regexp(%w(http https))}$/,
-         allow_blank: true
-
-   validates_format_of :custom_cadre_url,
-         with: /^#{URI::regexp(%w(http https))}$/,
-         allow_blank: true
+   url_regexp = /^#{URI::regexp(%w(http https))}$/
+   validates_format_of :website,          with: url_regexp, allow_blank: true
+   validates_format_of :avatar,           with: url_regexp, allow_blank: true
+   validates_format_of :custom_cadre_url, with: url_regexp, allow_blank: true
 
    # ==========================================================================
    # * Callbacks and scope
@@ -77,7 +74,7 @@ class Profil < ActiveRecord::Base
    end
 
    def age
-     Time.at(Time.now - birthdate).year - 1970
+      Time.at(Time.now - birthdate).year - 1970
    end
 
    def head_url(scale = nil)
@@ -85,16 +82,15 @@ class Profil < ActiveRecord::Base
    end
 
    def avatar_url
-      return head_url(15) if avatar.nil?
-      return avatar
+      return head_url(15) if avatar.blank?
+      avatar
    end
 
+   DEFAULT_CADRE = EthilVan::Static::Helpers.asset(
+         'images/membre/profil/cadre.png')
    def cadre_url
-     if custom_cadre_url.present?
-         custom_cadre_url
-     else
-         EthilVan::Static::Helpers.asset 'images/membre/profil/cadre.png'
-     end
+      return DEFAULT_CADRE if custom_cadre_url.blank?
+      custom_cadre_url
    end
 
 private

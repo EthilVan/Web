@@ -7,6 +7,12 @@
 {{# form }}
 <form {{{ attributes }}}>
 
+   {{# show_email }}
+      {{> form/label }}
+      {{> form/errors }}
+      {{> form/checkbox }}
+   {{/ show_email }}
+
    {{# birthdate }}
       {{> form/label }}
       {{> form/errors }}

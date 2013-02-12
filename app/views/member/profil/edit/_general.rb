@@ -25,6 +25,10 @@ module EthilVan::App::Views
             super(profil, action: action)
          end
 
+         def show_email
+            checkbox :show_email
+         end
+
          def birthdate
             text :birthdate_formatted
          end
