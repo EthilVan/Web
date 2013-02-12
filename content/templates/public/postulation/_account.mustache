@@ -1,72 +1,92 @@
-{{# name }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/input }}
-   {{> form/hint }}
-</div>
-{{/ name }}
+<div class="form-horizontal">
 
-{{# minecraft_name }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/input }}
-   {{> form/hint }}
-</div>
-{{/ minecraft_name }}
+   {{# name }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/input }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ name }}
 
-{{# password }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/input }}
-   {{> form/hint }}
-</div>
-{{/ password }}
+   {{# minecraft_name }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/input }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ minecraft_name }}
 
-{{# password_confirmation }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/input }}
-   {{> form/hint }}
-</div>
-{{/ password_confirmation }}
+   {{# password }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/input }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ password }}
 
-{{# email }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/input }}
-   {{> form/hint }}
-</div>
-{{/ email }}
+   {{# password_confirmation }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/input }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ password_confirmation }}
 
-{{# birthdate }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/input }}
-   {{> form/hint }}
-</div>
-{{/ birthdate }}
+   {{# email }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/input }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ email }}
 
-{{# sexe }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/select }}
-   {{> form/hint }}
-</div>
-{{/ sexe }}
+   {{# birthdate }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/input }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ birthdate }}
 
-{{# rules_acceptance }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/checkbox }}
+   {{# sexe }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/select }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ sexe }}
+
+   {{# rules_acceptance }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/checkbox }}
+         {{> form/errors }}
+      </div>
+   </div>
+   {{/ rules_acceptance }}
+
 </div>
-{{/ rules_acceptance }}
 
 {{> public/postulation/_next }}
