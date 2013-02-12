@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Public::News
 
-      class Banners < Partial
+      class Images < Partial
 
          attr :private_icon
          attr :banners

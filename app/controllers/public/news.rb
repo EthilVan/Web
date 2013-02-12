@@ -20,14 +20,14 @@ class EthilVan::App
       Views::Public::News::Feed.new(newses).to_xml
    end
 
-   get '/news/banners' do
+   get %r{/news/(?:images|banners)$} do
       content_type 'text/plain'
       private_icon = request.url.gsub(request.path,
          EthilVan::Static::Helpers.asset('images/app/news/link.png'))
       banners = News.public_only.has_banner.pluck 'banner'
-      view Views::Public::News::Banners.new private_icon, banners
+      view Views::Public::News::Images.new private_icon, banners
       layout false
-      mustache 'public/news/banners'
+      mustache 'public/news/images'
    end
 
    protect %r{^/news/creer$}, EthilVan::Role::REDACTEUR
