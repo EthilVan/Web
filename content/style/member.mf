@@ -12,4 +12,5 @@ membre/discussion/message.less
 membre/discussion/form.less
 membre/cadre.less
 membre/profil/general.less
+membre/profil/messages.less
 membre/membres/list.less

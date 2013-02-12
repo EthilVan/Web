@@ -1,11 +1,11 @@
-<div class="messages" data-autofill data-autofill-param="msgpage">
+<div class="messages profil" data-autofill data-autofill-param="msgpage">
 {{# messages }}
 <div id="{{ anchor }}" class="message">
    <div class="message-discussion">
+      <div class="pull-right"> le {{ created }}</div>
       <a href="{{ view_url }}">{{ discussion_name }}</a>
-       le {{ created }}
    </div>
-   <div class="message-contents">
+   <div class="message-contenu">
       {{{ contents }}}
    </div>
 </div>
