@@ -37,20 +37,23 @@ function MDEditor(wrapper) {
       }
 
       this.updating = true;
+      this.$previewBtn.removeClass('mde-preview-error');
       this.$previewBtn.addClass('disabled');
       this.$spinner.spin(MDEditor.Utils.spinOptions());
 
-      var $mdeditor = this;
       $.ajax({
+         context: this,
          url: '/markdown',
          type: 'POST',
-         data: { content: $mdeditor.$input.val() },
-         success: function(data, status, xhr) {
-            $mdeditor.$preview.html(data);
-            $mdeditor.updating = false;
-            $mdeditor.$previewBtn.removeClass('disabled');
-            $mdeditor.$spinner.spin(false);
-         }
+         data: { content: this.$input.val() }
+      }).done(function(data) {
+         this.$preview.html(data);
+      }).fail(function() {
+         this.$previewBtn.addClass('mde-preview-error');
+      }).always(function() {
+         this.updating = false;
+         this.$previewBtn.removeClass('disabled');
+         this.$spinner.spin(false);
       });
    }
 
@@ -204,15 +207,12 @@ MDEditor.Utils = {
       if (utils[url]) {
          callback(utils[url]);
       } else {
-         $.ajax({
-            url: url,
-            success: function(raw_data, status, xhr) {
-               var data = $.map(raw_data, function(name, i) {
-                  return { 'name': name };
-               });
-               utils[url] = data;
-               callback(data);
-            }
+         $.ajax({ url: url }).done(function(raw_data) {
+            var data = $.map(raw_data, function(name, i) {
+               return { 'name': name };
+            });
+            utils[url] = data;
+            callback(data);
          });
       }
    },
