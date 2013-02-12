@@ -83,19 +83,19 @@ module EthilVan::Skins
          end
 
          def left_arm(scale)
-            right_arm(scale).flip_vertically
-         end
-
-         def right_arm(scale)
             @image.crop_rescale(44, 20, 4, 12, scale)
          end
 
+         def right_arm(scale)
+            left_arm(scale).flip_vertically
+         end
+
          def left_leg(scale)
-            right_leg(scale).flip_vertically
+            @image.crop_rescale(4, 20, 4, 12, scale)
          end
 
          def right_leg(scale)
-            @image.crop_rescale(4, 20, 4, 12, scale)
+            left_leg(scale).flip_vertically
          end
 
          def preview(scale)
