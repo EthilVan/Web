@@ -30,7 +30,9 @@ module EthilVan::App::Views
          end
 
          def birthdate
-            text :birthdate_formatted
+            text :birthdate_formatted, validations: {
+               datefr: true
+            }
          end
 
          def sexe
@@ -44,7 +46,9 @@ module EthilVan::App::Views
          end
 
          def minecraft_since
-            text :minecraft_since
+            text :minecraft_since, validations: {
+               minlength: 20
+            }
          end
 
          def skill
@@ -56,19 +60,27 @@ module EthilVan::App::Views
          end
 
          def website
-            text :website
+            text :website, validations: {
+               type: 'urlstrict'
+            }
          end
 
          def twitter
-            text :twitter
+            text :twitter, validations: {
+               nameformat: true
+            }
          end
 
          def youtube
-            text :youtube
+            text :youtube, validations: {
+               nameformat: true
+            }
          end
 
          def steam_id
-            text :steam_id
+            text :steam_id, validations: {
+               nameformat: true
+            }
          end
 
          def description

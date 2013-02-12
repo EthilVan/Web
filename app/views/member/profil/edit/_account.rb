@@ -11,7 +11,7 @@ module EthilVan::App::Views
             end
 
             def email
-               text :email
+               text :email, validations: { type: 'email' }
             end
 
             def password
@@ -19,7 +19,9 @@ module EthilVan::App::Views
             end
 
             def password_confirmation
-               password_f :password_confirmation
+               password_f :password_confirmation, validations: {
+                  equalTo: '#account_password',
+               }
             end
          end
 
