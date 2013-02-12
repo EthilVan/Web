@@ -37,7 +37,11 @@ class Discussion < ActiveRecord::Base
    # ==========================================================================
    # * Methods
    # ==========================================================================
-   attr_accessor :new_group_id
+   attr_writer :new_group_id
+
+   def new_group_id
+      @new_group_id || discussion_group_id
+   end
 
    def author
       first_message.account
