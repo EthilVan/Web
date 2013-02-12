@@ -56,7 +56,7 @@ module EthilVan::App::Views
       end
 
       def button_server_url
-         '/'
+         '/presentation'
       end
 
       def button_member_url
