@@ -1,40 +1,52 @@
-<form {{{ attributes }}}>
+<form class="form-horizontal formulaire news-edit" {{{ attributes }}}>
 
    {{# news_title }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
+   <div class="control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls large">
+         {{> form/input }}
+         {{> form/errors }}
+      </div>
+   </div>
    {{/ news_title }}
 
    {{# banner }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
+   <div class="control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls large">
+         {{> form/input }}
+         {{> form/errors }}
+      </div>
+   </div>
    {{/ banner }}
 
-   {{# summary }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/mdeditor }}
-   {{/ summary }}
-
-   {{# contents }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/mdeditor }}
-   {{/ contents }}
-
    {{# private }}
-      {{> form/errors }}
-      {{> form/checkbox }}
-      {{> form/label }}
+   <div class="control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/errors }}
+         {{> form/checkbox }}
+      </div>
+   </div>
    {{/ private }}
 
    {{# important }}
-      {{> form/errors }}
-      {{> form/checkbox }}
-      {{> form/label }}
+   <div class="control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/errors }}
+         {{> form/checkbox }}
+      </div>
+   </div>
    {{/ important }}
 
-   <input class="btn" type="submit" value="Poster" />
+   {{# summary }}
+      {{> public/news/_news_editor }}
+   {{/ summary }}
+
+   {{# contents }}
+      {{> public/news/_news_editor }}
+   {{/ contents }}
+
+   <input class="btn pull-right valider" type="submit" value="Poster" />
 </form
