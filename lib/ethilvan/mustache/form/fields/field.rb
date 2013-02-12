@@ -40,8 +40,12 @@ class EthilVan::Mustache::Form
          @fieldset.label_for @name
       end
 
+      def hint?
+         hint.present?
+      end
+
       def hint
-         @fieldset.l10n_for @name, :hint
+         @hint ||= @fieldset.l10n_for @name, :hint
       end
    end
 end
