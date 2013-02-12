@@ -1,5 +1,11 @@
 {{#title}}News{{/title}}
 
+{{# redacteur? }}
+<div class="align-right">
+      <a href="/news/creer">Créer une news</a>
+</div>
+{{/ redacteur? }}
+
 <div class="newses" data-autofill>
    {{# newses }}
    <div class="news {{ important_class }}">

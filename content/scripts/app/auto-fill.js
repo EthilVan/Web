@@ -40,7 +40,8 @@ $(function() {
                return;
             }
 
-            $container.append($(html).html());
+            $received = $('<div>' + html + '</div>');
+            $container.append($received.find('[data-autofill]').html());
             $(document).trigger('insert');
             isPageLoading = false;
          });
