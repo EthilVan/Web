@@ -2,7 +2,27 @@ require 'redcarpet'
 
 module EthilVan::Markdown::Helpers
 
-   class ToHTML < Redcarpet::Render::HTML
+   class RubyHTML < Redcarpet::Render::HTML
+
+      def self.image(link, title, alt)
+         img = "<img src=\"#{link}\""
+         img << " alt=\"#{alt}\"" if alt
+         img << " title=\"\#{title}\"" if title
+         img << "/>"
+         img
+      end
+
+      def self.override_image
+         return if RubyHTML.method_defined? :image
+         RubyHTML.class_eval(<<-OVERRIDDEN_IMAGE)
+            def image(link, title, alt)
+               self.class.image(link, title, alt)
+            end
+         OVERRIDDEN_IMAGE
+      end
+   end
+
+   class ToHTML < RubyHTML
 
       HtmlOptions = {
          filter_html:     true,
