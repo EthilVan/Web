@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module EthilVan::App::Views
 
    module Public::Postulation
@@ -32,13 +34,14 @@ module EthilVan::App::Views
          def name
             text :name, validations: {
                required: true,
-               regexp: "^#{Account::NAME}$",
+               nameformat: true,
             }
          end
 
          def minecraft_name
             text :minecraft_name, validations: {
                required: true,
+               nameformat: true,
             }
          end
 
@@ -64,7 +67,7 @@ module EthilVan::App::Views
 
          def birthdate
             text :birthdate_formatted, validations: {
-               regexp: '^(\d{2})\/(\d{2})\/(\d{4})$',
+               datefr: true,
             }
          end
 
@@ -145,7 +148,7 @@ module EthilVan::App::Views
 
          def rules_acceptance
             checkbox :rules_acceptance, validations: {
-               required: true,
+               acceptance: 'règlement',
             }
          end
       end

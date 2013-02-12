@@ -3,7 +3,6 @@ lib/jquery.a-tools.js
 lib/spin.js
 lib/spin.jquery.js
 lib/jquery.atwho.js
-lib/parsley.js
 lib/miniCount.js
 bootstrap/bootstrap-transition.js
 bootstrap/bootstrap-button.js
@@ -21,6 +20,7 @@ app/select.js
 app/auto-fill.js
 app/mdeditor.js
 app/confirmation.js
+app/parsley.custom.js
 app/parsley.js
 app/text-counter.js
 app/inline.js
