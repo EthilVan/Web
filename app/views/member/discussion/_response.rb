@@ -14,7 +14,7 @@ module EthilVan::App::Views
          end
 
          def response_url
-            "#{discussion_url}/repondre"
+            "#{discussion_url}/repondre/enplace"
          end
       end
    end
