@@ -11,60 +11,60 @@
    {{/ success }}
 
    <div class="profil-info general">
-      <div class="pseudo">
-         <span class="profil-label">Pseudo: </span>
+      <div class="info pseudo">
+         <span class="profil-label">Pseudo : </span>
          <span class="profil-valeur">{{ account_name }}</span>
       </div>
       {{# show_email? }}
-      <div class="pseudo">
-         <span class="profil-label">Email: </span>
+      <div class="info email">
+         <span class="profil-label">Email : </span>
          <span class="profil-valeur"><a href="mailto:{{ email }}">{{ email }}</a></span>
       </div>
      {{/ show_email? }}
-      <div class="rang">
-         <span class="profil-label">Rang: </span>
+      <div class="info rang">
+         <span class="profil-label">Rang : </span>
          <span class="profil-valeur">{{ role }}</span>
       </div>
-      <div class="since">
+      <div class="info since">
          <span class="profil-label">Ethil Vannien depuis : </span>
          <span class="profil-valeur">{{ since }}</span>
       </div>
-      <div class="last-visit">
+      <div class="info last-visit">
          <span class="profil-label">Dernière visite sur le site : </span>
          <span class="profil-valeur">{{ last_visit }}</span>
       </div>
-      <div class="last-minecraft-visit">
+      <div class="info last-minecraft-visit">
          <span class="profil-label">Dernière visite sur le serveur : </span>
          <span class="profil-valeur">{{ last_minecraft_visit }}</span>
       </div>
    </div>
 
    <div class="profil-info minecraft">
-      <div class="minecraft_since">
+      <div class="info minecraft_since">
          <span class="profil-label">Joue à Mineraft depuis : </span>
          <span class="profil-valeur">{{ minecraft_since }}</span>
       </div>
       {{# favorite_block? }}
-      <div class="favorite-block">
+      <div class="info favorite-block">
          <span class="profil-label">Cube favori : </span>
          <img class="icon" src="/favicon.png"> </img>
       </div>
       {{/ favorite_block? }}
       {{# favorite_item? }}
-      <div class="favorite-item">
+      <div class="info favorite-item">
          <span class="profil-label">Objet favori : </span>
          <img class="icon" src="/favicon.png"></img>
       </div>
       {{/ favorite_item? }}
       {{# skill? }}
-      <div class="skill">
+      <div class="info skill">
          <span class="profil-label">Compétences : </span>
          <span class="profil-valeur">{{ skill }}</span>
       </div>
       {{/ skill? }}
       {{# desc_rp? }}
-      <div class="desc-rp">
-         <span class="profil-label">Texte RP: </span>
+      <div class="info desc-rp">
+         <span class="profil-label">Texte RP : </span>
          <span class="profil-valeur">{{ desc_rp }}</span>
       </div>
       {{/ desc_rp? }}
@@ -72,19 +72,19 @@
 
    <div class="profil-info personnel">
       {{# age? }}
-      <div class="age">
+      <div class="info age">
          <span class="profil-label">Age : </span>
          <span class="profil-valeur">{{ age }} ans</span>
       </div>
       {{/ age? }}
       {{# sexe? }}
-      <div class="sexe">
+      <div class="info sexe">
          <span class="profil-label">Sexe : </span>
          <span class="profil-valeur">{{ sexe }}</span>
       </div>
       {{/ sexe? }}
       {{# localisation? }}
-      <div class="localisation">
+      <div class="info localisation">
          <span class="profil-label">Localisation : </span>
          <span class="profil-valeur">{{ localisation }}</span>
       </div>
@@ -93,31 +93,31 @@
 
    <div class="profil-info other">
       {{# website? }}
-      <div class="website">
+      <div class="info website">
          <span class="profil-label">Site Web : </span>
          <a href="{{ website }}">{{ website }}</a>
       </div>
       {{/ website? }}
       {{# twitter? }}
-      <div class="twitter">
+      <div class="info twitter">
          <span class="profil-label">Twitter : </span>
          <a href="http://twitter.com/{{ twitter }}">{{ twitter }}</a>
       </div>
       {{/ twitter? }}
       {{# youtube? }}
-      <div class="youtube">
+      <div class="info youtube">
           <span class="profil-label">Youtube : </span>
           <a href="http://youtube.com/{{ youtube }}">{{ youtube }}</a>
       </div>
       {{/ youtube? }}
       {{# steam_id? }}
-         <div class="steam_id">
+         <div class="info steam_id">
             <span class="profil-label">Pseudo Steam : </span>
             <span class="profil-valeur">{{ steam_id }}</span>
          </div>
       {{/ steam_id? }}
       {{# description? }}
-         <div class="description">
+         <div class="info description">
             <span class="profil-label">Description : </span>
             <span class="profil-valeur">{{ description }}</span>
          </div>

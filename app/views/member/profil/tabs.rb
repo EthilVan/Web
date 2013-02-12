@@ -7,7 +7,7 @@ module EthilVan::App::Views
       class Tabs < Page
 
          TABS = [
-            { id: 'generale',    name: 'Générale'    },
+            { id: 'generale',    name: 'Général'     },
             { id: 'postulation', name: 'Postulation' },
             { id: 'tags',        name: 'Tags'        },
             { id: 'messages',    name: 'Messages'    },

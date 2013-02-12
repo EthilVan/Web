@@ -11,4 +11,5 @@ membre/discussion/discussion.less
 membre/discussion/message.less
 membre/discussion/form.less
 membre/cadre.less
+membre/profil/general.less
 membre/membres/list.less
