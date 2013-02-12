@@ -1,3 +1,5 @@
+@import 'var.less';
+
 #subcontents {
 
    .nav-postulation-form {
@@ -5,28 +7,33 @@
    }
 
    #postulation-form {
+
       h3 {
          margin-top: 0px;
       }
 
-      .control-label {
-         width: 210px;
-      }
+      .control-group {
 
-      .controls {
-         margin-left: 230px;
-      }
+         .controls {
 
-      .field-postulation_sexe {
+            input {
+               float: left;
+            }
 
-         .btn.dropdown-toggle {
-            width: 188px;
          }
 
-         .dropdown-menu {
-            width: 215px;
-         }
+      }
 
+      .parsley-error-list {
+         color: @erreur;
+
+         li {
+            list-style-type: none;
+         }
+      }
+
+      .hint {
+         color: @gris-police;
       }
 
    }

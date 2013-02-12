@@ -11,5 +11,6 @@ public/presentation/equipe.less
 public/news/news.less
 public/news/news_edit.less
 public/postulation/postulation.less
+public/postulation/account.less
 public/contact/contact.less
 public/aide/mise_en_forme/emoji.less
