@@ -55,7 +55,9 @@
 {{# pending? }}
 <p>
    <strong>{{ agreements_count }}</strong>
-    approbation{{# agreements_plural? }}s{{/ agreements_plural? }} /
+    approbation{{# agreements_plural? }}s{{/ agreements_plural? }}
+    nécessaire{{# agreements_plural? }}s{{/ agreements_plural? }}
+    /
    <strong>{{ votes_needed }}</strong>
 </p>
 {{/ pending? }}

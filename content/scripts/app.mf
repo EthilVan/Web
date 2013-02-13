@@ -25,3 +25,4 @@ app/parsley.js
 app/text-counter.js
 app/inline.js
 app/postulation.js
+app/postulation-vote.js
