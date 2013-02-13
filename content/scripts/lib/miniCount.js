@@ -18,12 +18,15 @@ jQuery(function() {
       onValid: function() {},
       onInvalid: function() {}
     };
+
     state = '';
+
     patterns = {
-      character: /./g,
+      character: /(.|\n)/g,
       word: /\s|$/g,
       sentence: /(\S.+?[.!?])(?=\s+|$)/g
     };
+
     this.settings = {};
     this.$element = $(element);
     setState = function(_state) {
@@ -71,7 +74,8 @@ jQuery(function() {
     };
     this.count = function() {
       if (_this.$element.val().length > 0) {
-        return _this.$element.val().match(patterns[_this.getSetting('unit')]).length;
+        var match = _this.$element.val().match(patterns[_this.getSetting('unit')]);
+        return match == null ? 0 : match.length;
       } else {
         return 0;
       }
