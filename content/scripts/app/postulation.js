@@ -8,12 +8,14 @@ $(function() {
    var disableField = function(fieldContainer) {
       var field = fieldContainer.find('textarea, select');
       field.parsley('destroy');
+      field.attr('disabled', true);
       fieldContainer.slideUp(400);
    }
 
    var enableField = function(fieldContainer) {
       var field = fieldContainer.find('textarea, select');
       field.parsley();
+      field.attr('disabled', false);
       fieldContainer.slideDown(400);
    }
 
@@ -132,6 +134,22 @@ $(document).on('click', 'a[data-toggle="next-pill"]', function(event) {
    if ($active.size() < 1) {
       var $nextPill = $nav.find('li').first();
    } else {
+
+      var paneSelector = $active.find('a').attr('href');
+      var $pane = $(paneSelector)
+      $pane.find('input, textarea, select').each(function() {
+         var $field = $(this);
+         if ($field.is(':disabled')) {
+            return;
+         }
+
+         $field.parsley('validate');
+      });
+
+      if ($pane.find('.errors, .parsley-error-list').size() > 0) {
+         return;
+      }
+
       var $nextPill = $active.next();
    }
 
