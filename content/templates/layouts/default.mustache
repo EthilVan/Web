@@ -43,29 +43,31 @@
                </a>
                <div class="submenu_bg"></div>
                {{> layouts/submenu_server }}
-               {{> layouts/submenu_member }}
+               {{# logged_in? }}
+                  {{> layouts/submenu_member }}
+               {{/ logged_in? }}
             </div>
          </header>
 
          <div id="contents">
             {{# page_title? }}
-            <ul id="nav" class="page-tabs">
-               {{^ tabs? }}
-                  <li class="tab active">
-                     <div class="onglet">{{ page_title }}</div>
-                  </li>
-               {{/ tabs? }}
-               {{# tabs }}
-                  <li class="tab">
-                     <a href="{{ id }}" data-target="#{{ id }}"
-                           data-toggle="tab" data-title="{{ tab_title }}">
-                        <div class="onglet">{{ name }}</div>
-                     </a>
-                  </li>
-               {{/ tabs }}
-            </ul>
-            <div class="cleaner"></div>
+            {{# get_page_title }}
+               {{.}}
+            {{/ get_page_title }}
             {{/ page_title? }}
+            {{# page_tabs? }}
+            <ul id="nav" class="page-tabs">
+               {{# page_tabs }}
+               <li class="tab">
+                  <a href="{{ tab_name }}" data-target="#{{ tab_name }}"
+                        data-toggle="tab" data-title="{{ meta_tab_title }}">
+                     <div class="onglet">{{ get_tab_title }}</div>
+                  </a>
+               </li>
+               {{/ page_tabs }}
+            </ul>
+            {{/ page_tabs? }}
+            <div class="cleaner"></div>
             <div id="subcontents">
                {{{ yield }}}
                <div class="cleaner"></div>

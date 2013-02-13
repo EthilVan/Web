@@ -1,24 +1,23 @@
 <div class="tab-content">
-   <div id="general" class="tab-pane tab-pane-default">
-      {{# tab_general }}
+   {{# tab_general }}
+      {{# tab_title }}Général{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
          {{> membre/profil/_general }}
-      {{/ tab_general }}
-   </div>
-   {{# postulation? }}
-   <div id="postulation" class="tab-pane">
-      {{# tab_postulation }}
+      </div>
+   {{/ tab_general }}
+   {{# tab_postulation }}
+      <div id="{{ tab_name }}" class="tab-pane">
          {{> membre/profil/_postulation }}
-      {{/ tab_postulation }}
-   </div>
-   {{/ postulation? }}
-   <div id="tags" class="tab-pane">
-      {{# tab_tags }}
+      </div>
+   {{/ tab_postulation }}
+   {{# tab_tags }}
+      <div id="{{ tab_name }}" class="tab-pane">
          {{> membre/profil/_tags }}
-      {{/ tab_tags }}
-   </div>
-   <div id="messages" class="tab-pane">
-      {{# tab_messages }}
+      </div>
+   {{/ tab_tags }}
+   {{# tab_messages }}
+      <div id="{{ tab_name }}" class="tab-pane">
          {{> membre/profil/_messages }}
-      {{/ tab_messages }}
-   </div>
+      </div>
+   {{/ tab_messages }}
 </div>

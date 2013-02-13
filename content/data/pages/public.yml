@@ -1,82 +1,57 @@
 presentation:
-   titre: "Présentation"
    template: "public/presentation/tabs"
-   principal: "generale"
    onglets:
       generale:
-         nom: "Générale"
+         principal: true
       equipe:
-         nom: "Equipe"
          helpers: ["Public::Team"]
       dimensions:
-         nom: "Dimensions"
       partenaires:
-         nom: "Partenaires"
 
 apercu:
-   titre: "Aperçu"
    template: "public/apercu/tabs"
-   principal: "presentation"
    onglets:
       presentation:
-         nom: "Présentation"
+         principal: true
       images:
-         nom: "Images"
       videos:
-         nom: "Vidéos"
       cartes:
-         nom: "Cartes"
 
 reglement:
-   titre: "Règlement"
    template: "public/reglement/tabs"
-   principal: "general"
    onglets:
       general:
-         nom: "Général"
+         principal: true
       terres_sauvages:
-         nom: "Terres sauvages"
       trefonds:
-         nom: "Tréfonds"
       evasion:
-         nom: "Evasion"
 
 aide:
-   titre: "Aide"
    template: "public/aide/index"
 
 aide_nouveautes:
    url: "aide/nouveautes"
-   titre: ["Aide", "Nouveautés"]
    template: "public/aide/nouveautes/tabs"
-   principal: "crafts"
    onglets:
       crafts:
-         nom: "Crafts"
+         principal: true
       blocs:
-         nom: "Blocs"
       objets:
-         nom: "Objets"
 
 
 aide_screenshots:
    url: "aide/screenshots"
-   titre: ["Aide", "Screenshots"]
    template: "public/aide/screenshots"
 
 aide_teamspeak:
    url: "aide/teamspeak"
-   titre: ["Aide", "TeamSpeak"]
    template: "public/aide/teamspeak"
 
 aide_mise_en_forme:
    url: "aide/mise_en_forme"
-   titre: ["Aide", "Mise en forme"]
    template: "public/aide/mise_en_forme/tabs"
-   principal: "markdown"
    onglets:
       markdown:
-         nom: "Markdown"
+         principal: true
       emoji:
-         nom: "Emoticones"
          helpers: ['Help::Emoji']

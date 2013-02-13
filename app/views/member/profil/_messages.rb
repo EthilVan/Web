@@ -2,9 +2,10 @@ module EthilVan::App::Views
 
    module Member::Profil
 
-      class Messages < Partial
+      class Messages < PageTab
 
-         def initialize(account, messages)
+         def initialize(page, account, messages)
+            super(page, 'messages')
             @account = account
             @messages = messages
          end

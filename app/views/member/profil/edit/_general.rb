@@ -2,9 +2,10 @@ module EthilVan::App::Views
 
    module Member::Profil::Edit
 
-      class General < Partial
+      class General < PageTab
 
-         def initialize(account, params)
+         def initialize(page, account, params)
+            super(page, 'general')
             @form = Form.new(account.profil,
                   urls.profil_edit('general', account))
             @params = params

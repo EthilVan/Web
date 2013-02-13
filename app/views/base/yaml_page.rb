@@ -3,8 +3,8 @@ module EthilVan::App::Views
    module YamlHelpers
 
       def add_helpers(hash)
-         return unless hash.key? "helpers"
-         hash["helpers"].each do |helper|
+         return unless hash.key? 'helpers'
+         hash['helpers'].each do |helper|
             add_helper helper
          end
       end
@@ -22,47 +22,30 @@ module EthilVan::App::Views
 
       include YamlHelpers
 
-      attr_reader :url, :template, :tabs
+      attr_reader :yaml_url, :yaml_template
 
       def initialize(id, hash)
-         @url = '/' + (hash['url'] || id)
-         @template = hash['template']
-         @page_title = hash['titre']
-         @page_title = [ @page_title ] unless @page_title.is_a? Array
+         super()
+         @yaml_url = '/' + (hash['url'] || id)
+         @yaml_template = hash['template']
 
          add_helpers hash
 
          return unless hash.key? 'onglets'
-         @main_tab = @url + '/' + hash['principal']
          meta_class = (class << self; self; end)
-         @tabs = hash['onglets'].map do |id, hash|
-            tab = YamlTab.new(self, id, hash)
-            meta_class.send(:define_method, "tab_#{tab.id}") { tab }
+         @page_tabs = hash['onglets'].map do |id, hash|
+            tab = YamlPageTab.new(self, id, hash || {})
+            meta_class.send(:define_method, "tab_#{tab.tab_name}") { tab }
             tab
          end
       end
 
-      def tabs?
-         @tabs != nil
+      def yaml_tabs_url
+         %r{#{@yaml_url}/(#{@page_tabs.map(&:tab_url) * '|'})$}
       end
 
-      def main_tab_url
-         @main_tab
-      end
-   end
-
-   class YamlTab < EthilVan::Mustache::Partial
-
-      include YamlHelpers
-
-      attr_reader :id, :url, :name, :tab_title
-
-      def initialize(page, id, hash)
-         @id = id
-         @name = hash['nom']
-         @tab_title = @name + ' | ' + page.meta_page_title
-         @url = page.url + '/' + (hash['url'] || id)
-         add_helpers hash
+      def main_tab
+         @page_tabs.find &:principal?
       end
    end
 end

@@ -4,9 +4,10 @@ module EthilVan::App::Views
 
    module Member::Profil
 
-      class General < Partial
+      class General < PageTab
 
-         def initialize(account)
+         def initialize(page, account)
+            super(page, 'general')
             @account = account
             @profil = account.profil
             @minecraft_stats = account.minecraft_stats

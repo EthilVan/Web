@@ -1,19 +1,22 @@
 <a href="../general">← Retour au profil</a>
 
 <div class="tab-content">
-   <div id="general" class="tab-pane tab-pane-default">
-      {{# tab_general }}
+   {{# tab_general }}
+      {{# tab_title }}Général{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane tab-pane-default">
          {{> membre/profil/edit/_general }}
-      {{/ tab_general }}
-   </div>
-   <div id="apparence" class="tab-pane">
-      {{# tab_appearance }}
+      </div>
+   {{/ tab_general }}
+   {{# tab_appearance }}
+      {{# tab_title }}Apparence{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
          {{> membre/profil/edit/_appearance }}
-      {{/ tab_appearance }}
-   </div>
-   <div id="compte" class="tab-pane">
-      {{# tab_account }}
+      </div>
+   {{/ tab_appearance }}
+   {{# tab_account }}
+      {{# tab_title }}Compte{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
          {{> membre/profil/edit/_account }}
-      {{/ tab_account }}
-   </div>
+      </div>
+   {{/ tab_account }}
 </div>

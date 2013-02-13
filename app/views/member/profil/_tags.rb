@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Member::Profil
 
-      class Tags < Partial
+      class Tags < PageTab
 
          class Form < EthilVan::Mustache::Form
 
@@ -22,7 +22,8 @@ module EthilVan::App::Views
             end
          end
 
-         def initialize(account, new_tag)
+         def initialize(page, account, new_tag)
+            super(page, 'tags')
             unless new_tag.nil?
                @form = Form.new new_tag, urls.profil('tags', account)
             end

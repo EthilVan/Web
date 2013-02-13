@@ -1,14 +1,26 @@
+{{# page_title }}Aperçu{{/ page_title }}
+
 <div class="tab-content">
-   <div id="presentation" class="tab-pane tab-pane-default">
-      {{> public/apercu/_presentation}}
-   </div>
-   <div id="images" class="tab-pane">
-      {{> public/apercu/_images}}
-   </div>
-   <div id="videos" class="tab-pane">
-      {{> public/apercu/_videos}}
-   </div>
-   <div id="cartes" class="tab-pane">
-      {{> public/apercu/_cartes}}
-   </div>
+   {{# tab_presentation }}
+      {{# tab_title }}Présentation{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/apercu/_presentation }}
+      </div>
+   {{/ tab_presentation }}
+   {{# tab_images }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/apercu/_images }}
+      </div>
+   {{/ tab_images }}
+   {{# tab_videos }}
+      {{# tab_title }}Vidéos{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/apercu/_videos }}
+      </div>
+   {{/ tab_videos }}
+   {{# tab_cartes }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/apercu/_cartes }}
+      </div>
+   {{/ tab_cartes }}
 </div>

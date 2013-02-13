@@ -1,14 +1,27 @@
+{{# page_title }}Règlement{{/ page_title }}
+
 <div class="tab-content">
-  <div id="general" class="tab-pane tab-pane-default">
-    {{> public/reglement/_general}}
-  </div>
-  <div id="terres_sauvages" class="tab-pane">
-    {{> public/reglement/_terres_sauvages}}
-  </div>
-  <div id="trefonds" class="tab-pane">
-    {{> public/reglement/_trefonds}}
-  </div>
-  <div id="evasion" class="tab-pane">
-    {{> public/reglement/_evasion}}
-  </div>
+   {{# tab_general }}
+      {{# tab_title }}Général{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/reglement/_general}}
+      </div>
+   {{/ tab_general }}
+   {{# tab_terres_sauvages }}
+      {{# tab_title }}Terres Sauvages{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/reglement/_terres_sauvages}}
+      </div>
+   {{/ tab_terres_sauvages }}
+   {{# tab_trefonds }}
+      {{# tab_title }}Tréfonds{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/reglement/_trefonds}}
+      </div>
+   {{/ tab_trefonds }}
+   {{# tab_evasion }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/reglement/_evasion}}
+      </div>
+   {{/ tab_evasion }}
 </div>

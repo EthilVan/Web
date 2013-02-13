@@ -26,6 +26,10 @@ module EthilVan::App::Views
          @app.guest?
       end
 
+      def current?(account)
+         @app.current_account.id == account.id
+      end
+
       def has_role?(role)
          @app.current_account.role.inherit?(role)
       end

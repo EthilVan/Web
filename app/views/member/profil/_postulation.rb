@@ -2,9 +2,10 @@ module EthilVan::App::Views
 
    module Member::Profil
 
-      class Postulation < Partial
+      class Postulation < PageTab
 
-         def initialize(postulation)
+         def initialize(page, postulation)
+            super(page, 'postulation')
             @postulation = postulation
          end
 

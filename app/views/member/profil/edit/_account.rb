@@ -2,7 +2,7 @@ module EthilVan::App::Views
 
    module Member::Profil::Edit
 
-      class Account < Partial
+      class Account < PageTab
 
          class Form < EthilVan::Mustache::Form
 
@@ -25,7 +25,8 @@ module EthilVan::App::Views
             end
          end
 
-         def initialize(account, params)
+         def initialize(page, account, params)
+            super(page, 'compte')
             @form = Form.new(account, urls.profil_edit('compte', account))
             @params = params
          end

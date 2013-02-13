@@ -1,10 +1,15 @@
+{{# page_title }}Mise en Forme{{/ page_title }}
+
 <div class="tab-content">
-   <div id="markdown" class="tab-pane tab-pane-default">
-      {{> public/aide/mise_en_forme/_markdown}}
-   </div>
-   <div id="emoji" class="tab-pane">
-      {{#tab_emoji}}
-         {{> public/aide/mise_en_forme/_emoji}}
-      {{/tab_emoji}}
-   </div>
+   {{# tab_markdown }}
+      <div id="{{ name }}" class="tab-pane tab-pane-default">
+         {{> public/aide/mise_en_forme/_markdown }}
+      </div>
+   {{/ tab_markdown }}
+   {{# tab_emoji }}
+      {{# tab_title }}Emojis{{/ tab_title }}
+      <div id="{{ name }}" class="tab-pane">
+         {{> public/aide/mise_en_forme/_emoji }}
+      </div>
+   {{/ tab_emoji }}
 </div>

@@ -5,36 +5,50 @@ module EthilVan::App::Views
       STYLESHEET = EthilVan::Static::Helpers.asset 'app.css'
       JAVASCRIPT = EthilVan::Static::Helpers.asset 'app.js'
 
-      def page_title?
-         true
+      def page_title
+         lambda do |text|
+            @page_title = text.split(',')
+            nil
+         end
       end
 
-      def page_title
-         return 'Ethil Van' if @page_title.blank?
-         @page_title * ' - '
+      def _page_title
+         @page_title ||= []
+      end
+
+      def page_title?
+         _page_title.present?
+      end
+
+      def get_page_title
+         _page_title
       end
 
       def meta_page_title
-         return 'Ethil Van' if @page_title.blank?
-         @page_title.reverse * ' | ' + ' | Ethil Van'
+         [*_page_title.reverse, 'Ethil Van'] * ' | '
       end
 
-      def title(text)
-         @page_title = text.split(',')
-         nil
+      def page_description
+         lambda do |text|
+            @page_description = text
+            nil
+         end
       end
 
       def page_description?
-         !@page_description.nil?
+         @page_description.present?
       end
 
       def get_page_description
          @page_description
       end
 
-      def page_description(text)
-         @page_description = text
-         nil
+      def page_tabs?
+         page_tabs.present?
+      end
+
+      def page_tabs
+         @page_tabs ||= []
       end
 
       def stylesheet

@@ -1,29 +1,27 @@
 class EthilVan::App < Sinatra::Base
 
    def self.define_simple_page(page)
-      get page.url do
+      get page.yaml_url do
          view page
-         mustache page.template
+         mustache page.yaml_template
       end
    end
 
    def self.define_page_with_tabs(page)
-      get page.url do
-         redirect page.main_tab_url
+      get page.yaml_url do
+         redirect page.main_tab.tab_complete_url
       end
 
-      page.tabs.each do |tab|
-         get tab.url do
-            view page
-            mustache page.template
-         end
+      get page.yaml_tabs_url do |tab|
+         view page
+         mustache page.yaml_template
       end
    end
 
    EthilVan.load_datas('pages').each do |data|
        data.each do |id, hash|
          yaml_page = Views::YamlPage.new(id, hash)
-         if yaml_page.tabs?
+         if yaml_page.page_tabs?
             define_page_with_tabs yaml_page
          else
             define_simple_page yaml_page

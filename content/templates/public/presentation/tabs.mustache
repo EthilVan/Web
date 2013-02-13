@@ -1,16 +1,25 @@
+{{# page_title }}Présentation{{/ page_title }}
+
 <div class="tab-content">
-  <div id="generale" class="tab-pane tab-pane-default">
-    {{> public/presentation/_generale}}
-  </div>
-  <div id="equipe" class="equipe tab-pane">
-    {{#tab_equipe}}
-      {{> public/presentation/_equipe}}
-    {{/tab_equipe}}
-  </div>
-  <div id="dimensions" class="tab-pane">
-    {{> public/presentation/_dimensions}}
-  </div>
-  <div id="partenaires" class="tab-pane">
-    {{> public/presentation/_partenaires}}
-  </div>
+   {{# tab_generale }}
+      {{# tab_title }}Générale{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/presentation/_generale }}
+      </div>
+   {{/ tab_generale }}
+   {{# tab_equipe }}
+      <div id="{{ tab_name }}" class="equipe tab-pane">
+         {{> public/presentation/_equipe }}
+      </div>
+   {{/ tab_equipe }}
+   {{# tab_dimensions }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/presentation/_dimensions }}
+      </div>
+   {{/ tab_dimensions }}
+   {{# tab_partenaires }}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/presentation/_partenaires }}
+      </div>
+   {{/ tab_partenaires }}
 </div>

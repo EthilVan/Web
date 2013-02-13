@@ -1,49 +1,41 @@
-# encoding: utf-8
-
 module EthilVan::App::Views
 
    module Member::Profil::Edit
 
       class Tabs < Page
 
-         TABS = [
-            { id: 'general',     name: 'Général'   },
-            { id: 'apparence',   name: 'Apparence' },
-            { id: 'compte',      name: 'Compte'    },
-         ]
-
          def initialize(account, params = {})
             @account = account
-            @params = params
+            @tab_general = General.new(self, account, params)
+            @tab_appearance = Appearance.new(self, account, params)
+            @tab_account = Account.new(self, account, params)
          end
 
-         def meta_page_title
-            "Edition | @#{@account.name} | Ethil Van"
+         def _page_title
+            @page_title ||= [
+               current?(@account) ? 'Profil' : '@' + @account.name,
+               'Edition'
+            ]
          end
 
-         def tabs?
-            true
-         end
-
-         def tabs
-            base_title = meta_page_title
-            TABS.map do |tab_proto|
-               tab = tab_proto.clone
-               tab[:tab_title] = tab[:name] + ' | ' + base_title
-               tab
-            end
+         def page_tabs
+            @page_tabs ||= [
+               @tab_general,
+               @tab_appearance,
+               @tab_account,
+            ]
          end
 
          def tab_general
-            General.new(@account, @params)
+            @tab_general
          end
 
          def tab_appearance
-            Appearance.new(@account, @params)
+            @tab_appearance
          end
 
          def tab_account
-            Account.new(@account, @params)
+            @tab_account
          end
       end
    end
