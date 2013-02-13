@@ -11,12 +11,14 @@
       </div>
    {{/ tab_postulation }}
    {{# tab_tags }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane"
+            data-autofill="tags" data-autofill-param="tagspage">
          {{> membre/profil/_tags }}
       </div>
    {{/ tab_tags }}
    {{# tab_messages }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane"
+            data-autofill="messages" data-autofill-param="msgpage">
          {{> membre/profil/_messages }}
       </div>
    {{/ tab_messages }}

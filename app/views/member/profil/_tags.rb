@@ -22,12 +22,12 @@ module EthilVan::App::Views
             end
          end
 
-         def initialize(page, account, new_tag)
+         def initialize(page, account, new_tag, tags)
             super(page, 'tags')
             unless new_tag.nil?
                @form = Form.new new_tag, urls.profil('tags', account)
             end
-            @tags = account.profil_tags
+            @tags = tags
          end
 
          def form

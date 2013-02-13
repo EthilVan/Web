@@ -1,3 +1,4 @@
+{{^ xhr? }}
 {{# form }}
 <form class="form-tag" {{{ attributes }}}>
 
@@ -14,8 +15,11 @@
    <div class="cleaner"></div>
 </form>
 {{/ form }}
+{{/ xhr? }}
 
 {{# tags? }}
+   <div class="tags-list"
+         data-autofill-target=".tags-list[data-autofill-target]">
    {{# tags }}
       <div class="tag">
          <div class="tagger">
@@ -29,4 +33,5 @@
          </blockquote>
       </div>
    {{/ tags }}
+   </div>
 {{/ tags? }}

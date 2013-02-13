@@ -4,12 +4,12 @@ module EthilVan::App::Views
 
       class Tabs < Page
 
-         def initialize(account, new_tag, messages)
+         def initialize(account, new_tag, tags, messages)
             @account = account
-            @tab_general = General.new(self, account)
+            @tab_general     = General.new(    self, account)
             @tab_postulation = Postulation.new(self, account.postulation)
-            @tab_tags = Tags.new(self, account, new_tag)
-            @tab_messages = Messages.new(self, account, messages)
+            @tab_tags        = Tags.new(       self, account, new_tag, tags)
+            @tab_messages    = Messages.new(   self, account, messages)
          end
 
          def _page_title
