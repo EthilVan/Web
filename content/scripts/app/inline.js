@@ -82,6 +82,7 @@ $(document).on('click.ethilvan.remove', '[data-remove-target]', function (event)
 
    bootbox.confirm("Etes vous sûr ?", "Annuler", "Confirmer", function(result) {
       if (!result) {
+         inline.after();
          return;
       }
 
