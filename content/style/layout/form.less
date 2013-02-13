@@ -13,6 +13,24 @@
       margin-left: 14px;
    }
 
+   .btn {
+      .buttonBackground(@formulaire-1, @formulaire-2);
+      color: @gris-form;
+   }
+
+   .btn.pull-right.valider {
+      margin-right: 10px;
+   }
+
+   .dropdown-toggle {
+      color: @gris-form;
+      font-weight: normal;
+
+      .caret {
+         border-top-color: @gris-form;
+      }
+   }
+
    .dropdown-menu {
       #gradient .vertical(@formulaire-1, @formulaire-2);
       border: solid black 1px;
@@ -106,19 +124,6 @@
 .btn {
    .buttonBackground(@formulaire-1, @formulaire-2);
    color: @gris-form;
-}
-
-.btn.pull-right.valider {
-   margin-right: 10px;
-}
-
-.dropdown-toggle {
-   color: @gris-form;
-   font-weight: normal;
-
-   .caret {
-      border-top-color: @gris-form;
-   }
 }
 
 .bootbox, .modal, .modal-body, .modal-footer {
