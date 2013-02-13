@@ -34,12 +34,16 @@ module EthilVan::App::Views
          end
 
          def screens
-            @postulation.screens.map { |s| {
-               url: s.url,
-               description: s.description,
-               width: s.width,
-               height: s.height,
-            } }
+            first = true
+            @postulation.screens.each_with_index.map do |s, i|
+               {
+                  first?: i == 0,
+                  url: s.url,
+                  description: s.description,
+                  width: s.width,
+                  height: s.height,
+               }
+            end
          end
 
          def availability

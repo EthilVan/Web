@@ -19,7 +19,7 @@
 <div id="Carousel-Postu" class="carousel slide">
    <div class="carousel-inner">
       {{# screens }}
-         <div class="item">
+         <div class="item {{# first? }}active{{/ first? }}">
             <a href="{{ url }}" target="_blank">
                <img src="{{ url }}">
             </a>
