@@ -1,5 +1,5 @@
 {{# form }}
-<form {{{ attributes }}}>
+<form class="form-tag" {{{ attributes }}}>
 
    {{# tagger }}{{> form/errors }}{{/ tagger }}
 
@@ -10,16 +10,23 @@
    {{/ contents }}
    </div>
 
-   <input class="btn" type="submit" value="Poster" />
+   <input class="btn pull-right" type="submit" value="Poster" />
+   <div class="cleaner"></div>
 </form>
 {{/ form }}
 
 {{# tags? }}
    {{# tags }}
       <div class="tag">
-         <p>Par {{ tagger }} :</p>
-         <p>{{ contents }}</p>
-         <p>Le {{ date }}</p>
+         <div class="tagger">
+            <a href="/membre/@{{ tagger }}">
+               <img class="avatar" src="http://secure.gravatar.com/avatar/5ea008d0ce55c3f9c8f3c1954b8f90f1?s=120">
+            </a>
+            <span class="infos">{{ tagger }} le {{ date }}</span>
+         </div>
+         <blockquote>
+            <p>{{ contents }}</p>
+         </blockquote>
       </div>
    {{/ tags }}
 {{/ tags? }}
