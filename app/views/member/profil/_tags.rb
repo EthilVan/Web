@@ -39,11 +39,16 @@ module EthilVan::App::Views
          end
 
          def tags
-            @tags.map { |tag| {
-               contents: tag.contents,
-               tagger: tag.tagger.name,
-               date: I18n.l(tag.created_at)
-            } }
+            @tags.map do |tag|
+               tagger = tag.tagger
+               {
+                  contents: tag.contents,
+                  tagger: tagger.name,
+                  tagger_url: urls.profil(tagger),
+                  tagger_avatar: tagger.profil.avatar_url,
+                  date: I18n.l(tag.created_at)
+               }
+            end
          end
       end
    end

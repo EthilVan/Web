@@ -19,8 +19,8 @@
    {{# tags }}
       <div class="tag">
          <div class="tagger">
-            <a href="/membre/@{{ tagger }}">
-               <img class="avatar" src="http://secure.gravatar.com/avatar/5ea008d0ce55c3f9c8f3c1954b8f90f1?s=120">
+            <a href="{{ tagger_url }}">
+               <img class="avatar" src="{{ tagger_avatar }}">
             </a>
             <span class="infos">{{ tagger }} le {{ date }}</span>
          </div>
