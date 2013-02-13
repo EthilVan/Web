@@ -1,37 +1,49 @@
-{{# availability }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/textarea_counter }}
-   {{> form/hint }}
-</div>
-{{/ availability }}
+<div class="form-horizontal largeur-textarea">
 
-{{# microphone }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/checkbox }}
-   {{> form/hint }}
-</div>
-{{/ microphone }}
+   {{# availability }}
+      <div class="field-{{ field_id }} control-group">
+         <div class="control-label compteur">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/textarea_counter }}
+            {{> form/errors }}
+            {{> form/hint }}
+         </div>
+      </div>
+   {{/ availability }}
 
-{{# mumble }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/select }}
-   {{> form/hint }}
-</div>
-{{/ mumble }}
+   {{# microphone }}
+      <div class="field-{{ field_id }} control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/checkbox }}
+            {{> form/errors }}
+            {{> form/hint }}
+         </div>
+      </div>
+   {{/ microphone }}
 
-{{# mumble_other }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/textarea_counter }}
-   {{> form/hint }}
+   {{# mumble }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/select }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ mumble }}
+
+   {{# mumble_other }}
+      <div class="field-{{ field_id }} control-group">
+         <div class="control-label compteur">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/textarea_counter }}
+            {{> form/errors }}
+            {{> form/hint }}
+         </div>
+      </div>
+   {{/ mumble_other }}
+
 </div>
-{{/ mumble_other }}
 
 {{> public/postulation/_next }}

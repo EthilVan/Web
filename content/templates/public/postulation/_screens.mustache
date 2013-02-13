@@ -5,49 +5,63 @@
       {{# template }}
       <fieldset class="field-screen-template" disabled style="display: none;">
          <h4>Screenshot {{ index }}</h4>
-         {{# url }}
-         <div>
-            {{> form/errors }}
-            {{> form/label }}
-            {{> form/input }}
-            {{> form/hint }}
+         <a href="#" class="btn remove-screen" >Supprimer</a>
+         <div class="cleaner"></div>
+         <div class="form-horizontal largeur-textarea">
+            {{# url }}
+               <div class="control-group">
+                  <div class="control-label">{{> form/label }}</div>
+                  <div class="controls">
+                     {{> form/input }}
+                     {{> form/errors }}
+                     {{> form/hint }}
+                  </div>
+               </div>
+            {{/ url }}
+            {{# description }}
+               <div class="control-group">
+                  <div class="control-label compteur">{{> form/label }}</div>
+                  <div class="controls">
+                     {{> form/textarea_counter }}
+                     {{> form/errors }}
+                     {{> form/hint }}
+                  </div>
+               </div>
+            {{/ description }}
          </div>
-         {{/ url }}
-         {{# description }}
-         <div>
-            {{> form/errors }}
-            {{> form/label }}
-            {{> form/textarea_counter }}
-            {{> form/hint }}
-         </div>
-         {{/ description }}
-         <a href="#" class="btn remove-screen" >-</a>
       </fieldset>
       {{/ template }}
       {{# values }}
       <fieldset class="field-screen">
          <h4>Screenshot {{ index }}</h4>
-         {{# url }}
-         <div>
-            {{> form/errors }}
-            {{> form/label }}
-            {{> form/input }}
-            {{> form/hint }}
-         </div>
-         {{/ url }}
-         {{# description }}
-         <div>
-            {{> form/errors }}
-            {{> form/label }}
-            {{> form/textarea_counter }}
-            {{> form/hint }}
-         </div>
+         <a href="#" class="btn remove-screen" >Supprimer</a>
+         <div class="cleaner"></div>
+         <div class="form-horizontal largeur-textarea">
+            {{# url }}
+            <div class="control-group">
+               <div class="control-label">{{> form/label }}</div>
+               <div class="controls">
+                  {{> form/input }}
+                  {{> form/errors }}
+                  {{> form/hint }}
+               </div>
+            </div>
+            {{/ url }}
+            {{# description }}
+            <div class="control-group">
+               <div class="control-label compteur">{{> form/label }}</div>
+               <div class="controls">
+                  {{> form/textarea_counter }}
+                  {{> form/errors }}
+                  {{> form/hint }}
+               </div>
+            </div>
          {{/ description }}
-         <a href="#" class="btn remove-screen" >-</a>
+         </div>
       </fieldset>
       {{/ values }}
    {{/ screens }}
-   <a href="#" class="btn add-screen">+</a>
+   <a href="#" class="btn add-screen">Ajouter un screenshot</a>
 </div>
 
 {{> public/postulation/_next }}

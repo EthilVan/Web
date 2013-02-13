@@ -1,19 +1,27 @@
-{{# ethilvan_discovered }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/textarea_counter }}
-   {{> form/hint }}
-</div>
-{{/ ethilvan_discovered }}
+<div class="form-horizontal largeur-textarea">
 
-{{# ethilvan_reason }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/textarea_counter }}
-   {{> form/hint }}
+   {{# ethilvan_discovered }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label compteur">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/textarea_counter }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ ethilvan_discovered }}
+
+   {{# ethilvan_reason }}
+   <div class="field-{{ field_id }} control-group">
+      <div class="control-label compteur">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/textarea_counter }}
+         {{> form/errors }}
+         {{> form/hint }}
+      </div>
+   </div>
+   {{/ ethilvan_reason }}
+
 </div>
-{{/ ethilvan_reason }}
 
 {{> public/postulation/_next }}

@@ -12,16 +12,105 @@
          margin-top: 0px;
       }
 
-      .control-group {
+      .form-horizontal {
 
-         .controls {
+         .control-group {
 
-            input {
-               float: left;
+            .control-label {
+               width: 210px;
+
+               &.compteur {
+                  margin-top: 16px;
+               }
+            }
+
+            .controls {
+               margin-left: 230px;
+
+               input, textarea , .bootstrap-select {
+                  float: left;
+                  margin-right: 16px;
+               }
+
+               textarea {
+                  width: 300px;
+               }
+
+               &.monoligne {
+
+                  .hint {
+                     line-height: 30px;
+                  }
+
+               }
+
             }
 
          }
 
+         &.largeur-input {
+
+            .control-group {
+
+               .controls {
+
+                  .parsley-error-list,
+                  .hint {
+                     margin-left: 240px;
+                  }
+
+                  .btn.dropdown-toggle {
+                     width: 188px;
+                  }
+
+                  .dropdown-menu {
+                     width: 215px;
+                  }
+
+               }
+
+            }
+
+         }
+
+         &.largeur-textarea {
+
+            .control-group {
+
+               .controls {
+
+                  input[type="text"] {
+                     width: 300px;
+                  }
+
+                  .parsley-error-list,
+                  .hint {
+                     margin-left: 330px;
+                  }
+
+                  .btn.dropdown-toggle {
+                     width: 284px;
+                  }
+
+                  .dropdown-menu {
+                     width: 311px;
+                  }
+
+               }
+
+            }
+
+         }
+
+      }
+
+      .text-counter {
+         margin-left: 6px;
+         margin-bottom: 2px;
+
+         &.text-counter-invalid {
+            color: @erreur;
+         }
       }
 
       .parsley-error-list {
@@ -34,6 +123,68 @@
 
       .hint {
          color: @gris-police;
+      }
+
+      .field-postulation_screens {
+
+         h4 {
+            margin-top: 0px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            margin-left: 235px;
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 24px;
+            float: left;
+
+         }
+
+         .btn.remove-screen {
+            font-size: 12px;
+            font-weight: normal;
+            padding: 1px 8px;
+         }
+
+         .field-screen {
+            margin-bottom: 40px;
+         }
+
+         .btn.add-screen {
+            margin-left: 235px;
+         }
+
+      }
+
+      .field-postulation_microphone {
+
+         label {
+            margin-left: 10px;
+         }
+
+      }
+
+      .field-postulation_mumble {
+
+         .controls {
+            margin-top: 10px;
+         }
+
+      }
+
+      .field-postulation_free_text {
+         margin-bottom: 20px;
+
+         textarea {
+            width: 530px;
+            max-width: 530px;
+            margin-right: 16px;
+            float: left;
+         }
+
+         .hint {
+            margin-left: 560px;
+         }
+
       }
 
    }

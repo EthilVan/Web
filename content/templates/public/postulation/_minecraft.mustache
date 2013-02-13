@@ -1,37 +1,49 @@
-{{# minecraft_since }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/textarea_counter }}
-   {{> form/hint }}
-</div>
-{{/ minecraft_since }}
+<div class="form-horizontal largeur-textarea">
 
-{{# multi_minecraft }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/checkbox }}
-   {{> form/hint }}
-</div>
-{{/ multi_minecraft }}
+   {{# minecraft_since }}
+      <div class="field-{{ field_id }} control-group">
+         <div class="control-label compteur">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/textarea_counter }}
+            {{> form/errors }}
+            {{> form/hint }}
+         </div>
+      </div>
+   {{/ minecraft_since }}
 
-{{# old_server }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/textarea_counter }}
-   {{> form/hint }}
-</div>
-{{/ old_server }}
+   {{# multi_minecraft }}
+      <div class="field-{{ field_id }} control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/checkbox }}
+            {{> form/errors }}
+            {{> form/hint }}
+         </div>
+      </div>
+   {{/ multi_minecraft }}
 
-{{# old_server_reason }}
-<div class="field-{{ field_id }}">
-   {{> form/errors }}
-   {{> form/label }}
-   {{> form/textarea_counter }}
-   {{> form/hint }}
+   {{# old_server }}
+      <div class="field-{{ field_id }} control-group">
+         <div class="control-label compteur">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/textarea_counter }}
+            {{> form/errors }}
+            {{> form/hint }}
+         </div>
+      </div>
+   {{/ old_server }}
+
+   {{# old_server_reason }}
+      <div class="field-{{ field_id }} control-group">
+         <div class="control-label compteur">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/textarea_counter }}
+            {{> form/errors }}
+            {{> form/hint }}
+         </div>
+      </div>
+   {{/ old_server_reason }}
+
 </div>
-{{/ old_server_reason }}
 
 {{> public/postulation/_next }}
