@@ -9,24 +9,6 @@
       font-weight: bold;
    }
 
-   .btn {
-      .buttonBackground(@formulaire-1, @formulaire-2);
-      color: @gris-form;
-   }
-
-   .btn.pull-right.valider {
-      margin-right: 10px;
-   }
-
-   .dropdown-toggle {
-      color: @gris-form;
-      font-weight: normal;
-
-      .caret {
-         border-top-color: @gris-form;
-      }
-   }
-
    .bootstrap-select .dropdown-toggle .caret {
       margin-left: 14px;
    }
@@ -118,4 +100,33 @@
 
    }
 
+}
+
+
+.btn {
+   .buttonBackground(@formulaire-1, @formulaire-2);
+   color: @gris-form;
+}
+
+.btn.pull-right.valider {
+   margin-right: 10px;
+}
+
+.dropdown-toggle {
+   color: @gris-form;
+   font-weight: normal;
+
+   .caret {
+      border-top-color: @gris-form;
+   }
+}
+
+.bootbox, .modal, .modal-body, .modal-footer {
+   background-color: @gris-colonne;
+   color: @gris-police;
+}
+
+.modal-footer {
+   border: none;
+   box-shadow: none;
 }
