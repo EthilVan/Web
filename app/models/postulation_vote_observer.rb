@@ -18,4 +18,5 @@ class PostulationVoteObserver < ActiveRecord::Observer
    end
 end
 
-ActiveRecord::Base.add_observer PostulationVoteObserver.instance
+# ActiveRecord::Base.add_observer PostulationVoteObserver.instance
+ActiveRecord::Base.observers = PostulationVoteObserver

@@ -12,3 +12,5 @@ class ActiveRecord::Base
 end
 
 require_all 'app/models'
+
+ActiveRecord::Base.instantiate_observers
