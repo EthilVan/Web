@@ -46,6 +46,7 @@ module EthilVan::Authorization
 
       def ensure_logged_in
          return if logged_in?
+         not_authorized if request.xhr?
          set_cookie(settings.after_login_cookie_name, request.path)
          redirect settings.login_path
       end
