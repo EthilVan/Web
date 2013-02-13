@@ -1,86 +1,138 @@
-{{# ok? }}
-<div class="flash success">
-   Modifications enregistrées
+<div class="profil-edit">
+
+   {{# ok? }}
+   <div class="flash success">
+      Modifications enregistrées
+   </div>
+   {{/ ok? }}
+
+   {{# form }}
+   <form class="form-horizontal largeur-input" {{{ attributes }}}>
+
+      {{# show_email }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/checkbox }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ show_email }}
+
+      {{# birthdate }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ birthdate }}
+
+      {{# sexe }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/select }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ sexe }}
+
+      {{# localisation }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ localisation }}
+
+      {{# minecraft_since }}
+         <div class="control-group">
+            <div class="control-label compteur">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/textarea_counter }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ minecraft_since }}
+
+      {{# skill }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ skill }}
+
+      {{# desc_rp }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/textarea }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ desc_rp }}
+
+      {{# website }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ website }}
+
+      {{# twitter }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ twitter }}
+
+      {{# youtube }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ youtube }}
+
+      {{# steam_id }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ steam_id }}
+
+      {{# description }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/textarea }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ description }}
+
+      <div class="clearfix"></div>
+
+      <input class="btn pull-right" type="submit" value="Enregistrer" />
+   </form>
+   {{/ form }}
+
 </div>
-{{/ ok? }}
-
-{{# form }}
-<form {{{ attributes }}}>
-
-   {{# show_email }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/checkbox }}
-   {{/ show_email }}
-
-   {{# birthdate }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ birthdate }}
-
-   {{# sexe }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/select }}
-   {{/ sexe }}
-
-   {{# localisation }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ localisation }}
-
-   {{# minecraft_since }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/textarea_counter }}
-   {{/ minecraft_since }}
-
-   {{# skill }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ skill }}
-
-   {{# desc_rp }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/textarea }}
-   {{/ desc_rp }}
-
-   {{# website }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ website }}
-
-   {{# twitter }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ twitter }}
-
-   {{# youtube }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ youtube }}
-
-   {{# steam_id }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ steam_id }}
-
-   {{# description }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/textarea }}
-   {{/ description }}
-
-   <div class="clearfix"></div>
-
-   <input class="btn" type="submit" value="Enregistrer" />
-</form>
-{{/ form }}

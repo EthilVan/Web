@@ -14,4 +14,5 @@ membre/cadre.less
 membre/profil/general.less
 membre/profil/tags.less
 membre/profil/messages.less
+membre/profil/form.less
 membre/membres/list.less

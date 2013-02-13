@@ -1,32 +1,49 @@
-{{# ok? }}
-<div class="flash success">
-   Modifications enregistrées
+<div class="profil-edit">
+
+   {{# ok? }}
+   <div class="flash success">
+      Modifications enregistrées
+   </div>
+   {{/ ok? }}
+
+   {{# form }}
+   <form class="form-horizontal" {{{ attributes }}}>
+
+      {{# avatar }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls large">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ avatar }}
+
+      {{# cadre_url }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls large">
+               {{> form/input }}
+               {{> form/errors }}
+            </div>
+         </div>
+
+      {{/ cadre_url }}
+
+      {{# signature }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> membre/profil/edit/_signature_editor }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ signature }}
+
+      <div class="clearfix"></div>
+
+      <input class="btn pull-right" type="submit" value="Enregistrer" />
+   </form>
+   {{/ form }}
+
 </div>
-{{/ ok? }}
-
-{{# form }}
-<form {{{ attributes }}}>
-
-   {{# avatar }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ avatar }}
-
-   {{# cadre_url }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/input }}
-   {{/ cadre_url }}
-
-   {{# signature }}
-      {{> form/label }}
-      {{> form/errors }}
-      {{> form/mdeditor }}
-   {{/ signature }}
-
-   <div class="clearfix"></div>
-
-   <input class="btn" type="submit" value="Enregistrer" />
-</form>
-{{/ form }}
