@@ -1,21 +1,10 @@
-# encoding: utf-8
-
 module EthilVan
 
    module Data
 
-      Sexe = {
-         "Non communiqué" => "",
-         "Masculin"       => "masculin",
-         "Féminin"        => "feminin",
-      }
+      yaml = EthilVan.load_data('misc', 'data')
 
-      Mumble = [
-         "A chaque connexion",
-         "De temps en temps",
-         "Durant les évènements",
-         "Jamais",
-         "Autre",
-       ]
+      Sexe = yaml["sexe"]
+      Mumble = yaml["mumble"]
    end
 end

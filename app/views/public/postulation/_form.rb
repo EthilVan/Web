@@ -72,9 +72,7 @@ module EthilVan::App::Views
          end
 
          def sexe
-            select :sexe, {
-               among: Hash[*EthilVan::Data::Sexe.map(&:reverse).flatten]
-            }
+            select :sexe, among: EthilVan::Data::Sexe
          end
 
          def minecraft_since

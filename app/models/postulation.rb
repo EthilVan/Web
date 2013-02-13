@@ -85,7 +85,7 @@ class Postulation < ActiveRecord::Base
    validates_with BirthDateValidator
 
    # Sexe
-   validates_inclusion_of :sexe, in: EthilVan::Data::Sexe.map(&:second)
+   validates_inclusion_of :sexe, in: EthilVan::Data::Sexe.keys
 
    # Length
    validates_length_of :minecraft_since,       minimum:  20

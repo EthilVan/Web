@@ -78,8 +78,7 @@ module EthilVan::App::Views
 
          presence_predicate :sexe
          def sexe
-            #::Postulation::Sexe.rassoc(@profil.sexe)[0]
-            @profil.sexe
+            EthilVan::Data::Sexe[@profil.sexe]
          end
 
          presence_predicate :localisation

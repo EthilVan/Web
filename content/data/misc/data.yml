@@ -1,0 +1,11 @@
+sexe:
+   "":       "Non communiqué"
+   masculin: "Masculin"
+   feminin:  "Féminin"
+
+mumble:
+   - "A chaque connexion"
+   - "De temps en temps"
+   - "Durant les évènements"
+   - "Jamais"
+   - "Autre"

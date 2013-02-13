@@ -33,8 +33,7 @@ module EthilVan::App::Views
 
          presence_predicate :sexe
          def sexe
-            # ::Postulation::Sexe.find { |s| s[1] == @postulation.sexe }[0]
-            @postulation.sexe
+            EthilVan::Data::Sexe[@postulation.sexe]
          end
 
          def minecraft_since

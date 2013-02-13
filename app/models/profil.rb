@@ -39,7 +39,7 @@ class Profil < ActiveRecord::Base
       end
    end
 
-   validates_inclusion_of :sexe, in: EthilVan::Data::Sexe.map(&:second)
+   validates_inclusion_of :sexe, in: EthilVan::Data::Sexe.keys
    validates_with BirthDateValidator
 
    validates_length_of :minecraft_since, minimum: 20
