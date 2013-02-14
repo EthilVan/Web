@@ -24,6 +24,10 @@ module EthilVan::App::Views
             def first_message
                association MessageFields, :first_message
             end
+
+            def author_signature
+               @model.first_message.account.profil.parsed_signature
+            end
          end
 
          def initialize(discussion)

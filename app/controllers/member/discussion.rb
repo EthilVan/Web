@@ -6,6 +6,7 @@ class EthilVan::App < Sinatra::Base
       discussion = Discussion.new
       discussion.group = group
       discussion.first_message = Message.new
+      discussion.first_message.account = current_account
 
       view Views::Member::Discussion::Create.new(discussion)
       mustache 'membre/discussion/create'
