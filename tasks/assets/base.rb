@@ -56,7 +56,7 @@ module EthilVan::Assets
       end
 
       def output_file
-         File.join DEST, self.class::DirName, "#@name.#{self.class::OutputExt}"
+         File.join DEST, "#@name.#{self.class::OutputExt}"
       end
 
       def compile

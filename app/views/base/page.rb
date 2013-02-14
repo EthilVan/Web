@@ -56,8 +56,7 @@ module EthilVan::App::Views
       end
 
       def stylesheet
-         name = member_page? ? 'member' : 'app'
-         asset "style/#{name}.css"
+         STYLESHEET
       end
 
       def javascript
