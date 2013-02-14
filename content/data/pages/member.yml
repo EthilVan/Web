@@ -1,3 +1,11 @@
+projets:
+   url: "membre/projets"
+   template: "membre/projets"
+
+evenements:
+   url: "membre/evenements"
+   template: "membre/evenements"
+
 dons:
    url: "membre/dons"
    template: "membre/dons/dons"
