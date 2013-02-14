@@ -94,7 +94,7 @@ module EthilVan::Skins
    end
 
    PREGENERATED = {
-      Head    => [ 8 ],
+      Head    => [ 8, 15 ],
       Preview => [ 5 ]
    }
 end

@@ -1,6 +1,11 @@
 class EthilVan::App < Sinatra::Base
 
-   scale = '(?:_x([1-8]|15))?'
+   # Public avatar
+   get %r{/avatar/(#{Account::NAME}).png} do |username|
+      skin_image EthilVan::Skins::Head, username, 15
+   end
+
+   scale = '(?:_x([1-8]))?'
 
    helpers do
 
