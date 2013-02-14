@@ -1,6 +1,6 @@
 <input id="{{ field_id }}" name="{{ field_name }}" type="checkbox"
-      data-switch-input {{{ value }}} {{{ validations }}}/>
-<div class="btn-group" data-toggle="buttons-radio" data-switch-custom>
-   <button type="button" class="btn">Oui</button>
-   <button type="button" class="btn">Non</button>
+      data-checkbox-input="switch" {{{ value }}} {{{ validations }}}/>
+<div class="btn-group switch" data-checkbox-custom>
+   <button data-checkbox-switch="checked" type="button" class="btn{{ checked_switch_value }}">Oui</button>
+   <button data-checkbox-switch type="button" class="btn{{ switch_value }}">Non</button>
 </div>

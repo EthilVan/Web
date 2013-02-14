@@ -9,12 +9,20 @@ class EthilVan::Mustache::Form
 
       def value
          val = ' value="1"'
-         val += ' checked' if @value
+         val += ' checked="checked"' if @value
          val
       end
 
       def custom_value
          @value ? ' checked' : ''
+      end
+
+      def checked_switch_value
+         @value ? ' active' : ''
+      end
+
+      def switch_value
+         @value ? '' : ' active'
       end
    end
 end
