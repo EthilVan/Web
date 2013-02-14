@@ -2,7 +2,7 @@ fr:
    activerecord:
       attributes:
          profil_tag:
-            contents: "Contenu"
+            content:  "Contenu"
             tagger:   ""
       errors:
          models:

@@ -15,9 +15,9 @@ module EthilVan::App::Views
             end
 
             def contents
-               text :contents, validations: {
+               text :content, validations: {
                   minlength: 2,
-                  maxlength: 120,
+                  maxlength: 300,
                }
             end
          end
@@ -42,7 +42,7 @@ module EthilVan::App::Views
             @tags.map do |tag|
                tagger = tag.tagger
                {
-                  contents: tag.contents,
+                  contents: tag.content,
                   tagger: tagger.name,
                   tagger_url: urls.profil(tagger),
                   tagger_avatar: tagger.profil.avatar_url,

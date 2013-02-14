@@ -1,6 +1,6 @@
 class ProfilTag < ActiveRecord::Base
 
-   attr_accessible :contents
+   attr_accessible :content
 
    # ==========================================================================
    # * Relations
@@ -11,7 +11,7 @@ class ProfilTag < ActiveRecord::Base
    # ==========================================================================
    # * Validations
    # ==========================================================================
-   validates_length_of :contents, within: 2..120
+   validates_length_of :content, within: 2..300
    validate :tagger_is_not_tagged
 
    # ==========================================================================
