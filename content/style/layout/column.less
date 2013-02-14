@@ -51,35 +51,62 @@ a img {
 
 }
 
-#nav {
+#bloc-titre {
    margin: 0px 50px;
    margin-bottom: 0px;
-   margin-top: 20px;
-   height: 45px;
+   margin-top: 40px;
    border-bottom: 2px solid;
-   list-style-type: none;
 
-   .onglet {
-      height: 30px;
-      line-height: 30px;
-      margin-top: 8px;
-      padding: 0px 14px;
+   li.titre-page, {
+      list-style-type: none;
       float: left;
-      font-size: 26px;
-      color: @lien;
-   }
-
-   .onglet:hover {
-      color: @lien-hover;
-   }
-
-   .active .onglet {
-      height: 41px;
-      line-height: 42px;
-      margin-top: 0px;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: bold;
-      color: @vert;
+      padding-left: 3px;
+      padding-bottom: 10px;
+
+      &:nth-child(2) {
+         padding-left: 10px;
+
+         &:before {
+            padding-right: 2px;
+            content: "-";
+         }
+
+      }
+
+   }
+
+   #separateur-titre-page {
+      float: left;
+      font-size: 20px;
+      padding-left: 20px;
+      padding-right: 8px;
+      line-height: 26px;
+   }
+
+   #nav {
+      list-style-type: none;
+      margin: 0px;
+      padding-bottom: 8px;
+
+      .onglet {
+         padding: 0px 10px;
+         float: left;
+         font-size: 26px;
+         line-height: 26px;
+         color: @lien;
+      }
+
+      .onglet:hover {
+         color: @lien-hover;
+      }
+
+      .active .onglet {
+         font-weight: bold;
+         color: @vert;
+      }
+
    }
 
 }
@@ -95,6 +122,10 @@ a img {
 
    .tab-content {
       overflow: visible;
+   }
+
+   .sans-titre {
+      margin-top: 25px;
    }
 
 }

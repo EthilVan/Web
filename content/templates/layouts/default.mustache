@@ -51,23 +51,28 @@
 
          <div id="contents">
             {{# page_title? }}
-            {{# get_page_title }}
-               {{.}}
-            {{/ get_page_title }}
-            {{/ page_title? }}
-            {{# page_tabs? }}
-            <ul id="nav" class="page-tabs">
-               {{# page_tabs }}
-               <li class="tab">
-                  <a href="{{ tab_name }}" data-target="#{{ tab_name }}"
-                        data-toggle="tab" data-title="{{ meta_tab_title }}">
-                     <div class="onglet">{{ get_tab_title }}</div>
-                  </a>
-               </li>
-               {{/ page_tabs }}
+            <ul id="bloc-titre">
+               {{# get_page_title }}
+                  <li class="titre-page">
+                     {{.}}
+                  </li>
+               {{/ get_page_title }}
+                  {{# page_tabs? }}
+                  <div id="separateur-titre-page">►</div>
+                  <ul id="nav" class="page-tabs">
+                     {{# page_tabs }}
+                     <li class="tab">
+                        <a href="{{ tab_name }}" data-target="#{{ tab_name }}"
+                              data-toggle="tab" data-title="{{ meta_tab_title }}">
+                           <div class="onglet">{{ get_tab_title }}</div>
+                        </a>
+                     </li>
+                     {{/ page_tabs }}
+                  </ul>
+                  {{/ page_tabs? }}
+               <div class="cleaner"></div>
             </ul>
-            {{/ page_tabs? }}
-            <div class="cleaner"></div>
+            {{/ page_title? }}
             <div id="subcontents">
                {{{ yield }}}
                <div class="cleaner"></div>
