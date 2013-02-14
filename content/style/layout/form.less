@@ -13,6 +13,11 @@
       .buttonBackground(@formulaire-1, @formulaire-2);
       color: @gris-form;
       font-weight: normal;
+
+      &.active {
+         .buttonBackground(@formulaire-a, @formulaire-b);
+      }
+
    }
 
    .btn.pull-right.valider {
