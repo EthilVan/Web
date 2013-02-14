@@ -57,24 +57,25 @@ a img {
    margin-top: 40px;
    border-bottom: 2px solid;
 
-   ul.titre-pages {
+   ul.titres-page {
+      margin: 0;
 
-   }
+      li.titre-page {
+         list-style-type: none;
+         float: left;
+         font-size: 30px;
+         font-weight: bold;
+         padding-left: 3px;
+         padding-bottom: 10px;
 
-   li.titre-page, {
-      list-style-type: none;
-      float: left;
-      font-size: 30px;
-      font-weight: bold;
-      padding-left: 3px;
-      padding-bottom: 10px;
+         &:nth-child(n + 2) {
+            padding-left: 10px;
 
-      &:nth-child(n + 2) {
-         padding-left: 10px;
+            &:before {
+               padding-right: 10px;
+               content: "-";
+            }
 
-         &:before {
-            padding-right: 2px;
-            content: "-";
          }
 
       }
