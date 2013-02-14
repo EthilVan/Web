@@ -1,0 +1,6 @@
+fr:
+   form:
+      profil:
+         hint:
+            avatar: "Laissez vide pour utiliser l'avatar généré à partir du skin Minecraft."
+            custom_cadre_url: "Laissez vide pour utiliser le cadre par défaut."
