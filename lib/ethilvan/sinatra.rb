@@ -41,9 +41,8 @@ module EthilVan::SinatraHelpers
       end
 
       def resources(res)
-         return res unless res.empty?
-         no_content if xhr?
-         not_found
+         no_content if xhr? and res.empty?
+         return res
       end
 
       def xhr?
