@@ -21,7 +21,9 @@ class EthilVan::App < Sinatra::Base
          return Account::Guest if pseudo.nil?
          return Account::Guest if token.nil?
          account = Account.authenticate_by_token(pseudo, token)
-         account.nil? ? Account::Guest : account
+         return Account::Guest if account.nil?
+         account.update_attribute :last_visit, Time.now
+         return account
       end
    end
 
