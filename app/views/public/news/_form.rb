@@ -33,11 +33,11 @@ module EthilVan::App::Views
          end
 
          def private
-            checkbox :private
+            switch_f :private
          end
 
          def important
-            checkbox :important
+            switch_f :important
          end
       end
    end

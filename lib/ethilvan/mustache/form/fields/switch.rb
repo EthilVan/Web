@@ -1,6 +1,6 @@
 class EthilVan::Mustache::Form
 
-   class Checkbox < Field
+   class Switch < Field
 
       def initialize(fieldset, name, value, errors, validation, attributes)
          super(fieldset, name, errors, validation, attributes)
@@ -8,13 +8,15 @@ class EthilVan::Mustache::Form
       end
 
       def value
-         val = ' value="1"'
-         val += ' checked="checked"' if @value
-         val
+         @value ? '1' : '0'
       end
 
-      def custom_value
-         @value ? ' checked' : ''
+      def checked_switch_value
+         @value ? ' active' : ''
+      end
+
+      def switch_value
+         @value ? '' : ' active'
       end
    end
 end

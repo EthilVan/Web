@@ -83,7 +83,7 @@ module EthilVan::App::Views
          end
 
          def multi_minecraft
-            checkbox :multi_minecraft
+            switch_f :multi_minecraft
          end
 
          def old_server
@@ -122,7 +122,7 @@ module EthilVan::App::Views
          end
 
          def microphone
-            checkbox :microphone
+            switch_f :microphone
          end
 
          def mumble

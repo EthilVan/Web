@@ -19,6 +19,10 @@ class EthilVan::Mustache::Form
       end
       alias :checkbox :checkbox_f
 
+      def switch_f(name, attributes = {})
+         field(Switch, name, attributes)
+      end
+
       def select_f(name, attributes = {})
          field(Select, name, attributes)
       end

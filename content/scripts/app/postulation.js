@@ -22,7 +22,7 @@ $(function() {
    var oldServer = $form.find('.field-postulation_old_server');
    var oldServerReason = $form.find('.field-postulation_old_server_reason');
    var onMultiMinecraftChange = function(multiMinecraft) {
-      if (multiMinecraft.is(':checked')) {
+      if (multiMinecraft.val() == '1') {
          enableField(oldServer);
          enableField(oldServerReason);
       } else {
@@ -42,7 +42,7 @@ $(function() {
 
    var mumble = $form.find('.field-postulation_mumble');
    var onMicrophoneChange = function(microphone) {
-      if (microphone.is(':checked')) {
+      if (microphone.val() == '1') {
          enableField(mumble);
          onMumbleChange($form.find('.field-postulation_mumble select'));
       } else {
@@ -51,10 +51,10 @@ $(function() {
       }
    }
 
-   $form.find('.field-postulation_multi_minecraft input[type=checkbox]').change(function() {
+   $form.find('.field-postulation_multi_minecraft input').change(function() {
       onMultiMinecraftChange($(this));
    });
-   $form.find('.field-postulation_microphone input[type=checkbox]').change(function() {
+   $form.find('.field-postulation_microphone input').change(function() {
       onMicrophoneChange($(this));
    });
    $form.find('.field-postulation_mumble select').change(function() {

@@ -27,7 +27,7 @@ module EthilVan::App::Views
          end
 
          def show_email
-            checkbox :show_email
+            switch_f :show_email
          end
 
          def birthdate
