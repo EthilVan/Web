@@ -16,6 +16,8 @@ team:
       role_fr:    Administrateur Serveur
       name:       Loup Des Neiges
       site:       http://www.loup-des-neiges.com
+      twitter:    https://twitter.com/loupdesneiges
+      localion:   'Cannes, France'
 
 components:
    -  name:    Sinatra

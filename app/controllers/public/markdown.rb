@@ -4,7 +4,7 @@ class EthilVan::App < Sinatra::Base
 
    helpers Sinatra::JSON
 
-   logged_only %r{/markdown(?:$|/)}
+   logged_only %r{^/markdown(?:$|/)}
 
    post '/markdown' do
       markdown params['content']

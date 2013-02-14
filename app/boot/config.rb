@@ -34,6 +34,6 @@ class EthilVan::YamlConfig
       @mail_delivery_method = [:smtp, hash['mail']['smtp']]
       @mail_sender = "#{hash['mail']['sender_name']}"
       @mail_sender << " <#{hash['mail']['sender']}>"
-      @mail_contact << hash['mail']['contact']
+      @mail_contact = hash['mail']['contact']
    end
 end

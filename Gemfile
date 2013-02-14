@@ -1,6 +1,7 @@
 source :rubygems
 
 # Core
+gem 'pry'
 gem 'rake'
 gem 'sinatra'
 gem 'logging'
@@ -30,7 +31,6 @@ gem 'thin'
 
 # Development
 group :development do
-   gem 'pry'
    gem 'watchr'
    gem 'sinatra-contrib'
    gem 'better_errors'
