@@ -57,7 +57,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
          lessthan:       "Cette valeur doit être plus petite que %s.",*/
 
          // Custom  //////////////////////////////
-         nameformat:     "Ce champ ne peut contenir que des lettres chiffres, '_' et '-'.",
+         nameformat:     "Ce champ ne peut contenir que des lettres, chiffres, '_' et '-' (au moins 2 caractères).",
          datefr:         "Ce champ doit contenir une date selon le format (JJ/MM/AAAA).",
          acceptance:     "Vous devez accepter le %s.",
       }
