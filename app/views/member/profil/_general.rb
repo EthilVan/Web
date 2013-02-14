@@ -17,12 +17,12 @@ module EthilVan::App::Views
             modo? or @app.current_account.id == @account.id
          end
 
-         def cadre
-            Cadre.new(@account, @profil, @minecraft_stats)
+         def profil_edit_url
+            urls.profil_edit(@account)
          end
 
-         def account_name
-            @account.name
+         def cadre
+            Cadre.new(@account, @profil, @minecraft_stats)
          end
 
          def show_email?

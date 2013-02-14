@@ -1,5 +1,7 @@
 <div class="profil-droit">
-   <a class="btn pull-right profil-editer" href="">Editer le profil</a>
+   {{# editable? }}
+   <a class="btn pull-right profil-editer" href="{{ profil_edit_url }}">Editer le profil</a>
+   {{/ editable? }}
    <div class="cleaner"></div>
    {{# cadre }}
       {{> membre/profil/_cadre }}
@@ -15,10 +17,6 @@
    {{/ success }}
 
    <div class="profil-info general">
-      <div class="info pseudo">
-         <span class="profil-label">Pseudo : </span>
-         <span class="profil-valeur">{{ account_name }}</span>
-      </div>
       {{# show_email? }}
       <div class="info email">
          <span class="profil-label">Email : </span>
