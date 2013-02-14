@@ -30,9 +30,7 @@
          </div>
          <header>
             <div id="banner">
-               <a href="/">
-                  <img src="{{ static }}images/layout/titre.png" />
-               </a>
+               <a href="/"><img src="{{ static }}images/layout/titre.png" /></a>
             </div>
             <div id="menu">
                <a href="{{ button_server_url }}">
@@ -42,37 +40,15 @@
                   <div id="button2" class="buttons"></div>
                </a>
                <div class="submenu_bg"></div>
-               {{> layouts/submenu_server }}
+               {{> layouts/_submenu_server }}
                {{# logged_in? }}
-                  {{> layouts/submenu_member }}
+                  {{> layouts/_submenu_member }}
                {{/ logged_in? }}
             </div>
          </header>
 
          <div id="contents">
-            {{# page_title? }}
-            <ul id="bloc-titre">
-               {{# get_page_title }}
-                  <li class="titre-page">
-                     {{.}}
-                  </li>
-               {{/ get_page_title }}
-                  {{# page_tabs? }}
-                  <div id="separateur-titre-page">►</div>
-                  <ul id="nav" class="page-tabs">
-                     {{# page_tabs }}
-                     <li class="tab">
-                        <a href="{{ tab_name }}" data-target="#{{ tab_name }}"
-                              data-toggle="tab" data-title="{{ meta_tab_title }}">
-                           <div class="onglet">{{ get_tab_title }}</div>
-                        </a>
-                     </li>
-                     {{/ page_tabs }}
-                  </ul>
-                  {{/ page_tabs? }}
-               <div class="cleaner"></div>
-            </ul>
-            {{/ page_title? }}
+            {{> layouts/_bloc_titre }}
             <div id="subcontents">
                {{{ yield }}}
                <div class="cleaner"></div>

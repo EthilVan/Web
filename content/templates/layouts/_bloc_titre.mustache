@@ -1,0 +1,25 @@
+{{# page_title_tabs? }}
+<nav id="bloc-titre">
+   {{# page_title? }}
+   <ul class="titres-page">
+      {{# page_titles }}
+      <li class="titre-page">{{.}}</li>
+      {{/ page_titles }}
+   </ul>
+   {{/ page_title? }}
+   {{# page_tabs? }}
+   <div id="separateur-titre-page">►</div>
+   <ul id="nav" class="page-tabs">
+      {{# page_tabs }}
+      <li class="tab">
+         <a href="{{ tab_name }}" data-target="#{{ tab_name }}"
+               data-toggle="tab" data-title="{{ meta_tab_title }}">
+            <div class="onglet">{{ get_tab_title }}</div>
+         </a>
+      </li>
+      {{/ page_tabs }}
+   </ul>
+   {{/ page_tabs? }}
+   <div class="cleaner"></div>
+</nav>
+{{/ page_title_tabs? }}

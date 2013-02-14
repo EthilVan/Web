@@ -7,7 +7,7 @@ module EthilVan::App::Views
 
       def page_title
          lambda do |text|
-            @page_title = text.split(',')
+            @page_title = text.split(/\s*,\s*/)
             nil
          end
       end
@@ -20,7 +20,7 @@ module EthilVan::App::Views
          _page_title.present?
       end
 
-      def get_page_title
+      def page_titles
          _page_title
       end
 
@@ -49,6 +49,10 @@ module EthilVan::App::Views
 
       def page_tabs
          @page_tabs ||= []
+      end
+
+      def page_title_tabs?
+         page_title? or page_tabs?
       end
 
       def stylesheet
