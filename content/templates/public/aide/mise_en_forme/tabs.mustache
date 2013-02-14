@@ -2,13 +2,13 @@
 
 <div class="tab-content">
    {{# tab_markdown }}
-      <div id="{{ name }}" class="tab-pane tab-pane-default">
+      <div id="{{ tab_name }}" class="tab-pane tab-pane-default">
          {{> public/aide/mise_en_forme/_markdown }}
       </div>
    {{/ tab_markdown }}
    {{# tab_emoji }}
       {{# tab_title }}Emoticones{{/ tab_title }}
-      <div id="{{ name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane">
          {{> public/aide/mise_en_forme/_emoji }}
       </div>
    {{/ tab_emoji }}
