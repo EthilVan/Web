@@ -17,6 +17,7 @@ app/page-scroller.js
 app/submenu.js
 app/tab.js
 app/select.js
+app/checkbox.js
 app/auto-fill.js
 app/mdeditor.js
 app/confirmation.js

@@ -12,5 +12,9 @@ class EthilVan::Mustache::Form
          val += ' checked' if @value
          val
       end
+
+      def custom_value
+         @value ? ' checked' : ''
+      end
    end
 end
