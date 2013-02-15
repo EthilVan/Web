@@ -27,7 +27,7 @@ module EthilVan
             text.gsub(/:([a-z0-9\+\-_]+):/) do |match|
                next(match) unless EthilVan::Emoji.names.include?($1)
                <<-END
-<img class="emoji" alt=\"emoji-#{$1}" height="20" title=":#{$1}:"
+<img class="emoji" alt=\"emoji-#{$1}" title=":#{$1}:"
       src="/images/emoji/#{$1}.png" />
                END
             end
