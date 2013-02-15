@@ -13,10 +13,12 @@ class AddParsedMarkdownFields < ActiveRecord::Migration
       end
 
       Message.reset_column_information
+      Message.record_timestamps = false
       Message.all.each do |message|
          message.send :parse_contents
          message.save
       end
+      Message.record_timestamps = true
    end
 
    def self.down

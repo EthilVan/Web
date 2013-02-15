@@ -14,6 +14,7 @@ class AddFirstAndLastMessageIdToDiscussion < ActiveRecord::Migration
          discussion.last_message_id  = discussion.messages.last.id
          discussion.save validate: false
       end
+      Discussion.record_timestamps = true
    end
 
    def self.down
