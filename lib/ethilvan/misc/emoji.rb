@@ -15,7 +15,7 @@ module EthilVan::Emoji
    end
 
    def self.names
-      @names ||= Dir["#{images_path}/*.png"].map do |fn|
+      @names ||= Dir["#{source_path}/*.png"].map do |fn|
          File.basename(fn, '.png')
       end.sort
    end
