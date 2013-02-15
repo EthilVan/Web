@@ -1,10 +1,8 @@
-{{# first? }}
-   <a href="{{ first }}">&lt;&lt;</a>
-{{/ first? }}
 {{# previous? }}
-   <a href="{{ previous }}">&lt;</a>
+   <a href="{{ previous }}">◄</a>
 {{/ previous? }}
 {{# first? }}
+   <a href="{{ first }}">1</a>
    ...
 {{/ first? }}
 {{# pages }}
@@ -17,10 +15,8 @@
 {{/ pages }}
 {{# last? }}
    ...
+   <a href="{{ last }}">{{ total }}</a>
 {{/ last? }}
 {{# next? }}
-   <a href="{{ next }}">&gt;</a>
+   <a href="{{ next }}">►</a>
 {{/ next? }}
-{{# last? }}
-   <a href="{{ last }}">&gt;&gt;</a>
-{{/ last? }}
