@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class ContactEmail
 
    CATEGORIES = EthilVan::Data::Contact::Categories
@@ -47,10 +45,6 @@ class ContactEmail
       @attributes['category'] = new_category
    end
 
-   def fancy_category
-      EthilVan::Data::Contact::Categories[category]
-   end
-
    def subject
       @attributes['subject']
    end
@@ -69,27 +63,5 @@ class ContactEmail
 
    def read_attribute_for_validation(key)
       @attributes[key.to_s]
-   end
-
-   def sender
-      "#{@attributes['name']} <#{@attributes['email']}>"
-   end
-
-   def receiver
-      EthilVan::Data::Contact::Receiver[category]
-   end
-
-   def categorized_subject
-      "[#{fancy_category}] #{@attributes['subject']}"
-   end
-
-   def body
-      return <<-BODY
-Envoyé depuis l'interface web :
-De: #{sender}
-Sujet: #{categorized_subject}
-
-#{@attributes['message']}
-      BODY
    end
 end

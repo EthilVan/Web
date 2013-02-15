@@ -21,23 +21,35 @@ module EthilVan
             @mustache_view = view
          end
 
+         def mail_view(mail_view)
+            @mustache_mail_view = mail_view
+         end
+
          def layout(layout)
             @mustache_layout = layout
          end
 
-         def mustache(template)
-            view = @mustache_view || Mustache
+         def mustache(template, params = {})
+            view = params[:view] || @mustache_view || Mustache
             ctx = Context.new(view, self)
             rendered = mustache_template_for(template).render(ctx)
 
-            layout = @mustache_layout
-            layout = settings.layout if layout.nil? and !xhr?
-            if layout
-               ctx.set_yield rendered
-               rendered = mustache_template_for(layout).render(ctx)
+            unless params[:no_layout]
+               layout = @mustache_layout
+               layout = settings.layout if layout.nil? and !xhr?
+               if layout
+                  ctx.set_yield rendered
+                  rendered = mustache_template_for(layout).render(ctx)
+               end
             end
 
             rendered
+         end
+
+         def mail_mustache(template)
+            mustache("mails/#{template}",
+                  view: @mustache_mail_view || Mustache,
+                  no_layout: true)
          end
 
          def mustache_template_for(name)

@@ -8,12 +8,8 @@ class EthilVan::App
    post '/contact' do
       email = ContactEmail.new(params[:contact_email])
       if email.valid?
-         mail do
-            from     email.sender
-            to       email.receiver
-            subject  email.categorized_subject
-            body     email.body
-         end
+         mail_view Views::Mails::Contact.new(email)
+         mail 'contact'
          view Views::Public::Contact::Index.new ContactEmail.new, true
          mustache 'public/contact'
       else
