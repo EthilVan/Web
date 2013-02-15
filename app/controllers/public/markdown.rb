@@ -1,8 +1,4 @@
-require 'sinatra/json'
-
 class EthilVan::App < Sinatra::Base
-
-   helpers Sinatra::JSON
 
    logged_only %r{^/markdown(?:$|/)}
 
@@ -11,6 +7,16 @@ class EthilVan::App < Sinatra::Base
    end
 
    get '/markdown/membres.json' do
-      json Account.where("role_id != 'ancien'").pluck(:name)
+      names = Account.where("role_id != 'ancien'").pluck(:name)
+
+      content_type 'application/json'
+      json = '['
+      unless names.empty?
+         json << "\""
+         json << names * "\",\""
+         json << "\""
+      end
+      json << ']'
+      json
    end
 end

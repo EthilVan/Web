@@ -1,5 +1,3 @@
-require 'sinatra/json'
-
 class EthilVan::App < Sinatra::Base
 
    # Public
