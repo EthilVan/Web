@@ -17,10 +17,15 @@
             <div class="edit"></div>
          </a>
       {{/ redacteur? }}
-      <div class="titre">
-         {{# show? }}<a href="{{ url }}">{{ title }}</a>{{/ show? }}
-         {{^ show? }}{{ title }}{{/ show? }}
-      </div>
+         {{# show? }}
+            <div class="titre"><a href="{{ url }}">{{ title }}</a></div>
+         {{/ show? }}
+         {{^ show? }}
+            <div class="titre prive">
+               <img src="images/public/news/cadenas.png">
+               {{ title }}
+            </div>
+         {{/ show? }}
       {{# show? }}
       <div class="banner">
          <a href="{{ url }}"><img src="{{ banner_url }}" /></a>
