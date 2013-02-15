@@ -1,26 +1,24 @@
-<div class="mdeditor mdeditor-message">
+<div class="mdeditor mdeditor-message message message-odd-even">
 
-   {{> form/mdeditor/controls }}
-   {{> form/mdeditor/textarea }}
+   {{> membre/message/_cadre }}
 
-   <div class="message message-odd-even">
+   <div class="message-edit">
+      {{> form/mdeditor/controls }}
+      {{> form/mdeditor/textarea }}
+   </div>
 
-      {{> membre/message/_cadre }}
-
-      <div class="message-contenu">
-         {{> form/mdeditor/preview }}
-         <div class="bloc-signature">
-            <div class="dates creation">Posté le JJ/MM/AAAA à hh:mm</div>
-            <div class="dates edition">Dernière édition le JJ/MM/AAAA à hh:mm</div>
-            <div class="cleaner-side"></div>
-            <div class="ligne-signature"></div>
-            <div class="signature-membre">
-               <div class="signature"> {{{ author_signature }}} </div>
-               <div class="cleaner"></div>
-            </div>
+   <div class="message-contenu">
+      {{> form/mdeditor/preview }}
+      <div class="bloc-signature">
+         <div class="dates creation">Posté le JJ/MM/AAAA à hh:mm</div>
+         <div class="dates edition">Dernière édition le JJ/MM/AAAA à hh:mm</div>
+         <div class="cleaner-side"></div>
+         <div class="ligne-signature"></div>
+         <div class="signature-membre">
+            <div class="signature"> {{{ author_signature }}} </div>
+            <div class="cleaner"></div>
          </div>
       </div>
-
    </div>
 
 </div>
