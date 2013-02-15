@@ -11,7 +11,11 @@ module EthilVan
       end
 
       def inherit?(role)
-         self == role or @subroles.any? { |subrole_id| subrole_id == role.id }
+         self == role or strict_inherit?(role)
+      end
+
+      def strict_inherit?(role)
+         @subroles.any? { |subrole_id| subrole_id == role.id }
       end
 
       @roles = EthilVan.load_data('misc', 'roles').map do |id, data|

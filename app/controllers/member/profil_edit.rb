@@ -51,12 +51,22 @@ class EthilVan::App
    post %r{/membre/@(#{Account::NAME})/editer/compte$} do |name|
       account = profil_edit_account name
 
-      if not account.check_password?(params[:current_password])
+      own_account = current? account
+      role = has_role?(account.role)
+      super_role = has_super_role?(account.role)
+
+      account_params = params[:account]
+
+      account.vote_needed = account_params.delete('vote_needed') if role
+      account.banned = account_params.delete('banned') if super_role
+      account.attributes = account_params if own_account or super_role
+
+      if not current_account.check_password?(params[:current_password])
          view Views::Member::Profil::Edit::Tabs.new account, {
             invalid_current_password: true
          }
          mustache 'membre/profil/edit/tabs'
-      elsif account.update_attributes params[:account]
+      elsif account.save
          account.clear_new_password
          view Views::Member::Profil::Edit::Tabs.new account, {
             account_ok: true

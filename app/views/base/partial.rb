@@ -17,6 +17,7 @@ module EthilVan::App::Views
 
       include EthilVan::Urls::Sinatra::Helpers
       include EthilVan::Static::Helpers
+      include EthilVan::AuthHelpers
 
       def logged_in?
          @app.logged_in?
@@ -26,20 +27,8 @@ module EthilVan::App::Views
          @app.guest?
       end
 
-      def current?(account)
-         @app.current_account.id == account.id
-      end
-
-      def has_role?(role)
-         @app.current_account.role.inherit?(role)
-      end
-
-      def modo?
-         @has_role_modo ||= has_role?(EthilVan::Role::MODO)
-      end
-
-      def redacteur?
-         @has_role_redacteur ||= has_role?(EthilVan::Role::REDACTEUR)
+      def current_account
+         @app.current_account
       end
 
       def render_markdown(text)

@@ -10,6 +10,16 @@ module EthilVan::App::Views
                super(account, action: action)
             end
 
+            def banned
+               return false unless super_role?
+               switch_f :banned
+            end
+
+            def vote_needed
+               return false unless modo? and role?
+               switch_f :vote_needed
+            end
+
             def email
                text :email, validations: { type: 'email' }
             end
@@ -23,6 +33,16 @@ module EthilVan::App::Views
                   equalTo: '#account_password',
                }
             end
+
+         private
+
+            def role?
+               @role ||= has_role?(@model.role)
+            end
+
+            def super_role?
+               @super_role ||= has_super_role?(@model.role)
+            end
          end
 
          def initialize(page, account, params)
@@ -32,7 +52,7 @@ module EthilVan::App::Views
          end
 
          def ok?
-            @params[:ok]
+            @params[:account_ok]
          end
 
          def invalid_current_password?

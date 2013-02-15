@@ -3,10 +3,11 @@ fr:
       attributes:
          account:
             name:                     "Pseudo"
+            banned:                   "Banni"
             email:                    "Email"
-            password:                 "Mot de passe"
-            password_confirmation:    "Confirmation du mot de passe"
+            password:                 "Nouveau Mot de passe"
+            password_confirmation:    "Confirmation"
             role_id:                  "Role"
             minecraft_name:           "Pseudo Minecraft"
             last_visit:               "Dernière visite"
-            vote_needed:              "Vote nécessaire"
+            vote_needed:              "Vote nécessaire au postulation"

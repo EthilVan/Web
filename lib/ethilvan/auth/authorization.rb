@@ -21,7 +21,8 @@ module EthilVan::Authorization
       end
 
       app.extend ClassHelpers
-      app.send :include, Helpers
+      app.helpers Helpers
+      app.helpers EthilVan::AuthHelpers
    end
 
    module ClassHelpers

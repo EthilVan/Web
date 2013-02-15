@@ -8,7 +8,7 @@
 
    {{# invalid_current_password? }}
    <div class="flash warning">
-      Mot de Passe actuel invalide !
+      Votre Mot de Passe est invalide !
    </div>
    {{/ invalid_current_password? }}
 
@@ -18,7 +18,7 @@
       <div class="control-group">
          <div class="control-label">
             <label for="current_password">
-               Mot de Passe actuel
+               Votre Mot de Passe
             </label>
          </div>
          <div class="controls">
@@ -28,6 +28,25 @@
          </div>
       </div>
 
+      {{# banned }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/switch_yn }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ banned }}
+
+      {{# vote_needed }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/switch_yn }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ vote_needed }}
 
       {{# email }}
          <div class="control-group">
