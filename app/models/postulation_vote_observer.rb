@@ -1,5 +1,5 @@
 class PostulationVoteObserver < ActiveRecord::Observer
-
+=begin
    def after_create(vote)
       postulation = vote.postulation
       visitor = Visitor.where(name: postulation.minecraft_name)
@@ -23,6 +23,7 @@ class PostulationVoteObserver < ActiveRecord::Observer
          EthilVan.logger.info 'Sending dummy approbation mail'
       end
    end
+=end
 end
 
 ActiveRecord::Base.observers = PostulationVoteObserver

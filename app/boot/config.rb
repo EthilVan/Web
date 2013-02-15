@@ -40,6 +40,7 @@ class EthilVan::YamlConfig
       end
 
       if not hash['mail'].key? :smtp
+         @mail_sender = 'nobody@nowhere.notld'
          @mail_delivery_method = [:sendmail]
          return
       end

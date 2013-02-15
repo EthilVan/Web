@@ -6,8 +6,12 @@ module EthilVan::App::Views
          EthilVan::Config.mail_sender
       end
 
+      def mail_subject
+         lambda { |text| @_subject = text; nil }
+      end
+
       def subject
-         'No subject !'
+         @_subject || 'No subject !'
       end
    end
 

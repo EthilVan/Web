@@ -23,12 +23,16 @@ module EthilVan::Mail
          receiver = mail_view.receiver
       end
 
-      Mail.deliver do
+      m = Mail.deliver do
          self.charset = 'UTF-8'
          from    mail_view.sender
          to      receiver
          subject subject
          body    mail_body
+      end
+
+      EthilVan.development? do
+         logger.debug '[Mail] ' + m.inspect + "\nBody : \n" + mail_body
       end
    end
 end
