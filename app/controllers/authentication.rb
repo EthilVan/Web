@@ -22,7 +22,9 @@ class EthilVan::App < Sinatra::Base
          return Account::Guest if token.nil?
          account = Account.authenticate_by_token(pseudo, token)
          return Account::Guest if account.nil?
-         account.update_attribute :last_visit, Time.now
+         if request.path_info =~ %r{^/membre}
+            account.update_attribute :last_visit, Time.now
+         end
          return account
       end
    end
