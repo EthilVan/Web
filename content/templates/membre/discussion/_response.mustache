@@ -1,4 +1,6 @@
-{{> membre/discussion/_message }}
+{{# new_messages }}
+   {{> membre/discussion/_message }}
+{{/ new_messages }}
 
 <div id="champ-reponse">
    <a class="btn pull-right repondre" href="{{ response_url }}"

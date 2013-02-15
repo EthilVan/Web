@@ -1,23 +1,16 @@
 module EthilVan::App::Views
 
-   module Member::Discussion
+   module Member::Message
 
-      class Response < Partial
+      class Create < Edit
 
-         def initialize(discussion, new_messages)
-            @discussion = discussion
+         def initialize(new_messages, message, inline = false, url = '')
+            super(message, inline, url)
             @new_messages = new_messages
          end
 
-         def discussion_url
-            "/membre/discussion/#{@discussion.id}"
-         end
-
-         def response_url
-            "#{discussion_url}/repondre/#{@discussion.last_message.id}"
-         end
-
          def new_messages
+            return [] if @new_messages.empty?
             stats_max = MinecraftStats.maximum('version')
             @new_messages.map do |message|
                editable = modo? || message.editable_by?(@app.current_account)

@@ -7,6 +7,16 @@ class EthilVan::App < Sinatra::Base
          page = nil if page < 1
          urls.discussion(message.discussion, page, message)
       end
+
+      def new_messages(discussion, last_message_id)
+         return [] if last_message_id.nil? or
+               discussion.last_message.id == last_message_id
+
+         messages = discussion.messages
+         index = messages.index { |msg| msg.id == last_message_id }
+         return [] if index.nil?
+         messages[(index + 1)..-1]
+      end
    end
 
    get '/membre/message/:id' do |id|
@@ -14,20 +24,26 @@ class EthilVan::App < Sinatra::Base
       redirect discussion_url message
    end
 
-   get %r{/membre/discussion/(\d{1,5})/repondre(/enplace)?$} do |id, inline|
+   get %r{/membre/discussion/(\d{1,5})/repondre(?:/(\d{1,7}))?$} do |id, last_message|
       discussion = resource Discussion.find_by_id id
+      new_messages = []
+      if inline = !!last_message && xhr?
+         new_messages = new_messages(discussion, last_message.to_i)
+      end
 
       message = Message.new
       message.discussion = discussion
       message.account = current_account
 
-      inline &&= xhr?
-      view Views::Member::Message::Create.new message, inline, request.path
+      view Views::Member::Message::Create.new new_messages, message,
+            inline, request.path
       mustache 'membre/message/create'
    end
 
-   post %r{/membre/discussion/(\d{1,5})/repondre(/enplace)?$} do |id, inline|
+   post %r{/membre/discussion/(\d{1,5})/repondre(?:/(\d{1,7}))?$} do |id, last_message|
       discussion = resource Discussion.find_by_id id
+      new_messages = []
+      inline = !!last_message && xhr?
 
       message = Message.new params[:message]
       message.discussion = discussion
@@ -36,11 +52,13 @@ class EthilVan::App < Sinatra::Base
       if message.save
          redirect_not_xhr urls.discussion(discussion,
                discussion.total_pages, message)
-         view Views::Member::Discussion::Response.new discussion, message, true
+         new_messages = new_messages(discussion, last_message.to_i)
+         view Views::Member::Discussion::Response.new discussion, new_messages
          mustache 'membre/discussion/_response'
       else
-         inline &&= xhr?
-         view Views::Member::Message::Create.new message, inline, request.path
+         new_messages = new_messages(discussion, last_message.to_i) if inline
+         view Views::Member::Message::Create.new discussion, new_messages,
+               message, inline, request.path
          mustache 'membre/message/create'
       end
    end

@@ -49,7 +49,9 @@ module EthilVan::App::Views
 
          def response_url
             _url = "#{url}/repondre"
-            _url << '/enplace' if pager.nil? or pager.current == pager.total
+            if pager.nil? or pager.current == pager.total
+               _url << "/#{@discussion.last_message.id.to_s}"
+            end
             _url
          end
 

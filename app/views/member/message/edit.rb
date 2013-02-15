@@ -17,8 +17,5 @@ module EthilVan::App::Views
             @form
          end
       end
-
-      class Create < Edit
-      end
    end
 end
