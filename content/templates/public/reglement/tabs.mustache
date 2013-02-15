@@ -8,7 +8,7 @@
       </div>
    {{/ tab_general }}
    {{# tab_terres_sauvages }}
-      {{# tab_title }}Terres Sauvages{{/ tab_title }}
+      {{# tab_title }}Terres sauvages{{/ tab_title }}
       <div id="{{ tab_name }}" class="tab-pane">
          {{> public/reglement/_terres_sauvages}}
       </div>
@@ -24,4 +24,9 @@
          {{> public/reglement/_evasion}}
       </div>
    {{/ tab_evasion }}
+   {{# tab_messages}}
+      <div id="{{ tab_name }}" class="tab-pane">
+         {{> public/reglement/_messages}}
+      </div>
+   {{/ tab_messages}}
 </div>

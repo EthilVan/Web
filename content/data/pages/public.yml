@@ -25,6 +25,7 @@ reglement:
       terres_sauvages:
       trefonds:
       evasion:
+      messages:
 
 aide:
    template: "public/aide/index"
