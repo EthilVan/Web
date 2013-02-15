@@ -1,3 +1,5 @@
+<div class="aide-markdown">
+
 <h2>Le Markdown</h2>
 
 <p>
@@ -24,40 +26,101 @@
 
 <h3>Comment l'utiliser</h3>
 
+<div class="syntaxe">
 <h5>Italique :</h5>
-<p>*Texte en italique* ou _Texte en italique_</p>
+<pre>*Texte en italique*</pre>
+<p>ou</p>
+<pre>_Texte en italique_</pre>
+</div>
 
+<div class="syntaxe">
 <h5>Gras :</h5>
-<p>**Texte en gras** ou __Texte en gras__</p>
+<pre>**Texte en gras**</pre>
+<p>ou</p>
+<pre>__Texte en gras__</pre>
+</div>
 
+<div class="syntaxe">
 <h5>Texte barré :</h5>
-<p>~~Texte barré~~
+<pre>~~Texte barré~~</pre>
+</div>
 
-<h5>Titres :</h5>
-<p># Titre de niveau 1 (grand titre)
-</p>
-<p>###### Titre de niveau 6
-</p>
+<div class="syntaxe">
+<h5>Titre :</h5>
+<p>6 niveaux de taille décroissante</p>
+<pre># Titre de niveau 1</pre>
+<pre>###### Titre de niveau 6</pre>
+</div>
 
-<h5>Citations :</h5>
-<p>> Texte cité</p>
+<div class="syntaxe">
+<h5>Citation :</h5>
+<pre>
+> Texte cité (ligne 1)
+> Texte cité (ligne 2)
+</pre>
+</div>
 
-<h5>Ligne de séparation</h5>
-<p>___ (3 underscores  d'affilée ou plus)</p>
+<div class="syntaxe">
+<h5>Ligne de séparation :</h5>
+<pre>___</pre>
+<p>(3 underscores  d'affilée ou plus)</p>
+</div>
 
-<h5>Liste non ordonnée (puces)</h5>
-<p>* Mon premier
-<br>* Mon second
-<br>* etc.
-<br>La liste doit être précédée d'un saut de ligne.
-</p>
+<div class="syntaxe">
+<h5>Liste non ordonnée (puces) :</h5>
+<p>La liste doit être précédée d'un saut de ligne.</p>
+<pre>
 
-<h5>Liens :</h5>
-<p>[Texte du lien affiché](adresse url du lien)</p>
+* Mon premier
+* Mon second
+* etc.
+</pre>
+</div>
 
-<h5>Images</h5>
-<p>![Texte de remplacement de l'image en cas de problème](adresse url
-   directe de l'image)</p>
+<div class="syntaxe">
+<h5>Lien :</h5>
+<pre>[Texte du lien affiché](adresse_url_du_lien)</pre>
+</div>
+
+<div class="syntaxe">
+<h5>Image :</h5>
+<pre>![Texte de remplacement de l'image en cas de problème](adresse_url_directe_de_l'image)</pre>
+</div>
+
+<div class="syntaxe">
+<h5>Slideshow :</h5>
+<p>Vous pouvez en avoir un exemple sur l'onglet <a href="/apercu/images">Images</a> de l'aperçu du serveur.</p>
+<pre>
+![Slideshow](slideshow
+url_image_1
+url_image_2
+"description image 1
+description image 2")
+</pre>
+</div>
+
+<div class="syntaxe">
+<h5>Autres médias :</h5>
+<p>Il peut s'agir d'une vidéo YouTube, d'une muisque Grooveshark,
+   d'un Tweet, et autre (<a href="http://embed.ly/providers">liste
+   complète</a>).</p>
+<pre>![Texte de remplacement du média en cas de problème](adresse_url_du_média)</pre>
+</div>
+
+<div class="syntaxe">
+<h5>Mention :</h5>
+<p>Pour mentionner quelqu'un dans un message avec un lien vers son
+   profil. Cela permettra également à la personne mentionnée d'être
+   notifiée de votre message dans son flux d'informations
+   (prochainement).</p>
+<pre>@Pseudo</pre>
+</div>
+
+<div class="syntaxe">
+<h5>Emoticône :</h5>
+<p>La liste complète des émoticônes disponibles se trouve dans l'onglet Emoticônes de cette même page.</p>
+<pre>:nom_de_l'émoticône:</pre>
+</div>
 
 <br>
 
@@ -65,12 +128,18 @@
 <p>Il est possible de combiner plusieurs balises afin d'obtenir le
    résultat recherché, voici quelques exemples :</p>
 
-<h5>Texte en italique et en gras</h5>
-<p>Combinaison du **gras** et de l'*italique* :
-<br>***Texte en gras et en italique***</p>
+<div class="syntaxe">
+<h5>Texte en italique et en gras :</h5>
+<p>Combinaison du <code>**gras**</code> et de l'<code>*italique*</code> :</p>
+<pre>***Texte en gras et en italique***</pre>
+</div>
 
-<h5>Image utilisée comme lien</h5>
-<p>Combinaison d'une image ![nom](url) et d'un lien [texte](url) :
-<br><b>[</b>![texte de remplacement de l'image en cas de
-problème](adresse url directe de l'image)<b>](</b>url du lien<b>)</b>
-</p>
+<div class="syntaxe">
+<h5>Image utilisée comme lien :</h5>
+<p>Combinaison d'une image <code>![nom](url)</code> et d'un lien <code>[texte](url)</code> :</p>
+<pre>
+[![nom de l'image](url_de_l'image)](url_du_lien)
+</pre>
+</div>
+
+</div>
