@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module EthilVan::App::Views
 
    module Public::Contact
@@ -7,12 +5,6 @@ module EthilVan::App::Views
       class Index < Page
 
          class Form < EthilVan::Mustache::Form
-
-            CATEGORIES = {
-               general: 'Général',
-               partnership: 'Partenariat',
-               development: 'Développement'
-            }
 
             def initialize(contact_email)
                super(contact_email)
@@ -33,7 +25,7 @@ module EthilVan::App::Views
             end
 
             def category
-               select :category, among: CATEGORIES
+               select :category, among: EthilVan::Data::Contact::Categories
             end
 
             def subject
@@ -49,8 +41,13 @@ module EthilVan::App::Views
             end
          end
 
-         def initialize(contact_email = ContactEmail.new)
+         def initialize(contact_email = ContactEmail.new, success = false)
             @form = Form.new(contact_email)
+            @success = success
+         end
+
+         def success?
+            @success
          end
 
          def form

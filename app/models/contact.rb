@@ -2,7 +2,7 @@
 
 class ContactEmail
 
-   CATEGORIES = %w{general partnership development}
+   CATEGORIES = EthilVan::Data::Contact::Categories
 
    include ActiveModel::Validations
 
@@ -16,7 +16,8 @@ class ContactEmail
          allow_blank: true
    validates_presence_of :subject
    validates_presence_of :message
-   validates_inclusion_of :category, in: CATEGORIES
+   validates_inclusion_of :category,
+         in: EthilVan::Data::Contact::Categories.keys
 
    def initialize(attributes = {})
       @attributes = attributes
@@ -46,6 +47,10 @@ class ContactEmail
       @attributes['category'] = new_category
    end
 
+   def fancy_category
+      EthilVan::Data::Contact::Categories[category]
+   end
+
    def subject
       @attributes['subject']
    end
@@ -70,8 +75,12 @@ class ContactEmail
       "#{@attributes['name']} <#{@attributes['email']}>"
    end
 
+   def receiver
+      EthilVan::Data::Contact::Receiver[category]
+   end
+
    def categorized_subject
-      "[#{@attributes['category']}] #{@attributes['subject']}"
+      "[#{fancy_category}] #{@attributes['subject']}"
    end
 
    def body

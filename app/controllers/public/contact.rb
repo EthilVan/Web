@@ -10,11 +10,12 @@ class EthilVan::App
       if email.valid?
          mail do
             from     email.sender
-            to       EthilVan::Config.mail_contact
+            to       email.receiver
             subject  email.categorized_subject
             body     email.body
          end
-         redirect '/'
+         view Views::Public::Contact::Index.new ContactEmail.new, true
+         mustache 'public/contact'
       else
          view Views::Public::Contact::Index.new email
          mustache 'public/contact'

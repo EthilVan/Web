@@ -9,3 +9,15 @@ mumble:
    - "Durant les évènements"
    - "Jamais"
    - "Autre"
+
+contact:
+   categories:
+      general:       "Général"
+      partnership:   "Partenariat"
+      development:   "Développement"
+      redaction:     "Rédaction"
+   receiver:
+      general:       "contact@ethilvan.fr"
+      partnership:   "contact@ethilvan.fr"
+      development:   "dev@ethilvan.fr"
+      redaction:     "journal@ethilvan.fr"

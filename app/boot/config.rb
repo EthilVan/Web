@@ -5,7 +5,6 @@ class EthilVan::YamlConfig
    attr :database
    attr :mail_delivery_method
    attr :mail_sender
-   attr :mail_contact
 
    def initialize(path)
       hash = YAML.load_file path
@@ -34,6 +33,5 @@ class EthilVan::YamlConfig
       @mail_delivery_method = [:smtp, hash['mail']['smtp']]
       @mail_sender = "#{hash['mail']['sender_name']}"
       @mail_sender << " <#{hash['mail']['sender']}>"
-      @mail_contact = hash['mail']['contact']
    end
 end
