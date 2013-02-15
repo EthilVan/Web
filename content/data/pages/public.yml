@@ -55,3 +55,10 @@ aide_mise_en_forme:
          principal: true
       emoji:
          helpers: ['Help::Emoji']
+
+telechargements:
+   template: "public/telechargements/tabs"
+   onglets:
+      launcher:
+         principal: true
+      texturepack:
