@@ -12,3 +12,6 @@
 
 # Config
 /config.yml
+
+# Deployment
+/vendor
