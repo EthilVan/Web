@@ -26,7 +26,10 @@ module EthilVan::App::Views
             Time.at(time).year - 1970
          end
 
-         presence_predicate :birthdate
+         def birthdate?
+            @postulation.birthdate.present?
+         end
+
          def birthdate
             I18n.l @postulation.birthdate.to_date
          end
