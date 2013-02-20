@@ -50,6 +50,7 @@ class EthilVan::App < Sinatra::Base
       message.account = current_account
 
       if message.save
+         DiscussionView.update_for(current_account, discussion, Time.now + 1)
          redirect_not_xhr urls.discussion(discussion,
                discussion.total_pages, message)
          new_messages = new_messages(discussion, last_message.to_i)
