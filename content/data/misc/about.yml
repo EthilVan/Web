@@ -4,7 +4,7 @@ team:
       name:       aumgn
       site:       http://aumgn.fr
       twitter:    aum9n
-      location:   'Montpellier, France'
+      location:   'Loiret, France'
 
    -  role:       Designer
       role_fr:    Designer
@@ -16,40 +16,54 @@ team:
       role_fr:    Administrateur Serveur
       name:       Loup Des Neiges
       site:       http://www.loup-des-neiges.com
-      twitter:    https://twitter.com/loupdesneiges
-      localion:   'Cannes, France'
-
-components:
-   -  name:    Sinatra
-      url:     http://sinatrarb.com/
-   -  name:    Mustache
-      url:     http://mustache.github.com/
-   -  name:    JQuery
-      url:     http://jquery.com/
-   -  name:    Bootstrap
-      url:     http://twitter.github.com/bootstrap/
-   -  name:    Epic Editor
-      url:     http://epiceditor.com/
+      twitter:    loupdesneiges
+      location:   'Cannes, France'
 
 stack:
    -  name:    Centos
       url:     http://www.centos.org/
    -  name:    Lighttpd
       url:     http://www.lighttpd.net/
+   -  name:    Cron
+      url:     http://unixhelp.ed.ac.uk/CGI/man-cgi?cron+8
    -  name:    Ruby
       url:     http://ruby-lang.org/
    -  name:    Thin
       url:     http://code.macournoyer.com/thin/
    -  name:    Mysql
       url:     http://mysql.com
-   -  name:    TypeScript
-      url:     http://www.typescriptlang.org/
+
+components:
+   -  name:    Sinatra
+      url:     http://sinatrarb.com/
+   -  name:    Active Record
+      url:     http://api.rubyonrails.org/files/activerecord/README_rdoc.html
+   -  name:    Mustache
+      url:     http://mustache.github.com/
+   -  name:    Redcarpet
+      url:     https://github.com/vmg/redcarpet
+   -  name:    OEmbed Ruby
+      url:     https://github.com/judofyr/ruby-oembed
    -  name:    Less
       url:     http://lesscss.org/
+   -  name:    JQuery
+      url:     http://jquery.com/
+   -  name:    Bootstrap
+      url:     http://twitter.github.com/bootstrap/
+   -  name:    Bootbox
+      url:     http://bootboxjs.com/
+   -  name:    Spin.js
+      url:     http://fgnass.github.com/spin.js/
+   -  name:    At.js
+      url:     https://github.com/ichord/At.js
+   -  name:    miniCount
+      url:     https://github.com/miniJs/miniCount
 
 softwares:
    -  name:    Sublime Text 2
       url:     http://www.sublimetext.com/2
+   -  name:    Photoshop
+      url:     http://www.adobe.com/fr/products/photoshop.html
    -  name:    Openssh
       url:     http://www.openssh.org/
    -  name:    Git
@@ -62,5 +76,9 @@ softwares:
       url:     http://www.virtualbox.org
    -  name:    Vagrant
       url:     http://vagrantup.com
-   -  name:    Photoshop
-      url:     http://www.adobe.com/fr/products/photoshop.html
+   -  name:    Tmux
+      url:     http://tmux.sourceforge.net/
+   -  name:    Zsh
+      url:     http://www.zsh.org/
+   -  name:    Oh My Zsh
+      url:     https://github.com/robbyrussell/oh-my-zsh
