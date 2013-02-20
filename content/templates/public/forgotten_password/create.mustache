@@ -1,0 +1,17 @@
+{{# page_title }}Récuperation du mot de passe{{/ page_title }}
+
+<form method="POST" action="" data-validate="parsley">
+
+   {{# error? }}
+   <div class="flash warning">Cet email n'existe pas.</div>
+   {{/ error? }}
+
+   <div>Indiquez l'email correspondant à votre compte.</div>
+
+   <input id="fp_email" name="fp_email" type="text" data-type="email"
+         placeholder="email@example.org" value="{{ email }}"/>
+
+   <div></div>
+
+   <input type="submit" class="btn" value="Soumettre" />
+</form>

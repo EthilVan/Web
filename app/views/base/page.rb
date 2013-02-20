@@ -99,6 +99,9 @@ module EthilVan::App::Views
    module Member
    end
 
+   module ForgottenPassword
+   end
+
    module Gestion
    end
 end
