@@ -9,8 +9,8 @@ module EthilVan::App::Views
             @page = page
          end
 
-         def page_title?
-            false
+         def meta_page_title
+            "#{name}"
          end
 
          def name

@@ -24,7 +24,7 @@ module EthilVan::App::Views
       end
 
       def meta_tab_title
-         [@tab_title, @page.meta_page_title] * ' | '
+         [@tab_title, *@page.page_titles] * ' | '
       end
 
       def active?

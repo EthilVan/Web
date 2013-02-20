@@ -8,6 +8,10 @@ module EthilVan::App::Views
             @news = news
          end
 
+         def meta_page_title
+            "#{@news.title} | News"
+         end
+
          def news
             NewsPartial.new(@news)
          end

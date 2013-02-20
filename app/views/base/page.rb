@@ -25,7 +25,11 @@ module EthilVan::App::Views
       end
 
       def meta_page_title
-         [*_page_title.reverse, 'Ethil Van'] * ' | '
+         if page_tabs?
+            page_tabs.first(&:active?).meta_tab_title
+         else
+            _page_title.reverse * ' | '
+         end
       end
 
       def page_description

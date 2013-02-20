@@ -1,5 +1,3 @@
-<h3>Postulation - {{ name }}</h3>
-
 {{# birthdate? }}
    <h4>Age - Date de naissance :</h4>
    <p>{{ age }} ans - {{ birthdate }}</p>
@@ -44,10 +42,10 @@
 <h4>Dispose d'un micro :</h4>
 <p>{{ microphone }}</p>
 
-{{# microphone }}
+{{# microphone? }}
     <h4>Regularité sur TeamSpeak :</h4>
     <p>{{ mumble }}</p>
-{{/ microphone }}
+{{/ microphone? }}
 
 <h4>Champ Libre :</h4>
 <p>{{ free_text }}</p>

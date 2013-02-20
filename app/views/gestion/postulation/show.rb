@@ -10,11 +10,11 @@ module EthilVan::App::Views
          end
 
          def meta_page_title
-            "#{name} | Postulation | EthilVan"
+            "#{name} | Postulation"
          end
 
-         def page_title
-            "Postulation - #{name}"
+         def _page_title
+            ["Postulation", name]
          end
 
          def name

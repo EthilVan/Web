@@ -16,6 +16,10 @@ module EthilVan::App::Views
             end
          end
 
+         def meta_page_title
+            "#{name} | Discussions"
+         end
+
          def name
             @group.name
          end
