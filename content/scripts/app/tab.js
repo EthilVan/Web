@@ -26,5 +26,3 @@ $(document).on('click.ethilvan.page-tab', 'ul#nav.page-tabs .tab a', function (e
 window.onpopstate = function(event) {
    displayTab(tabFor(window.location.pathname));
 }
-
-$(function() { displayTab(tabFor(window.location.pathname)); });

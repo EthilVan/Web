@@ -1,19 +1,19 @@
 <div class="tab-content">
    {{# tab_general }}
       {{# tab_title }}Général{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane tab-pane-default">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> membre/profil/edit/_general }}
       </div>
    {{/ tab_general }}
    {{# tab_appearance }}
       {{# tab_title }}Apparence{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> membre/profil/edit/_appearance }}
       </div>
    {{/ tab_appearance }}
    {{# tab_account }}
       {{# tab_title }}Compte{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> membre/profil/edit/_account }}
       </div>
    {{/ tab_account }}

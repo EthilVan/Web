@@ -2,17 +2,17 @@
 
 <div class="tab-content">
    {{# tab_crafts }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/aide/nouveautes/_crafts }}
       </div>
    {{/ tab_crafts }}
    {{# tab_blocs }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/aide/nouveautes/_blocs }}
       </div>
    {{/ tab_blocs }}
    {{# tab_objets }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/aide/nouveautes/_objets }}
       </div>
    {{/ tab_objets }}

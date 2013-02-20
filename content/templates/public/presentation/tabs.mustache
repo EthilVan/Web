@@ -3,22 +3,22 @@
 <div class="tab-content">
    {{# tab_generale }}
       {{# tab_title }}Générale{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/presentation/_generale }}
       </div>
    {{/ tab_generale }}
    {{# tab_equipe }}
-      <div id="{{ tab_name }}" class="equipe tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/presentation/_equipe }}
       </div>
    {{/ tab_equipe }}
    {{# tab_dimensions }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/presentation/_dimensions }}
       </div>
    {{/ tab_dimensions }}
    {{# tab_partenaires }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/presentation/_partenaires }}
       </div>
    {{/ tab_partenaires }}

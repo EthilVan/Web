@@ -3,29 +3,29 @@
 <div class="tab-content">
    {{# tab_general }}
       {{# tab_title }}Général{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/reglement/_general}}
       </div>
    {{/ tab_general }}
    {{# tab_terres_sauvages }}
       {{# tab_title }}Terres sauvages{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/reglement/_terres_sauvages}}
       </div>
    {{/ tab_terres_sauvages }}
    {{# tab_trefonds }}
       {{# tab_title }}Tréfonds{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/reglement/_trefonds}}
       </div>
    {{/ tab_trefonds }}
    {{# tab_evasion }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/reglement/_evasion}}
       </div>
    {{/ tab_evasion }}
    {{# tab_messages}}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/reglement/_messages}}
       </div>
    {{/ tab_messages}}

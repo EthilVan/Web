@@ -26,5 +26,13 @@ module EthilVan::App::Views
       def meta_tab_title
          [@tab_title, @page.meta_page_title] * ' | '
       end
+
+      def active?
+         !(app.request.path_info =~ %r{/#{@name}$}).nil?
+      end
+
+      def tab_status
+         active? ? ' active' : ''
+      end
    end
 end

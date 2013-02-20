@@ -3,23 +3,23 @@
 <div class="tab-content">
    {{# tab_presentation }}
       {{# tab_title }}Présentation{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/apercu/_presentation }}
       </div>
    {{/ tab_presentation }}
    {{# tab_images }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/apercu/_images }}
       </div>
    {{/ tab_images }}
    {{# tab_videos }}
       {{# tab_title }}Vidéos{{/ tab_title }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/apercu/_videos }}
       </div>
    {{/ tab_videos }}
    {{# tab_cartes }}
-      <div id="{{ tab_name }}" class="tab-pane">
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
          {{> public/apercu/_cartes }}
       </div>
    {{/ tab_cartes }}

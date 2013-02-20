@@ -11,7 +11,7 @@
    <div id="separateur-titre-page">►</div>
    <ul id="nav" class="page-tabs">
       {{# page_tabs }}
-      <li class="tab">
+      <li class="tab{{ tab_status }}">
          <a href="{{ tab_name }}" data-target="#{{ tab_name }}"
                data-toggle="tab" data-title="{{ meta_tab_title }}">
             <div class="onglet">{{ get_tab_title }}</div>
