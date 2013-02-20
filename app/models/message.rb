@@ -72,7 +72,7 @@ class Message < ActiveRecord::Base
 
    def editable_by?(account)
       account.role.inherit? EthilVan::Role::MODO or
-            self.account == account
+            (!discussion.archived? and self.account == account)
    end
 
 private

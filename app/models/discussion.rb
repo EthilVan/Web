@@ -5,6 +5,7 @@ class Discussion < ActiveRecord::Base
    attr_accessible :name
    attr_accessible :first_message_attributes
    attr_accessible :new_group_id
+   attr_accessible :archived
 
    # ==========================================================================
    # * Relations

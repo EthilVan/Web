@@ -3,4 +3,5 @@ fr:
       attributes:
          discussion:
             name:         'Nom'
+            archived:     'Archivée'
             new_group_id: 'Espace'

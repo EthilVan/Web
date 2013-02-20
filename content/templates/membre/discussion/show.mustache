@@ -14,26 +14,22 @@
 </div>
 
 <div class="pages">
-   {{# pager }}
-   {{> membre/discussion/_pager }}
-   {{/ pager }}
+   {{# pager }}{{> membre/discussion/_pager }}{{/ pager }}
 </div>
 
 <div class="cleaner"></div>
 
 <div class="messages">
-{{# messages }}
-   {{> membre/discussion/_message }}
-{{/ messages }}
+   {{# messages }}{{> membre/discussion/_message }}{{/ messages }}
 
-<div id="champ-reponse">
-   <a class="btn pull-right valider" href="{{ response_url }}"
-         data-inline-target="#champ-reponse">Répondre</a>
-</div>
+   {{# can_respond? }}
+   <div id="champ-reponse">
+      <a class="btn pull-right valider" href="{{ response_url }}"
+            data-inline-target="#champ-reponse">Répondre</a>
+   </div>
+   {{/ can_respond? }}
 </div>
 
 <div class="pages">
-   {{# pager }}
-   {{> membre/discussion/_pager }}
-   {{/ pager }}
+   {{# pager }}{{> membre/discussion/_pager }}{{/ pager }}
 </div>

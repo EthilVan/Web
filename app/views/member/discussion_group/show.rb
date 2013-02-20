@@ -11,7 +11,7 @@ module EthilVan::App::Views
             @discussions = @group.discussions
             @remaining = 0
             if limit
-               @remaining = @discussions.size - limit
+               @remaining = [0, @discussions.size - limit].max
                @discussions = @discussions[0...5]
             end
          end
@@ -40,12 +40,24 @@ module EthilVan::App::Views
             "#{url}/supprimer"
          end
 
-         def remaining?
-            @remaining > 0
+         def remaining_or_archived?
+            @remaining > 0 or archived?
+         end
+
+         def archived?
+            archived > 0
          end
 
          def remaining
-            @remaining
+            @remaining + archived
+         end
+
+         def archived
+            _archived_discussions.size
+         end
+
+         def archived_plural?
+            archived > 1
          end
 
          def discussions?
@@ -56,6 +68,22 @@ module EthilVan::App::Views
             @discussions.map do |discussion|
                DiscussionPreview.new(discussion, @app.current_account, @views)
             end
+         end
+
+         def archived_discussions?
+            !_archived_discussions.empty?
+         end
+
+         def archived_discussions
+            _archived_discussions.map do |discussion|
+               ArchivedDiscussionPreview.new(discussion, @app.current_account)
+            end
+         end
+
+      private
+
+         def _archived_discussions
+            @archived_discussions ||= @group.archived_discussions
          end
       end
    end

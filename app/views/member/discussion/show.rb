@@ -28,8 +28,10 @@ module EthilVan::App::Views
          def messages
             return [] if @page.nil?
             stats_max = MinecraftStats.maximum('version')
+            not_archived = !@discussion.archived
             @page.each_with_index.map do |message, index|
-               editable = modo? || message.editable_by?(@app.current_account)
+               editable = modo?
+               editable ||= not_archived && message.editable_by?(current_account)
                Message.new(message, editable, stats_max)
             end
          end
@@ -41,6 +43,10 @@ module EthilVan::App::Views
          def create_pager
             pager = Pager.new(@discussion, @page)
             pager.total > 1 ? pager : nil
+         end
+
+         def can_respond?
+            modo? or not @discussion.archived?
          end
 
          def url

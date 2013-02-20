@@ -20,19 +20,31 @@
             <div class="edit"></div>
          </a>
       {{/ modo? }}
+
       <div class="lien-espace">
          <a href="{{ url }}" title="{{ description }}">
             <div class="titre-espace">{{ name }}</div>
          </a>
       </div>
-      {{> membre/discussion_group/_discussion_previews }}
-      {{# remaining? }}
+
+      {{# discussions? }}
+      <ul>
+         {{# discussions }}
+         <li>{{> membre/discussion_group/_discussion_preview }}</li>
+         {{/ discussions }}
+      </ul>
+      {{/ discussions? }}
+
+      {{# remaining_or_archived? }}
       <a href="{{ url }}" title="{{ description }}">
          <div class="restantes">
             Discussions restantes : {{ remaining }}
+            {{# archived? }}
+            (dont {{ archived }} archivée{{# archived_plural? }}s{{/ archived_plural? }})
+            {{/ archived? }}
          </div>
       </a>
-      {{/ remaining? }}
+      {{/ remaining_or_archived? }}
       <a href="{{ url }}/creer">
          <div class="nouvelle">+ Nouvelle discussion</div>
       </a>

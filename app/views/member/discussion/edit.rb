@@ -14,6 +14,10 @@ module EthilVan::App::Views
                text :name
             end
 
+            def archived
+               switch_f :archived
+            end
+
             def group
                groups = model.group.class.by_priority.select('id, name').all
                groups_select = groups.each_with_object({}) do |group, hash|

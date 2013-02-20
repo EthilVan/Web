@@ -12,6 +12,13 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    # ==========================================================================
    has_many :discussions, as: :discussion_group,
          order: 'updated_at DESC',
+         conditions: 'archived = 0',
+         dependent: :destroy
+
+   has_many :archived_discussions, as: :discussion_group,
+         class_name: 'Discussion',
+         order: 'updated_at DESC',
+         conditions: 'archived = 1',
          dependent: :destroy
 
    # ==========================================================================

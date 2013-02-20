@@ -3,6 +3,7 @@
       ← Retour à la liste des espaces de discussion
    </a>
    <div class="ligne"></div>
+
    <div class="entete-espace">
       {{# modo? }}
          <a class="need-confirmation" href="{{ delete_url }}">
@@ -15,7 +16,22 @@
       <div class="titre-espace">{{ name }}</div>
       <p>{{ description }}</p>
    </div>
-   {{> membre/discussion_group/_discussion_previews }}
+
+   {{# discussions? }}
+   <ul>
+      {{# discussions }}
+      <li>{{> membre/discussion_group/_discussion_preview }}</li>
+      {{/ discussions }}
+   </ul>
+   {{/ discussions? }}
+
+   {{# archived_discussions? }}
+   <ul>
+      {{# archived_discussions }}
+      <li>{{> membre/discussion_group/_discussion_preview }}</li>
+      {{/ archived_discussions }}
+   </ul>
+   {{/ archived_discussions? }}
 </div>
 <a href="{{ url }}/creer">
    <input class='btn pull-right valider' type="button" value="Nouvelle discussion"/>

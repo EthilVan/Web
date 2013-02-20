@@ -13,6 +13,16 @@
       </div>
    {{/ name }}
 
+   {{# archived }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls large">
+            {{> form/switch_yn }}
+            {{> form/errors }}
+         </div>
+      </div>
+   {{/ archived }}
+
    {{# group }}
       <div class="control-group">
          <div class="control-label">{{> form/label }}</div>

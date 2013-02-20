@@ -26,6 +26,7 @@ class EthilVan::App < Sinatra::Base
 
    get %r{/membre/discussion/(\d{1,5})/repondre(?:/(\d{1,7}))?$} do |id, last_message|
       discussion = resource Discussion.find_by_id id
+      not_authorized if !modo? and discussion.archived?
       new_messages = []
       if inline = !!last_message && xhr?
          new_messages = new_messages(discussion, last_message.to_i)
@@ -42,6 +43,7 @@ class EthilVan::App < Sinatra::Base
 
    post %r{/membre/discussion/(\d{1,5})/repondre(?:/(\d{1,7}))?$} do |id, last_message|
       discussion = resource Discussion.find_by_id id
+      not_authorized if !modo? and discussion.archived?
       new_messages = []
       inline = !!last_message && xhr?
 
