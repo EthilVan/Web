@@ -5,21 +5,25 @@ admin:
       - modo
       - redacteur
       - default
+      - ancien
 dev:
    name: "Savant"
    subroles:
       - modo
       - redacteur
       - default
+      - ancien
 modo:
    name: "Gardien"
    subroles:
       - redacteur
       - default
+      - ancien
 redacteur:
    name: "Orateur"
    subroles:
       - default
+      - ancien
 default:
    name: "Aventurier"
    subroles:
