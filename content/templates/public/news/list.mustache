@@ -32,11 +32,18 @@
       </div>
       <div class="contenu">{{{ summary }}}</div>
       <div class="suite">
-         <a href="{{ url }}">→ Lire la suite...</a>
+         <a href="{{ url }}">
+            → Lire la suite...
+            {{# comments? }}({{ comments_count }} commentaire{{# comments_plural? }}s{{/ comments_plural? }}){{/ comments? }}
+         </a>
       </div>
       {{/ show? }}
-      <div class="creation"> - Le {{ created }} par {{ author }} - </div>
-      <div class="ligne"> </div>
+      {{^ updated? }}
+         <div class="creation">- Le {{ created }} par {{ author }} -</div>
+      {{/ updated? }}
+      {{# updated? }}
+         <div class="creation">- Par {{ author }} - Mise à jour le {{ updated }} - </div>
+      {{/ updated? }}
    </div>
    {{/ newses }}
 </div>

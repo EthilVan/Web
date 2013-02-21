@@ -53,6 +53,7 @@ class EthilVan::App
    get %r{/news/(\d{1,3})$} do |id|
       news = resource News.find_by_id id
       not_authorized if news.private and guest?
+
       view Views::Public::News::Show.new news
       mustache 'public/news/show'
    end

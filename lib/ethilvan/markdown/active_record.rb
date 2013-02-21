@@ -15,21 +15,34 @@ module EthilVan::Markdown::ActiveRecord
          @markdown_fields[field] = parsed_field
          self.class_eval(<<-EVAL)
             def #{field}=(new_value)
-               write_attribute :#{field}, new_value
-               write_attribute :#{parsed_field}, nil
+               markdown_set(:#{field}, :#{parsed_field}, new_value)
             end
 
          private
 
             def new_#{field}?
-               !#{field}.nil? and #{parsed_field}.nil?
+               markdown_new?(:#{field}, :#{parsed_field})
             end
 
             def parse_#{field}
-               self.#{parsed_field} = markdown(#{field})
+               markdown_parse(:#{field}, :#{parsed_field})
             end
          EVAL
          before_save :"parse_#{field}", if: :"new_#{field}?"
       end
+   end
+
+   def markdown_set(field, parsed_field, new_value)
+      write_attribute(field, new_value)
+      write_attribute(parsed_field, nil)
+   end
+
+   def markdown_new?(field, parsed_field)
+      !read_attribute(field).nil? and read_attribute(parsed_field).nil?
+   end
+
+   def markdown_parse(field, parsed_field)
+      parsed_value = markdown read_attribute field
+      write_attribute(parsed_field, parsed_value)
    end
 end

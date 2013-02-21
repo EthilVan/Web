@@ -59,6 +59,32 @@ module EthilVan::App::Views
          def created
             I18n.l @news.created_at
          end
+
+         def updated?
+            @news.updated_at > @news.created_at
+         end
+
+         def updated
+            I18n.l @news.updated_at
+         end
+
+         def comments?
+            comments_count > 0
+         end
+
+         def comments_count
+            @comments_count ||= @news.comments.size
+         end
+
+         def comments_plural?
+            comments_count > 1
+         end
+
+         def comments
+            @news.comments.map do |comment|
+               Comment::Show.new(comment)
+            end
+         end
       end
    end
 end

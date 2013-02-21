@@ -1,0 +1,12 @@
+<div class="news-comment">
+   {{# member? }}
+      <img src="{{ member_avatar }}"/>
+      {{ member_name }}
+   {{/ member? }}
+
+   {{^ member? }}
+      {{ author_name }} {{# modo? }}({{ author_email }}){{/ modo? }}
+   {{/ member? }}
+
+   <div>{{{ content }}}</div>
+</div>

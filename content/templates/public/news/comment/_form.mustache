@@ -1,0 +1,38 @@
+{{# form }}
+<form {{{ attributes }}} class="form-comment">
+
+   {{^ member? }}
+      {{# name }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/errors }}
+      {{/ name }}
+
+      {{# email }}
+         {{> form/label }}
+         {{> form/input }}
+         {{> form/errors }}
+      {{/ email }}
+
+      <div></div>
+
+      {{# content }}
+         {{> form/textarea }}
+         {{> form/errors }}
+      {{/ content }}
+   {{/ member? }}
+
+   {{# member? }}
+      {{# content }}
+         {{> form/mdeditor }}
+         {{> form/errors }}
+      {{/ content }}
+   {{/ member? }}
+
+   <div></div>
+
+   <input class="btn pull-right" type="submit" value="Poster"
+         {{# inline? }} data-inline-target=".form-comment"{{/ inline? }}/>
+
+</form>
+{{/ form }}

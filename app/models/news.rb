@@ -15,6 +15,8 @@ class News < ActiveRecord::Base
    # * Relations
    # ==========================================================================
    belongs_to :account
+   has_many :comments, class_name: 'NewsComment', order: 'created_at DESC',
+         dependent: :destroy
 
    # ==========================================================================
    # * Validations

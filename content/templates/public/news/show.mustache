@@ -9,10 +9,27 @@
             <div class="edit"></div>
          </a>
       {{/ redacteur? }}
+
       <div class="titre">{{ title }}</div>
       <div class="banner"><img src="{{ banner_url }}" /></div>
       <div class="contenu">{{{ contents }}}</div>
-      <div class="creation">- Le {{ created }} par {{ author }} -</div>
+
+      {{^ updated? }}
+         <div class="creation">- Le {{ created }} par {{ author }} -</div>
+      {{/ updated? }}
+      {{# updated? }}
+         <div class="creation">- Par {{ author }} - Mise à jour le {{ updated }} - </div>
+      {{/ updated? }}
    </div>
+   <div id="champ-nouvau-commentaire">
+      <a href="{{ comment_url }}" class="btn" data-inline-target="#champ-nouvau-commentaire">
+         Commenter
+      </a>
+   </div>
+   {{# comments? }}
+   <div class="comments">
+      {{# comments }}{{> public/news/comment/_show }}{{/ comments }}
+   </div>
+   {{/ comments? }}
 </div>
 {{/ news }}
