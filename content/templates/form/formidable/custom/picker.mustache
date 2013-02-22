@@ -1,0 +1,17 @@
+<div class="btn-group picker" data-formidable="picker">
+   <a class="btn dropdown-toggle clearfix" data-toggle="dropdown" href="#">
+      <span class="pull-left" data-formidable-picker>
+         {{ selected.value }}
+      </span>
+      <span class="caret pull-right"></span>
+   </a>
+   <ul class="dropdown-menu" role="menu">
+      {{# among }}
+      <li>
+         <a tabindex="-1" href="#" data-formidable-item="{{ name }}">
+            {{ value }}
+         </a>
+      </li>
+      {{/ among }}
+   </ul>
+</div>

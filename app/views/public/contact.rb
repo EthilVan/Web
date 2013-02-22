@@ -25,7 +25,7 @@ module EthilVan::App::Views
             end
 
             def category
-               select :category, among: EthilVan::Data::Contact::Categories
+               choice :category, among: EthilVan::Data::Contact::Categories
             end
 
             def subject

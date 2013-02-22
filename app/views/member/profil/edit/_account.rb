@@ -12,12 +12,12 @@ module EthilVan::App::Views
 
             def banned
                return false unless super_role?
-               switch_f :banned
+               boolean :banned
             end
 
             def vote_needed
                return false unless modo? and role?
-               switch_f :vote_needed
+               boolean :vote_needed
             end
 
             def email

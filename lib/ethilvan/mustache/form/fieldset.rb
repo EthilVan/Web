@@ -14,19 +14,15 @@ class EthilVan::Mustache::Form
       end
       alias :password :password_f
 
-      def checkbox_f(name, attributes = {})
-         field(Checkbox, name, attributes)
+      def choice_f(name, attributes = {})
+         field(Choice, name, attributes)
       end
-      alias :checkbox :checkbox_f
+      alias :choice :choice_f
 
-      def switch_f(name, attributes = {})
-         field(Switch, name, attributes)
+      def boolean_f(name, attributes = {})
+         field(Boolean, name, attributes)
       end
-
-      def select_f(name, attributes = {})
-         field(Select, name, attributes)
-      end
-      alias :select :select_f
+      alias :boolean :boolean_f
 
       def association(klass, name, attributes = {})
          reflection = @model.reflections[name]

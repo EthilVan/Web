@@ -15,7 +15,7 @@ module EthilVan::App::Views
             end
 
             def archived
-               switch_f :archived
+               boolean :archived
             end
 
             def group
@@ -23,7 +23,7 @@ module EthilVan::App::Views
                groups_select = groups.each_with_object({}) do |group, hash|
                   hash[group.id] = group.name
                end
-               select :new_group_id, among: groups_select
+               choice :new_group_id, among: groups_select
             end
          end
 

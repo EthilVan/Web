@@ -22,7 +22,7 @@ $(function() {
    var oldServer = $form.find('.field-postulation_old_server');
    var oldServerReason = $form.find('.field-postulation_old_server_reason');
    var onMultiMinecraftChange = function(multiMinecraft) {
-      if (multiMinecraft.val() == '1') {
+      if (multiMinecraft.val() == 'true') {
          enableField(oldServer);
          enableField(oldServerReason);
       } else {
@@ -42,28 +42,28 @@ $(function() {
 
    var mumble = $form.find('.field-postulation_mumble');
    var onMicrophoneChange = function(microphone) {
-      if (microphone.val() == '1') {
+      if (microphone.val() == 'true') {
          enableField(mumble);
-         onMumbleChange($form.find('.field-postulation_mumble select'));
+         onMumbleChange($form.find('[name="postulation[mumble]"]'));
       } else {
          disableField(mumble);
          disableField(mumbleOther);
       }
    }
 
-   $form.find('.field-postulation_multi_minecraft input').change(function() {
+   $form.find('[name="postulation[multi_minecraft]"]').change(function() {
       onMultiMinecraftChange($(this));
    });
-   $form.find('.field-postulation_microphone input').change(function() {
+   $form.find('[name="postulation[microphone]"]').change(function() {
       onMicrophoneChange($(this));
    });
-   $form.find('.field-postulation_mumble select').change(function() {
+   $form.find('[name="postulation[mumble]"]').change(function() {
       onMumbleChange($(this));
    });
 
-   onMultiMinecraftChange($form.find('.multi_minecraft input[type=checkbox]'));
-   onMicrophoneChange($form.find(' .microphone input[type=checkbox]'));
-   onMumbleChange($form.find('.mumble select'));
+   onMultiMinecraftChange($form.find('[name="postulation[multi_minecraft]"]'));
+   onMicrophoneChange($form.find('[name="postulation[microphone]"]'));
+   onMumbleChange($form.find('[name="postulation[mumble]"]'));
 
    var screensNextId = $form.find('fieldset.field-screen').size();
    var screensCount = screensNextId;

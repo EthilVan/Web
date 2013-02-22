@@ -27,7 +27,7 @@ module EthilVan::App::Views
          end
 
          def show_email
-            switch_f :show_email
+            boolean :show_email
          end
 
          def birthdate
@@ -37,7 +37,7 @@ module EthilVan::App::Views
          end
 
          def sexe
-            select :sexe, among: EthilVan::Data::Sexe
+            choice :sexe, among: EthilVan::Data::Sexe
          end
 
          def localisation

@@ -9,7 +9,7 @@ module EthilVan::App::Views
          end
 
          def agreement
-            checkbox :agreement
+            boolean :agreement
          end
 
          def message

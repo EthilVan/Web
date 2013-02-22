@@ -72,7 +72,7 @@ module EthilVan::App::Views
          end
 
          def sexe
-            select :sexe, among: EthilVan::Data::Sexe
+            choice :sexe, among: EthilVan::Data::Sexe
          end
 
          def minecraft_since
@@ -83,7 +83,7 @@ module EthilVan::App::Views
          end
 
          def multi_minecraft
-            switch_f :multi_minecraft
+            boolean :multi_minecraft
          end
 
          def old_server
@@ -122,11 +122,11 @@ module EthilVan::App::Views
          end
 
          def microphone
-            switch_f :microphone
+            boolean :microphone
          end
 
          def mumble
-            select :mumble, among: EthilVan::Data::Mumble
+            choice :mumble, among: EthilVan::Data::Mumble
          end
 
          def mumble_other
@@ -145,7 +145,7 @@ module EthilVan::App::Views
          end
 
          def rules_acceptance
-            checkbox :rules_acceptance, validations: {
+            boolean :rules_acceptance, validations: {
                acceptance: 'règlement',
             }
          end

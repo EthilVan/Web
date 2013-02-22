@@ -19,7 +19,7 @@ module EthilVan::App::Views
             end
 
             def remember
-               checkbox :remember
+               boolean :remember
             end
          end
 
