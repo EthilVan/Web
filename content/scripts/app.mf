@@ -16,8 +16,7 @@ app/preload-images.js
 app/page-scroller.js
 app/submenu.js
 app/tab.js
-app/select.js
-app/checkbox.js
+app/formidable.js
 app/auto-fill.js
 app/mdeditor.js
 app/confirmation.js
