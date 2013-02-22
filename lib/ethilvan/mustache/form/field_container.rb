@@ -11,9 +11,9 @@ class EthilVan::Mustache::Form
          [*field_ids, id] * '_'
       end
 
-      def l10n_for(field, data)
+      def l10n_for(field, *data)
          i18n_namespaces.each do |ns|
-            data = _l10n_for(ns, field, data)
+            data = _l10n_for(ns, field, *data)
             return data unless data.nil?
          end
 
@@ -26,8 +26,8 @@ class EthilVan::Mustache::Form
 
    private
 
-      def _l10n_for(ns, field, data)
-         I18n.translate!(["form", ns, data, field] * '.')
+      def _l10n_for(ns, field, *data)
+         I18n.translate!(["form", ns, *data, field] * '.')
       rescue I18n::MissingTranslationData
          nil
       end

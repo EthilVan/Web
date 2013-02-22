@@ -18,7 +18,7 @@ class EthilVan::Mustache::Form
          end
 
          def l10n_value
-            @field.fieldset.l10n_for(@field.name, "choice.#{name}")
+            @field.fieldset.l10n_for(name, "choice", @field.name)
          end
 
          def value
