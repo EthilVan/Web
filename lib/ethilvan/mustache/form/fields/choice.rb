@@ -6,7 +6,7 @@ class EthilVan::Mustache::Form
 
          attr_reader :name
 
-         def initialize(field, selected, name, value = nil)
+         def initialize(field, name, value = nil, selected)
             @field = field
             @name = name
             @selected = selected
@@ -44,16 +44,16 @@ class EthilVan::Mustache::Form
          super(fieldset, name, validations, errors, attributes)
 
          @among = (attributes[:among] || []).map do |name, value|
-            Option.new(self, selected.to_s == name.to_s, name, value)
+            Option.new(self, name, value, selected.to_s == name.to_s)
          end
       end
 
       def selected
-         @selected ||= @among.first(&:selected) || @among.first
+         @selected ||= @among.find(&:selected?) || @among.first
       end
 
       def checkbox_trusy
-         @checkbox_trusy ||= @among.first(&:trusy?)
+         @checkbox_trusy ||= @among.find(&:trusy?)
       end
 
       def checkbox_attribute

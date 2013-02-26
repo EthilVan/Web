@@ -5,7 +5,7 @@ class EthilVan::Mustache::Form
       class TrueOption < Choice::Option
 
          def initialize(field, selected)
-            super(field, selected, "true")
+            super(field, "true", selected)
          end
 
          def value
@@ -16,7 +16,7 @@ class EthilVan::Mustache::Form
       class FalseOption < Choice::Option
 
          def initialize(field, selected)
-            super(field, selected, "false")
+            super(field, "false", selected)
          end
 
          def value
