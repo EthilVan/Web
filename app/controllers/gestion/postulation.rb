@@ -23,7 +23,7 @@ class EthilVan::App < Sinatra::Base
 
    post '/gestion/postulation/:name' do |name|
       postulation = resource Postulation.where(name: name).first
-      not found if !postulation.pending? or
+      not_found if !postulation.pending? or
             PostulationVote.for?(current_account, postulation)
 
       vote = PostulationVote.new(params[:postulation_vote])
