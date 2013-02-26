@@ -1,6 +1,7 @@
 module EthilVan::Static
 
    BLACKLIST = [
+      'google.+\.html',
       'robots.txt',
       'images/emoji/.+',
    ].map { |s| /^#{s}$/ }
