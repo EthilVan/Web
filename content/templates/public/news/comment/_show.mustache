@@ -1,4 +1,4 @@
-<div class="news-comment">
+<div id="{{ anchor }}" class="news-comment">
    {{# member? }}
       <img src="{{ member_avatar }}"/>
       {{ member_name }}
@@ -9,4 +9,9 @@
    {{/ member? }}
 
    <div>{{{ content }}}</div>
+
+   {{# editable? }}
+   <a href="{{ edit_url }}">Editer</a>
+   <a href="{{ delete_url }}" data-remove-target="#{{ anchor }}">Supprimer</a>
+   {{/ editable? }}
 </div>

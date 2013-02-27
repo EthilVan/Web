@@ -21,11 +21,7 @@
          <div class="creation">- Par {{ author }} - Mise à jour le {{ updated }} - </div>
       {{/ updated? }}
    </div>
-   <div id="champ-nouvau-commentaire">
-      <a href="{{ comment_url }}" class="btn" data-inline-target="#champ-nouvau-commentaire">
-         Commenter
-      </a>
-   </div>
+   {{> public/news/comment/_create_button }}
    {{# comments? }}
    <div class="comments">
       {{# comments }}{{> public/news/comment/_show }}{{/ comments }}

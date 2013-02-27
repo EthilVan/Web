@@ -31,6 +31,26 @@ module EthilVan::App::Views
          def content
             @comment.parsed_content
          end
+
+         def editable?
+            modo? or current?(@comment.account)
+         end
+
+         def anchor
+            "comment-#{@comment.id}"
+         end
+
+         def base_url
+            "/news/commentaire/#{@comment.id}"
+         end
+
+         def edit_url
+            "#{base_url}/editer"
+         end
+
+         def delete_url
+            "#{base_url}/supprimer"
+         end
       end
    end
 end
