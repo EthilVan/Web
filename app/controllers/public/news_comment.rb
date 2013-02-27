@@ -2,6 +2,7 @@ class EthilVan::App
 
    get %r{/news/(\d{1,3})/commenter$} do |id|
       news = resource News.find_by_id id
+      raise not_found unless news.commentable
 
       comment = NewsComment.new
       comment.news = news
@@ -13,6 +14,7 @@ class EthilVan::App
 
    post %r{/news/(\d{1,3})/commenter$} do |id|
       news = resource News.find_by_id id
+      raise not_found unless news.commentable
 
       comment = NewsComment.new
       comment.news = news

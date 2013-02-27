@@ -16,6 +16,10 @@ module EthilVan::App::Views
             NewsPartial.new(@news)
          end
 
+         def commentable?
+            @news.commentable?
+         end
+
          def comment_url
             "/news/#{@news.id}/commenter"
          end

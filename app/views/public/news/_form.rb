@@ -39,6 +39,10 @@ module EthilVan::App::Views
          def important
             boolean :important
          end
+
+         def commentable
+            boolean :commentable
+         end
       end
    end
 end

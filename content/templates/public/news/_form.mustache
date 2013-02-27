@@ -40,6 +40,16 @@
    </div>
    {{/ important }}
 
+   {{# commentable }}
+   <div class="control-group">
+      <div class="control-label">{{> form/label }}</div>
+      <div class="controls">
+         {{> form/errors }}
+         {{> form/switch }}
+      </div>
+   </div>
+   {{/ commentable }}
+
    {{# summary }}
       {{> public/news/_news_editor }}
    {{/ summary }}

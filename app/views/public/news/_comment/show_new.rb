@@ -4,6 +4,10 @@ module EthilVan::App::Views
 
       class ShowNew < Show
 
+         def commentable
+            @comment.news.commentable
+         end
+
          def comment_url
             "/news/#{@comment.news.id}/commenter"
          end

@@ -10,6 +10,7 @@ class News < ActiveRecord::Base
    attr_accessible :contents
    attr_accessible :important
    attr_accessible :private
+   attr_accessible :commentable
 
    # ==========================================================================
    # * Relations
