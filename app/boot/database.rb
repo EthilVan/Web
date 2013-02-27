@@ -11,6 +11,7 @@ class ActiveRecord::Base
    self.logger = Logging.logger[self] if EthilVan::ENV != :test
 end
 
+require './app/models/extensions'
 require_all 'app/models'
 
 ActiveRecord::Base.instantiate_observers
