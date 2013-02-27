@@ -24,6 +24,24 @@ module EthilVan::App::Views
             @news.title
          end
 
+         def _categories
+            @categories ||= @news.categories.to_a
+         end
+
+         def categories_data
+            _categories * ' '
+         end
+
+         def categories?
+            _categories.size > 0
+         end
+
+         def categories
+            _categories.map do |category|
+               EthilVan::Data::News::Categories[category.to_s]
+            end
+         end
+
          def banner_url
             @news.banner
          end
@@ -42,10 +60,6 @@ module EthilVan::App::Views
 
          def show?
             !private? or logged_in?
-         end
-
-         def important_class
-            @news.important ? 'important' : ''
          end
 
          def summary

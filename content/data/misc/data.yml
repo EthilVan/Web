@@ -10,6 +10,18 @@ mumble:
    - "Jamais"
    - "Autre"
 
+news:
+   categories:
+      misc:          "Divers"
+      projects:      "Projets"
+      events:        "Evénement"
+      dev:           "Développment"
+      server:        "Serveur"
+      website:       "Site Web"
+      launcher:      "Launcher"
+      update:        "Mise à jour"
+      management:    "Gestion"
+
 contact:
    categories:
       general:       "Général"

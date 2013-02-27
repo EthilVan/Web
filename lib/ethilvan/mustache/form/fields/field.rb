@@ -22,11 +22,11 @@ class EthilVan::Mustache::Form
       end
 
       def field_name
-         fieldset.field_name @name
+         fieldset.compute_field_name @name
       end
 
       def field_id
-         fieldset.field_id @id
+         fieldset.compute_field_id @id
       end
 
       def validations

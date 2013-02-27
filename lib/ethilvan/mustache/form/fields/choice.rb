@@ -52,24 +52,28 @@ class EthilVan::Mustache::Form
          @selected ||= @among.find(&:selected?) || @among.first
       end
 
-      def checkbox_trusy
-         @checkbox_trusy ||= @among.find(&:trusy?)
+      def trusy
+         @trusy ||= @among.find(&:trusy?)
       end
 
       def checkbox_attribute
-         checkbox_trusy.selected? ? ' checked="checked"' : ''
+         trusy.selected? ? ' checked="checked"' : ''
       end
 
       def checkbox_class
-         checkbox_trusy.selected? ? ' checked' : ''
+         trusy.selected? ? ' checked' : ''
+      end
+
+      def checkbox_value
+         trusy.value
       end
 
       def toggle_class
-         checkbox_trusy.selected? ? ' active' : ''
+         trusy.selected? ? ' active' : ''
       end
 
       def toggle_value
-         checkbox_trusy.value
+         trusy.value
       end
    end
 end

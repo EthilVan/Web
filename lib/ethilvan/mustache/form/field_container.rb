@@ -2,12 +2,12 @@ class EthilVan::Mustache::Form
 
    module FieldContainer
 
-      def field_name(name)
+      def compute_field_name(name)
          _names = [*field_names, name]
          _names.shift + '[' + (_names * '][') + ']'
       end
 
-      def field_id(id)
+      def compute_field_id(id)
          [*field_ids, id] * '_'
       end
 

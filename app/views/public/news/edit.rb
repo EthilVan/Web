@@ -8,6 +8,10 @@ module EthilVan::App::Views
             @form = Form.new(news)
          end
 
+         def edit_form?
+            true
+         end
+
          def form
             @form
          end

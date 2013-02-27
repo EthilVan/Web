@@ -24,6 +24,11 @@ class EthilVan::Mustache::Form
       end
       alias :boolean :boolean_f
 
+      def multichoice_f(name, attributes = {})
+         field(MultiChoice, name, attributes)
+      end
+      alias :multichoice :multichoice_f
+
       def association(klass, name, attributes = {})
          reflection = @model.reflections[name]
          if !reflection.nil? and reflection.macro == :has_many

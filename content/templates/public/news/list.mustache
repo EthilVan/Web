@@ -8,7 +8,7 @@
 
 <div class="newses" data-autofill>
    {{# newses }}
-   <div class="news {{ important_class }}">
+   <div class="news" data-news-categories="{{ categories_data }}">
       {{# redacteur? }}
          <a href="{{ delete_url }}" data-remove-target="div.news">
             <div class="suppr"></div>

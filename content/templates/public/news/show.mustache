@@ -1,6 +1,6 @@
 {{# news }}
 <div class="newses sans-titre">
-   <div class="news {{ important_class }}">
+   <div class="news">
       {{# redacteur? }}
          <a class="need-confirmation" href="{{ delete_url }}">
             <div class="suppr"></div>
@@ -11,6 +11,15 @@
       {{/ redacteur? }}
 
       <div class="titre">{{ title }}</div>
+
+      {{# categories? }}
+         <ul class="news-categories">
+         {{# categories }}
+            <li>{{.}}</li>
+         {{/ categories }}
+         </ul>
+      {{/ categories? }}
+
       <div class="banner"><img src="{{ banner_url }}" /></div>
       <div class="contenu">{{{ contents }}}</div>
 

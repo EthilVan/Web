@@ -43,6 +43,14 @@ module EthilVan::App::Views
          def commentable
             boolean :commentable
          end
+
+         def categories
+            categories = NewsCategories.names
+                  .each_with_object({}) do |category, h|
+               h[category] = EthilVan::Data::News::Categories[category.to_s]
+            end
+            multichoice :categories, among: categories
+         end
       end
    end
 end

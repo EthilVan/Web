@@ -39,24 +39,24 @@ class EthilVan::Mustache::Form
          @value ? @true_option : @false_option
       end
 
-      def checkbox_trusy
-         @true_option
-      end
-
       def checkbox_attribute
-         checkbox_trusy.selected? ? ' checked="checked"' : ''
+         @true_option.selected? ? ' checked="checked"' : ''
       end
 
       def checkbox_class
-         checkbox_trusy.selected? ? ' checked' : ''
+         @true_option.selected? ? ' checked' : ''
+      end
+
+      def checkbox_value
+         @true_option.value
       end
 
       def toggle_class
-         checkbox_trusy.selected? ? ' active' : ''
+         @true_option.selected? ? ' active' : ''
       end
 
       def toggle_value
-         checkbox_trusy.value
+         @true_option.value
       end
    end
 end

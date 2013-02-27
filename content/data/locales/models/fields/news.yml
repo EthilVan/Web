@@ -9,3 +9,10 @@ fr:
             banner:      "Bannière"
             summary:     "Résumé"
             commentable: "Autoriser les commentaires"
+            categories:  "Catégories"
+      errors:
+         models:
+            news:
+               attributes:
+                  categories:
+                     too_short: "doit au moins en contenir une."
