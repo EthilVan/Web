@@ -36,8 +36,7 @@ class EthilVan::App < Sinatra::Base
       message.discussion = discussion
       message.account = current_account
 
-      view Views::Member::Message::Create.new new_messages, message,
-            inline, request.path
+      view Views::Member::Message::Create.new new_messages, message, inline
       mustache 'membre/message/create'
    end
 
@@ -60,8 +59,7 @@ class EthilVan::App < Sinatra::Base
          mustache 'membre/discussion/_response'
       else
          new_messages = new_messages(discussion, last_message.to_i) if inline
-         view Views::Member::Message::Create.new discussion, new_messages,
-               message, inline, request.path
+         view Views::Member::Message::Create.new new_messages, message, inline
          mustache 'membre/message/create'
       end
    end

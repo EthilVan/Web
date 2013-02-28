@@ -4,7 +4,10 @@ module EthilVan::App::Views
 
       class Create < Edit
 
-         def initialize(new_messages, message, inline = false, url = '')
+         def initialize(new_messages, message, inline = false)
+            last_message = new_messages.last
+            url = "/membre/discussion/#{message.discussion.id}/repondre"
+            url << "/#{last_message.id}" unless last_message.nil?
             super(message, inline, url)
             @new_messages = new_messages
          end
