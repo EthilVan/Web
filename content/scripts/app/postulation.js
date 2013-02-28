@@ -146,7 +146,7 @@ $(document).on('click', 'a[data-toggle="next-pill"]', function(event) {
          $field.parsley('validate');
       });
 
-      if ($pane.find('.errors, .parsley-error-list').size() > 0) {
+      if ($pane.find('.parsley-error-list').size() > 0) {
          return;
       }
 
