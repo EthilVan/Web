@@ -37,6 +37,7 @@ module EthilVan
 end
 
 require 'ethilvan/markdown/redcarpet'
+require 'ethilvan/markdown/images'
 require 'ethilvan/markdown/oembed'
 require 'ethilvan/markdown/carousel'
 require 'ethilvan/markdown/active_record'
