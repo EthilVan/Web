@@ -8,10 +8,6 @@ class EthilVan::App < Sinatra::Base
    # Membre
    logged_only %r{^/membre}
 
-   get '/membre' do
-      redirect '/membre/discussion'
-   end
-
    # Gestion
    protect %r{^/gestion},    EthilVan::Role::MODO
    protect %r{^/moderation}, EthilVan::Role::MODO
