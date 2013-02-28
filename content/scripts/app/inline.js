@@ -7,6 +7,10 @@ function Inline(trigger) {
       return this.$trigger.closest(targetSelector);
    }
 
+   this.inlineMethod = function() {
+      return 'fade';
+   }
+
    this.removeMethod = function() {
       return this.$trigger.data().removeMethod;
    }
@@ -61,14 +65,18 @@ $(document).on('click.ethivan.inline', '[data-inline-target]', function (event) 
    inline.ajax().done(function(data, status, xhr) {
       var $target = inline.target('inline');
       var $element = $(data.trim());
-      $element.css('display', 'none');
-      $target.fadeOut(800, function() {
-         $target.replaceWith($element);
-         $(document).trigger('insert');
-         $element.fadeIn(800, function() {
-            $element.css('display', 'block');
+      if (inline.inlineMethod() == 'fade') {
+         $element.css('display', 'none');
+         $target.fadeOut(100, function() {
+            $target.replaceWith($element);
+            $(document).trigger('insert');
+            $element.fadeIn(500, function() {
+               $element.css('display', 'block');
+            });
          });
-      });
+      } else {
+         $target.replaceWith($element);
+      }
    }).fail(inline.fail).always(inline.after);
 });
 
