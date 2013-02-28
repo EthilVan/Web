@@ -17,6 +17,8 @@ module EthilVan
 
       module Helpers
 
+         attr_accessor :mustache_context
+
          def view(view)
             @mustache_view = view
          end
@@ -56,6 +58,7 @@ module EthilVan
             @template_cache.fetch(:mustache_template, name) do
                path = File.join(settings.mustache_templates, name.to_s) +
                      '.mustache'
+               path = Dir[path].first
                ::Mustache::CachedTemplate.new File.read path
             end
          end

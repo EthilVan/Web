@@ -46,7 +46,7 @@ module EthilVan
       set :token_cookie_name,   'IZq3tuP6qQbHwflEXoLByl3sJGZ2n4tjMdWZA5'
       set :remember_for,        2.months
       set :layout,              'layouts/default'
-      set :mustache_templates,  'content/templates'
+      set :mustache_templates,  'content/templates{,/partials}'
    end
 end
 

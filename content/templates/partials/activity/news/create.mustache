@@ -1,0 +1,6 @@
+{{^ actor_is_viewer? }}
+   {{> activity/actor }} a publié {{> activity/subject }}
+{{/ actor_is_viewer? }}
+{{# actor_is_viewer? }}
+   Vous avez publié {{> activity/subject }}
+{{/ actor_is_viewer? }}

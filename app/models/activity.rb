@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
 
    default_scope order('created_at DESC').includes(:subject)
-         .includes(:actor)
+         .includes(actor: [:profil])
 
    # ==========================================================================
    # * Relations

@@ -6,6 +6,7 @@ module EthilVan::Mustache
          super(mustache)
          mustache.app = app
          @app = app
+         app.mustache_context = self
       end
 
       def partial(name, indentation = '')

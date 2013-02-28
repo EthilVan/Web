@@ -1,0 +1,8 @@
+{{^  actor_is_viewer? }}
+   {{> activity/actor }} a répondu à la discussion
+    <a href="{{ subject_url }}">{{ subject_discussion }}</a>
+{{/  actor_is_viewer? }}
+{{#  actor_is_viewer? }}
+   Vous avez répondu à la discussion
+    <a href="{{ subject_url }}">{{ subject_discussion }}</a>
+{{/  actor_is_viewer? }}
