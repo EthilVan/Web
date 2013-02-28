@@ -13,9 +13,20 @@
    <div class="date">Discussion crée le {{ date }} par {{ author }}</div>
 </div>
 
+{{# pager }}
+<div class="discussion-nav">
 <div class="pages">
-   {{# pager }}{{> membre/discussion/_pager }}{{/ pager }}
+   {{> membre/discussion/_pager }}
 </div>
+
+{{# last_message? }}
+<div class="last-message">
+   <a href="{{ last_message }}">Aller au dernier message</a>
+</div>
+{{/ last_message? }}
+</div>
+{{/ pager }}
+
 
 <div class="cleaner"></div>
 
@@ -30,6 +41,8 @@
    {{/ can_respond? }}
 </div>
 
-<div class="pages">
+<div class="discussion-nav">
+   <div class="pages">
    {{# pager }}{{> membre/discussion/_pager }}{{/ pager }}
+   </div>
 </div>
