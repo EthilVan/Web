@@ -14,32 +14,20 @@ class EthilVan::App
       redirect "/membre/@#{name}/editer/general"
    end
 
-   get %r{/membre/@(#{Account::NAME})/editer/(?:general|apparence|compte)$} do |name|
+   tabs = ["general", "preferences", "apparence", "compte"] * '|'
+   get %r{/membre/@(#{Account::NAME})/editer/(?:#{tabs})$} do |name|
       account = profil_edit_account name
       view Views::Member::Profil::Edit::Tabs.new account
       mustache 'membre/profil/edit/tabs'
    end
 
-   post %r{/membre/@(#{Account::NAME})/editer/general$} do |name|
+   post_tabs = ["general", "preferences", "apparence"] * '|'
+   post %r{/membre/@(#{Account::NAME})/editer/(#{post_tabs})$} do |name, tab|
       account = profil_edit_account name
 
       if account.profil.update_attributes params[:profil]
          view Views::Member::Profil::Edit::Tabs.new account, {
-            generale_ok: true
-         }
-         mustache 'membre/profil/edit/tabs'
-      else
-         view Views::Member::Profil::Edit::Tabs.new account
-         mustache 'membre/profil/edit/tabs'
-      end
-   end
-
-   post %r{/membre/@(#{Account::NAME})/editer/apparence$} do |name|
-      account = profil_edit_account name
-
-      if account.profil.update_attributes params[:profil]
-         view Views::Member::Profil::Edit::Tabs.new account, {
-            appearance_ok: true
+            :"#{tab}_ok" => true
          }
          mustache 'membre/profil/edit/tabs'
       else

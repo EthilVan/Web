@@ -5,6 +5,12 @@
          {{> membre/profil/edit/_general }}
       </div>
    {{/ tab_general }}
+   {{# tab_preferences }}
+      {{# tab_title }}Préférences{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
+         {{> membre/profil/edit/_preferences }}
+      </div>
+   {{/ tab_preferences }}
    {{# tab_appearance }}
       {{# tab_title }}Apparence{{/ tab_title }}
       <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">

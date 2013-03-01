@@ -1,0 +1,42 @@
+<div class="profil-edit">
+
+   {{# ok? }}
+   <div class="flash success">
+      Modifications enregistrées
+   </div>
+   {{/ ok? }}
+
+
+   {{# form }}
+   <form class="form-horizontal"{{{ attributes }}}>
+
+      {{# show_email }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/switch }}
+            {{> form/errors }}
+         </div>
+      </div>
+      {{/ show_email }}
+
+      {{# news_categories }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls large">
+            {{> form/multichoice }}
+            {{> form/errors }}
+         </div>
+      </div>
+      {{/ news_categories }}
+
+      <div class="boutons">
+         <input class="btn pull-right" type="submit" value="Enregistrer" />
+         <a href="../general">
+            <input class="btn profil-retour" type="button" value="Retour au profil"/>
+         </a>
+      </div>
+   </form>
+   {{/ form }}
+
+</div>

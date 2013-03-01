@@ -19,6 +19,7 @@ class Profil < ActiveRecord::Base
    attr_accessible :steam_id
    attr_accessible :custom_cadre_url
    attr_accessible :show_email
+   attr_accessible :categories
 
    # ==========================================================================
    # * Relations
@@ -59,6 +60,7 @@ class Profil < ActiveRecord::Base
    # ==========================================================================
    markdown_pre_parse :signature
    before_save :parse_birthdate, if: :new_birthdate?
+   before_save :update_categories_int, if: :categories_updated?
 
    # ==========================================================================
    # * Methods
@@ -93,6 +95,14 @@ class Profil < ActiveRecord::Base
       custom_cadre_url
    end
 
+   def categories
+      @categories || NewsCategories.new(categories_int)
+   end
+
+   def categories=(names)
+      @categories = NewsCategories.new_from_names(*names)
+   end
+
 private
 
    def new_birthdate?
@@ -102,5 +112,13 @@ private
    def parse_birthdate
       a = birthdate_formatted.split("/").map { |s| s.to_i }
       self.birthdate = Date.civil(*a.reverse)
+   end
+
+   def categories_updated?
+      not @categories.nil?
+   end
+
+   def update_categories_int
+      write_attribute :categories_int, @categories.value
    end
 end

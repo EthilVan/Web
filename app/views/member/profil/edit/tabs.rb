@@ -7,6 +7,7 @@ module EthilVan::App::Views
          def initialize(account, params = {})
             @account = account
             @tab_general = General.new(self, account, params)
+            @tab_preferences = Preferences.new(self, account, params)
             @tab_appearance = Appearance.new(self, account, params)
             @tab_account = Account.new(self, account, params)
          end
@@ -21,6 +22,7 @@ module EthilVan::App::Views
          def page_tabs
             @page_tabs ||= [
                @tab_general,
+               @tab_preferences,
                @tab_appearance,
                @tab_account,
             ]
@@ -28,6 +30,10 @@ module EthilVan::App::Views
 
          def tab_general
             @tab_general
+         end
+
+         def tab_preferences
+            @tab_preferences
          end
 
          def tab_appearance
