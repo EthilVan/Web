@@ -1,6 +1,7 @@
 class News < ActiveRecord::Base
 
    include EthilVan::Markdown::ActiveRecord
+   include Activity::Subject
 
    self.table_name = 'newses'
 

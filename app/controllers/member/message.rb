@@ -66,6 +66,7 @@ class EthilVan::App < Sinatra::Base
 
    get '/membre/message/:id/editer' do |id|
       message = resource Message.find_by_id id
+      message.activity_actor = current_account
       not_authorized unless message.editable_by? current_account
 
       view Views::Member::Message::Edit.new message, xhr?, request.path
@@ -74,6 +75,7 @@ class EthilVan::App < Sinatra::Base
 
    post '/membre/message/:id/editer' do |id|
       message = resource Message.find_by_id id
+      message.activity_actor = current_account
       not_authorized unless message.editable_by? current_account
 
       if message.update_attributes params[:message]

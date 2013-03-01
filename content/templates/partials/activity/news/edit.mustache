@@ -1,0 +1,13 @@
+{{^ actor_is_author? }}
+   {{# actor_is_viewer? }}
+      Vous avez édité le message de {{ author }} dans {{> activity/subject }}
+   {{/ actor_is_viewer? }}
+{{/ actor_is_author? }}
+{{# actor_is_author? }}
+   {{^ actor_is_viewer? }}
+      {{ actor }} a édité son message dans {{> activity/subject }}
+   {{/ actor_is_viewer? }}
+   {{# actor_is_viewer? }}
+      Vous avez édité votre message dans {{> activity/subject }}
+   {{/ actor_is_viewer? }}
+{{/ actor_is_author? }}

@@ -44,6 +44,7 @@ class EthilVan::App < Sinatra::Base
    protect discussion_edit, EthilVan::Role::MODO
    get discussion_edit do |id|
       discussion = resource Discussion.find_by_id id
+      discussion.activity_actor = current_account
       view Views::Member::Discussion::Edit.new(discussion)
       mustache 'membre/discussion/edit'
    end
@@ -63,6 +64,7 @@ class EthilVan::App < Sinatra::Base
    protect discussion_delete, EthilVan::Role::MODO
    get discussion_delete do |id|
       discussion = resource Discussion.find_by_id id
+      discussion.activity_actor = current_account
       discussion.destroy
       xhr_ok_or_redirect '/membre/discussion'
    end

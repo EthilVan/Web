@@ -1,5 +1,7 @@
 class Discussion < ActiveRecord::Base
 
+   include Activity::Subject
+
    PUBLIC_GROUPS = ['GeneralDiscussionGroup']
 
    attr_accessible :name

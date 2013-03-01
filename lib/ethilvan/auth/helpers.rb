@@ -1,7 +1,7 @@
 module EthilVan::AuthHelpers
 
    def current?(account)
-      return false if guest?
+      return false if guest? or account.nil?
       current_account.id == account.id
    end
 

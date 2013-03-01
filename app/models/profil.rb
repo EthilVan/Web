@@ -1,6 +1,7 @@
 class Profil < ActiveRecord::Base
 
    include EthilVan::Markdown::ActiveRecord
+   include Activity::Subject
 
    attr_accessible :minecraft_since
    attr_accessible :favorite_block

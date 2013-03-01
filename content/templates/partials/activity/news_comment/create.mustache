@@ -1,0 +1,6 @@
+{{^ actor_is_viewer? }}
+   {{> activity/actor }} a posté un commentaire sur la news <a href="{{ subject_news_url }}">{{ subject_news }}</a>
+{{/  actor_is_viewer? }}
+{{#  actor_is_viewer? }}
+   Vous avez posté un commentaire sur la news <a href="{{ subject_news_url }}">{{ subject_news }}</a>
+{{/  actor_is_viewer? }}

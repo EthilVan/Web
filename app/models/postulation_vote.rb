@@ -1,5 +1,7 @@
 class PostulationVote < ActiveRecord::Base
 
+   include Activity::Subject
+
    Roles = ['admin', 'dev', 'modo']
 
    # ==========================================================================

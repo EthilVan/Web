@@ -63,12 +63,14 @@ class EthilVan::App
 
    get %r{/news/(\d{1,3})/editer$} do |id|
       news = resource News.find_by_id id
+      news.activity_actor = current_account
       view Views::Public::News::Edit.new news
       mustache 'public/news/edit'
    end
 
    post %r{/news/(\d{1,3})/editer$} do |id|
       news = resource News.find_by_id id
+      news.activity_actor = current_account
 
       if news.update_attributes params[:news]
          redirect urls.news news

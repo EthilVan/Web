@@ -1,6 +1,7 @@
 class Message < ActiveRecord::Base
 
    include EthilVan::Markdown::ActiveRecord
+   include Activity::Subject
 
    DISCUSSION_GROUP_KEY = 'discussions.discussion_group_type'
    PER_PAGE = 8

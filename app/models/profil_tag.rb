@@ -1,5 +1,7 @@
 class ProfilTag < ActiveRecord::Base
 
+   include Activity::Subject
+
    attr_accessible :content
 
    # ==========================================================================

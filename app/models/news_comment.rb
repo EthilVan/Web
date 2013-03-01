@@ -3,6 +3,7 @@ require 'cgi'
 class NewsComment < ActiveRecord::Base
 
    include EthilVan::Markdown::ActiveRecord
+   include Activity::Subject
 
    attr_accessible :name
    attr_accessible :email

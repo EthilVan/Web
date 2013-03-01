@@ -1,6 +1,7 @@
 class Postulation < ActiveRecord::Base
 
    include BCrypt
+   include Activity::Subject
 
    attr_accessible :name
    attr_accessible :minecraft_name

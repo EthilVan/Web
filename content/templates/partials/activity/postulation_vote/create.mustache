@@ -1,0 +1,6 @@
+{{^ actor_is_viewer? }}
+   {{> activity/actor }} a répondu favorablement/défavorablement à la postulation de {{> activity/subject }}
+{{/ actor_is_viewer? }}
+{{# actor_is_viewer? }}
+   Vous avez répondu favorablement/défavorablement à la postulation de {{> activity/subject }}
+{{/ actor_is_viewer? }}

@@ -36,5 +36,7 @@ class Activity < ActiveRecord::Base
             (@_activities_filters[type] ||= []) << filter
          end
       end
+
+      attr_accessor :activity_actor
    end
 end

@@ -4,6 +4,8 @@ require 'bcrypt'
 class Account < ActiveRecord::Base
 
    include BCrypt
+   include Activity::Subject
+
    NAME = '[A-Za-z]\w+'
    AUTH_TOKEN_COST = 5
 
@@ -108,6 +110,10 @@ class Account < ActiveRecord::Base
 
    def role
       EthilVan::Role.get role_id.to_sym
+   end
+
+   def role_was
+      EthilVan::Role.get role_id_was.to_sym
    end
 
    def views_by_discussion_id
