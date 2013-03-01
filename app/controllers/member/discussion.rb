@@ -66,4 +66,16 @@ class EthilVan::App < Sinatra::Base
       discussion.destroy
       xhr_ok_or_redirect '/membre/discussion'
    end
+
+   get %r{/membre/discussion/(\d{1,5})/suivre$} do |id|
+      discussion = resource Discussion.find_by_id id
+      DiscussionSubscription.create_for(current_account, discussion)
+      redirect '/membre/discussion'
+   end
+
+   get %r{/membre/discussion/(\d{1,5})/neplussuivre$} do |id|
+      discussion = resource Discussion.find_by_id id
+      DiscussionSubscription.destroy_for(current_account, discussion)
+      redirect '/membre/discussion'
+   end
 end
