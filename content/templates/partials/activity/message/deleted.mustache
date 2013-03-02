@@ -1,0 +1,8 @@
+{{^ actor_is_viewer? }}
+   {{> activity/actor }} a supprimé votre message dans la discussion
+    <a href="{{ subject_discussion_url }}">{{ subject_discussion }}</a>
+{{/ actor_is_viewer? }}
+{{# actor_is_viewer? }}
+   Vous avez supprimé un message dans la discussion
+    <a href="{{ subject_discussion_url }}">{{ subject_discussion }}</a>
+{{/ actor_is_viewer? }}

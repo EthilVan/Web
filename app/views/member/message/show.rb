@@ -22,7 +22,7 @@ module EthilVan::App::Views
          end
 
          def first?
-            @message.first_message?
+            @message.first?
          end
 
          def view_url

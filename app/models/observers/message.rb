@@ -1,6 +1,7 @@
 class MessageObserver < ActiveRecord::Observer
-=begin
+
    def after_create(message)
+      return if message.first?
       Activity.create_for(message.account, 'create', message)
    end
 
@@ -11,7 +12,10 @@ class MessageObserver < ActiveRecord::Observer
          Activity.create_for(message.activity_actor, 'edit', message)
       end
    end
-=end
+
+   def after_destroy(message)
+      Activity.create_for(message.activity_actor, 'deleted', nil)
+   end
 end
 
 ActiveRecord::Base.observers << MessageObserver

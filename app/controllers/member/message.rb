@@ -10,7 +10,7 @@ class EthilVan::App < Sinatra::Base
 
       def new_messages(discussion, last_message_id)
          return [] if last_message_id.nil? or
-               discussion.last_message.id == last_message_id
+               discussion.last_message(true).id == last_message_id
 
          messages = discussion.messages
          index = messages.index { |msg| msg.id == last_message_id }
@@ -66,8 +66,8 @@ class EthilVan::App < Sinatra::Base
 
    get '/membre/message/:id/editer' do |id|
       message = resource Message.find_by_id id
-      message.activity_actor = current_account
       not_authorized unless message.editable_by? current_account
+      message.activity_actor = current_account
 
       view Views::Member::Message::Edit.new message, xhr?, request.path
       mustache 'membre/message/edit'
@@ -75,10 +75,12 @@ class EthilVan::App < Sinatra::Base
 
    post '/membre/message/:id/editer' do |id|
       message = resource Message.find_by_id id
-      message.activity_actor = current_account
       not_authorized unless message.editable_by? current_account
+      message.activity_actor = current_account
 
       if message.update_attributes params[:message]
+         DiscussionView.update_for(current_account, message.discussion,
+               Time.now + 1)
          redirect_not_xhr discussion_url message
          view Views::Member::Discussion::Message.new message, true
          mustache 'membre/discussion/_message'
@@ -90,8 +92,9 @@ class EthilVan::App < Sinatra::Base
 
    get '/membre/message/:id/supprimer' do |id|
       message = resource Message.find_by_id id
-      not_found if message.first_message?
+      not_found if message.first?
       not_authorized unless message.editable_by? current_account
+      message.activity_actor = current_account
 
       following = message.following
       message.destroy

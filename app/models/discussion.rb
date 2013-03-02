@@ -12,8 +12,10 @@ class Discussion < ActiveRecord::Base
    # ==========================================================================
    # * Relations
    # ==========================================================================
-   belongs_to :first_message, class_name: 'Message', include: :account
-   belongs_to :last_message,  class_name: 'Message', include: :account
+   has_one :first_message, class_name: 'Message', conditions: 'first = 1',
+         include: :account, autosave: false
+   has_one :last_message,  class_name: 'Message', conditions: 'last = 1',
+         include: :account, autosave: false
    has_many :messages, order: 'created_at ASC', dependent: :destroy
    belongs_to :group,
          polymorphic: true,
@@ -28,13 +30,13 @@ class Discussion < ActiveRecord::Base
    # ==========================================================================
    validates_presence_of :name
    validate :new_group_existence, if: :new_group?
-   validates_associated :first_message, on: :create
-   validates_length_of :messages, minimum: 1
+   validates_associated :messages, on: :create
+   validates_length_of  :messages, minimum: 1
 
    # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
-   before_validation :assign_first_message, on: :create
+   before_validation :init_first_last_messages, on: :create
    before_save :update_group, if: :new_group?
 
    # ==========================================================================
@@ -58,10 +60,6 @@ class Discussion < ActiveRecord::Base
       page(1).total_pages
    end
 
-   def update_last_message
-      update_attribute :last_message_id, messages.last(2)[0].id
-   end
-
 private
 
    def new_group?
@@ -78,8 +76,8 @@ private
       self.discussion_group_id = @new_group_id
    end
 
-   def assign_first_message
+   def init_first_last_messages
+      first_message.first = true
       self.messages = [first_message]
-      self.last_message = first_message
    end
 end

@@ -8,7 +8,7 @@ module EthilVan::App::Views
          TOTAL = 2 * AROUND + 1
 
          def initialize(discussion, page)
-            @last_message_id = discussion.last_message_id
+            @last_message_id = discussion.last_message.id
             @base_url = "/membre/discussion/#{discussion.id}"
             @page = page
             @first = [1,     current - AROUND].max

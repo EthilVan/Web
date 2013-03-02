@@ -20,6 +20,10 @@ class DiscussionObserver < ActiveRecord::Observer
                archived_after ? 'archived' : 'unarchived', discussion)
       end
    end
+
+   def after_destroy(discussion)
+      Activity.create_for(discussion.activity_actor, 'deleted', nil)
+   end
 end
 
 ActiveRecord::Base.observers << DiscussionObserver

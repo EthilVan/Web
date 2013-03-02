@@ -14,12 +14,6 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    belongs_to :account
    belongs_to :discussion
-   has_one :discussion_as_first,
-         foreign_key: :first_message_id,
-         class_name: 'Discussion'
-   has_one :discussion_as_last,
-         foreign_key: :last_message_id,
-         class_name: 'Discussion'
 
    # ==========================================================================
    # * Validations
@@ -30,8 +24,10 @@ class Message < ActiveRecord::Base
    # * Callbacks and scope
    # ==========================================================================
    markdown_pre_parse :contents
-   after_create  :update_discussion
-   before_destroy :update_discussion_last
+   before_create  :update_discussion_last_before_create
+   after_create   :update_discussion_last_after_create
+   after_update   :update_discussion_last_on_update
+   after_destroy  :update_discussion_last_on_destroy
 
    scope :by_date, order('created_at ASC')
 
@@ -44,10 +40,6 @@ class Message < ActiveRecord::Base
             .where(account_id: account.id)
             .where(DISCUSSION_GROUP_KEY => Discussion::PUBLIC_GROUPS)
             .order('messages.created_at DESC')
-   end
-
-   def first_message?
-      not discussion_as_first.nil?
    end
 
    def page
@@ -78,14 +70,27 @@ class Message < ActiveRecord::Base
 
 private
 
-   def update_discussion
-      return if discussion.nil?
-      discussion.last_message_id = id
-      discussion.save
+   def update_discussion_last_before_create
+      self.last = true
    end
 
-   def update_discussion_last
-      return if discussion_as_last.nil?
-      discussion_as_last.update_last_message
+   def update_discussion_last_after_create
+      return if discussion.nil?
+      last_message = discussion.last_message
+      return if last_message.nil?
+      return if self == last_message
+      last_message.update_attribute :last, false
+   end
+
+   def update_discussion_last_on_update
+      discussion.update_attribute :updated_at, updated_at
+   end
+
+   def update_discussion_last_on_destroy
+      return unless last?
+      return if discussion.nil?
+      previous_message = discussion.messages.last(2)[0]
+      return if previous_message.nil?
+      previous_message.update_attribute :last, true
    end
 end
