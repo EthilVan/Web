@@ -13,6 +13,15 @@ class EthilVan::App
          view Views::Public::Postulation::Validation.new
          mustache 'public/postulation/validation'
       else
+         File.open('tmp/invalid_postulations', 'a') do |f|
+            f << "/*\n"
+            f << " * Postulation Invalide :\n"
+            f << " *  #{Time.now}\n"
+            f << " */\n"
+            json = postulation.to_json
+            f << JSON.pretty_generate JSON.parse json
+            f << "\n"
+         end
          view Views::Public::Postulation::Formulaire.new postulation
          mustache 'public/postulation/tabs'
       end
