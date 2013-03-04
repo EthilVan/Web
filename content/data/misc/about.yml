@@ -56,8 +56,6 @@ components:
       url:     http://fgnass.github.com/spin.js/
    -  name:    At.js
       url:     https://github.com/ichord/At.js
-   -  name:    miniCount
-      url:     https://github.com/miniJs/miniCount
 
 softwares:
    -  name:    Sublime Text 2
