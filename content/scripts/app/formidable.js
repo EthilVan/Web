@@ -76,7 +76,8 @@ var Formidable = {
             return undefined;
          }
          object.$custom = $custom;
-         var $raw_field = $custom.prev('[data-formidable="field"]');
+
+         var $raw_field = $($custom.data().formidableTarget);
          object.$field  = Formidable.Field.create($raw_field);
          if (!object.$field) {
             return undefined;
