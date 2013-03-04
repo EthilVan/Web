@@ -19,7 +19,7 @@ class EthilVan::App
             f << " *  #{Time.now}\n"
             f << " */\n"
             json = postulation.to_json
-            f << JSON.pretty_generate JSON.parse json
+            f << JSON.pretty_generate(JSON.parse(json))
             f << "\n"
          end
          view Views::Public::Postulation::Formulaire.new postulation
