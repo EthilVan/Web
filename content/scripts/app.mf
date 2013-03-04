@@ -3,7 +3,6 @@ lib/jquery.a-tools.js
 lib/spin.js
 lib/spin.jquery.js
 lib/jquery.atwho.js
-lib/miniCount.js
 bootstrap/bootstrap-transition.js
 bootstrap/bootstrap-button.js
 bootstrap/bootstrap-tab.js
