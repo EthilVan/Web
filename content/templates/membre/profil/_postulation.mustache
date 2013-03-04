@@ -20,12 +20,12 @@
    <div class="carousel-inner">
       {{# screens }}
          <div class="item {{# first? }}active{{/ first? }}">
+            <img src="{{ url }}">
             <a href="{{ url }}" target="_blank">
-               <img src="{{ url }}">
+               <div class="carousel-caption">
+                  <p> {{ description }} </p>
+               </div>
             </a>
-            <div class="carousel-caption">
-               <p> {{ description }} </p>
-            </div>
          </div>
       {{/ screens }}
    </div>
