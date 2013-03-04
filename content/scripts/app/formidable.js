@@ -20,6 +20,10 @@ var Formidable = {
       TextInput: function($field) {
          this.$field = $field;
 
+         this.value = function(value) {
+            return this.$field.val();
+         };
+
          this.update = function(value) {
             this.$field.val(value);
             this.$field.trigger('change');
@@ -29,18 +33,22 @@ var Formidable = {
       Checkbox: function($field) {
          this.$field = $field;
 
-         this.isTrusy = function(value) {
-            return value != undefined && value != "0";
+         this.value = function() {
+            return this.$field.is(':checked');
          };
 
          this.update = function(value) {
-            this.$field.attr('checked', this.isTrusy(value));
+            this.$field.attr('checked', value);
             this.$field.trigger('change');
          };
       },
 
       Select: function($field) {
          this.$field = $field;
+
+         this.value = function() {
+            return this.$field.val();
+         };
 
          this.update = function(value) {
             this.$field.find('option').each(function() {
@@ -74,20 +82,30 @@ var Formidable = {
             return undefined;
          }
 
+         object.update(object.$field.value());
          return object;
       },
 
       Checkbox: function() {
-         this.update = function(event) {
+         this.update = function(value) {
+            this.$custom[value ? 'addClass' : 'removeClass']('checked');
+         };
+
+         this.click = function(event) {
             event.preventDefault();
-            var value = this.$custom.is('.checked') ? "0" : "1";
+            var value = !this.$field.value();
             this.$field.update(value);
-            this.$custom.toggleClass('checked');
+            this.update(value);
          };
       },
 
       Picker: function() {
-         this.update = function(event) {
+         this.update = function(value) {
+            var $target = this.$custom.find('[data-formidable-item="' + value + '"]');
+            this.$custom.find('[data-formidable-picker]').html($target.html());
+         };
+
+         this.click = function(event) {
             var $target = $(event.target);
 
             var value = $target.data().formidableItem;
@@ -97,21 +115,31 @@ var Formidable = {
 
             event.preventDefault();
             this.$field.update(value);
-            this.$custom.find('[data-formidable-picker]').html($target.html());
+            this.update(value);
          };
       },
 
       Toggle: function() {
-         this.update = function(event) {
+         this.update = function(value) {
+            this.$custom[value ? 'addClass' : 'removeClass']('active');
+         };
+
+         this.click = function(event) {
             event.preventDefault();
-            var value = this.$custom.is('.active') ? "0" : "1";
+            var value = !this.$field.value();
             this.$field.update(value);
-            this.$custom.toggleClass('active');
+            this.update(value);
          };
       },
 
       Switch: function() {
-         this.update = function(event) {
+         this.update = function(value) {
+            this.$custom.find('[data-formidable-item]').removeClass('active');
+            this.$custom.find('[data-formidable-item="' + value + '"]')
+                  .addClass('active');
+         };
+
+         this.click = function(event) {
             var $target = $(event.target);
 
             var value = $target.data().formidableItem;
@@ -120,10 +148,8 @@ var Formidable = {
             }
 
             event.preventDefault();
-
             this.$field.update(value);
-            $target.parent().find('[data-formidable-item]').removeClass('active');
-            $target.addClass('active');
+            this.update(value);
          };
       },
    },
@@ -150,5 +176,9 @@ $.fn.formidable = function(method, arg) {
 
 $(document).on('click.formidable',
       '[data-formidable][data-formidable!="field"]', function(event) {
-   $(this).formidable('update', event);
+   $(this).formidable('click', event);
+});
+
+$(document).on('ready', function() {
+   $('[data-formidable][data-formidable!="field"]').formidable();
 });
