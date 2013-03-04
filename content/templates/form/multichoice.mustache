@@ -1,5 +1,13 @@
 <div class="multichoice">
-{{# among }}
-   {{> form/toggle }}
-{{/ among }}
+   <div class="multichoice-fields">
+   {{# among }}
+      {{> form/formidable/field/checkbox }}
+   {{/ among }}
+   </div>
+
+   <div class="btn-group multichoice-toggles">
+   {{# among }}
+      {{> form/formidable/custom/toggle }}
+   {{/ among }}
+   </div>
 </div>

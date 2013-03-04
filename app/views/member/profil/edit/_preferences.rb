@@ -27,6 +27,7 @@ module EthilVan::App::Views
             super(page, 'preferences')
             @form = Form.new(account.profil,
                   urls.profil_edit('preferences', account))
+            @params = params
          end
 
          def ok?
