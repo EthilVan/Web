@@ -48,7 +48,7 @@ class EthilVan::Mustache::Form
       end
 
       def checkbox_value
-         @true_option.value
+         @true_option.name
       end
 
       def toggle_class

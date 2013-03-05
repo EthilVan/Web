@@ -65,7 +65,7 @@ class EthilVan::Mustache::Form
       end
 
       def checkbox_value
-         trusy.value
+         trusy.name
       end
 
       def toggle_class
