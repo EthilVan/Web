@@ -18,6 +18,8 @@ class Activity < ActiveRecord::Base
       extend ActiveSupport::Concern
 
       included do
+         has_many :activities, as: :subject,
+               dependent: :destroy
          instance_variable_set("@_filters", {})
       end
 
