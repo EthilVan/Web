@@ -1,13 +1,22 @@
+{{> activity/date }}
+{{> activity/avatar }}
 {{^ actor_is_author? }}
    {{# actor_is_viewer? }}
-      Vous avez édité le message de {{ author }} dans {{> activity/subject }}
+      Vous avez édité le message de <a href="{{ author_url }}">{{ author }}</a> dans
+       <a href="{{ subject_url }}">{{ subject_discussion }}</a>
    {{/ actor_is_viewer? }}
+   {{# author_is_viewer? }}
+      {{> activity/actor }} a édité votre message dans
+       <a href="{{ subject_url }}">{{ subject_discussion }}</a>
+   {{/ author_is_viewer? }}
 {{/ actor_is_author? }}
 {{# actor_is_author? }}
    {{^ actor_is_viewer? }}
-      {{> activity/actor }} a édité son message dans {{> activity/subject }}
+      {{> activity/actor }} a édité son message dans
+       <a href="{{ subject_url }}">{{ subject_discussion }}</a>
    {{/ actor_is_viewer? }}
    {{# actor_is_viewer? }}
-      Vous avez édité votre message dans {{> activity/subject }}
+      Vous avez édité votre message dans
+       <a href="{{ subject_url }}">{{ subject_discussion }}</a>
    {{/ actor_is_viewer? }}
 {{/ actor_is_author? }}

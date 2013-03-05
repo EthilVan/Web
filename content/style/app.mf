@@ -14,6 +14,7 @@ public/postulation/postulation.less
 public/contact/contact.less
 public/aide/mise_en_forme/markdown.less
 public/aide/mise_en_forme/emoji.less
+membre/activity.less
 membre/discussion/discussions.less
 membre/discussion/discussion.less
 membre/discussion/message.less

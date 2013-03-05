@@ -1,6 +1,14 @@
+{{> activity/date }}
+{{> activity/account/avatar }}
 {{^ subject_is_viewer? }}
-   {{> activity/subject }} a été promu(e) du rang de/d' {{ old_role }} au rang de/d' {{ new_role }}.
+   {{> activity/subject }} a été promu(e) du rang
+    {{^ subject_old_role_vowel? }}de {{/ subject_old_role_vowel? }}
+   {{# subject_old_role_vowel? }}d'{{/ subject_old_role_vowel? }}{{ subject_old_role }}
+    au rang
+    {{^ subject_new_role_vowel? }}de {{/ subject_new_role_vowel? }}
+   {{# subject_new_role_vowel? }}d'{{/ subject_new_role_vowel? }}{{ subject_new_role }}
 {{/ subject_is_viewer? }}
 {{# subject_is_viewer? }}
-   Vous avez été promu(e) du rang de/d' {{ old_role }} au rang de/d' {{ new_role }}.
+   Vous avez été promu(e) du rang de {{ subject_old_role }}
+    au rang de {{ subject_new_role }}
 {{/ subject_is_viewer? }}

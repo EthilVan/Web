@@ -51,6 +51,7 @@ class EthilVan::App < Sinatra::Base
 
    post discussion_edit do |id|
       discussion = resource Discussion.find_by_id id
+      discussion.activity_actor = current_account
 
       if discussion.update_attributes params[:discussion]
          redirect '/membre/discussion'

@@ -4,6 +4,14 @@ module EthilVan::App::Views
 
       class PostulationVote < ActivityPartial
 
+         def subject_agreement?
+            _subject.agreement?
+         end
+
+         def subject_refusal?
+            not subject_agreement?
+         end
+
          def subject_postulation
             _subject.postulation.name
          end

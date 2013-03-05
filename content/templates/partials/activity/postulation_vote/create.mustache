@@ -1,6 +1,16 @@
+{{> activity/date }}
+{{> activity/avatar }}
 {{^ actor_is_viewer? }}
-   {{> activity/actor }} a répondu favorablement/défavorablement à la postulation de {{> activity/subject }}
+   {{> activity/actor }} a répondu
+   {{# subject_agreement? }}favorablement{{/ subject_agreement? }}
+   {{# subject_refusal? }}défavorablement{{/ subject_refusal? }}
+   à la postulation de
+   <a href="{{ subject_postulation_url }}">{{ subject_postulation }}</a>
 {{/ actor_is_viewer? }}
 {{# actor_is_viewer? }}
-   Vous avez répondu favorablement/défavorablement à la postulation de {{> activity/subject }}
+   Vous avez répondu
+   {{# subject_agreement? }}favorablement{{/ subject_agreement? }}
+   {{# subject_refusal? }}défavorablement{{/ subject_refusal? }}
+   à la postulation de
+   <a href="{{ subject_postulation_url }}">{{ subject_postulation }}</a>
 {{/ actor_is_viewer? }}

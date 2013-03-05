@@ -4,6 +4,14 @@ module EthilVan::App::Views
 
       class NewsComment < ActivityPartial
 
+         def member?
+            _subject.account?
+         end
+
+         def anonymous_name
+            _subject.name
+         end
+
          def subject_news
             _subject.news.title
          end

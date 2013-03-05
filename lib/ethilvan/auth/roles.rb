@@ -23,7 +23,7 @@ module EthilVan
       end
 
       def self.get(id)
-         @roles.find { |role| role.id == id}
+         @roles.find { |role| role.id == id }
       end
 
       def self.ids

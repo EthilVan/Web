@@ -12,6 +12,10 @@ module EthilVan::App::Views
             @model = model
          end
 
+         def actor_avatar
+            @model.actor.profil.avatar_url
+         end
+
          def actor_name
             @model.actor.name
          end
@@ -41,8 +45,8 @@ module EthilVan::App::Views
             partial "activity/#{subject_dir}/#{action}"
          end
 
-         def date
-            I18n.l @model.created_at
+         def date_ago
+            time_ago_in_words(@model.created_at)
          end
       end
    end

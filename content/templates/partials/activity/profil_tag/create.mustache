@@ -1,6 +1,8 @@
+{{> activity/date }}
+{{> activity/avatar }}
 {{^ actor_is_viewer? }}
    {{> activity/actor }} a taggé votre profil
 {{/ actor_is_viewer? }}
 {{# actor_is_viewer? }}
-   Vous avez taggé le profil de {{ tagged }}
+   Vous avez taggé le profil de <a href="{{ subject_tagged_url }}">{{ subject_tagged }}</a>
 {{/ actor_is_viewer? }}
