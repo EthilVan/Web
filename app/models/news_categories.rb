@@ -19,6 +19,10 @@ class NewsCategories
 
    attr_reader :value
 
+   def self.all
+      new_from_names(*@@categories.keys)
+   end
+
    def self.names
       @@categories.keys
    end
