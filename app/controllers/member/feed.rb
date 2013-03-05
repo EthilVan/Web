@@ -1,7 +1,7 @@
 class EthilVan::App < Sinatra::Base
 
    get '/membre' do
-      activities = Activity.feed(current_account)
+      activities = resources Activity.feed(current_account, params[:page])
       last_view = current_account.feed_view
       current_account.update_attribute :feed_view, Time.now
 

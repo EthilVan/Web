@@ -22,16 +22,21 @@ class Activity < ActiveRecord::Base
       activity
    end
 
-   def self.feed(viewer)
-      filter(:feed, viewer, self)
+   def self.feed(viewer, page = 1)
+      filter(:feed, viewer, page(page).per(40))
    end
 
-   def self.list(actor, viewer)
-      filter(:list, viewer, where(actor_id: actor.id))
+   def self.list(actor, viewer, page = 1)
+      filter(:list, viewer, where(actor_id: actor.id).page(page).per(40))
+   end
+
+   def self.count(actor, viewer)
+      filter(:stat, viewer, where(actor_id: actor.id)).count
    end
 
    def self.filter(type, viewer, query)
-      query.all.select do |activity|
+      list = query.all
+      list.select do |activity|
          subject = activity.subject
          next false if subject.nil?
          next true unless subject.class.is_a? Subject
