@@ -1,0 +1,10 @@
+{{> activity/date }}
+{{> activity/avatar }}
+{{^ actor_is_viewer? }}
+   {{> activity/actor }} a publié une annonce :
+   <div>{{{ subject_content }}}</div>
+{{/ actor_is_viewer? }}
+{{# actor_is_viewer? }}
+   Vous avez publié une annonce :
+   <div>{{{ subject_content }}}</div>
+{{/ actor_is_viewer? }}
