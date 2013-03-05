@@ -83,6 +83,7 @@ private
    end
 
    def update_discussion_last_on_update
+      return unless first? or last?
       discussion.update_attribute :updated_at, updated_at
    end
 
