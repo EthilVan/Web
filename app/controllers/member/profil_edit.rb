@@ -46,7 +46,10 @@ class EthilVan::App
       account_params = params[:account]
 
       account.vote_needed = account_params.delete('vote_needed') if role
-      account.banned = account_params.delete('banned') if super_role
+      if super_role
+         account.banned = account_params.delete('banned')
+         account.role_id = account_params.delete('role_id')
+      end
       account.attributes = account_params if own_account or super_role
 
       if not current_account.check_password?(params[:current_password])

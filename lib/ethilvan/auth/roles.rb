@@ -26,6 +26,12 @@ module EthilVan
          @roles.find { |role| role.id == id }
       end
 
+      def self.names_hash
+         @roles.reverse.each_with_object({}) do |role, hash|
+            hash[role.id] = role.name
+         end
+      end
+
       def self.ids
          @roles.map &:id
       end

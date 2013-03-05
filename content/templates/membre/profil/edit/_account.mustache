@@ -28,6 +28,16 @@
          </div>
       </div>
 
+      {{# role }}
+         <div class="control-group">
+            <div class="control-label">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/switch }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ role }}
+
       {{# banned }}
          <div class="control-group">
             <div class="control-label">{{> form/label }}</div>

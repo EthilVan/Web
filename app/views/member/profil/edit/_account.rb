@@ -10,6 +10,11 @@ module EthilVan::App::Views
                super(account, action: action)
             end
 
+            def role
+               return false unless super_role?
+               choice :role_id, among: EthilVan::Role.names_hash
+            end
+
             def banned
                return false unless super_role?
                boolean :banned
