@@ -49,8 +49,8 @@ class News < ActiveRecord::Base
    attr_accessor :important
 
    def initialize(*args)
-      @important = false
       super(*args)
+      @important = true
    end
 
    def categories
