@@ -6,6 +6,10 @@ class EthilVan::App < Sinatra::Base
          resource Account.with_everything.where(name: name).first
       end
 
+      def profil_activities(account)
+         resources Activity.list(account, params[:activities_page])
+      end
+
       def profil_messages(account)
          resources Message.for_account(account).page(params[:msgpage]).per(10)
       end
@@ -31,6 +35,14 @@ class EthilVan::App < Sinatra::Base
       redirect "/membre/@#{name}/general"
    end
 
+   xhr_get %r{/membre/@(#{Account::NAME})/activites$} do |name|
+      account    = profil_account    name
+      activities = profil_activities account
+
+      view Views::Member::Profil::Messages.new(nil, account, messages)
+      mustache 'membre/profil/_messages'
+   end
+
    xhr_get %r{/membre/@(#{Account::NAME})/messages$} do |name|
       account  = profil_account  name
       messages = profil_messages account
@@ -47,14 +59,16 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/profil/_tags'
    end
 
-   tabs = [:general, :postulation, :tags, :messages]
+   tabs = %w{general postulation activites tags messages}
    get %r{/membre/@(#{Account::NAME})/(?:#{tabs *  '|'})$} do |name|
-      account  = profil_account  name
-      new_tag  = profil_new_tag  account
-      tags     = profil_tags     account
-      messages = profil_messages account
+      account    = profil_account    name
+      activities = profil_activities account
+      new_tag    = profil_new_tag    account
+      tags       = profil_tags       account
+      messages   = profil_messages   account
 
-      view Views::Member::Profil::Tabs.new(account, new_tag, tags, messages)
+      view Views::Member::Profil::Tabs.new(account, activities,
+         new_tag, tags, messages)
       mustache 'membre/profil/tabs'
    end
 

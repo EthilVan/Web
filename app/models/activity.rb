@@ -27,7 +27,10 @@ class Activity < ActiveRecord::Base
    end
 
    def self.list(actor, viewer, page = 1)
-      filter(:list, viewer, where(actor_id: actor.id).page(page).per(40))
+      cond = Activity.arel_table[:subject_type].eq("Account")
+      cond = cond.and(Activity.arel_table[:subject_id].eq(actor.id))
+      cond = cond.or(Activity.arel_table[:actor_id].eq(actor.id))
+      filter(:list, viewer, where(cond).page(page).per(40))
    end
 
    def self.count(actor, viewer)
