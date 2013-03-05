@@ -1,0 +1,13 @@
+{{# form }}
+<form id="annonce-form" {{{ attributes }}}>
+
+   {{# content }}
+      {{> form/label }}
+      {{> form/mdeditor }}
+      {{> form/errors }}
+   {{/ content }}
+
+   <input class="btn" type="submit" value="Soumettre"
+         {{# inline? }}data-inline-target="#annonce-form"{{/ inline? }}/>
+</form>
+{{/ form }}
