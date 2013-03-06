@@ -20,12 +20,18 @@ class Activity < ActiveRecord::Base
       included do
          has_many :activities, as: :subject,
                dependent: :destroy
-         instance_variable_set("@_filters", {})
+         instance_variable_set("@_activities_includes", [])
+         instance_variable_set("@_activities_filters",  {})
       end
 
       module ClassMethods
 
+         attr_reader :_activities_includes
          attr_reader :_activities_filters
+
+         def activities_includes(*includes)
+            @_activities_includes << includes
+         end
 
          def activities_filter(types, *actions, &block)
             filter = Filter.new(*actions, &block)

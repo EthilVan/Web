@@ -39,6 +39,16 @@ class Activity < ActiveRecord::Base
 
    def self.filter(type, viewer, query)
       list = query.all
+
+      subject_by_class = list.map(&:subject).group_by(&:class)
+      subject_by_class.each do |klass, subjects|
+         klass._activities_includes.each do |includes|
+            preloader = ActiveRecord::Associations::Preloader.new(subjects,
+                  includes)
+            preloader.run
+         end
+      end
+
       list.select do |activity|
          subject = activity.subject
          next false if subject.nil?

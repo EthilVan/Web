@@ -34,6 +34,11 @@ class Discussion < ActiveRecord::Base
    validates_length_of  :messages, minimum: 1
 
    # ==========================================================================
+   # * Activity
+   # ==========================================================================
+   activities_includes :group
+
+   # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
    before_validation :init_first_last_messages, on: :create

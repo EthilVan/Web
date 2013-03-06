@@ -60,6 +60,11 @@ class Account < ActiveRecord::Base
    validates_inclusion_of :role_id, within: EthilVan::Role.ids.map(&:to_s)
 
    # ==========================================================================
+   # * Activity
+   # ==========================================================================
+   activities_includes :profil
+
+   # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
    before_save :encrypt_password, if: :new_password?
