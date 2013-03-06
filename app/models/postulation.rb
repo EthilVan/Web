@@ -34,6 +34,13 @@ class Postulation < ActiveRecord::Base
    accepts_nested_attributes_for :screens
 
    # ==========================================================================
+   # * Activity
+   # ==========================================================================
+   activities_filter [:feed, :list, :stats], :create do |viewer, subject|
+      viewer.role.inherit? EthilVan::Role::MODO
+   end
+
+   # ==========================================================================
    # * Validations
    # ==========================================================================
 

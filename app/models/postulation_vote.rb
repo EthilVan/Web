@@ -19,6 +19,9 @@ class PostulationVote < ActiveRecord::Base
    # * Activity
    # ==========================================================================
    activities_includes :postulation
+   activities_filter [:feed, :list, :stats], :create do |viewer, subject|
+      viewer.role.inherit? EthilVan::Role::MODO
+   end
 
    # ==========================================================================
    # * Methods

@@ -23,7 +23,16 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    # * Activity
    # ==========================================================================
-   activities_includes :discussion
+   activities_includes :account, discussion: :group
+   activities_filter :feed, :create do |viewer, subject, activity|
+      discussion = subject.discussion
+      activity.actor.id == viewer.id or
+            viewer.subscripted_group_ids.include?(discussion.group.id) or
+            viewer.subscripted_discussion_ids.include?(discussion.id)
+   end
+   activities_filter :feed, :edit do |viewer, subject, activity|
+      [subject.account.id, activity.actor.id].include? viewer.id
+   end
 
    # ==========================================================================
    # * Callbacks and scope

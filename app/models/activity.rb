@@ -42,6 +42,7 @@ class Activity < ActiveRecord::Base
 
       subject_by_class = list.map(&:subject).group_by(&:class)
       subject_by_class.each do |klass, subjects|
+         next unless klass.include? Subject
          klass._activities_includes.each do |includes|
             preloader = ActiveRecord::Associations::Preloader.new(subjects,
                   includes)
@@ -52,9 +53,11 @@ class Activity < ActiveRecord::Base
       list.select do |activity|
          subject = activity.subject
          next false if subject.nil?
-         next true unless subject.class.is_a? Subject
-         subject.class._activities_filters[type].all? do |filter|
-            filter.apply(viewer, activity.action, subject)
+         next true unless subject.is_a? Subject
+         filters = subject.class._activities_filters[type]
+         next true if filters.nil?
+         filters.all? do |filter|
+            filter.apply(viewer, activity)
          end
       end
    end

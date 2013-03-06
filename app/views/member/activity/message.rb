@@ -20,6 +20,10 @@ module EthilVan::App::Views
             current?(_subject.account)
          end
 
+         def viewer_is_thirdparty?
+            not (actor_is_viewer? or author_is_viewer?)
+         end
+
          def author
             _subject.account.name
          end

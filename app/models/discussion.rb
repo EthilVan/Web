@@ -37,6 +37,12 @@ class Discussion < ActiveRecord::Base
    # * Activity
    # ==========================================================================
    activities_includes :group
+   activities_filter :feed, :moved, :archived, :unarchived do
+         |viewer, subject, activity|
+      activity.actor.id == viewer.id or
+            viewer.subscripted_group_ids.include?(subject.group.id) or
+            viewer.subscripted_discussion_ids.include?(subject.id)
+   end
 
    # ==========================================================================
    # * Callbacks and scope

@@ -1,5 +1,14 @@
 class DiscussionGroupSubscription < ActiveRecord::Base
 
+   # ==========================================================================
+   # * Relations
+   # ==========================================================================
+   belongs_to :account
+   belongs_to :group, class_name: 'GeneralDiscussionGroup'
+
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
    def self.create_for(account, group)
       query = where(account_id: account.id,
             group_id: group.id)

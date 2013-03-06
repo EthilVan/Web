@@ -9,6 +9,7 @@ module EthilVan
 
       EthilVan.development? do
          before { I18n.reload! }
+         before { Activity::Subject.reload! }
 
          require 'better_errors'
          use BetterErrors::Middleware

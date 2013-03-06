@@ -1,10 +1,8 @@
 {{> activity/date }}
 {{> activity/avatar }}
 {{^ actor_is_viewer? }}
-   {{> activity/actor }} a répondu à la discussion
-    <a href="{{ subject_url }}">{{ subject_discussion }}</a>
+   {{> activity/actor }} a répondu à la discussion {{> activity/message/subject }}
 {{/ actor_is_viewer? }}
 {{# actor_is_viewer? }}
-   Vous avez répondu à la discussion
-    <a href="{{ subject_url }}">{{ subject_discussion }}</a>
+   Vous avez répondu à la discussion {{> activity/message/subject }}
 {{/ actor_is_viewer? }}

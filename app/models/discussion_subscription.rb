@@ -1,5 +1,14 @@
 class DiscussionSubscription < ActiveRecord::Base
 
+   # ==========================================================================
+   # * Relations
+   # ==========================================================================
+   belongs_to :account
+   belongs_to :discussion
+
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
    def self.create_for(account, discussion)
       query = where(account_id: account.id,
             discussion_id: discussion.id)

@@ -26,6 +26,9 @@ class NewsComment < ActiveRecord::Base
    # * Activity
    # ==========================================================================
    activities_includes :news
+   activities_filter :feed, :create do |viewer, subject|
+      subject.news.categories =~ viewer.profil.categories
+   end
 
    # ==========================================================================
    # * Callbacks and scope

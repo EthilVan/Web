@@ -32,6 +32,13 @@ class News < ActiveRecord::Base
    validate :theres_at_least_one_category
 
    # ==========================================================================
+   # * Activity
+   # ==========================================================================
+   activities_filter :feed, :create do |viewer, subject|
+      subject.categories =~ viewer.profil.categories
+   end
+
+   # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
    markdown_pre_parse :summary

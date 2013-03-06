@@ -20,6 +20,9 @@ class ProfilTag < ActiveRecord::Base
    # * Activity
    # ==========================================================================
    activities_includes :tagged
+   activities_filter :feed, :create do |viewer, subject, activity|
+      [activity.actor.id, subject.tagged.id].include? viewer.id
+   end
 
    # ==========================================================================
    # * Methods

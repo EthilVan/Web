@@ -22,8 +22,13 @@ class Account < ActiveRecord::Base
    has_many :profil_tags,     foreign_key: :tagged_id, order: 'created_at DESC'
    has_many :discussion_views
    has_many :news_comments
+
    has_many :discussion_subscriptions
    has_many :discussion_group_subscriptions
+   has_many :subscripted_discussions, through: :discussion_subscriptions,
+         source: :discussion
+   has_many :subscripted_groups, through: :discussion_group_subscriptions,
+         source: :group
 
    # ==========================================================================
    # * Validations

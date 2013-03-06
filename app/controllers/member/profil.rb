@@ -7,7 +7,8 @@ class EthilVan::App < Sinatra::Base
       end
 
       def profil_activities(account)
-         resources Activity.list(account, params[:activities_page])
+         resources Activity.list(account, current_account,
+               params[:activities_page])
       end
 
       def profil_messages(account)
