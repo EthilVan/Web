@@ -8,6 +8,10 @@ module EthilVan::App::Views
 
             attr_writer :last_view
 
+            def avatar?
+               true
+            end
+
             def last_view
                @last_view || Time.at(0)
             end

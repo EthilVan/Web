@@ -12,6 +12,10 @@ module EthilVan::App::Views
             @model = model
          end
 
+         def avatar?
+            false
+         end
+
          def actor_avatar
             @model.actor.profil.avatar_url
          end
