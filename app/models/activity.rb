@@ -1,6 +1,6 @@
 class Activity < ActiveRecord::Base
 
-   default_scope order('created_at DESC').includes(:subject)
+   default_scope order('created_at DESC, id DESC').includes(:subject)
          .includes(actor: [:profil])
 
    # ==========================================================================
