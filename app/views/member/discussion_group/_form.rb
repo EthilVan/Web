@@ -21,6 +21,12 @@ module EthilVan::App::Views
             }
          end
 
+         def icon
+            text :icon, validations: {
+               type: 'urlstrict',
+            }
+         end
+
          def priority
             text :priority, validations: {
                min: 0,

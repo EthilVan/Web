@@ -40,6 +40,14 @@ module EthilVan::App::Views
             "#{url}/supprimer"
          end
 
+         def icon?
+            icon.present?
+         end
+
+         def icon
+            @group.icon
+         end
+
          def remaining_or_archived?
             @remaining > 0 or archived?
          end

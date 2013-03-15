@@ -3,9 +3,10 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    URL_PATTERN = '[a-z][a-z0-9_]*'
 
    attr_accessible :name
+   attr_accessible :url
+   attr_accessible :icon
    attr_accessible :description
    attr_accessible :priority
-   attr_accessible :url
 
    # ==========================================================================
    # * Relations
