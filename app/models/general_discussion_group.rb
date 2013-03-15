@@ -22,6 +22,10 @@ class GeneralDiscussionGroup < ActiveRecord::Base
          conditions: 'archived = 1',
          dependent: :destroy
 
+   has_many :discussion_group_subscriptions, foreign_key: :group_id
+   has_many :subscribers, through: :discussion_group_subscriptions,
+         source: :account
+
    # ==========================================================================
    # * Validations
    # ==========================================================================

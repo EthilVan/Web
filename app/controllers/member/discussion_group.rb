@@ -79,4 +79,20 @@ class EthilVan::App < Sinatra::Base
       DiscussionGroupSubscription.destroy_for(current_account, group)
       redirect '/membre/discussion'
    end
+
+   get %r{#{DISCUSSION_GROUP_BASE_URL}/toutsuivre$} do |group_url|
+      group = resource GeneralDiscussionGroup.find_by_url group_url
+      group.discussions.each do |discussion|
+         DiscussionSubscription.create_for(current_account, discussion)
+      end
+      redirect '/membre/discussion'
+   end
+
+   get %r{#{DISCUSSION_GROUP_BASE_URL}/neplusriensuivre$} do |group_url|
+      group = resource GeneralDiscussionGroup.find_by_url group_url
+      group.discussions.each do |discussion|
+         DiscussionSubscription.destroy_for(current_account, discussion)
+      end
+      redirect '/membre/discussion'
+   end
 end

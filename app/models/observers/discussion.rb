@@ -3,6 +3,10 @@ class DiscussionObserver < ActiveRecord::Observer
    def after_create(discussion)
       Activity.create_for(discussion.first_message.account, 'create',
             discussion)
+
+      discussion.group.subscribers.each do |account|
+         DiscussionSubscription.create_for(account, discussion)
+      end
    end
 
    def after_update(discussion)
