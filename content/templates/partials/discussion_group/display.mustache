@@ -1,0 +1,39 @@
+<div class="discussion-group seul sans-titre">
+   <a href="/membre/discussion">
+      ← Retour à la liste des espaces de discussion
+   </a>
+   <div class="ligne"></div>
+
+   <div class="entete-espace">
+      {{# modo? }}
+         <a class="need-confirmation" href="{{ delete_url }}">
+            <div class="suppr"></div>
+         </a>
+         <a href="{{ edit_url }}">
+            <div class="edit"></div>
+         </a>
+      {{/ modo? }}
+      {{# icon? }}<img src="{{ icon }}" />{{/ icon? }}
+      <div class="titre-espace">{{ name }}</div>
+      <p>{{ description }}</p>
+   </div>
+
+   {{# discussions? }}
+   <ul>
+      {{# discussions }}
+      <li>{{> discussion/preview }}</li>
+      {{/ discussions }}
+   </ul>
+   {{/ discussions? }}
+
+   {{# archived_discussions? }}
+   <ul>
+      {{# archived_discussions }}
+      <li>{{> discussion/preview }}</li>
+      {{/ archived_discussions }}
+   </ul>
+   {{/ archived_discussions? }}
+</div>
+<a href="{{ url }}/creer">
+   <input class='btn pull-right valider' type="button" value="Nouvelle discussion"/>
+</a>

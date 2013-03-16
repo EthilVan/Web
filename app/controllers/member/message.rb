@@ -82,7 +82,7 @@ class EthilVan::App < Sinatra::Base
          DiscussionView.update_for(current_account, message.discussion,
                Time.now + 1)
          redirect_not_xhr discussion_url message
-         view Views::Member::Discussion::Message.new message, true
+         view Views::Partials::Message::Display.new message, true
          mustache 'membre/discussion/_message'
       else
          view Views::Member::Message::Edit.new message, xhr?, request.path

@@ -56,10 +56,14 @@ module EthilVan
 
          def mustache_template_for(name)
             @template_cache.fetch(:mustache_template, name) do
-               path = File.join(settings.mustache_templates, name.to_s) +
+               glob = File.join(settings.mustache_templates, name.to_s) +
                      '.mustache'
-               path = Dir[path].first
-               ::Mustache::CachedTemplate.new File.read path
+               path = Dir[glob].first
+               if path.nil?
+                  ::Mustache::CachedTemplate.new "Missing template : #{glob}"
+               else
+                  ::Mustache::CachedTemplate.new File.read path
+               end
             end
          end
       end

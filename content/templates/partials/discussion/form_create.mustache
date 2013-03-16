@@ -1,0 +1,23 @@
+{{# form }}
+<form {{{ attributes }}}>
+
+   {{# name }}
+      <div class="nom-discussion">
+         {{> form/label }}
+         {{> form/errors }}
+         <div class="large">
+            {{> form/input }}
+         </div>
+      </div>
+   {{/ name }}
+
+   {{# first_message }}
+      {{# contents }}
+         {{> message/contents_editor }}
+      {{/ contents }}
+   {{/ first_message }}
+
+   <input class="btn pull-right valider" type="submit" value="Enregistrer" />
+
+</form>
+{{/ form }}

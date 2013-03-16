@@ -1,0 +1,40 @@
+<div class="discussion-group">
+   {{# modo? }}
+      <a href="{{ delete_url }}" data-remove-target=".discussion-group">
+         <div class="suppr"></div>
+      </a>
+      <a href="{{ edit_url }}">
+         <div class="edit"></div>
+      </a>
+   {{/ modo? }}
+
+   <div class="lien-espace">
+      {{# icon? }}<img src="{{ icon }}" />{{/ icon? }}
+      <a href="{{ url }}" title="{{ description }}">
+         <div class="titre-espace">{{ name }}</div>
+      </a>
+   </div>
+
+   {{# discussions? }}
+   <ul>
+      {{# discussions }}
+      <li>{{> discussion/preview }}</li>
+      {{/ discussions }}
+   </ul>
+   {{/ discussions? }}
+
+   {{# remaining_or_archived? }}
+   <a href="{{ url }}" title="{{ description }}">
+      <div class="restantes">
+         Discussions restantes : {{ remaining }}
+         {{# archived? }}
+         (dont {{ archived }} archivée{{# archived_plural? }}s{{/ archived_plural? }})
+         {{/ archived? }}
+      </div>
+   </a>
+   {{/ remaining_or_archived? }}
+   <a href="{{ url }}/creer">
+      <div class="nouvelle">+ Nouvelle discussion</div>
+   </a>
+   <div class="cleaner"></div>
+</div>

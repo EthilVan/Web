@@ -41,4 +41,7 @@ module EthilVan::App::Views
    class Partial
       include PartialHelpers
    end
+
+   module Partials
+   end
 end

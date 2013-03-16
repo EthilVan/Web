@@ -1,0 +1,48 @@
+<div class="bloc-titre">
+   {{# modo? }}
+      <a class="need-confirmation" href="{{ delete_url }}">
+         <div class="suppr"></div>
+      </a>
+      <a href="{{ edit_url }}">
+         <div class="edit"></div>
+      </a>
+   {{/ modo? }}
+   <div class="titre">{{ name }}</div>
+   <div class="cleaner"></div>
+   <div class="ligne"></div>
+   <div class="date">Discussion crée le {{ date }} par {{ author }}</div>
+</div>
+
+{{# pager }}
+<div class="discussion-nav">
+<div class="pages">
+   {{> discussion/pager }}
+</div>
+
+{{# last_message? }}
+<div class="last-message">
+   <a href="{{ last_message }}">Aller au dernier message</a>
+</div>
+{{/ last_message? }}
+</div>
+{{/ pager }}
+
+
+<div class="cleaner"></div>
+
+<div class="messages">
+   {{# messages }}{{> message/display }}{{/ messages }}
+
+   {{# can_respond? }}
+   <div id="champ-reponse">
+      <a class="btn pull-right valider" href="{{ response_url }}"
+            data-inline-target="#champ-reponse">Répondre</a>
+   </div>
+   {{/ can_respond? }}
+</div>
+
+<div class="discussion-nav">
+   <div class="pages">
+   {{# pager }}{{> discussion/pager }}{{/ pager }}
+   </div>
+</div>

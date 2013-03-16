@@ -1,0 +1,39 @@
+{{# form }}
+<form class="form-horizontal formulaire" {{{ attributes }}}>
+
+   {{# name }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls large">
+            {{> form/input }}
+            {{> form/errors }}
+         </div>
+      </div>
+   {{/ name }}
+
+   {{# archived }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls large">
+            {{> form/switch }}
+            {{> form/errors }}
+         </div>
+      </div>
+   {{/ archived }}
+
+   {{# group }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/picker }}
+            {{> form/errors }}
+         </div>
+      </div>
+   {{/ group }}
+
+   <div class="clearfix"></div>
+
+   <input class="btn pull-right" type="submit" value="Enregistrer" />
+
+</form>
+{{/ form }}

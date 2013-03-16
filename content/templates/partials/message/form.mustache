@@ -1,0 +1,19 @@
+{{# new_messages }}
+   {{> membre/discussion/_message }}
+{{/ new_messages }}
+
+<div class="message-form message-odd-even">
+
+   {{# form }}
+      <form {{{ attributes }}}>
+
+         {{# contents }}
+            {{> message/contents_editor }}
+         {{/ contents }}
+
+         <input class="btn pull-right valider" {{# inline? }}data-inline-target=".message-form"{{/ inline? }}
+               type="submit" value="Répondre" />
+
+      </form>
+   {{/ form }}
+</div>
