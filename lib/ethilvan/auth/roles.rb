@@ -18,6 +18,10 @@ module EthilVan
          @subroles.any? { |subrole_id| subrole_id == role.id }
       end
 
+      def subroles
+         [@id] + subroles
+      end
+
       @roles = EthilVan.load_data('misc', 'roles').map do |id, data|
          Role.new(id, data)
       end

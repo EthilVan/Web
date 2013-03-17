@@ -5,7 +5,8 @@ class CreateGestionDiscussionGroups < ActiveRecord::Migration
          t.string    :name
          t.string    :url
          t.string    :role
-         t.integer   :priority
+         t.integer   :priority, default: 30
+         t.string    :icon
          t.text      :description
       end
    end

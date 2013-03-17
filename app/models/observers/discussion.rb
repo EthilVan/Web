@@ -4,6 +4,7 @@ class DiscussionObserver < ActiveRecord::Observer
       Activity.create_for(discussion.first_message.account, 'create',
             discussion)
 
+      return unless discussion.group.is_a? GeneralDiscussionGroup
       discussion.group.subscribers.each do |account|
          DiscussionSubscription.create_for(account, discussion)
       end

@@ -49,6 +49,9 @@ module EthilVan
       set :layout,              'layouts/default'
       set :mustache_templates,  'content/templates/{pages,partials}'
    end
+
+   module App::Helpers
+   end
 end
 
 require_all 'app/views'

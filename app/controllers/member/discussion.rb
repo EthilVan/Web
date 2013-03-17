@@ -1,82 +1,65 @@
 class EthilVan::App < Sinatra::Base
 
-   get %r{#{DISCUSSION_GROUP_BASE_URL}/creer$} do |group_url|
+   discussion_routes_config = {
+      group: {
+         url:       '/membre/discussion',
+         views:     Views::Member::DiscussionGroup,
+         templates: 'membre/discussion_group',
+      },
+      discussion: {
+         url:       '/membre/discussion',
+         views:     Views::Member::Discussion,
+         templates: 'membre/discussion',
+      },
+      message: {
+         url:       '/membre/message',
+         views:     Views::Member::Message,
+         templates: 'membre/message',
+      },
+   }
+
+   group_url      = discussion_group_routes GeneralDiscussionGroup,
+         discussion_routes_config
+   discussion_url = discussion_routes       GeneralDiscussionGroup,
+         discussion_routes_config
+   message_url    = message_routes          GeneralDiscussionGroup,
+         discussion_routes_config
+
+   get %r{#{group_url}/suivre$} do |group_url|
       group = resource GeneralDiscussionGroup.find_by_url group_url
-
-      discussion = Discussion.new
-      discussion.group = group
-      discussion.first_message = Message.new
-      discussion.first_message.account = current_account
-
-      view Views::Member::Discussion::Create.new(discussion)
-      mustache 'membre/discussion/create'
+      DiscussionGroupSubscription.create_for(current_account, group)
+      redirect '/membre/discussion'
    end
 
-   post %r{#{DISCUSSION_GROUP_BASE_URL}/creer$} do |group_url|
+   get %r{#{group_url}/neplussuivre$} do |group_url|
       group = resource GeneralDiscussionGroup.find_by_url group_url
+      DiscussionGroupSubscription.destroy_for(current_account, group)
+      redirect '/membre/discussion'
+   end
 
-      discussion = Discussion.new params[:discussion]
-      discussion.group = group
-      discussion.first_message.account = current_account
-
-      if discussion.valid?
-         discussion.save
-         redirect urls.discussion(discussion)
-      else
-         view Views::Member::Discussion::Create.new(discussion)
-         mustache 'membre/discussion/create'
+   get %r{#{group_url}/toutsuivre$} do |group_url|
+      group = resource GeneralDiscussionGroup.find_by_url group_url
+      group.discussions.each do |discussion|
+         DiscussionSubscription.create_for(current_account, discussion)
       end
+      redirect '/membre/discussion'
    end
 
-   get %r{/membre/discussion/(\d{1,5})$} do |id|
-      discussion = resource Discussion.find_by_id id
-      page = discussion.page(params[:page]).includes(account:
-            [ :profil, :minecraft_stats ])
-      not_found unless page.present?
-
-      DiscussionView.update_for(current_account, discussion)
-
-      view Views::Member::Discussion::Show.new(discussion, page)
-      mustache 'membre/discussion/show'
-   end
-
-   discussion_edit = %r{/membre/discussion/(\d{1,5})/editer$}
-   protect discussion_edit, EthilVan::Role::MODO
-   get discussion_edit do |id|
-      discussion = resource Discussion.find_by_id id
-      discussion.activity_actor = current_account
-      view Views::Member::Discussion::Edit.new(discussion)
-      mustache 'membre/discussion/edit'
-   end
-
-   post discussion_edit do |id|
-      discussion = resource Discussion.find_by_id id
-      discussion.activity_actor = current_account
-
-      if discussion.update_attributes params[:discussion]
-         redirect '/membre/discussion'
-      else
-         view Views::Member::Discussion::Edit.new(discussion)
-         mustache 'membre/discussion/edit'
+   get %r{#{group_url}/neplusriensuivre$} do |group_url|
+      group = resource GeneralDiscussionGroup.find_by_url group_url
+      group.discussions.each do |discussion|
+         DiscussionSubscription.destroy_for(current_account, discussion)
       end
+      redirect '/membre/discussion'
    end
 
-   discussion_delete = %r{/membre/discussion/(\d{1,5})/supprimer$}
-   protect discussion_delete, EthilVan::Role::MODO
-   get discussion_delete do |id|
-      discussion = resource Discussion.find_by_id id
-      discussion.activity_actor = current_account
-      discussion.destroy
-      xhr_ok_or_redirect '/membre/discussion'
-   end
-
-   get %r{/membre/discussion/(\d{1,5})/suivre$} do |id|
+   get %r{#{discussion_url}/suivre$} do |id|
       discussion = resource Discussion.find_by_id id
       DiscussionSubscription.create_for(current_account, discussion)
       redirect '/membre/discussion'
    end
 
-   get %r{/membre/discussion/(\d{1,5})/neplussuivre$} do |id|
+   get %r{#{discussion_url}/neplussuivre$} do |id|
       discussion = resource Discussion.find_by_id id
       DiscussionSubscription.destroy_for(current_account, discussion)
       redirect '/membre/discussion'
