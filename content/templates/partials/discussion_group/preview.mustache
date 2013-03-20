@@ -9,8 +9,12 @@
    {{/ modo? }}
 
    <div class="lien-espace">
-      {{# icon? }}<img src="{{ icon }}" />{{/ icon? }}
       <a href="{{ url }}" title="{{ description }}">
+         {{# icon? }}
+            <div class="icone">
+               <img src="{{ icon }}" />
+            </div>
+         {{/ icon? }}
          <div class="titre-espace">{{ name }}</div>
       </a>
    </div>

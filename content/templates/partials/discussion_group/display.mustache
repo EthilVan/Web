@@ -13,7 +13,11 @@
             <div class="edit"></div>
          </a>
       {{/ modo? }}
-      {{# icon? }}<img src="{{ icon }}" />{{/ icon? }}
+      {{# icon? }}
+         <div class="icone">
+            <img src="{{ icon }}" />
+         </div>
+      {{/ icon? }}
       <div class="titre-espace">{{ name }}</div>
       <p>{{ description }}</p>
    </div>
