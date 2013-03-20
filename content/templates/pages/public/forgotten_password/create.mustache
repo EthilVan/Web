@@ -6,12 +6,12 @@
    <div class="flash warning">Cet email n'existe pas.</div>
    {{/ error? }}
 
-   <div>Indiquez l'email correspondant à votre compte.</div>
+   <h5>Indiquez l'email correspondant à votre compte :</h5>
 
-   <input id="fp_email" name="fp_email" type="text" data-type="email"
-         placeholder="email@example.org" value="{{ email }}"/>
+   <div class="recup-mdp">
+      <input id="fp_email" name="fp_email" type="text" data-type="email"
+            placeholder="email@example.org" value="{{ email }}"/>
+      <input type="submit" class="btn" value="Soumettre" />
+   </div>
 
-   <div></div>
-
-   <input type="submit" class="btn" value="Soumettre" />
 </form>
