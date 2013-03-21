@@ -1,0 +1,117 @@
+@import 'var.less';
+
+@avatar: 120px;
+@marge-texte: 15px;
+@marge-cote: 2px;
+
+#subcontents .comments {
+   margin-top: 15px;
+
+   .news-comment {
+      background-color: @gris-colonne;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 1px 1px 0px 0px @gris-relief inset;
+      margin-bottom: 15px;
+
+      &:last-child {
+         margin-bottom: 0px;
+      }
+
+      .auteur {
+         width: @avatar;
+
+         .avatar {
+            max-width: @avatar;
+            margin-top: 5px;
+         }
+
+         .pseudo, .email {
+            text-align: center;
+            max-width: @avatar;
+         }
+
+         .pseudo {
+            margin-top: 4px;
+            font-weight: bold;
+         }
+
+         .email {
+            font-size: 9px;
+         }
+
+         .edition{
+            text-align: center;
+            margin-top: 8px;
+
+            .edit, .suppr {
+               width: 24px;
+               display: inline-block;
+            }
+
+            .edit {
+               background-image: url(images/interaction/edit.png);
+               height: 21px;
+
+               &:hover {
+                  background-image: url(images/interaction/edit-2.png);
+               }
+
+            }
+
+            .suppr {
+               background-image: url(images/interaction/suppr.png);
+               height: 18px;
+               margin-top: 3px;
+               margin-left: 10px;
+
+               &:hover {
+                  background-image: url(images/interaction/suppr-2.png);
+               }
+
+            }
+
+         }
+
+      }
+
+      .contenu {
+         p:last-child {
+            margin-bottom: 0px;
+         }
+      }
+
+      &:nth-child(odd) {
+
+         .auteur {
+            float: left;
+            margin-left: @marge-cote;
+            padding-right: @marge-texte;
+            border-right: 2px solid @gris-medium;
+         }
+
+         .contenu {
+            margin-left: @marge-cote + @avatar + @marge-texte;
+            padding-left: @marge-texte;
+            border-left: 2px solid @gris-medium;
+         }
+      }
+
+      &:nth-child(even) {
+
+         .auteur {
+            float: right;
+            margin-right: @marge-cote;
+            padding-left: @marge-texte;
+            border-left: 2px solid @gris-medium;
+         }
+
+         .contenu {
+            margin-right: @marge-cote + @avatar + @marge-texte;
+            padding-right: @marge-texte;
+            border-right: 2px solid @gris-medium;
+         }
+      }
+
+   }
+}

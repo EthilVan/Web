@@ -1,17 +1,29 @@
 <div id="{{ anchor }}" class="news-comment">
-   {{# member? }}
-      <img src="{{ member_avatar }}"/>
-      {{ member_name }}
-   {{/ member? }}
+   <div class="auteur">
+      {{# member? }}
+         <img class="avatar" src="{{ member_avatar }}"/>
+         <div class="pseudo">{{ member_name }}</div>
+      {{/ member? }}
 
-   {{^ member? }}
-      {{ author_name }} {{# modo? }}({{ author_email }}){{/ modo? }}
-   {{/ member? }}
+      {{^ member? }}
+         <img class="avatar" src="http://ethilvan.fr/avatar/Travis.png"/>
+         <div class="pseudo">{{ author_name }} </div>
+         {{# modo? }}
+            <div class="email">({{ author_email }})</div>
+         {{/ modo? }}
+      {{/ member? }}
 
-   <div>{{{ content }}}</div>
+      {{# editable? }}
+         <div class="edition">
+            <a class="edit" href="{{ edit_url }}"></a>
+            <a class="suppr" href="{{ delete_url }}" data-remove-target="#{{ anchor }}"></a>
+         </div>
+      {{/ editable? }}
+   </div>
 
-   {{# editable? }}
-   <a href="{{ edit_url }}">Editer</a>
-   <a href="{{ delete_url }}" data-remove-target="#{{ anchor }}">Supprimer</a>
-   {{/ editable? }}
+   <div class="contenu">
+      {{{ content }}}
+   </div>
+
+   <div class="cleaner"></div>
 </div>
