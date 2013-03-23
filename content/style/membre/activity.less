@@ -1,6 +1,119 @@
-.activity-avatar {
-   width: 120px;
-   height: 120px;
+@import 'var.less';
+
+#subcontents .flux {
+   background-color: @gris-medium;
+   padding: 10px;
+   border-radius: 6px;
+   box-shadow: 1px 1px 0px 0px @gris-relief;
+   margin: 0px;
+
+   .activite {
+      list-style-type: none;
+      color: @vert;
+      background-color: @gris-colonne;
+      padding: 10px;
+      margin: 0px;
+      margin-top: 5px;
+      border-radius: 6px;
+      box-shadow: 1px 1px 0px 0px @gris-relief inset;
+
+      &:first-child {
+         margin-top: 0px;
+      }
+
+      .info {
+         margin-left: 42px;
+         line-height: 32px;
+
+         .activity-date {
+            float: right;
+            font-size: 14px;
+            margin-left: 15px;
+         }
+
+         .activity-avatar {
+            max-height: 25px;
+            max-width: 40px;
+            margin: 0px 3px;
+         }
+      }
+
+      &.activity-viewed {
+         color: @gris-em;
+      }
+
+   }
+
+}
+
+.activity-icon {
+   float: left;
+   width: 32px;
+   height: 32px;
    background-repeat: no-repeat;
-   background-position: 50% 50%;
+   background-position: 50%;
+
+   &.account-create {
+      background-image: url(images/membre/activite/account-create.png);
+   }
+
+   &.account-destituted {
+      background-image: url(images/membre/activite/account-destituted.png);
+   }
+
+   &.account-promoted {
+      background-image: url(images/membre/activite/account-promoted.png);
+   }
+
+   &.announce-create {
+      background-image: url(images/membre/activite/announce-create.png);
+   }
+
+   &.discussion-archived {
+      background-image: url(images/membre/activite/discussion-archived.png);
+   }
+
+   &.discussion-create {
+      background-image: url(images/membre/activite/discussion-create.png);
+   }
+
+   &.discussion-moved {
+      background-image: url(images/membre/activite/discussion-moved.png);
+   }
+
+   &.discussion-unarchived {
+   background-image: url(images/membre/activite/discussion-unarchived.png);
+   }
+
+   &.message-create {
+      background-image: url(images/membre/activite/message-create.png);
+   }
+
+   &.message-edit {
+      background-image: url(images/membre/activite/message-edit.png);
+   }
+
+   &.news-create {
+      background-image: url(images/membre/activite/news-create.png);
+   }
+
+   &.news-edit {
+      background-image: url(images/membre/activite/message-edit.png);
+   }
+
+   &.news_comment-create {
+      background-image: url(images/membre/activite/news_comment-create.png);
+   }
+
+   &.postulation-create {
+      background-image: url(images/membre/activite/postulation-create.png);
+   }
+
+   &.postulation_vote-create {
+      background-image: url(images/membre/activite/postulation_vote-create.png);
+   }
+
+   &.profil_tag-create {
+      background-image: url(images/membre/activite/profil_tag-create.png);
+   }
 }

@@ -1,10 +1,14 @@
-{{> activity/date }}
-{{> activity/avatar }}
-{{^ actor_is_viewer? }}
-   {{> activity/actor }} a créé la discussion {{> activity/subject }}
-    dans l'espace <a href="{{ subject_group_url }}">{{ subject_group }}</a>
-{{/ actor_is_viewer? }}
-{{# actor_is_viewer? }}
-   Vous avez créé la discussion {{> activity/subject }}
-    dans l'espace <a href="{{ subject_group_url }}">{{ subject_group }}</a>
-{{/ actor_is_viewer? }}
+<div class="activity-icon discussion-create"></div>
+<div class="info">
+   {{> activity/date }}
+   {{> activity/avatar }}
+   {{^ actor_is_viewer? }}
+      {{> activity/actor }} a créé la discussion {{> activity/subject }}
+       dans l'espace <a href="{{ subject_group_url }}">{{ subject_group }}</a>
+   {{/ actor_is_viewer? }}
+   {{# actor_is_viewer? }}
+      Vous avez créé la discussion {{> activity/subject }}
+       dans l'espace <a href="{{ subject_group_url }}">{{ subject_group }}</a>
+   {{/ actor_is_viewer? }}
+</div>
+<div class="cleaner"></div>

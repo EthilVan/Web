@@ -1,7 +1,11 @@
-{{> activity/date }}
-{{^ subject_is_viewer? }}
-   {{> activity/subject }} a postulé sur Ethil Van
-{{/ subject_is_viewer? }}
-{{# subject_is_viewer? }}
-   Vous avez postulé sur Ethil Van
-{{/ subject_is_viewer? }}
+<div class="activity-icon postulation-create"></div>
+<div class="info">
+   {{> activity/date }}
+   {{^ subject_is_viewer? }}
+      {{> activity/subject }} a postulé sur Ethil Van
+   {{/ subject_is_viewer? }}
+   {{# subject_is_viewer? }}
+      Vous avez postulé sur Ethil Van
+   {{/ subject_is_viewer? }}
+</div>
+<div class="cleaner"></div>

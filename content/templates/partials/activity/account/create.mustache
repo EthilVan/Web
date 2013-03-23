@@ -1,8 +1,12 @@
-{{> activity/date }}
-{{> activity/account/avatar }}
-{{^ subject_is_viewer? }}
-   {{> activity/subject }}, un nouvel aventurier vient d'arriver en Ethil Van
-{{/ subject_is_viewer? }}
-{{# subject_is_viewer? }}
-   Vous êtes entré dans le monde merveilleux d'Ethil Van.
-{{/ subject_is_viewer? }}
+<div class="activity-icon account-create"></div>
+<div class="info">
+   {{> activity/date }}
+   {{> activity/account/avatar }}
+   {{^ subject_is_viewer? }}
+      {{> activity/subject }}, un nouvel aventurier vient d'arriver en Ethil Van
+   {{/ subject_is_viewer? }}
+   {{# subject_is_viewer? }}
+      Vous êtes entré dans le monde merveilleux d'Ethil Van.
+   {{/ subject_is_viewer? }}
+</div>
+<div class="cleaner"></div>

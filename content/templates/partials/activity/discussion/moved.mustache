@@ -1,4 +1,8 @@
-{{> activity/date }}
-La discussion {{> activity/subject }} a été déplacée
- depuis <a href="{{ subject_moved_from_url }}">{{ subject_moved_from }}</a>
- dans <a href="{{ subject_moved_to_url }}">{{ subject_moved_to }}</a>
+<div class="activity-icon discussion-moved"></div>
+<div class="info">
+   {{> activity/date }}
+   La discussion {{> activity/subject }} a été déplacée
+    depuis <a href="{{ subject_moved_from_url }}">{{ subject_moved_from }}</a>
+    dans <a href="{{ subject_moved_to_url }}">{{ subject_moved_to }}</a>
+</div>
+<div class="cleaner"></div>

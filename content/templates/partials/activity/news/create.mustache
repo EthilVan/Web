@@ -1,8 +1,12 @@
-{{> activity/date }}
-{{> activity/avatar }}
-{{^ actor_is_viewer? }}
-   {{> activity/actor }} a publié {{> activity/subject }}
-{{/ actor_is_viewer? }}
-{{# actor_is_viewer? }}
-   Vous avez publié {{> activity/subject }}
-{{/ actor_is_viewer? }}
+<div class="activity-icon news-create"></div>
+<div class="info">
+   {{> activity/date }}
+   {{> activity/avatar }}
+   {{^ actor_is_viewer? }}
+      {{> activity/actor }} a publié {{> activity/subject }}
+   {{/ actor_is_viewer? }}
+   {{# actor_is_viewer? }}
+      Vous avez publié {{> activity/subject }}
+   {{/ actor_is_viewer? }}
+</div>
+<div class="cleaner"></div>

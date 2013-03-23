@@ -1,23 +1,27 @@
-{{> activity/date }}
-{{> activity/avatar }}
-{{^ actor_is_author? }}
-   {{# actor_is_viewer? }}
-      Vous avez édité le message de {{> activity/message/author }} dans
-      {{> activity/message/subject }}
-   {{/ actor_is_viewer? }}
-   {{# author_is_viewer? }}
-      {{> activity/actor }} a édité votre message dans {{> activity/message/subject }}
-   {{/ author_is_viewer? }}
-   {{# viewer_is_thirdparty? }}
-      {{> activity/actor }} a édité le message de {{> activity/message/author }} dans
-      {{> activity/message/subject }}
-   {{/ viewer_is_thirdparty? }}
-{{/ actor_is_author? }}
-{{# actor_is_author? }}
-   {{^ actor_is_viewer? }}
-      {{> activity/actor }} a édité son message dans {{> activity/message/subject }}
-   {{/ actor_is_viewer? }}
-   {{# actor_is_viewer? }}
-      Vous avez édité votre message dans {{> activity/message/subject }}
-   {{/ actor_is_viewer? }}
-{{/ actor_is_author? }}
+<div class="activity-icon message-edit"></div>
+<div class="info">
+   {{> activity/date }}
+   {{> activity/avatar }}
+   {{^ actor_is_author? }}
+      {{# actor_is_viewer? }}
+         Vous avez édité le message de {{> activity/message/author }} dans
+         {{> activity/message/subject }}
+      {{/ actor_is_viewer? }}
+      {{# author_is_viewer? }}
+         {{> activity/actor }} a édité votre message dans {{> activity/message/subject }}
+      {{/ author_is_viewer? }}
+      {{# viewer_is_thirdparty? }}
+         {{> activity/actor }} a édité le message de {{> activity/message/author }} dans
+         {{> activity/message/subject }}
+      {{/ viewer_is_thirdparty? }}
+   {{/ actor_is_author? }}
+   {{# actor_is_author? }}
+      {{^ actor_is_viewer? }}
+         {{> activity/actor }} a édité son message dans {{> activity/message/subject }}
+      {{/ actor_is_viewer? }}
+      {{# actor_is_viewer? }}
+         Vous avez édité votre message dans {{> activity/message/subject }}
+      {{/ actor_is_viewer? }}
+   {{/ actor_is_author? }}
+</div>
+<div class="cleaner"></div>

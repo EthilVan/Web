@@ -1,11 +1,15 @@
-{{> activity/date }}
-{{> activity/account/avatar }}
-{{^ subject_is_viewer? }}
-   {{> activity/subject }} a quitté son rôle
-    {{^ subject_old_role_vowel? }}de {{/ subject_old_role_vowel? }}
-   {{# subject_old_role_vowel? }}d'{{/ subject_old_role_vowel? }}{{ subject_old_role }}
-   , il/elle est désormais {{ subject_new_role }}
-{{/ subject_is_viewer? }}
-{{# subject_is_viewer? }}
-   Vous avez quitté votre rôle de {{ subject_old_role }}, vous êtes désormais {{ subject_new_role }}
-{{/ subject_is_viewer? }}
+<div class="activity-icon account-destituted"></div>
+<div class="info">
+   {{> activity/date }}
+   {{> activity/account/avatar }}
+   {{^ subject_is_viewer? }}
+      {{> activity/subject }} a quitté son rôle
+       {{^ subject_old_role_vowel? }}de {{/ subject_old_role_vowel? }}
+      {{# subject_old_role_vowel? }}d'{{/ subject_old_role_vowel? }}{{ subject_old_role }}
+      , il/elle est désormais {{ subject_new_role }}
+   {{/ subject_is_viewer? }}
+   {{# subject_is_viewer? }}
+      Vous avez quitté votre rôle de {{ subject_old_role }}, vous êtes désormais {{ subject_new_role }}
+   {{/ subject_is_viewer? }}
+</div>
+<div class="cleaner"></div>
