@@ -8,6 +8,7 @@ layout/jquery.atwho.css
 layout/mdeditor.less
 public/login/login.less
 public/presentation/equipe.less
+public/apercu/videos.less
 public/news/news.less
 public/news/news_edit.less
 public/news/commentaire.less

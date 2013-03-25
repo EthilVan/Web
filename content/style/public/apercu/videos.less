@@ -1,0 +1,35 @@
+@import 'var.less';
+
+#subcontents {
+
+   #videos {
+
+      .theme-video {
+         font-size: 22px;
+         padding-left: 0;
+
+         &:hover {
+            color: @lien-hover;
+         }
+
+         &:before {
+            color: @vert;
+            content: "▼ ";
+         }
+
+         &.collapsed:before {
+            content: "► ";
+         }
+      }
+
+      .video {
+
+         iframe {
+            width: 760px;
+            height: 445px;
+         }
+      }
+
+   }
+
+}
