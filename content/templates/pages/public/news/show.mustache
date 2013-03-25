@@ -31,11 +31,13 @@
          <div class="creation">- Par {{ author }} - Mise à jour le {{ updated }} - </div>
       {{/ updated? }}
    </div>
+</div>
+
+<div class="comments">
    {{> public/news/comment/_create_button }}
    {{# comments? }}
-   <div class="comments">
       {{# comments }}{{> public/news/comment/_show }}{{/ comments }}
-   </div>
    {{/ comments? }}
 </div>
+
 {{/ news }}

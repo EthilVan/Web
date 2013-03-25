@@ -1,117 +1,118 @@
 @import 'var.less';
 
-@avatar: 120px;
+@avatar: 60px;
 @marge-texte: 15px;
 @marge-cote: 2px;
 
-#subcontents .comments {
-   margin-top: 15px;
+#subcontents {
 
-   .news-comment {
-      background-color: @gris-colonne;
+   #champ-nouvau-commentaire {
+      margin-top: 5px;
+      margin-bottom: 20px;
+   }
+
+   .comments {
       padding: 15px;
-      border-radius: 6px;
-      box-shadow: 1px 1px 0px 0px @gris-relief inset;
-      margin-bottom: 15px;
+      padding-bottom: 0px;
 
-      &:last-child {
-         margin-bottom: 0px;
-      }
+      .mdeditor {
+         margin-top: 15px;
 
-      .auteur {
-         width: @avatar;
-
-         .avatar {
-            max-width: @avatar;
-            margin-top: 5px;
-         }
-
-         .pseudo, .email {
-            text-align: center;
-            max-width: @avatar;
-         }
-
-         .pseudo {
-            margin-top: 4px;
-            font-weight: bold;
-         }
-
-         .email {
-            font-size: 9px;
-         }
-
-         .edition{
-            text-align: center;
-            margin-top: 8px;
-
-            .edit, .suppr {
-               width: 24px;
-               display: inline-block;
-            }
-
-            .edit {
-               background-image: url(images/interaction/edit.png);
-               height: 21px;
-
-               &:hover {
-                  background-image: url(images/interaction/edit-2.png);
-               }
-
-            }
-
-            .suppr {
-               background-image: url(images/interaction/suppr.png);
-               height: 18px;
-               margin-top: 3px;
-               margin-left: 10px;
-
-               &:hover {
-                  background-image: url(images/interaction/suppr-2.png);
-               }
-
-            }
-
+         textarea {
+            width: 99%;
+            max-width: 99%;
          }
 
       }
 
-      .contenu {
-         p:last-child {
+      .news-comment {
+         padding: 15px;
+         border-radius: 6px;
+         box-shadow: 1px 1px 0px 0px @gris-relief inset;
+         margin-top: 15px;
+         margin-bottom: 15px;
+
+         &:last-child {
             margin-bottom: 0px;
          }
-      }
-
-      &:nth-child(odd) {
 
          .auteur {
+            width: @avatar;
             float: left;
             margin-left: @marge-cote;
             padding-right: @marge-texte;
             border-right: 2px solid @gris-medium;
+
+            .avatar {
+               max-width: @avatar;
+               margin-top: 5px;
+            }
+
+            .pseudo, .email {
+               text-align: center;
+               max-width: @avatar;
+            }
+
+            .pseudo {
+               margin-top: 5px;
+               font-weight: bold;
+            }
+
+            .email {
+               font-size: 9px;
+               line-height: 9px;
+               padding-top: 2px;
+               padding-bottom: 2px;
+               word-wrap: break-word;
+            }
+
+            .edition{
+               text-align: center;
+               margin-top: 5px;
+
+               .edit, .suppr {
+                  width: 24px;
+                  display: inline-block;
+               }
+
+               .edit {
+                  background-image: url(images/interaction/edit.png);
+                  height: 21px;
+
+                  &:hover {
+                     background-image: url(images/interaction/edit-2.png);
+                  }
+
+               }
+
+               .suppr {
+                  background-image: url(images/interaction/suppr.png);
+                  height: 18px;
+                  margin-top: 3px;
+                  margin-left: 8px;
+                  margin-right: -6px;
+
+                  &:hover {
+                     background-image: url(images/interaction/suppr-2.png);
+                  }
+
+               }
+
+            }
+
          }
 
          .contenu {
             margin-left: @marge-cote + @avatar + @marge-texte;
             padding-left: @marge-texte;
             border-left: 2px solid @gris-medium;
+
+            p:last-child {
+               margin-bottom: 0px;
+            }
          }
+
       }
-
-      &:nth-child(even) {
-
-         .auteur {
-            float: right;
-            margin-right: @marge-cote;
-            padding-left: @marge-texte;
-            border-left: 2px solid @gris-medium;
-         }
-
-         .contenu {
-            margin-right: @marge-cote + @avatar + @marge-texte;
-            padding-right: @marge-texte;
-            border-right: 2px solid @gris-medium;
-         }
-      }
-
    }
+
 }
