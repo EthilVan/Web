@@ -1,8 +1,6 @@
 @import 'var.less';
 
-@avatar: 60px;
-@marge-texte: 15px;
-@marge-cote: 2px;
+@avatar: 30px;
 
 #subcontents {
 
@@ -25,7 +23,7 @@
 
       }
 
-      .news-comment {
+      .news-comment, .mde-preview {
          padding: 15px;
          border-radius: 6px;
          box-shadow: 1px 1px 0px 0px @gris-relief inset;
@@ -37,42 +35,38 @@
          }
 
          .auteur {
-            width: @avatar;
-            float: left;
-            margin-left: @marge-cote;
-            padding-right: @marge-texte;
-            border-right: 2px solid @gris-medium;
-
-            .avatar {
-               max-width: @avatar;
-               margin-top: 5px;
-            }
+            padding-bottom: 10px;
+            border-bottom: 2px solid @gris-medium;
 
             .pseudo, .email {
-               text-align: center;
-               max-width: @avatar;
+               line-height: @avatar;
+               display: inline;
+            }
+
+            .avatar {
+               max-height: @avatar;
+               max-width: @avatar * 1.5;
+               float: left;
+               margin: 0 10px 0 5px;
             }
 
             .pseudo {
-               margin-top: 5px;
                font-weight: bold;
             }
 
             .email {
-               font-size: 9px;
-               line-height: 9px;
-               padding-top: 2px;
-               padding-bottom: 2px;
-               word-wrap: break-word;
+               font-size: 14px;
+               margin-left: 5px;
+               color: @gris-em;
             }
 
             .edition{
-               text-align: center;
-               margin-top: 5px;
+               float: right;
 
                .edit, .suppr {
                   width: 24px;
                   display: inline-block;
+                  vertical-align: middle;
                }
 
                .edit {
@@ -90,7 +84,6 @@
                   height: 18px;
                   margin-top: 3px;
                   margin-left: 8px;
-                  margin-right: -6px;
 
                   &:hover {
                      background-image: url(images/interaction/suppr-2.png);
@@ -103,9 +96,7 @@
          }
 
          .contenu {
-            margin-left: @marge-cote + @avatar + @marge-texte;
-            padding-left: @marge-texte;
-            border-left: 2px solid @gris-medium;
+            padding-top: 10px;
 
             p:last-child {
                margin-bottom: 0px;

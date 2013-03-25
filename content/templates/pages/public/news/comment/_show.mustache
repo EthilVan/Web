@@ -1,5 +1,12 @@
 <div id="{{ anchor }}" class="news-comment">
    <div class="auteur">
+      {{# editable? }}
+         <div class="edition">
+            <a class="edit" href="{{ edit_url }}"></a>
+            <a class="suppr" href="{{ delete_url }}" data-remove-target="#{{ anchor }}"></a>
+         </div>
+      {{/ editable? }}
+
       {{# member? }}
          <img class="avatar" src="{{ member_avatar }}"/>
          <div class="pseudo">{{ member_name }}</div>
@@ -13,17 +20,11 @@
          {{/ modo? }}
       {{/ member? }}
 
-      {{# editable? }}
-         <div class="edition">
-            <a class="edit" href="{{ edit_url }}"></a>
-            <a class="suppr" href="{{ delete_url }}" data-remove-target="#{{ anchor }}"></a>
-         </div>
-      {{/ editable? }}
+      <div class="cleaner"></div>
    </div>
 
    <div class="contenu">
       {{{ content }}}
    </div>
 
-   <div class="cleaner"></div>
 </div>
