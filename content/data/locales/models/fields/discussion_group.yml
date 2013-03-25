@@ -6,3 +6,4 @@ fr:
             description:  'Description'
             priority:     'Priorité'
             url:          'Url'
+            icon:         'Icône'
