@@ -1,0 +1,92 @@
+@import 'var.less';
+
+@icone: 25px;
+
+#subcontents {
+
+   .postulation {
+
+      .screenshot {
+         padding-top: 10px;
+         margin-bottom: 20px;
+         background-color: #0a0a0a;
+         border: 1px solid black;
+
+         img {
+            max-height: 500px;
+            margin: 0 auto;
+            display: block;
+         }
+
+         .description {
+            padding: 15px 20px;
+
+            p {
+               margin: 0;
+            }
+         }
+
+      }
+
+      ul {
+         margin: 0;
+         margin-top: 20px;
+      }
+
+      .vote {
+         list-style-type: none;
+         margin-bottom: 15px;
+
+         .pseudo, .icone {
+            display: inline-block;
+            line-height: @icone;
+            vertical-align: middle;
+         }
+
+         .pseudo {
+            margin: 0;
+         }
+
+         .icone {
+            width: @icone;
+            height: @icone;
+            background-size: @icone;
+            background-repeat: no-repeat;
+            margin-left: 5px;
+         }
+
+         .avis {
+            margin-top: 3px;
+         }
+
+         &.vote-refus {
+
+            .icone {
+               background-image: url(images/emoji/no_entry_sign.png);
+            }
+         }
+
+         &.vote-approbation {
+
+            .icone {
+               background-image: url(images/emoji/white_check_mark.png);
+            }
+         }
+
+         &.vote-approbation-not-needed {
+
+            .avis {
+               color: @gris-em;
+            }
+         }
+
+      }
+
+      #form-postulation-vote {
+         margin-top: 15px;
+         margin-bottom: 0;
+      }
+
+   }
+
+}

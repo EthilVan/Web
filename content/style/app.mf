@@ -27,3 +27,4 @@ membre/profil/tags.less
 membre/profil/messages.less
 membre/profil/form.less
 membre/membres/list.less
+gestion/postulation.less

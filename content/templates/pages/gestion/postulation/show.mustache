@@ -1,101 +1,113 @@
-{{# birthdate? }}
-   <h4>Age - Date de naissance :</h4>
-   <p>{{ age }} ans - {{ birthdate }}</p>
-{{/ birthdate? }}
+<div class="postulation">
 
-{{# sexe? }}
-    <h4>Sexe:</h4>
-    <p>{{ sexe }}</p>
-{{/ sexe? }}
+   {{# birthdate? }}
+      <h4>Age - Date de naissance :</h4>
+      <p>{{ age }} ans - {{ birthdate }}</p>
+   {{/ birthdate? }}
 
-<h4>Joue à Minecraft depuis :</h4>
-<p>{{ minecraft_since }}
+   {{# sexe? }}
+       <h4>Sexe :</h4>
+       <p>{{ sexe }}</p>
+   {{/ sexe? }}
 
-<h4>A déjà joué en multi à minecraft :</h4>
-<p>{{ multi_minecraft }}</p>
+   <h4>Joue à Minecraft depuis :</h4>
+   <p>{{ minecraft_since }}
 
-{{# multi_minecraft? }}
-    <h4>Ancien Serveur :</h4>
-    <p>{{ old_server }}</h4>
-    <h5>Raison du départ :</h5>
-    <p>{{ old_server_reason }}</p>
-{{/ multi_minecraft? }}
+   <h4>A déjà joué en multi à minecraft :</h4>
+   <p>{{ multi_minecraft }}</p>
 
-<h4>Découverte d'Ethil Van :</h4>
-<p>{{ ethilvan_discovered }}</p>
+   {{# multi_minecraft? }}
+       <h4>Ancien Serveur :</h4>
+       <p>{{ old_server }}</h4>
+       <h5>Raison du départ :</h5>
+       <p>{{ old_server_reason }}</p>
+   {{/ multi_minecraft? }}
 
-<h4>Pourquoi Ethil Van :</h4>
-<p>{{ ethilvan_reason }}</p>
+   <h4>Découverte d'Ethil Van :</h4>
+   <p>{{ ethilvan_discovered }}</p>
 
-<h4>Screenshots :</h4>
-{{# screens }}
-    <h5><a href="{{url}}" target="_blank">Screenshot</a></h5>
-    <a href="{{url}}" target="_blank">
-        <img src="{{url}}" width="{{width}}" height="{{height}}" />
-    </a>
-    <p>{{ description }}</p>
-{{/ screens }}
+   <h4>Pourquoi Ethil Van :</h4>
+   <p>{{ ethilvan_reason }}</p>
 
-<h4>Disponibilités :</h4>
-<p>{{ availability }}</p>
-
-<h4>Dispose d'un micro :</h4>
-<p>{{ microphone }}</p>
-
-{{# microphone? }}
-    <h4>Regularité sur TeamSpeak :</h4>
-    <p>{{ mumble }}</p>
-{{/ microphone? }}
-
-<h4>Champ Libre :</h4>
-<p>{{ free_text }}</p>
-
-{{# pending? }}
-<p>
-   <strong>{{ agreements_count }}</strong>
-    approbation{{# agreements_plural? }}s{{/ agreements_plural? }}
-    nécessaire{{# agreements_plural? }}s{{/ agreements_plural? }}
-    /
-   <strong>{{ votes_needed }}</strong>
-</p>
-{{/ pending? }}
-<ul>
-{{# votes }}
-   <li class="{{ agreement_class }}">
-      <div>{{ account }}</div>
-      {{# message? }}
-      <p>{{ message }}</p>
-      {{/ message? }}
-   </li>
-{{/ votes }}
-</ul>
-
-{{# can_vote? }}
-   <div id="vote">
-
-      <a href="#agreement" class="postulation-vote-button btn">Accepter</a>
-      <a href="#refusal"   class="postulation-vote-button btn">Refuser</a>
-
-      {{# vote_form }}
-      <form id="form-postulation-vote" {{{ attributes }}} style="display: none;">
-
-         <div style="display: none;">
-         {{# agreement }}
-            {{> form/checkbox }}
-         {{/ agreement }}
+   <h4>Screenshots :</h4>
+   {{# screens }}
+      <div class="screenshot">
+         <a href="{{url}}" target="_blank">
+           <img src="{{url}}"/>
+         </a>
+         <div class="description">
+            <p>{{ description }}</p>
          </div>
+      </div>
+   {{/ screens }}
 
-         {{# message }}
-            {{> form/label }}
-            {{> form/errors }}
-            {{> form/textarea }}
-         {{/ message }}
+   <h4>Disponibilités :</h4>
+   <p>{{ availability }}</p>
 
-         <div class="clearfix"></div>
+   <h4>Dispose d'un micro :</h4>
+   <p>{{ microphone }}</p>
 
-         <input class="btn" type="submit" value="Envoyer" />
-      </form>
-      {{/ vote_form }}
+   {{# microphone? }}
+       <h4>Regularité sur TeamSpeak :</h4>
+       <p>{{ mumble }}</p>
+   {{/ microphone? }}
 
-   </div>
-{{/ can_vote? }}
+   <h4>Champ Libre :</h4>
+   <p>{{ free_text }}</p>
+
+   <br>
+
+   {{# pending? }}
+   <p>
+      <strong>{{ agreements_count }}</strong>
+       approbation{{# agreements_plural? }}s{{/ agreements_plural? }}
+       nécessaire{{# agreements_plural? }}s{{/ agreements_plural? }}
+       /
+      <strong>{{ votes_needed }}</strong>
+   </p>
+   {{/ pending? }}
+
+   <h4>Votes :</h4>
+   <ul>
+   {{# votes }}
+      <li class="vote {{ agreement_class }}">
+         <h5 class="pseudo">{{ account }}</h5>
+         <div class="icone"></div>
+         {{# message? }}
+            <p class="avis">{{ message }}</p>
+         {{/ message? }}
+      </li>
+   {{/ votes }}
+   </ul>
+
+   {{# can_vote? }}
+      <div id="vote">
+
+         <a href="#agreement" class="postulation-vote-button btn">Accepter</a>
+         <a href="#refusal"   class="postulation-vote-button btn">Refuser</a>
+
+         {{# vote_form }}
+         <form id="form-postulation-vote" {{{ attributes }}} style="display: none;">
+
+            <div style="display: none;">
+            {{# agreement }}
+               {{> form/checkbox }}
+            {{/ agreement }}
+            </div>
+
+            {{# message }}
+               {{> form/label }}
+               {{> form/errors }}
+               {{> form/textarea }}
+            {{/ message }}
+
+            <div class="clearfix"></div>
+
+            <input class="btn" type="submit" value="Envoyer" />
+         </form>
+         {{/ vote_form }}
+
+      </div>
+   {{/ can_vote? }}
+
+</div>
