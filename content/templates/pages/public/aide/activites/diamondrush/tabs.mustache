@@ -1,0 +1,21 @@
+{{# page_title }}Aide, Diamond Rush{{/ page_title }}
+
+<div class="tab-content">
+   {{# tab_presentation }}
+      {{# tab_title }}Présentation{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
+         {{> public/aide/activites/diamondrush/_presentation }}
+      </div>
+   {{/ tab_presentation }}
+   {{# tab_reglement }}
+      {{# tab_title }}Règlement{{/ tab_title }}
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
+         {{> public/aide/activites/diamondrush/_reglement }}
+      </div>
+   {{/ tab_reglement }}
+   {{# tab_plugin }}
+      <div id="{{ tab_name }}" class="tab-pane{{ tab_status }}">
+         {{> public/aide/activites/diamondrush/_plugin }}
+      </div>
+   {{/ tab_plugin }}
+</div>

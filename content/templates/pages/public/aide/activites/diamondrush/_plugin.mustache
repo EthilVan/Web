@@ -1,0 +1,58 @@
+<p>Cette page est destinée à ceux qui souhaitent utiliser le plugin de Diamond Rush sur leur serveur. Si vous souhaitez simplement participer aux parties organisées, vous n'avez pas besoin de la consulter.</p>
+
+<h2>Téléchargement</h2>
+
+<p>Diamond Rush est un plugin libre en <a href="https://github.com/aumgn/DiamondRush/downloads">téléchargement</a> et dont le <a href="http://github.com/aumgn/DiamondRush">code source</a> est disponible sur GitHub, vous pouvez donc y apporter les modifications que vous voulez avant de l'utiliser sur votre serveur.</p>
+
+<p>Le plugin ayant été développé pour répondre aux besoins de notre serveur, il se peut qu'il ne corresponde pas aux vôtres. Nous l'utilisons sur un serveur dédié à ce type de partie et nous vous conseillons de faire de même.</p>
+
+<p>Actuellement le plugin est distribué sans support, c'est à dire que vous pouvez le télécharger librement mais qu'aucune aide ne sera fournie si vous rencontrez des problèmes lors de son utilisation.</p>
+
+<p>Si vous souhaitez avoir la liste des commandes disponibles ainsi que les permissions associées, vous pouvez consulter le <a href="https://github.com/aumgn/DiamondRush/blob/master/src/main/resources/plugin.yml">plugin.yml</a> contenu dans le .jar ou directement sur GitHub. Une petite aide est également disponible ci-dessous pour savoir comment utiliser certaines commandes.</p>
+
+
+<h2>Utilisation</h2>
+
+<h4>Commandes</h4>
+
+<p>L'utilisation d'une carte vierge pour chaque nouvelle partie est fortement conseillée.</p>
+
+<h5>Recharger la configuration</h5>
+
+<p>Si vous avez fait des modifications à la configuration du plugin alors que le serveur est déjà lancé, vous pouvez la recharger avec la commande <code>/dr reload</code>.</p>
+
+<h5>Initialiser une partie :</h5>
+
+<p>Il y a plusieurs possibilités au moment de l'initialisation d'une partie. Il est possible de choisir simplement le nombre d'équipes et de laisser le plugin répartir équitablement et aléatoirement les joueurs dans chacune d'entre elles, ou au contraire de choisir les équipes à l'avance. Dans les deux cas vous pouvez choisir de garder les noms d'équipes par défaut ou de les spécifier lors de l'initialisation.</p>
+
+<p><b>Important :</b> La position à laquelle vous vous trouvez au moment de l'initialisation détermine le point de spawn général de la partie (là d'où partiront tous les joueurs au début de la phase de placement du totem).</p>
+
+<p>Pour des équipes aléatoires :
+<code>/init x</code> ("x" étant remplacé ici par le nombre d'équipes souhaité)</p>
+
+<p>Pour des équipes aléatoires avec des noms personnalisés :
+<code>/init -n nom_1 nom_2 nom_3 ...</code> (le nombre de noms d'équipe donné détermine le nombre d'équipes)</p>
+
+<p>Pour des équipes prédéfinies :
+<code>/init -c x</code> ("x" étant à nouveau le nombre d'équipes)</p>
+
+<p>Pour des équipes prédéfinies avec des noms personnalisés :
+<code>/init -c -n nom_1 nom_2 ...</code></p>
+
+
+<h5>Démarrer la partie</h5>
+
+<p>Une fois que tous les joueurs ont rejoint la partie il suffit d'utiliser la commande <code>/start</code> pour la commencer.</p>
+
+<h5>Mettre le jeu en pause</h5>
+
+<p>Le jeu peut être mis en pause à tout moment avec la commande <code>/pause</code> et la partie peut être reprise avec <code>/resume</code>.</p>
+
+<h5>Arrêter une partie en cours</h5>
+
+<p>Si vous souhaitez stopper une partie en cours vous pouvez utiliser la commande <code>/dr stop</code>. Celle n'est utile que si la partie n'est pas terminée et donc qu'aucune équipe ne l'a remportée.
+</p>
+
+<h4>Configuration</h4>
+
+<p>Les différents paramètres du fichier de configuration sont normalement assez explicites et ne seront donc pas détaillés ici. Le fichier est au fomrat JSON donc veillez simplement à bien respecter les conventions de structure de ce format (jetez un coup d'œil au reste du fichier si vous voulez faire des ajouts, et faites particulièrement attention aux virgules).</p>

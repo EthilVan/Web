@@ -30,23 +30,18 @@ reglement:
 aide:
    template: "public/aide/index"
 
-aide_nouveautes:
-   url: "aide/nouveautes"
-   template: "public/aide/nouveautes/tabs"
+aide_activites:
+   url: "aide/activites"
+   template: "public/aide/activites/index"
+
+aide_diamondrush:
+   url: "aide/diamondrush"
+   template: "public/aide/activites/diamondrush/tabs"
    onglets:
-      crafts:
+      presentation:
          principal: true
-      blocs:
-      objets:
-
-
-aide_screenshots:
-   url: "aide/screenshots"
-   template: "public/aide/screenshots"
-
-aide_teamspeak:
-   url: "aide/teamspeak"
-   template: "public/aide/teamspeak"
+      reglement:
+      plugin:
 
 aide_mise_en_forme:
    url: "aide/mise_en_forme"
@@ -56,6 +51,23 @@ aide_mise_en_forme:
          principal: true
       emoji:
          helpers: ['Help::Emoji']
+
+aide_nouveautes:
+   url: "aide/nouveautes"
+   template: "public/aide/nouveautes/tabs"
+   onglets:
+      crafts:
+         principal: true
+      blocs:
+      objets:
+
+aide_screenshots:
+   url: "aide/screenshots"
+   template: "public/aide/screenshots"
+
+aide_teamspeak:
+   url: "aide/teamspeak"
+   template: "public/aide/teamspeak"
 
 aide_telechargements:
    url: "aide/telechargements"

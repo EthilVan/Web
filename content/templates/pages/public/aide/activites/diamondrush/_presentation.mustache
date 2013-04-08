@@ -1,0 +1,211 @@
+<h2>Les origines</h2>
+
+<p>Commençons par parler un peu du Fight Cube, puisque le Diamond Rush en découle directement. Le Fight Cube est un jeu Minecraftien (au même titre que le Dé à coudre, le Spleef ou autre) qui a été rendu célèbre par plusieurs Youtubers minecraftiens (TheFantasio974, Elarcis, Biloulette, etc.). </p>
+
+<p>La première série de vidéos qu'ils ont réalisée durant une partie ayant rencontré un franc succès, un petit groupe de développeurs (Aera, Nico008 et Terrassashar) a décidé de développer un plugin permettant de faciliter la gestion des différentes phases de jeu, ainsi que des règles de manière générale.</p>
+
+<p>Un de nos membres ayant entendu parler du plugin, il nous proposa rapidement de faire quelques parties. Le principe nous a directement plu et nous sommes vite devenus accros. Cependant il était impossible d'utiliser le plugin tel quel sur notre serveur à cause d'un certain nombre de défauts (selon nous) et de différentes choses ne correspondant pas à nos besoins. aumgn (notre développeur) a donc décidé de contacter les créateurs du plugin afin de leur demander s'il était possible d'accéder au code source afin de faire les modifications nécessaires pour notre serveur. La réponse qu'il a reçu fut négative et le projet de créer un tout nouveau plugin reprenant les principes de base du Fight Cube a donc vu le jour peu après.</p>
+
+<br>
+
+<h2>Présentation et principes du Diamond Rush</h2>
+
+<h4>Les grandes lignes</h4>
+
+<p>Le Diamond Rush est un jeu multi-joueurs où plusieurs équipes s'affrontent en mettant à profit leur talent au combat, leur sens de l'orientation, leur détermination, leur esprit d'équipe et bien d'autres choses. </p>
+
+<p>Le but pour chacune des équipes est de détruire les totems des équipes adverses tout en protégeant le leur, ce qui nous amène au point le plus important du jeu, le totem. </p>
+
+<h4>Totem et diamant</h4>
+
+<p>Chaque équipe dispose d'un totem composé de plusieurs blocs d'obsidienne, la destruction complète de ce totem entraîne la fin de la partie pour cette équipe.</p>
+
+<p>Un totem ressemble à ceci :
+   <br>
+   <img src="http://nsm05.casimages.com/img/2012/05/03/1205031135591418659803847.png"/>
+</p>
+
+<p>Le nombre de blocs du totem peut varier selon les parties (de 4 à 8 blocs actuellement).</p>
+
+<p>Ce totem ne peut être miné qu'à l'aide d'une pioche de diamant et il est donc inutile d'essayer de le faire avec un autre objet.</p>
+
+<h4>Différentes phases</h4>
+
+<p>Une partie de Diamond Rush est divisée en plusieurs étapes qui sont elles-mêmes divisées en plusieurs phases. Nous verrons donc comment rejoindre une partie, puis comment placer les totems et les points de spawn des équipes, et enfin le déroulement des phases de jeu (développement et combat) ainsi que les différentes actions possibles durant celles-ci.</p>
+
+<h5>1 - Création de la partie</h5>
+
+<h6>1.a - Initialiser la partie</h6>
+
+<p>Cette phase est gérée par un opérateur, un message apparaitra dans le chat une fois la partie initilaisée.</p>
+
+<p>Si vous voulez savoir comment initialiser une partie, consultez l'onglet <a href="/aide/diamondrush/plugin">Plugin</a>.</p>
+
+<h6>1.b - Rejoindre la partie</h6>
+
+<p>Une fois la partie créée, il est possible pour les joueurs de la rejoindre grâce à la commande <code>/join</code>. Dans le cas d'équipes prédéfinies il suffit de rajouter le nom de l'équipe à rejoindre après la commande (par exemple "/join Bleu").</p>
+
+<p>Si un joueur souhaite observer la partie sans y participer il peut la rejoindre en faisant un <code>/watch</code> (voir la partie "Spectateurs" pour plus d'informations).</p>
+
+<h6>1.c - Démarrer la partie</h6>
+
+<p>La partie sera lancée par un opérateur lorsque que tous les joueurs l'auront rejointe.</p>
+
+<p>Une fois la partie lancée, la composition des équipes est annoncée dans le chat. A partir de ce moment là vous aurez quelques secondes avant le début de la partie pour changer de canal vocal.</p>
+
+<p>C'est également à ce moment là que vous serez téléportés sur la place du spawn général. Votre position par rapport au centre de la place (orientation de la tête comprise vous indique) dans quelle direction partir en début de partie.</p>
+
+<img src="http://nsm05.casimages.com/img/2012/05/03/1205031136001418659803848.jpg"/>
+
+<h5>2 - Phases de placement</h5>
+
+<p>La partie commence par deux phases de placement plus ou moins similaires. Un bloc est donné aux membres de l'équipe qui doivent le poser à l'emplacement de leur choix dans un temps donné.<p>
+
+<p>Celui-ci peut être récupéré par n'importe-quel membre de l'équipe (qu'il soit celui qu'il l'a posé ou non) en le tapant une fois. Il pourra donc être posé à un nouvel emplacement.</p>
+
+<p>Une fois le temps imparti écoulé, la place accueillant le totem ou le point de spawn apparaît sous le bloc posé et celui-ci est supprimé (voir les screenshots ci-dessous). Si le bloc n'a pas été posé à temps, cette place apparaîtra à la position du porteur du bloc à la fin de la phase de placement. L'apparition de cette place entraine la suppression des blocs se trouvant au dessus sur une certaine hauteur.</p>
+
+<h6>2.a - Placement du totem</h6>
+<ul>
+   <li>Bloc à placer : Obsidienne</li>
+   <li>Durée de la phase de placement : Configurable (par défaut : 90 secondes)</li>
+   <li>Hauteur supprimée au dessus de la place : Infinie</li>
+</ul>
+
+<p><img src="http://nsm05.casimages.com/img/2012/05/03/1205031136001418659803849.jpg"/></p>
+
+<h6>2.b - Placement du spawn</h6>
+
+<ul>
+   <li>Bloc à placer : Brique de pierre</li>
+   <li>Durée de la phase de placement : Configurable (par défaut : 30 secondes)</li>
+   <li>Hauteur supprimée au dessus de la place : 5 blocs</li>
+</ul>
+
+<p>Le point de spawn des équipes ne peut pas être placé à moins de 30 blocs (configurable) de leur totem.</p>
+
+<p><img src="http://nsm05.casimages.com/img/2012/05/03/1205031136001418659803850.jpg"/></p>
+
+<h6>Bon à savoir :</h6>
+<p>Des coffres bonus sont disséminés aléatoirement sur la carte une fois la phase de placement des totems terminée. Ils contiennent des ressources pouvant vous permettre de préparer des potions ou pouvant vous aider à enchanter vos équipements.</p>
+
+<p>Ces coffres peuvent se trouver dans un rayon légèrement supérieur à la distance séparant le spawn général du totem qui en est le plus éloigné.</p>
+
+<p><img src="http://nsm05.casimages.com/img/2012/05/04/1205041015171418659804835.jpg"/></p>
+
+<h5>3 - Cycle développement et combat</h5>
+
+<p>Une fois les phases de placement terminées, l'étape de jeu commence. Elle est constituée d'une succession de phases de développement et de combat de durées variables, les phases de développement devenant de plus en plus courtes et celles de combat de plus en plus longues. La durée des phases varie durant un nombre de cycles (développement-combat) défini dans le fichier de configuration (la variation de durée à chaque phase est également configurable).</p>
+
+<p>La succession des phases de développement et de combat ne prend fin qu'une fois la partie terminée, c'est à dire une lorsqu'il ne reste plus qu'une seule équipe en possession d'au moins un bloc de totem.</p>
+
+<h6>3.a - Phase de développement</h6>
+
+<p>Quelques spécificités de ces phases :
+   <ul>
+      <li>Impossibilité d'infliger des dégâts aux joueurs ennemis (voir le règlement pour plus de détails)</li>
+      <li>Canaux vocaux et de chat séparés pour chaque équipe</li>
+      <li>Les messages envoyés en privé à son équipe apparaissent en italique</li>
+      <li>Possibilité d'envoyer des messages à toutes les équipes en les précédant par un "!"</li>
+      <li>Possibilité de renvoyer un joueur ennemi à son point de spawn avec une attaque s'il est suffisamment près du votre ou de votre totem (voir le point "Important" ci-dessous).</li>
+   </ul>
+</p>
+
+<p>Ces phases servent en général à :
+   <ul>
+      <li>Récolter des ressources (nourriture, minerais, ...)</li>
+      <li>Se préparer au combat (armes, armures, potions, ...)</li>
+      <li>Elaborer une stratégie pour votre équipe</li>
+      <li>Explorer les environs de votre base</li>
+      <li>Partir à la recherche des bases et totems ennemis</li>
+      <li>Partir à la recherche des coffres bonus</li>
+      <li>Voler des ressources dans les coffres des autres équipes</li>
+      <li>Miner le totem d'une équipe adverse</li>
+   </ul>
+</p>
+
+<p><b>Important :</b><p>
+
+<p>Afin d'empêcher un joueur ennemi de miner votre totem ou de voler dans vos coffres durant les phases de développement, il est possible de le renvoyer à la sienne à l'aide d'une attaque. Celle-ci peut prendre les formes suivantes :
+   <ul>
+      <li>Attaque au corps à corps quelconque (épée, mains nues, outils, objets, etc.)</li>
+      <li>Attaque à l'arc</li>
+      <li>Lancer de boule de neige</li>
+      <li>Lancer d'œuf</li>
+   </ul>
+</p>
+
+<p>Le joueur ne sera renvoyé à sa base que s'il est <b>suffisamment proche de votre point de spawn ou de votre totem</b> (par défaut 20 et 30 blocs respectivement).</p>
+
+<h6>3.b - Phase de combat</h6>
+
+<p>Quelques spécificités de ces phases :
+   <ul>
+      <li>Canal de chat commun pour toutes les équipes</li>
+      <li>Canal vocal commun pour toutes les équipes si le nombre de joueurs n'est pas trop élevé</li>
+      <li>Tuer un ennemi laissera tomber un diamant avec son équipement (dans une limite de 4 (configurable) par équipe attaquante).</li>
+      <li>Vous faire tuer par un adversaire vous fera réapparaitre à votre point de spawn avec 3 lingots de fer (configurable).</li>
+      <li>Vous faire tuer plus d'une fois lors d'une même phase de combat provoquera un effet de lenteur durant 5 secondes (configurable) par mort à partir de la deuxième (5 secondes à la 2ème mort, 10 à la 3ème, etc.).</li>
+      <li>Réapparaitre à votre point de spawn vous rend invincibles tant que vous n'en sortez pas (vous redeviendrez vulnérable une fois sorti de la place du spawn, même si vous y rentrer à nouveau).</li>
+      <li>Après une mort (PvP) dans votre équipe, vous pouvez demander la fin de la phase de combat en utilisant une feuille de papier (configurable). Pour cela il suffit de la tenir en main et de faire un clic droit (elle sera consommée). La phase de combat prendra fin après 15 secondes (configurable).</li>
+      <li>Demander la fin du combat entrainera un effet négatif durant 60 secondes (configurable). Cet effet sera la nausée aux 1ère et 2ème redditions, l'aveuglement aux 3ème et 4ème et la lenteur aux suivantes.</li>
+   </ul>
+</p>
+
+<p>Ces phases servent en général à :
+   <ul>
+      <li>Attaquer les équipes ennemis pour récupérer leurs équipements et les diamants droppés à leur mort.</li>
+      <li>Miner un totem ennemi après en avoir tué les défenseurs.</li>
+   </ul>
+</p>
+
+<h5>4 - Fonctionnalités utiles</h5>
+
+<h6>4.a - Composition et état des équipes</h6>
+
+<p>Durant la partie il est possible de savoir simplement quelle est la composition en regardant la liste des joueurs (tab par défaut) grâce à la couleur des pseudos, ou en utilisant la commande <code>/st</code> (pour Show Teams).Cela permet également de savoir le nombre de blocs restants sur le totem de chaque équipe.</p>
+
+<h6>4.b - Mettre le jeu en pause</h6>
+
+<p>A tout moment, le jeu peut être mis en pause par un opérateur (voir l'onglet <a href="/aide/diamondrush/plugin">Plugin</a>). Les joueurs sont alors immobilisés, ne peuvent plus subir de dégâts, ni interagir avec les inventaires. Le moment de la journée et les effets actifs sur les joueurs sont sauvegardés, ils seront alors remis à leur valeur au moment de quitter la pause.</p>
+
+<p>Au moment de reprendre la partie, un compte à rebours de 3 secondes aura lieu avant de sortir de la pause.</p>
+
+<h6>4.c - Consulter les statistiques</h6>
+
+<p>En cours de partie, les joueurs peuvent utiliser la commande <code>/stats</code> pour avoir quelques statistiques sur leurs performances dans cette partie (nombre de kills, nombre de morts PvP et nombre de blocs de totem minés).
+Il est également possible de consulter les statistiques générales avec <code>/stats -g</code> (nombre total de kills, homme du match (basé sur les différentes statistiques des joueurs)), et celles de votre équipes avec <code>/stats -t</code>.</p>
+
+<h5>5 - Spectateurs</h5>
+
+<p>Il possible de rejoindre une partie de Diamond Rush en tant que spectateur pour pouvoir l'observer sans gêner les joueurs qui y participent (/watch).</p>
+
+<p>Les spectateurs ne peuvent pas :
+   <ul>
+      <li>Casser ou poser de blocs</li>
+      <li>Ramasser des objets</li>
+      <li>Interagir avec les inventaires (coffres, four, joueurs, etc.)</li>
+      <li>Etre vus par les non-spectateurs</li>
+      <li>Tuer d'animaux ou de monstres</li>
+      <li>Etre la cible de monstres</li>
+      <li>Subir de dégâts</li>
+      <li>Envoyer de messages aux joueurs non-spectateurs</li>
+   </ul>
+</p>
+
+<p>Les spectateurs peuvent :
+   <ul>
+      <li>Voler pour se déplacer facilement et librement</li>
+      <li>Consulter les inventaires (coffres, four, joueurs, etc.) avec un clic droit</li>
+      <li>Accéder aux statistiques des joueurs : <code>/stats nom_du_joueur</code></li>
+      <li>Accéder aux statistiques générales : <code>/stats -g</code></li>
+      <li>Voir les messages de tous les joueurs (y compris ceux des canaux d'équipe durant les phases de développement)</li>
+      <li>Communiquer entre eux par le biais du chat sans avoir peur de révéler des informations aux participants (les messages des spectateurs ne sont envoyés qu'aux spectateurs)</li>
+      <li>Utiliser leur boussole pour avoir la direction du spawn général</li>
+      <li>Se téléporter à la position d'un joueur : <code>/tpp nom_du_joueur</code></li>
+      <li>Se téléporter au totem d'une équipe : <code>/tpt nom_de_l'équipe</code></li>
+      <li>Se téléporter au point de spawn d'une équipe : <code>/tpt -s nom_de_l'équipe</code></li>
+   </ul>
+</p>
+
+
