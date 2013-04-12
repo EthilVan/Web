@@ -5,7 +5,7 @@ module EthilVan::App::Views
       class Announce < ActivityPartial
 
          def subject_content
-            _subject.content
+            _subject.parsed_content
          end
       end
    end
