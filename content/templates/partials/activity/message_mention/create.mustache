@@ -1,0 +1,24 @@
+<div class="activity-icon message-create"></div>
+<div class="info">
+   {{> activity/date }}
+   {{> activity/avatar }}
+   {{^ actor_is_viewer? }}
+      {{^ subject_mentionned_is_viewer? }}
+         {{> activity/actor }}
+         a mentionné {{> activity/message_mention/mentionned }}
+         dans {{> activity/message_mention/subject }}
+         {{/ subject_mentionned_is_viewer? }}
+      {{# subject_mentionned_is_viewer? }}
+         {{> activity/actor }}
+         vous a mentionné dans {{> activity/message_mention/subject }}
+      {{/ subject_mentionned_is_viewer? }}
+   {{/ actor_is_viewer? }}
+   {{# actor_is_viewer? }}
+      {{^ subject_mentionned_is_viewer? }}
+         Vous avez mentionné {{> activity/message_mention/mentionned }}
+         dans {{> activity/message_mention/subject }}
+      {{/ subject_mentionned_is_viewer? }}
+      {{# subject_mentionned_is_viewer? }}Votre égocentricité vous perdra !{{/ subject_mentionned_is_viewer? }}
+   {{/ actor_is_viewer? }}
+</div>
+<div class="cleaner"></div>

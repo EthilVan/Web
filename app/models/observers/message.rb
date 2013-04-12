@@ -17,10 +17,6 @@ class MessageObserver < ActiveRecord::Observer
          Activity.create_for(message.activity_actor, 'edit', message)
       end
    end
-
-   def after_destroy(message)
-      Activity.create_for(message.activity_actor, 'deleted', nil)
-   end
 end
 
 ActiveRecord::Base.observers << MessageObserver
