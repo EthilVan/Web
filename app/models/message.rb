@@ -28,7 +28,7 @@ class Message < ActiveRecord::Base
    activities_filter :feed, :create do |viewer, subject, activity|
       discussion = subject.discussion
       activity.actor.id == viewer.id or
-            viewer.subscripted_discussion_ids.include?(discussion_id)
+            viewer.subscripted_discussion_ids.include?(discussion.id)
    end
 
    activities_filter :feed, :edit do |viewer, subject, activity|
