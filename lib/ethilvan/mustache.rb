@@ -49,8 +49,7 @@ module EthilVan
          end
 
          def mail_mustache(template)
-            mustache("mails/#{template}",
-                  view: @mustache_mail_view || Mustache,
+            mustache(template, view: @mustache_mail_view || Mustache,
                   no_layout: true)
          end
 
