@@ -40,7 +40,6 @@ module EthilVan::Markdown::Helpers
    end
 
    Options = {
-      no_intra_emphasis:      true,
       tables:                 true,
       autolink:               true,
       strikethrough:          true,
