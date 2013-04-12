@@ -1,8 +1,13 @@
 class MessageObserver < ActiveRecord::Observer
 
    def after_create(message)
-      return if message.first?
-      Activity.create_for(message.account, 'create', message)
+      unless message.first?
+         Activity.create_for(message.account, 'create', message)
+      end
+
+      message.parsed_mentions.each do |mention|
+         MessageMention.create_for(message, mention)
+      end
    end
 
    def after_update(message)

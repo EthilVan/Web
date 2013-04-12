@@ -14,6 +14,7 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    belongs_to :account
    belongs_to :discussion
+   has_many :mentions, class_name: 'MessageMention', dependent: :destroy
 
    # ==========================================================================
    # * Validations
@@ -55,6 +56,10 @@ class Message < ActiveRecord::Base
             .where(account_id: account.id)
             .where(DISCUSSION_GROUP_KEY => Discussion::PUBLIC_GROUPS)
             .order('messages.created_at DESC')
+   end
+
+   def parsed_mentions
+      @parsed_mentions ||= []
    end
 
    def page
