@@ -50,6 +50,10 @@ class Discussion < ActiveRecord::Base
             viewer.subscripted_discussion_ids.include?(subject.id)
    end
 
+   activities_filter :list, :moved, :archived, :unarchived do
+      false
+   end
+
    # ==========================================================================
    # * Callbacks and scope
    # ==========================================================================
