@@ -15,7 +15,7 @@ class Login
       params ||= {}
       @name = params[:name]
       @password = params[:password]
-      @remember = params[:remember] == "1"
+      @remember = params[:remember] == "true"
    end
 
    def read_attribute_for_validation(key)
