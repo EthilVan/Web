@@ -8,6 +8,10 @@ module EthilVan
 
          BASE = '/membre/discussion'
 
+         def root
+            BASE
+         end
+
          def list
             BASE
          end

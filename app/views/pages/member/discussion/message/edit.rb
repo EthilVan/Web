@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class Edit < Page
 
-         def initialize(message, inline = false, url = '')
+         def initialize(discussion_urls, message, inline = false, url = '')
+            @discussion_urls = discussion_urls
             @form = Partials::Message::Form.new(message, inline, url)
             @cadre = Partials::Message::Cadre.new(message.account)
          end

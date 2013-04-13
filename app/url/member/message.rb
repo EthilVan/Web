@@ -8,6 +8,10 @@ module EthilVan
 
          BASE = '/membre/message'
 
+         def root
+            BASE
+         end
+
          def base(message)
             "#{BASE}/#{message.id}"
          end

@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class List < Page
 
-         def initialize(groups, views)
+         def initialize(discussion_urls, groups, views)
+            @discussion_urls = discussion_urls
             @groups = groups
             @views = views
          end
@@ -15,7 +16,7 @@ module EthilVan::App::Views
 
          def groups
             @groups.map do |group|
-               Partials::DiscussionGroup::Display.new(group, @views, 5)
+               Partials::DiscussionGroup::Display.new(@discussion_urls, group, @views, 5)
             end
          end
       end

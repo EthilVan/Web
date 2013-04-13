@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class Display < Partial
 
-         def initialize(group, views, limit = false)
+         def initialize(discussion_urls, group, views, limit = false)
+            @discussion_urls = discussion_urls
             @group = group
             @views = views
 
@@ -25,15 +26,15 @@ module EthilVan::App::Views
          end
 
          def url
-            urls::Member::DiscussionGroup.show(@group)
+            @discussion_urls.group.show(@group)
          end
 
          def edit_url
-            urls::Member::DiscussionGroup.edit(@group)
+            @discussion_urls.group.edit(@group)
          end
 
          def delete_url
-            urls::Member::DiscussionGroup.delete(@group)
+            @discussion_urls.group.delete(@group)
          end
 
          def icon?
@@ -70,7 +71,7 @@ module EthilVan::App::Views
 
          def discussions
             @discussions.map do |discussion|
-               Partials::Discussion::Preview.new(discussion,
+               Partials::Discussion::Preview.new(@discussion_urls, discussion,
                      @app.current_account, @views)
             end
          end
@@ -81,7 +82,7 @@ module EthilVan::App::Views
 
          def archived_discussions
             _archived_discussions.map do |discussion|
-               Partials::Discussion::Preview.new(discussion,
+               Partials::Discussion::Preview.new(@discussion_urls, discussion,
                      @app.current_account, @views)
             end
          end

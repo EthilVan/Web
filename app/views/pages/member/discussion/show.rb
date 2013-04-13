@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class Show < Page
 
-         def initialize(discussion, page = nil)
+         def initialize(discussion_urls, discussion, page = nil)
+            @discussion_urls = discussion_urls
             @discussion = discussion
             @page = page
          end
@@ -14,7 +15,7 @@ module EthilVan::App::Views
          end
 
          def discussion
-            Partials::Discussion::Display.new(@discussion, @page)
+            Partials::Discussion::Display.new(@discussion_urls, @discussion, @page)
          end
       end
    end

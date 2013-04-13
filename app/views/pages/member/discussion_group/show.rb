@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class Show < Page
 
-         def initialize(group, views, limit = false)
+         def initialize(discussion_urls, group, views, limit = false)
+            @discussion_urls = discussion_urls
             @group = group
             @views = views
             @limit = limit
@@ -15,7 +16,7 @@ module EthilVan::App::Views
          end
 
          def group
-            Partials::DiscussionGroup::Display.new(@group, @views, @limit)
+            Partials::DiscussionGroup::Display.new(@discussion_urls, @group, @views, @limit)
          end
       end
    end

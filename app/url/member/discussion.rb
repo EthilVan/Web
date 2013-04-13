@@ -8,6 +8,10 @@ module EthilVan
 
          BASE = '/membre/discussion'
 
+         def root
+            BASE
+         end
+
          def base(discussion)
             "#{BASE}/#{discussion.id}"
          end
@@ -20,7 +24,7 @@ module EthilVan
          end
 
          def respond(discussion, last_message)
-            url = "/membre/discussion/#{discussion}/repondre"
+            url = "/membre/discussion/#{discussion.id}/repondre"
             url << "/#{last_message.id}" unless last_message.nil?
             url
          end

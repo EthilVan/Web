@@ -7,7 +7,8 @@ module EthilVan::App::Views
          AROUND = 4
          TOTAL = 2 * AROUND + 1
 
-         def initialize(discussion, page)
+         def initialize(discussion_urls, discussion, page)
+            @discussion_urls = discussion_urls
             @discussion = discussion
             @last_message = discussion.last_message
 
@@ -73,7 +74,7 @@ module EthilVan::App::Views
       private
 
          def page_url(page, message = nil)
-            urls::Member::Discussion.show(@discussion, page, message)
+            @discussion_urls.discussion.show(@discussion, page, message)
          end
       end
    end

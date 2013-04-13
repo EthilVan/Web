@@ -4,7 +4,7 @@ module EthilVan::App::Views
 
       class Edit < Page
 
-         def initialize(discussion)
+         def initialize(discussion_urls, discussion)
             @form = Partials::Discussion::EditForm.new(discussion)
          end
 

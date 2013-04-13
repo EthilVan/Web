@@ -4,10 +4,10 @@ module EthilVan::App::Views
 
       class Create < Edit
 
-         def initialize(new_messages, message, inline = false)
+         def initialize(discussion_urls, new_messages, message, inline = false)
             last_message = message.discussion.last_message
-            urls::Member::Discussion.respond(message.discussion, last_message)
-            super(message, inline, url)
+            url = discussion_urls.discussion.respond(message.discussion, last_message)
+            super(discussion_urls, message, inline, url)
             @new_messages = new_messages
          end
 
@@ -16,7 +16,7 @@ module EthilVan::App::Views
             stats_max = MinecraftStats.maximum('version')
             @new_messages.map do |message|
                editable = modo? || message.editable_by?(@app.current_account)
-               Partials::Message::Display.new(message, editable, stats_max)
+               Partials::Message::Display.new(@discussion_urls, message, editable, stats_max)
             end
          end
       end

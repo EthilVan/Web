@@ -8,10 +8,10 @@ class EthilVan::App
 
          helpers do
 
-            def discussion_url(message, discussion = message.discussion, page = nil)
+            def discussion_url(discussion_urls, message, discussion = message.discussion, page = nil)
                page ||= message.page
                page = nil if page < 1
-               urls::Member::Discussion.show(message.discussion, page, message)
+               discussion_urls.discussion.show(discussion, page, message)
             end
 
             def new_messages(discussion, last_message_id)
@@ -39,6 +39,17 @@ class EthilVan::App
 
          def message_base_url(base_url)
             "#{base_url}/:id"
+         end
+      end
+
+      class DiscussionUrls
+
+         attr_reader :group, :discussion, :message
+
+         def initialize(group, discussion, message)
+            @group = group
+            @discussion = discussion
+            @message = message
          end
       end
    end

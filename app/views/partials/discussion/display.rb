@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class Display < Partial
 
-         def initialize(discussion, page = nil)
+         def initialize(discussion_urls, discussion, page = nil)
+            @discussion_urls = discussion_urls
             @discussion = discussion
             @page = page
          end
@@ -28,7 +29,7 @@ module EthilVan::App::Views
             @page.each_with_index.map do |message, index|
                editable = modo?
                editable ||= not_archived && message.editable_by?(current_account)
-               Partials::Message::Display.new(message, editable, stats_max)
+               Partials::Message::Display.new(@discussion_urls, message, editable, stats_max)
             end
          end
 
@@ -37,7 +38,7 @@ module EthilVan::App::Views
          end
 
          def create_pager
-            pager = Pager.new(@discussion, @page)
+            pager = Pager.new(@discussion_urls, @discussion, @page)
             pager.total > 1 ? pager : nil
          end
 
@@ -46,7 +47,7 @@ module EthilVan::App::Views
          end
 
          def url
-            urls::Member::Discussion.show(@discussion)
+            @discussion_urls.discussion.show(@discussion_urls, @discussion)
          end
 
          def response_url
@@ -55,15 +56,15 @@ module EthilVan::App::Views
             else
                last_message = nil
             end
-            urls::Member::Discussion.respond(@discussion, last_message)
+            @discussion_urls.discussion.respond(@discussion, last_message)
          end
 
          def edit_url
-            urls::Member::Discussion.edit(@discussion)
+            @discussion_urls.discussion.edit(@discussion)
          end
 
          def delete_url
-            urls::Member::Discussion.delete(@discussion)
+            @discussion_urls.discussion.delete(@discussion)
          end
       end
    end

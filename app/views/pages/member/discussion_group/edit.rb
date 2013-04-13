@@ -4,7 +4,7 @@ module EthilVan::App::Views
 
       class Edit < Page
 
-         def initialize(group)
+         def initialize(discussion_urls, group)
             @form = Partials::DiscussionGroup::Form.new(group)
          end
 

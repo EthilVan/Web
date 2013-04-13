@@ -4,24 +4,25 @@ module EthilVan::App::Views
 
       class Response < Partial
 
-         def initialize(discussion, new_messages)
+         def initialize(discussion_urls, discussion, new_messages)
+            @discussion_urls = discussion_urls
             @discussion = discussion
             @new_messages = new_messages
          end
 
          def discussion_url
-            urls::Member::Discussion.show(@discussion)
+            @discussion_urls.discussion.show(@discussion)
          end
 
          def response_url
-            urls::Member::Discussion.respond(@discussion, @discussion.last_message.id)
+            @discussion_urls.discussion.respond(@discussion, @discussion.last_message)
          end
 
          def new_messages
             stats_max = MinecraftStats.maximum('version')
             @new_messages.map do |message|
                editable = modo? || message.editable_by?(@app.current_account)
-               Partials::Message::Display.new(message, editable, stats_max)
+               Partials::Message::Display.new(@discussion_urls, message, editable, stats_max)
             end
          end
       end

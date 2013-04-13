@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class Preview < Partial
 
-         def initialize(discussion, current_account, views)
+         def initialize(discussion_urls, discussion, current_account, views)
+            @discussion_urls = discussion_urls
             @discussion = discussion
             @first_message = discussion.first_message
             @last_message = discussion.last_message
@@ -12,20 +13,20 @@ module EthilVan::App::Views
             @viewed = discussion.archived? || viewed?(views)
          end
 
-         def url
-            urls::Member::Discussion.show(@discussion)
-         end
-
          def status_class
             @viewed ? 'read' : 'unread'
          end
 
+         def url
+            @discussion_urls.discussion.show(@discussion)
+         end
+
          def edit_url
-            urls::Member::Discussion.edit(@discussion)
+            @discussion_urls.discussion.edit(@discussion)
          end
 
          def delete_url
-            urls::Member::Discussion.delete(@discussion)
+            @discussion_urls.discussion.delete(@discussion)
          end
 
          def name
@@ -45,7 +46,7 @@ module EthilVan::App::Views
          end
 
          def last_message_link
-            urls::Member::Message.show(@last_message)
+            @discussion_urls.message.show(@last_message)
          end
 
          def last_message

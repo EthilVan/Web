@@ -7,9 +7,10 @@ module EthilVan::App::Helpers
       module ClassMethods
 
          def discussion_routes(group_type, config)
-            base_url = config[:discussion][:url]
-            url = discussion_base_url base_url
-            group_url = discussion_group_base_url config[:group][:url]
+            discussion_urls = config[:urls]
+            url = discussion_base_url discussion_urls.discussion.root
+            group_url = discussion_group_base_url discussion_urls.group.root
+
             views_ns = config[:discussion][:views]
             message_views_ns = config[:message][:views]
             base_template = config[:discussion][:templates]
@@ -23,7 +24,7 @@ module EthilVan::App::Helpers
                discussion.first_message = Message.new
                discussion.first_message.account = current_account
 
-               view views_ns::Create.new(discussion)
+               view views_ns::Create.new(discussion_urls, discussion)
                mustache 'membre/discussion/create'
             end
 
@@ -36,9 +37,9 @@ module EthilVan::App::Helpers
 
                if discussion.valid?
                   discussion.save
-                  redirect urls::Membre::Discussion.show(discussion)
+                  redirect discussion_urls.discussion.show(discussion)
                else
-                  view views_ns::Create.new(discussion)
+                  view views_ns::Create.new(discussion_urls, discussion)
                   mustache 'membre/discussion/create'
                end
             end
@@ -53,7 +54,7 @@ module EthilVan::App::Helpers
 
                DiscussionView.update_for(current_account, discussion)
 
-               view views_ns::Show.new(discussion, page)
+               view views_ns::Show.new(discussion_urls, discussion, page)
                mustache "#{base_template}/show"
             end
 
@@ -72,7 +73,7 @@ module EthilVan::App::Helpers
                message.discussion = discussion
                message.account = current_account
 
-               view message_views_ns::Create.new new_messages, message, inline
+               view message_views_ns::Create.new discussion_urls, new_messages, message, inline
                mustache "#{message_base_template}/create"
             end
 
@@ -91,17 +92,17 @@ module EthilVan::App::Helpers
 
                if message.save
                   DiscussionView.update_for(current_account, discussion, Time.now + 1)
-                  redirect_not_xhr urls::Membre::Discussion.show(discussion,
+                  redirect_not_xhr discussion_urls.discussion.show(discussion,
                         discussion.total_pages, message)
                   new_messages = new_messages(discussion, last_message.to_i)
 
                   view_class = EthilVan::App::Views::Partials::Discussion::Response
-                  view view_class.new discussion, new_messages
+                  view view_class.new discussion_urls, discussion, new_messages
                   mustache "discussion/response"
                else
                   new_messages = new_messages(discussion, last_message.to_i) if inline
 
-                  view message_views_ns::Create.new new_messages, message, inline
+                  view message_views_ns::Create.new discussion_urls, new_messages, message, inline
                   mustache "#{base_template}/create"
                end
             end
@@ -113,7 +114,7 @@ module EthilVan::App::Helpers
 
                discussion.activity_actor = current_account
 
-               view views_ns::Edit.new(discussion)
+               view views_ns::Edit.new(discussion_urls, discussion)
                mustache "#{base_template}/edit"
             end
 
@@ -125,9 +126,9 @@ module EthilVan::App::Helpers
                discussion.activity_actor = current_account
 
                if discussion.update_attributes params[:discussion]
-                  redirect base_url
+                  redirect discussion_urls.discussion.root
                else
-                  view views_ns::Edit.new(discussion)
+                  view views_ns::Edit.new(discussion_urls, discussion)
                   mustache "#{base_template}/edit"
                end
             end
@@ -140,7 +141,7 @@ module EthilVan::App::Helpers
                discussion.activity_actor = current_account
                discussion.destroy
 
-               xhr_ok_or_redirect base_url
+               xhr_ok_or_redirect discussion_urls.discussion.root
             end
 
             return url

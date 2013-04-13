@@ -4,7 +4,8 @@ module EthilVan::App::Views
 
       class Display < Partial
 
-         def initialize(message, can_edit, stats_max = nil)
+         def initialize(discussion_urls, message, can_edit, stats_max = nil)
+            @discussion_urls = discussion_urls
             @message = message
             @stats_max = stats_max
             @can_edit = can_edit
@@ -27,7 +28,7 @@ module EthilVan::App::Views
          end
 
          def view_url
-            urls::Member::Message.show(@message)
+            @discussion_urls.message.show(@message)
          end
 
          def contents
@@ -55,11 +56,11 @@ module EthilVan::App::Views
          end
 
          def edit_url
-            urls::Member::Message.edit(@message)
+            @discussion_urls.message.edit(@message)
          end
 
          def delete_url
-            urls::Member::Message.delete(@message)
+            @discussion_urls.message.delete(@message)
          end
       end
     end

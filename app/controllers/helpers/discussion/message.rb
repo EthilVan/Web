@@ -7,8 +7,9 @@ module EthilVan::App::Helpers
       module ClassMethods
 
          def message_routes(group_type, config)
-            base_url = config[:message][:url]
-            url = message_base_url base_url
+            discussion_urls = config[:urls]
+            url = message_base_url discussion_urls.message.root
+
             views_ns = config[:message][:views]
             base_template = config[:message][:templates]
 
@@ -16,7 +17,7 @@ module EthilVan::App::Helpers
                message = resource Message.find_by_id id
                message_type = message.discussion.discussion_group_type
                not_found unless message_type == group_type.name
-               redirect discussion_url message
+               redirect discussion_url(discussion_urls, message)
             end
 
             get "#{url}/editer/?" do |id|
@@ -26,7 +27,7 @@ module EthilVan::App::Helpers
                not_authorized unless message.editable_by? current_account
                message.activity_actor = current_account
 
-               view views_ns::Edit.new message, xhr?, request.path
+               view views_ns::Edit.new discussion_urls, message, xhr?, request.path
                mustache "#{base_template}/edit"
             end
 
@@ -42,10 +43,10 @@ module EthilVan::App::Helpers
                         message.discussion,Time.now + 1)
                   redirect_not_xhr discussion_url message
                   view_class = EthilVan::App::Views::Partials::Message::Display
-                  view view_class.new message, true
+                  view view_class.new discussion_urls, message, true
                   mustache 'message/display'
                else
-                  view views_ns::Edit.new message, xhr?, request.path
+                  view views_ns::Edit.new discussion_urls, message, xhr?, request.path
                   mustache "#{base_template}/edit"
                end
             end
@@ -60,7 +61,7 @@ module EthilVan::App::Helpers
 
                following = message.following
                message.destroy
-               xhr_ok_or_redirect urls::Membre::Discussion.show(message.discussion,
+               xhr_ok_or_redirect discussion_urls.discussion.show(message.discussion,
                      following.page, following)
             end
 

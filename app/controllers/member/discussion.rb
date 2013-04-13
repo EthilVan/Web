@@ -1,18 +1,20 @@
 class EthilVan::App < Sinatra::Base
 
    discussion_routes_config = {
+      urls: DiscussionUrls.new(
+         EthilVan::Url::Member::DiscussionGroup,
+         EthilVan::Url::Member::Discussion,
+         EthilVan::Url::Member::Message
+      ),
       group: {
-         url:       '/membre/discussion',
          views:     Views::Member::DiscussionGroup,
          templates: 'membre/discussion_group',
       },
       discussion: {
-         url:       '/membre/discussion',
          views:     Views::Member::Discussion,
          templates: 'membre/discussion',
       },
       message: {
-         url:       '/membre/message',
          views:     Views::Member::Message,
          templates: 'membre/message',
       },
