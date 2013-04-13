@@ -1,6 +1,6 @@
 module EthilVan
 
-   module Url::Membre
+   module Url::Member
 
       module Profil
 
@@ -14,6 +14,10 @@ module EthilVan
 
          def tabs
             %w{general postulation activites tags messages}
+         end
+
+         def show(account)
+            general(account)
          end
 
          def general(account)

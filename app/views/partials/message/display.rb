@@ -27,7 +27,7 @@ module EthilVan::App::Views
          end
 
          def view_url
-            "/membre/message/#{@message.id}"
+            urls::Member::Message.show(@message)
          end
 
          def contents
@@ -55,11 +55,11 @@ module EthilVan::App::Views
          end
 
          def edit_url
-            "/membre/message/#{@message.id}/editer"
+            urls::Member::Message.edit(@message)
          end
 
          def delete_url
-            "/membre/message/#{@message.id}/supprimer"
+            urls::Member::Message.delete(@message)
          end
       end
     end

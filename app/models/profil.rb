@@ -81,11 +81,11 @@ class Profil < ActiveRecord::Base
    end
 
    def head_url(scale = nil)
-      EthilVan::Urls.skin_head(account, scale)
+      EthilVan::Url::Member::Skin.head(account, scale)
    end
 
    def avatar_url
-      return "/avatar/#{account.name}.png" if avatar.blank?
+      return EthilVan::Url::Member::Skin.avatar(account) if avatar.blank?
       avatar
    end
 

@@ -6,8 +6,7 @@ module EthilVan::App::Views
 
          def initialize(new_messages, message, inline = false)
             last_message = message.discussion.last_message
-            url = "/membre/discussion/#{message.discussion.id}/repondre"
-            url << "/#{last_message.id}" unless last_message.nil?
+            urls::Member::Discussion.respond(message.discussion, last_message)
             super(message, inline, url)
             @new_messages = new_messages
          end

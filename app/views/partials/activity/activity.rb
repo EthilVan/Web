@@ -25,7 +25,7 @@ module EthilVan::App::Views
          end
 
          def actor_url
-            urls.profil(@model.actor)
+            urls::Member::Profil.show(@model.actor)
          end
 
          def actor_is_viewer?

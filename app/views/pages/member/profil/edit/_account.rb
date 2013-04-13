@@ -52,7 +52,8 @@ module EthilVan::App::Views
 
          def initialize(page, account, params)
             super(page, 'compte')
-            @form = Form.new(account, urls.profil_edit('compte', account))
+            @form = Form.new(account,
+                  urls::Member::Profil::Edit.account(account))
             @params = params
          end
 

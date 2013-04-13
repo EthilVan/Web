@@ -8,13 +8,12 @@ module EthilVan::App::Views
             @discussion = discussion
             @first_message = discussion.first_message
             @last_message = discussion.last_message
-            @url = "/membre/discussion/#{discussion.id}"
             @account = current_account
             @viewed = discussion.archived? || viewed?(views)
          end
 
          def url
-            @url
+            urls::Member::Discussion.show(@discussion)
          end
 
          def status_class
@@ -22,11 +21,11 @@ module EthilVan::App::Views
          end
 
          def edit_url
-            "#@url/editer"
+            urls::Member::Discussion.edit(@discussion)
          end
 
          def delete_url
-            "#@url/supprimer"
+            urls::Member::Discussion.delete(@discussion)
          end
 
          def name
@@ -42,11 +41,11 @@ module EthilVan::App::Views
          end
 
          def author_link
-            urls.profil @first_message.account
+            urls::Member::Profil.show(@first_message.account)
          end
 
          def last_message_link
-            "/membre/message/#{@last_message.id}"
+            urls::Member::Message.show(@last_message)
          end
 
          def last_message
@@ -58,7 +57,7 @@ module EthilVan::App::Views
          end
 
          def last_author_link
-            urls.profil @last_message.account
+            urls::Member::Profil.show(@last_message.account)
          end
 
       private

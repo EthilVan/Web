@@ -32,7 +32,7 @@ module EthilVan::App::Helpers
 
             post "#{base_url}/!creer_espace/?" do
                group = group_type.new params[group_type.model_name.param_key]
-               redirect urls.discussion_group(group) if group.save
+               redirect urls::Membre::DiscussionGroup.show(group) if group.save
                view views_ns::Create.new group
                mustache "#{base_template}/create"
             end
@@ -54,7 +54,7 @@ module EthilVan::App::Helpers
             post %r{#{url}/editer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
                if group.update_attributes params[group_type.model_name.param_key]
-                  redirect urls.discussion_group(group)
+                  redirect urls::Membre::DiscussionGroup.show(group)
                end
                view views_ns::Edit.new group
                mustache "#{base_template}/edit"

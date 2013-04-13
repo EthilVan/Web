@@ -21,7 +21,7 @@ class EthilVan::App
       comment.account = current_account unless guest?
 
       if comment.update_attributes params[:news_comment]
-         redirect_not_xhr urls.news(comment.news)
+         redirect_not_xhr urls::Public::News.show(comment.news)
          view Views::Public::News::Comment::ShowNew.new comment
          mustache 'public/news/comment/show_new'
       else
@@ -43,7 +43,7 @@ class EthilVan::App
       not_authorized unless modo? or current?(comment.account)
 
       if comment.update_attributes params[:news_comment]
-         redirect urls.news(comment.news)
+         redirect urls::Public::News.show(comment.news)
       else
          view Views::Public::News::Comment::Edit.new comment, request.path
          mustache 'public/news/comment/edit'
@@ -55,6 +55,6 @@ class EthilVan::App
       not_authorized unless modo? or current?(comment.account)
 
       comment.destroy
-      xhr_ok_or_redirect urls.news(comment.news)
+      xhr_ok_or_redirect urls::Public::News.show(comment.news)
    end
 end

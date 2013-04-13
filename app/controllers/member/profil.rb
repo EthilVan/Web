@@ -29,11 +29,11 @@ class EthilVan::App < Sinatra::Base
    end
 
    get '/membre/profil/?' do
-      redirect urls.profil('general', current_account)
+      redirect urls::Member::Profil.general(current_account)
    end
 
    get %r{/membre/@(#{Account::NAME})/?$} do |name|
-      redirect "/membre/@#{name}/general"
+      redirect urls::Member::Profil.general(name)
    end
 
    xhr_get %r{/membre/@(#{Account::NAME})/activites/?$} do |name|
@@ -78,7 +78,7 @@ class EthilVan::App < Sinatra::Base
       new_tag = profil_new_tag account, params[:profil_tag]
 
       if new_tag.save
-         redirect urls.profil('tags', account)
+         redirect urls::Member::Profil.tags(account)
       else
          tags     = profil_tags     account
          messages = profil_messages account

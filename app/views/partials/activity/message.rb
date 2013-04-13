@@ -5,7 +5,7 @@ module EthilVan::App::Views
       class Message < ActivityPartial
 
          def subject_url
-            "/membre/message/#{_subject.id}"
+            urls::Member::Message.show(_subject)
          end
 
          def subject_discussion
@@ -29,7 +29,7 @@ module EthilVan::App::Views
          end
 
          def author_url
-            urls.profil _subject.account
+            urls::Member::Profil.show(_subject.account)
          end
       end
    end

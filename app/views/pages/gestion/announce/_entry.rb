@@ -13,11 +13,11 @@ module EthilVan::App::Views
          end
 
          def edit_url
-            "/gestion/annonce/#{@model.id}/editer"
+            urls::Gestion::Announce.edit(@model)
          end
 
          def delete_url
-            "/gestion/annonce/#{@model.id}/supprimer"
+            urls::Gestion::Announce.delete(@model)
          end
 
          def author
@@ -25,7 +25,7 @@ module EthilVan::App::Views
          end
 
          def author_url
-            urls.profil(@model.account)
+            urls::Member::Profil.general(@model.account)
          end
 
          def author_avatar

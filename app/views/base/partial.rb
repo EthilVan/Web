@@ -15,7 +15,7 @@ module EthilVan::App::Views
          end
       end
 
-      include EthilVan::Urls::Sinatra::Helpers
+      include EthilVan::Url::Sinatra::Helpers
       include EthilVan::Static::Helpers
       include EthilVan::AuthHelpers
 

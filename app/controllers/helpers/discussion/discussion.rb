@@ -36,7 +36,7 @@ module EthilVan::App::Helpers
 
                if discussion.valid?
                   discussion.save
-                  redirect urls.discussion(discussion)
+                  redirect urls::Membre::Discussion.show(discussion)
                else
                   view views_ns::Create.new(discussion)
                   mustache 'membre/discussion/create'
@@ -91,7 +91,7 @@ module EthilVan::App::Helpers
 
                if message.save
                   DiscussionView.update_for(current_account, discussion, Time.now + 1)
-                  redirect_not_xhr urls.discussion(discussion,
+                  redirect_not_xhr urls::Membre::Discussion.show(discussion,
                         discussion.total_pages, message)
                   new_messages = new_messages(discussion, last_message.to_i)
 

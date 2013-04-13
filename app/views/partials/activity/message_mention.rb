@@ -5,7 +5,7 @@ module EthilVan::App::Views
       class MessageMention < ActivityPartial
 
          def subject_message_url
-            "/membre/message/#{_subject.message.id}"
+            urls::Member::Message.show(_subject.message)
          end
 
          def subject_message_discussion
@@ -17,7 +17,7 @@ module EthilVan::App::Views
          end
 
          def subject_mentionned_url
-            "/membre/membre/@#{_subject.mentionned.name}"
+            urls::Member::Profil.show(_subject.mentionned)
          end
 
          def subject_mentionned

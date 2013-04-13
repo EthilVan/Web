@@ -22,7 +22,7 @@ module EthilVan::App::Views
          end
 
          def author_profil
-            urls.profil @author
+            urls::Member::Profil.show(@author)
          end
 
          def author_signature

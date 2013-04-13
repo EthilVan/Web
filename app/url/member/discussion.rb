@@ -1,6 +1,6 @@
 module EthilVan
 
-   module Url::Membre
+   module Url::Member
 
       module Discussion
 
@@ -16,6 +16,12 @@ module EthilVan
             url = base(discussion)
             url << "?page=#{page}" if page
             url << "#msg#{message.id}" if message
+            url
+         end
+
+         def respond(discussion, last_message)
+            url = "/membre/discussion/#{discussion}/repondre"
+            url << "/#{last_message.id}" unless last_message.nil?
             url
          end
 

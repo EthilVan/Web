@@ -11,7 +11,7 @@ module EthilVan::App::Views
          end
 
          def subject_url
-            urls.profil(_subject)
+            urls::Member::Profil.show(_subject)
          end
 
          def subject_avatar

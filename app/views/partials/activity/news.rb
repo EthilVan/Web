@@ -9,7 +9,7 @@ module EthilVan::App::Views
          end
 
          def subject_url
-            urls.news(_subject)
+            urls::Public::News.show(_subject)
          end
       end
    end

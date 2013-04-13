@@ -8,8 +8,9 @@ module EthilVan::App::Views
          TOTAL = 2 * AROUND + 1
 
          def initialize(discussion, page)
-            @last_message_id = discussion.last_message.id
-            @base_url = "/membre/discussion/#{discussion.id}"
+            @discussion = discussion
+            @last_message = discussion.last_message
+
             @page = page
             @first = [1,     current - AROUND].max
             @last  = [total, current + AROUND].min
@@ -40,19 +41,19 @@ module EthilVan::App::Views
          end
 
          def first
-            page_link(1)
+            page_url(1)
          end
 
          def previous
-            page_link(current - 1)
+            page_url(current - 1)
          end
 
          def next
-            page_link(current + 1)
+            page_url(current + 1)
          end
 
          def last
-            page_link(total)
+            page_url(total)
          end
 
          def last_message?
@@ -60,19 +61,19 @@ module EthilVan::App::Views
          end
 
          def last_message
-            "#{last}#msg#{@last_message_id}"
+            page_url(total, @last_message)
          end
 
          def pages
             @first.upto(@last).map do |i|
-               { i: i, url: page_link(i), selected: i == current }
+               { i: i, url: page_url(i), selected: i == current }
             end
          end
 
       private
 
-         def page_link(page)
-            "#@base_url?page=#{page}"
+         def page_url(page, message = nil)
+            urls::Member::Discussion.show(@discussion, page, message)
          end
       end
    end

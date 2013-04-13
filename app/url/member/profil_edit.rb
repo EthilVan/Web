@@ -1,6 +1,6 @@
 module EthilVan
 
-   module Url::Membre
+   module Url::Member
 
       module Profil::Edit
 
@@ -22,7 +22,7 @@ module EthilVan
             base(account) + '/preferences'
          end
 
-         def appareance(account)
+         def appearance(account)
             base(account) + '/apparence'
          end
 

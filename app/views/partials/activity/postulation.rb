@@ -9,7 +9,7 @@ module EthilVan::App::Views
          end
 
          def subject_url
-            "/gestion/postulation/#{_subject.name}"
+            urls::Gestion::Postulation.show(_subject)
          end
 
          def subject_is_viewer?

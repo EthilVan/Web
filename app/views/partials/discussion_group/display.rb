@@ -25,15 +25,15 @@ module EthilVan::App::Views
          end
 
          def url
-            "/membre/discussion/#{@group.url}"
+            urls::Member::DiscussionGroup.show(@group)
          end
 
          def edit_url
-            "#{url}/editer"
+            urls::Member::DiscussionGroup.edit(@group)
          end
 
          def delete_url
-            "#{url}/supprimer"
+            urls::Member::DiscussionGroup.delete(@group)
          end
 
          def icon?

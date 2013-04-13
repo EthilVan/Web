@@ -1,6 +1,6 @@
 module EthilVan
 
-   module Url::Membre
+   module Url::Member
 
       module Skin
 
@@ -11,7 +11,7 @@ module EthilVan
          end
 
          def private_skin(account, type, scale)
-            "/membre/skin/#{account.name}_#{type}x#{scale}.png"
+            "/membre/skin/#{account.name}_#{type}_x#{scale}.png"
          end
 
          def preview(account, scale)

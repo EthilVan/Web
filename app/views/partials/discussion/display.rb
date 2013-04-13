@@ -46,23 +46,24 @@ module EthilVan::App::Views
          end
 
          def url
-            "/membre/discussion/#{@discussion.id}"
+            urls::Member::Discussion.show(@discussion)
          end
 
          def response_url
-            _url = "#{url}/repondre"
             if pager.nil? or pager.current == pager.total
-               _url << "/#{@discussion.last_message.id.to_s}"
+               last_message = @discussion.last_message
+            else
+               last_message = nil
             end
-            _url
+            urls::Member::Discussion.respond(@discussion, last_message)
          end
 
          def edit_url
-            "#{url}/editer"
+            urls::Member::Discussion.edit(@discussion)
          end
 
          def delete_url
-            "#{url}/supprimer"
+            urls::Member::Discussion.delete(@discussion)
          end
       end
    end

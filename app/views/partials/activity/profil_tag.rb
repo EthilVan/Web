@@ -9,7 +9,7 @@ module EthilVan::App::Views
          end
 
          def subject_tagged_url
-            urls.profil(_subject.tagged)
+            urls::Member::Profil.show(_subject.tagged)
          end
       end
    end

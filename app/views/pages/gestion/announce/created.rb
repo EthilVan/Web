@@ -9,7 +9,7 @@ module EthilVan::App::Views
          end
 
          def create_url
-            "/gestion/annonce/creer"
+            urls::Gestion::Announce.create
          end
       end
    end

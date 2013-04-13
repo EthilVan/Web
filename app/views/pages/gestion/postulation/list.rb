@@ -12,7 +12,7 @@ module EthilVan::App::Views
             data.map { |postulation| {
                name: postulation.name,
                date: I18n.l(postulation.created_at.to_date),
-               url:  "/gestion/postulation/#{postulation.name}"
+               url: urls::Gestion::Postulation.show(postulation.name)
             } }
          end
 

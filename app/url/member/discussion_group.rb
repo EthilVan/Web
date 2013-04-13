@@ -1,6 +1,6 @@
 module EthilVan
 
-   module Url::Membre
+   module Url::Member
 
       module DiscussionGroup
 

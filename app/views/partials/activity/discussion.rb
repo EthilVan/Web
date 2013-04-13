@@ -4,6 +4,10 @@ module EthilVan::App::Views
 
       class Discussion < ActivityPartial
 
+         def subject_url
+            urls::Member::Discussion.show(_subject)
+         end
+
          def subject
             _subject.name
          end
@@ -13,7 +17,7 @@ module EthilVan::App::Views
          end
 
          def subject_group_url
-            urls.discussion_group(_subject.group)
+            urls::Member::DiscussionGroup.show(_subject.group)
          end
 
          def subject_moved_from
@@ -21,7 +25,7 @@ module EthilVan::App::Views
          end
 
          def subject_moved_from_url
-            urls.discussion_group _subject_moved_from
+            urls::Member::DiscussionGroup.show(_subject_moved_from)
          end
 
          def subject_moved_to
@@ -29,7 +33,7 @@ module EthilVan::App::Views
          end
 
          def subject_moved_to_url
-            urls.discussion_group _subject_moved_to
+            urls::Member::DiscussionGroup.show(_subject_moved_to)
          end
 
          def _subject_moved_from

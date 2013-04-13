@@ -9,7 +9,7 @@ module EthilVan::App::Views
          end
 
          def comment_url
-            "/news/#{@comment.news.id}/commenter"
+            urls::Public::News::Comment.create(@comment.news)
          end
       end
    end

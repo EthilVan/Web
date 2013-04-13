@@ -11,7 +11,7 @@ class EthilVan::App
             def discussion_url(message, discussion = message.discussion, page = nil)
                page ||= message.page
                page = nil if page < 1
-               urls.discussion(message.discussion, page, message)
+               urls::Member::Discussion.show(message.discussion, page, message)
             end
 
             def new_messages(discussion, last_message_id)

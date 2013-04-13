@@ -5,7 +5,7 @@ module EthilVan::App::Views
       class Create < Page
 
          def initialize(announce)
-            @form = Form.new(announce, '/gestion/annonce/creer')
+            @form = Form.new(announce, urls::Gestion::Announce.create)
          end
 
          def form

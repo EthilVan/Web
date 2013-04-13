@@ -60,7 +60,7 @@ module EthilVan::App::Helpers
 
                following = message.following
                message.destroy
-               xhr_ok_or_redirect urls.discussion(message.discussion,
+               xhr_ok_or_redirect urls::Membre::Discussion.show(message.discussion,
                      following.page, following)
             end
 

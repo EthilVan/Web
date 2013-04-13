@@ -6,7 +6,7 @@ module EthilVan::App::Views
 
          def initialize(announce)
             @form = Form.new(announce,
-                  "/gestion/annonce/#{announce.id}/editer")
+                  urls::Gestion::Announce.edit(announce))
          end
 
          def form

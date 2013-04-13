@@ -32,7 +32,7 @@ module EthilVan
       register EthilVan::Logging
       register EthilVan::Cron::Sinatra
       register EthilVan::Static
-      register EthilVan::Urls::Sinatra
+      register EthilVan::Url::Sinatra
       register EthilVan::Cookies
       register EthilVan::Authentication
       register EthilVan::Authorization

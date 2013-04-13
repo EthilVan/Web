@@ -1,5 +1,5 @@
 require_relative 'env'
-require_relative 'urls'
+require_relative 'url'
 require 'active_record'
 require 'kaminari'
 

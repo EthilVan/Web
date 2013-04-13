@@ -10,11 +10,11 @@ module EthilVan::App::Views
          end
 
          def discussion_url
-            "/membre/discussion/#{@discussion.id}"
+            urls::Member::Discussion.show(@discussion)
          end
 
          def response_url
-            "#{discussion_url}/repondre/#{@discussion.last_message.id}"
+            urls::Member::Discussion.respond(@discussion, @discussion.last_message.id)
          end
 
          def new_messages

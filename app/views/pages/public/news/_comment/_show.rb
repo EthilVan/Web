@@ -40,16 +40,12 @@ module EthilVan::App::Views
             "comment-#{@comment.id}"
          end
 
-         def base_url
-            "/news/commentaire/#{@comment.id}"
-         end
-
          def edit_url
-            "#{base_url}/editer"
+            urls::Public::News::Comment.edit(@comment)
          end
 
          def delete_url
-            "#{base_url}/supprimer"
+            urls::Public::News::Comment.delete(@comment)
          end
       end
    end

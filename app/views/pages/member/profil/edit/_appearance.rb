@@ -30,7 +30,7 @@ module EthilVan::App::Views
          def initialize(page, account, params)
             super(page, 'apparence')
             @form = Form.new(account.profil,
-                  urls.profil_edit('apparence', account))
+                  urls::Member::Profil::Edit.appearance(account))
             @params = params
          end
 

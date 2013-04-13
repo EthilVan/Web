@@ -18,7 +18,7 @@ module EthilVan::App::Views
          end
 
          def profil_edit_url
-            urls.profil_edit(@account)
+            urls::Member::Profil::Edit.general(@account)
          end
 
          def cadre

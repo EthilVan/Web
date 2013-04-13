@@ -9,15 +9,15 @@ module EthilVan::App::Views
          end
 
          def url
-            urls.news @news
+            urls::Public::News.show(@news)
          end
 
          def edit_url
-            "#{urls.news @news}/editer"
+            urls::Public::News.edit(@news)
          end
 
          def delete_url
-            "#{urls.news @news}/supprimer"
+            urls::Public::News.delete(@news)
          end
 
          def title

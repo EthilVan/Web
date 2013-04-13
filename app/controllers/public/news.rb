@@ -43,7 +43,7 @@ class EthilVan::App
       news = News.new params[:news]
       news.account = current_account
       if news.save
-         redirect urls.news news
+         redirect urls::Public::News.show news
       else
          view Views::Public::News::Create.new news
          mustache 'public/news/create'
@@ -73,7 +73,7 @@ class EthilVan::App
       news.activity_actor = current_account
 
       if news.update_attributes params[:news]
-         redirect urls.news news
+         redirect urls::Public::News.show news
       else
          view Views::Public::News::Edit.new news
          mustache 'public/news/edit'

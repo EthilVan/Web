@@ -25,7 +25,7 @@ module EthilVan::App::Views
          def initialize(page, account, new_tag, tags)
             super(page, 'tags')
             unless new_tag.nil?
-               @form = Form.new new_tag, urls.profil('tags', account)
+               @form = Form.new(new_tag, urls::Member::Profil.tags(account))
             end
             @tags = tags
          end
@@ -44,7 +44,7 @@ module EthilVan::App::Views
                {
                   contents: tag.content,
                   tagger: tagger.name,
-                  tagger_url: urls.profil(tagger),
+                  tagger_url: urls::Member::Profil.show(tagger),
                   tagger_avatar: tagger.profil.avatar_url,
                   date: I18n.l(tag.created_at)
                }

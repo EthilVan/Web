@@ -17,7 +17,7 @@ module EthilVan::App::Views
          end
 
          def subject_postulation_url
-            "/gestion/postulation/#{_subject.postulation.name}"
+            urls::Gestion::Postulation.show(_subject.postulation)
          end
       end
    end

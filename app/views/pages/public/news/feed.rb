@@ -21,7 +21,7 @@ module EthilVan::App::Views
 
                channel.title "Ethil Van News"
                channel.description "EthilVan News Feed"
-               channel.link "http://ethilvan.fr/news"
+               channel.link 'http://ethilvan.fr' + EthilVan::Url::Public::News.list
                channel.language "fr"
                channel.lastBuildDate News.maximum(:updated_at).to_datetime
 
@@ -33,7 +33,7 @@ module EthilVan::App::Views
 
          def item(item, news)
             item.title news.title
-            item.link "http://ethilvan.fr/news/#{news.id}"
+            item.link 'http://ethilvan.fr' + EthilVan::Url::Public::News.show(news)
             item.pubDate news.created_at.to_datetime
             item.description news.parsed_summary
          end
