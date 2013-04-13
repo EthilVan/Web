@@ -16,6 +16,10 @@ module EthilVan::App::Views
             current? _subject.mentionned
          end
 
+         def subject_mentionned_is_actor?
+            @model.actor_id == _subject.mentionned.id
+         end
+
          def subject_mentionned_url
             urls::Member::Profil.show(_subject.mentionned)
          end

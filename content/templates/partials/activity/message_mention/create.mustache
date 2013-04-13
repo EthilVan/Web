@@ -4,10 +4,16 @@
    {{> activity/avatar }}
    {{^ actor_is_viewer? }}
       {{^ subject_mentionned_is_viewer? }}
-         {{> activity/actor }}
-         a mentionné {{> activity/message_mention/mentionned }}
-         dans {{> activity/message_mention/subject }}
-         {{/ subject_mentionned_is_viewer? }}
+         {{^ subject_mentionned_is_actor? }}
+            {{> activity/actor }}
+            a mentionné {{> activity/message_mention/mentionned }}
+            dans {{> activity/message_mention/subject }}
+         {{/ subject_mentionned_is_actor? }}
+         {{# subject_mentionned_is_actor? }}
+            {{> activity/actor }} est totalement
+            <a href="{{ subject_message_url }}">égocentrique</a>
+         {{/ subject_mentionned_is_actor? }}
+      {{/ subject_mentionned_is_viewer? }}
       {{# subject_mentionned_is_viewer? }}
          {{> activity/actor }}
          vous a mentionné dans {{> activity/message_mention/subject }}
