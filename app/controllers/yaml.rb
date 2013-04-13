@@ -1,18 +1,18 @@
 class EthilVan::App < Sinatra::Base
 
    def self.define_simple_page(page)
-      get page.yaml_url do
+      get "#{page.yaml_url}/?" do
          view page
          mustache page.yaml_template
       end
    end
 
    def self.define_page_with_tabs(page)
-      get page.yaml_url do
+      get "#{page.yaml_url}/?" do
          redirect page.main_tab.tab_complete_url
       end
 
-      get page.yaml_tabs_url do |tab|
+      get "#{page.yaml_tabs_url}/?" do |tab|
          view page
          mustache page.yaml_template
       end

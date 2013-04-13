@@ -1,11 +1,11 @@
 class EthilVan::App < Sinatra::Base
 
-   get '/login/oublie' do
+   get '/login/oublie/?' do
       view Views::Public::ForgottenPassword::Create.new
       mustache 'public/forgotten_password/create'
    end
 
-   post '/login/oublie' do
+   post '/login/oublie/?' do
       email = params[:fp_email]
       account = Account.where(email: email).first
       if account.nil?
@@ -20,14 +20,14 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   get %r{/login/oublie/(.{254})$} do |token|
+   get %r{/login/oublie/(.{254})/?$} do |token|
       fp = resource ForgottenPassword.where(token: token).first
       not_found if fp.expired?
       view Views::Public::ForgottenPassword::NewPassword.new fp.account
       mustache 'public/forgotten_password/new_password'
    end
 
-   post %r{/login/oublie/(.{254})$} do |token|
+   post %r{/login/oublie/(.{254})/?$} do |token|
       fp = resource ForgottenPassword.where(token: token).first
       not_found if fp.expired?
 

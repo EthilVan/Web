@@ -12,32 +12,32 @@ module EthilVan::App::Helpers
             views_ns = config[:group][:views]
             base_template = config[:group][:templates]
 
-            get base_url do
+            get "#{base_url}/?" do
                groups = group_type.by_priority.with_everything
                views = current_account.views_by_discussion_id
                view views_ns::List.new groups, views
                mustache "#{base_template}/list"
             end
 
-            get "#{base_url}/!toutes_lues" do
+            get "#{base_url}/!toutes_lues/?" do
                DiscussionView.mark_all_read_for(current_account)
                redirect base_url
             end
 
-            get "#{base_url}/!creer_espace" do
+            get "#{base_url}/!creer_espace/?" do
                group = group_type.new
                view views_ns::Create.new group
                mustache "#{base_template}/create"
             end
 
-            post "#{base_url}/!creer_espace" do
+            post "#{base_url}/!creer_espace/?" do
                group = group_type.new params[group_type.model_name.param_key]
                redirect urls.discussion_group(group) if group.save
                view views_ns::Create.new group
                mustache "#{base_template}/create"
             end
 
-            get %r{#{url}$} do |group_url|
+            get %r{#{url}/?$} do |group_url|
                group = resource group_type.with_everything.
                      find_by_url group_url
                views = current_account.views_by_discussion_id
@@ -45,13 +45,13 @@ module EthilVan::App::Helpers
                mustache "#{base_template}/show"
             end
 
-            get %r{#{url}/editer$} do |group_url|
+            get %r{#{url}/editer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
                view views_ns::Edit.new group
                mustache "#{base_template}/edit"
             end
 
-            post %r{#{url}/editer$} do |group_url|
+            post %r{#{url}/editer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
                if group.update_attributes params[group_type.model_name.param_key]
                   redirect urls.discussion_group(group)
@@ -60,7 +60,7 @@ module EthilVan::App::Helpers
                mustache "#{base_template}/edit"
             end
 
-            get %r{#{url}/supprimer$} do |group_url|
+            get %r{#{url}/supprimer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
                group.destroy
                xhr_ok_or_redirect base_url

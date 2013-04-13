@@ -1,6 +1,6 @@
 class EthilVan::App < Sinatra::Base
 
-   get '/apropos' do
+   get '/apropos/?' do
       view Views::Public::About.new
       mustache 'public/about/index'
    end

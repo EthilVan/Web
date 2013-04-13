@@ -1,26 +1,26 @@
 class EthilVan::App
 
-   get '/news' do
+   get '/news/?' do
       newses = resources News.with_account.by_date.
             page(params[:page]).per(8)
       view Views::Public::News::List.new newses.all
       mustache 'public/news/list'
    end
 
-   get '/news/launcher' do
+   get '/news/launcher/?' do
       newses = News.with_account.by_date
       layout false
       view Views::Public::News::List.new newses
       mustache 'public/news/launcher'
    end
 
-   get '/news/feed' do
+   get '/news/feed/?' do
       content_type 'application/rss+xml'
       newses = News.with_account.public_only.by_date
       Views::Public::News::Feed.new(newses).to_xml
    end
 
-   get %r{/news/(?:images|banners)$} do
+   get %r{/news/(?:images|banners)/?$} do
       content_type 'text/plain'
       private_icon = request.url.gsub(request.path,
          EthilVan::Static::Helpers.asset('images/app/news/link.png'))
@@ -30,7 +30,7 @@ class EthilVan::App
       mustache 'public/news/images'
    end
 
-   protect %r{^/news/creer$}, EthilVan::Role::REDACTEUR
+   protect %r{/news/creer/?$}, EthilVan::Role::REDACTEUR
 
    get '/news/creer' do
       news = News.new
@@ -39,7 +39,7 @@ class EthilVan::App
       mustache 'public/news/create'
    end
 
-   post '/news/creer' do
+   post '/news/creer/?' do
       news = News.new params[:news]
       news.account = current_account
       if news.save
@@ -50,7 +50,7 @@ class EthilVan::App
       end
    end
 
-   get %r{/news/(\d{1,3})$} do |id|
+   get %r{/news/(\d{1,3})/?$} do |id|
       news = resource News.find_by_id id
       not_authorized if news.private and guest?
 
@@ -61,14 +61,14 @@ class EthilVan::App
    protect %r{^/news/\d{1,3}/editer$},    EthilVan::Role::REDACTEUR
    protect %r{^/news/\d{1,3}/supprimer$}, EthilVan::Role::REDACTEUR
 
-   get %r{/news/(\d{1,3})/editer$} do |id|
+   get %r{/news/(\d{1,3})/editer/?$} do |id|
       news = resource News.find_by_id id
       news.activity_actor = current_account
       view Views::Public::News::Edit.new news
       mustache 'public/news/edit'
    end
 
-   post %r{/news/(\d{1,3})/editer$} do |id|
+   post %r{/news/(\d{1,3})/editer/?$} do |id|
       news = resource News.find_by_id id
       news.activity_actor = current_account
 
@@ -80,7 +80,7 @@ class EthilVan::App
       end
    end
 
-   get %r{/news/(\d{1,3})/supprimer$} do |id|
+   get %r{/news/(\d{1,3})/supprimer/?$} do |id|
       news = resource News.find_by_id id
       news.destroy
       xhr_ok_or_redirect '/news'

@@ -29,13 +29,13 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   get '/login' do
+   get '/login/?' do
       login = Login.new
       view Views::Public::Login.new login
       mustache 'public/login'
    end
 
-   post '/login' do
+   post '/login/?' do
       login = Login.new params[:login]
       if login.valid?
          account = login.account
@@ -48,7 +48,7 @@ class EthilVan::App < Sinatra::Base
       mustache 'public/login'
    end
 
-   get '/membre/logout' do
+   get '/membre/logout/?' do
       current_account.delete_auth_token
       logout
       redirect '/'

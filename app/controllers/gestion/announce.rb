@@ -1,12 +1,12 @@
 class EthilVan::App < Sinatra::Base
 
-   get '/gestion/annonce' do
+   get '/gestion/annonce/?' do
       announces = Announce.by_date
       view Views::Gestion::Announce::List.new announces
       mustache 'gestion/announce/list'
    end
 
-   get '/gestion/annonce/creer' do
+   get '/gestion/annonce/creer/?' do
       announce = Announce.new
       announce.account = current_account
 
@@ -14,7 +14,7 @@ class EthilVan::App < Sinatra::Base
       mustache 'gestion/announce/create'
    end
 
-   post '/gestion/annonce/creer' do
+   post '/gestion/annonce/creer/?' do
       announce = Announce.new params[:announce]
       announce.account = current_account
 
@@ -28,14 +28,14 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   get '/gestion/annonce/:id/editer' do |id|
+   get '/gestion/annonce/:id/editer/?' do |id|
       announce = resource Announce.find_by_id id
 
       view Views::Gestion::Announce::Edit.new announce
       mustache 'gestion/announce/edit'
    end
 
-   post '/gestion/annonce/:id/editer' do |id|
+   post '/gestion/annonce/:id/editer/?' do |id|
       announce = resource Announce.find_by_id id
 
       if announce.update_attributes params[:announce]
@@ -48,7 +48,7 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   get '/gestion/annonce/:id/supprimer' do |id|
+   get '/gestion/annonce/:id/supprimer/?' do |id|
       announce = resource Announce.find_by_id id
       announce.destroy
       xhr_ok_or_redirect '/gestion/annonce'

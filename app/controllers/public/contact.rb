@@ -1,11 +1,11 @@
 class EthilVan::App
 
-   get '/contact' do
+   get '/contact/?' do
       view Views::Public::Contact::Index.new
       mustache 'public/contact'
    end
 
-   post '/contact' do
+   post '/contact/?' do
       email = ContactEmail.new(params[:contact_email])
       if email.valid?
          mail_view Views::Mails::Contact.new(email)

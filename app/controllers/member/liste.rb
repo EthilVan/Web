@@ -1,6 +1,6 @@
 class EthilVan::App
 
-   get '/membre/liste' do
+   get '/membre/liste/?' do
       current, old = Account.with_profil.partition do |member|
          member.role.inherit?(EthilVan::Role::MEMBER)
       end

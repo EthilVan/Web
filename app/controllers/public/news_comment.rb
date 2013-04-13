@@ -1,6 +1,6 @@
 class EthilVan::App
 
-   get %r{/news/(\d{1,3})/commenter$} do |id|
+   get %r{/news/(\d{1,3})/commenter/?$} do |id|
       news = resource News.find_by_id id
       raise not_found unless news.commentable
 
@@ -12,7 +12,7 @@ class EthilVan::App
       mustache 'public/news/comment/create'
    end
 
-   post %r{/news/(\d{1,3})/commenter$} do |id|
+   post %r{/news/(\d{1,3})/commenter/?$} do |id|
       news = resource News.find_by_id id
       raise not_found unless news.commentable
 
@@ -30,7 +30,7 @@ class EthilVan::App
       end
    end
 
-   get %r{/news/commentaire/(\d{1,7})/editer$} do |id|
+   get %r{/news/commentaire/(\d{1,7})/editer/?$} do |id|
       comment = resource NewsComment.find_by_id id
       not_authorized unless modo? or current?(comment.account)
 
@@ -38,7 +38,7 @@ class EthilVan::App
       mustache 'public/news/comment/edit'
    end
 
-   post %r{/news/commentaire/(\d{1,7})/editer$} do |id|
+   post %r{/news/commentaire/(\d{1,7})/editer/?$} do |id|
       comment = resource NewsComment.find_by_id id
       not_authorized unless modo? or current?(comment.account)
 
@@ -50,7 +50,7 @@ class EthilVan::App
       end
    end
 
-   get %r{/news/commentaire/(\d{1,7})/supprimer$} do |id|
+   get %r{/news/commentaire/(\d{1,7})/supprimer/?$} do |id|
       comment = resource NewsComment.find_by_id id
       not_authorized unless modo? or current?(comment.account)
 

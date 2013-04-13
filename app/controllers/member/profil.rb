@@ -28,15 +28,15 @@ class EthilVan::App < Sinatra::Base
       end
    end
 
-   get '/membre/profil' do
+   get '/membre/profil/?' do
       redirect urls.profil('general', current_account)
    end
 
-   get %r{/membre/@(#{Account::NAME})$} do |name|
+   get %r{/membre/@(#{Account::NAME})/?$} do |name|
       redirect "/membre/@#{name}/general"
    end
 
-   xhr_get %r{/membre/@(#{Account::NAME})/activites$} do |name|
+   xhr_get %r{/membre/@(#{Account::NAME})/activites/?$} do |name|
       account    = profil_account    name
       activities = profil_activities account
 
@@ -44,7 +44,7 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/profil/_messages'
    end
 
-   xhr_get %r{/membre/@(#{Account::NAME})/messages$} do |name|
+   xhr_get %r{/membre/@(#{Account::NAME})/messages/?$} do |name|
       account  = profil_account  name
       messages = profil_messages account
 
@@ -52,7 +52,7 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/profil/_messages'
    end
 
-   xhr_get %r{/membre/@(#{Account::NAME})/tags$} do |name|
+   xhr_get %r{/membre/@(#{Account::NAME})/tags/?$} do |name|
       account  = profil_account  name
       tags     = profil_tags     account
 
@@ -61,7 +61,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    tabs = %w{general postulation activites tags messages}
-   get %r{/membre/@(#{Account::NAME})/(?:#{tabs *  '|'})$} do |name|
+   get %r{/membre/@(#{Account::NAME})/(?:#{tabs *  '|'})/?$} do |name|
       account    = profil_account    name
       activities = profil_activities account
       new_tag    = profil_new_tag    account
@@ -73,7 +73,7 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/profil/tabs'
    end
 
-   post %r{/membre/@(#{Account::NAME})/tags$} do |name|
+   post %r{/membre/@(#{Account::NAME})/tags/?$} do |name|
       account = profil_account name
       new_tag = profil_new_tag account, params[:profil_tag]
 

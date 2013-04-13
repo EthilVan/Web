@@ -2,7 +2,7 @@ class EthilVan::App < Sinatra::Base
 
    logged_only %r{^/markdown(?:$|/)}
 
-   post '/markdown' do
+   post '/markdown/?' do
       markdown params['content']
    end
 

@@ -15,7 +15,7 @@ module EthilVan::App::Helpers
             base_template = config[:discussion][:templates]
             message_base_template = config[:message][:templates]
 
-            get %r{#{group_url}/creer$} do |group_url|
+            get %r{#{group_url}/creer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
 
                discussion = Discussion.new
@@ -27,7 +27,7 @@ module EthilVan::App::Helpers
                mustache 'membre/discussion/create'
             end
 
-            post %r{#{group_url}/creer$} do |group_url|
+            post %r{#{group_url}/creer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
 
                discussion = Discussion.new params[:discussion]
@@ -43,7 +43,7 @@ module EthilVan::App::Helpers
                end
             end
 
-            get %r{#{url}$} do |id|
+            get %r{#{url}/?$} do |id|
                discussion = resource Discussion.find_by_id id
                discussion_type = discussion.discussion_group_type
                not_found unless discussion_type == group_type.name
@@ -57,7 +57,7 @@ module EthilVan::App::Helpers
                mustache "#{base_template}/show"
             end
 
-            get %r{#{url}/repondre(?:/(\d{1,7}))?$} do |id, last_message|
+            get %r{#{url}/repondre(?:/(\d{1,7}))?/?$} do |id, last_message|
                discussion = resource Discussion.find_by_id id
                discussion_type = discussion.discussion_group_type
                not_found unless discussion_type == group_type.name
@@ -76,7 +76,7 @@ module EthilVan::App::Helpers
                mustache "#{message_base_template}/create"
             end
 
-            post %r{#{url}/repondre(?:/(\d{1,7}))?$} do |id, last_message|
+            post %r{#{url}/repondre(?:/(\d{1,7}))?/?$} do |id, last_message|
                discussion = resource Discussion.find_by_id id
                discussion_type = discussion.discussion_group_type
                not_found unless discussion_type == group_type.name
@@ -106,7 +106,7 @@ module EthilVan::App::Helpers
                end
             end
 
-            get %r{#{url}/editer$} do |id|
+            get %r{#{url}/editer/?$} do |id|
                discussion = resource Discussion.find_by_id id
                discussion_type = discussion.discussion_group_type
                not_found unless discussion_type == group_type.name
@@ -117,7 +117,7 @@ module EthilVan::App::Helpers
                mustache "#{base_template}/edit"
             end
 
-            post %r{#{url}/editer$} do |id|
+            post %r{#{url}/editer/?$} do |id|
                discussion = resource Discussion.find_by_id id
                discussion_type = discussion.discussion_group_type
                not_found unless discussion_type == group_type.name
@@ -132,7 +132,7 @@ module EthilVan::App::Helpers
                end
             end
 
-            get %r{#{url}/supprimer$} do |id|
+            get %r{#{url}/supprimer/?$} do |id|
                discussion = resource Discussion.find_by_id id
                discussion_type = discussion.discussion_group_type
                not_found unless discussion_type == group_type.name

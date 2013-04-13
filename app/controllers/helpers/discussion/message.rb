@@ -12,14 +12,14 @@ module EthilVan::App::Helpers
             views_ns = config[:message][:views]
             base_template = config[:message][:templates]
 
-            get url do |id|
+            get "#{url}/?" do |id|
                message = resource Message.find_by_id id
                message_type = message.discussion.discussion_group_type
                not_found unless message_type == group_type.name
                redirect discussion_url message
             end
 
-            get "#{url}/editer" do |id|
+            get "#{url}/editer/?" do |id|
                message = resource Message.find_by_id id
                message_type = message.discussion.discussion_group_type
                not_found unless message_type == group_type.name
@@ -30,7 +30,7 @@ module EthilVan::App::Helpers
                mustache "#{base_template}/edit"
             end
 
-            post "#{url}/editer" do |id|
+            post "#{url}/editer/?" do |id|
                message = resource Message.find_by_id id
                message_type = message.discussion.discussion_group_type
                not_found unless message_type == group_type.name
@@ -50,7 +50,7 @@ module EthilVan::App::Helpers
                end
             end
 
-            get "#{url}/supprimer" do |id|
+            get "#{url}/supprimer/?" do |id|
                message = resource Message.find_by_id id
                message_type = message.discussion.discussion_group_type
                not_found unless message_type == group_type.name

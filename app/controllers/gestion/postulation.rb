@@ -1,12 +1,12 @@
 class EthilVan::App < Sinatra::Base
 
-   get '/gestion/postulation' do
+   get '/gestion/postulation/?' do
       postulations = Postulation.by_date
       view Views::Gestion::Postulation::List.new postulations
       mustache 'gestion/postulation/list'
    end
 
-   get '/gestion/postulation/:name' do |name|
+   get '/gestion/postulation/:name/?' do |name|
       postulation = resource Postulation.where(name: name).first
 
       vote = nil
@@ -21,7 +21,7 @@ class EthilVan::App < Sinatra::Base
       mustache 'gestion/postulation/show'
    end
 
-   post '/gestion/postulation/:name' do |name|
+   post '/gestion/postulation/:name/?' do |name|
       postulation = resource Postulation.where(name: name).first
       not_found if !postulation.pending? or
             PostulationVote.for?(current_account, postulation)

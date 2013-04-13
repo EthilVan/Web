@@ -1,7 +1,7 @@
 class EthilVan::App < Sinatra::Base
 
    # Public avatar
-   get %r{/avatar/(#{Account::NAME}).png} do |username|
+   get %r{/avatar/(#{Account::NAME}).png$} do |username|
       skin_image EthilVan::Skins::Head, username, 15
    end
 
