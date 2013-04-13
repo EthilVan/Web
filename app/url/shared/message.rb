@@ -1,19 +1,11 @@
 module EthilVan
 
-   module Url::Member
+   module Url::Shared
 
       module Message
 
-         extend self
-
-         BASE = '/membre/message'
-
-         def root
-            BASE
-         end
-
          def base(message)
-            "#{BASE}/#{message.id}"
+            "#{root}/#{message.id}"
          end
 
          def show(discussion, page = nil, message = nil)

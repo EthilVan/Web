@@ -2,39 +2,41 @@ module EthilVan
 
    module Url::Member
 
-      module Discussion
+      module DiscussionGroup
+
+         include Url::Shared::DiscussionGroup
 
          extend self
 
-         BASE = '/membre/discussion'
+         def root
+            '/membre/discussion'
+         end
+
+         def follow_all(discussion_group)
+            base(discussion_group) + "/toutsuivre"
+         end
+
+         def unfollow_all(discussion_group)
+            base(discussion_group) + "/neplusriensuivre"
+         end
+
+         def follow(discussion_group)
+            base(discussion_group) + '/suivre'
+         end
+
+         def unfollow(discussion_group)
+            base(discussion_group) + '/neplussuivre'
+         end
+      end
+
+      module Discussion
+
+         include Url::Shared::Discussion
+
+         extend self
 
          def root
-            BASE
-         end
-
-         def base(discussion)
-            "#{BASE}/#{discussion.id}"
-         end
-
-         def show(discussion, page = nil, message = nil)
-            url = base(discussion)
-            url << "?page=#{page}" if page
-            url << "#msg#{message.id}" if message
-            url
-         end
-
-         def respond(discussion, last_message)
-            url = "/membre/discussion/#{discussion.id}/repondre"
-            url << "/#{last_message.id}" unless last_message.nil?
-            url
-         end
-
-         def edit(discussion)
-            base(discussion) + '/editer'
-         end
-
-         def delete(discussion)
-            base(discussion) + '/supprimer'
+            '/membre/discussion'
          end
 
          def follow(discussion)
@@ -43,6 +45,17 @@ module EthilVan
 
          def unfollow(discussion)
             base(discussion) + '/neplussuivre'
+         end
+      end
+
+      module Message
+
+         include Url::Shared::Message
+
+         extend self
+
+         def root
+            '/membre/message'
          end
       end
    end

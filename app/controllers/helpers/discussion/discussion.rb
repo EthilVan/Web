@@ -18,6 +18,7 @@ module EthilVan::App::Helpers
 
             get %r{#{group_url}/creer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
+               not_authorized unless group.viewable_by? current_account
 
                discussion = Discussion.new
                discussion.group = group
@@ -30,6 +31,7 @@ module EthilVan::App::Helpers
 
             post %r{#{group_url}/creer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
+               not_authorized unless group.viewable_by? current_account
 
                discussion = Discussion.new params[:discussion]
                discussion.group = group
@@ -46,8 +48,10 @@ module EthilVan::App::Helpers
 
             get %r{#{url}/?$} do |id|
                discussion = resource Discussion.find_by_id id
-               discussion_type = discussion.discussion_group_type
-               not_found unless discussion_type == group_type.name
+               group = discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
+
                page = discussion.page(params[:page]).includes(account:
                      [ :profil, :minecraft_stats ])
                not_found unless page.present?
@@ -60,8 +64,9 @@ module EthilVan::App::Helpers
 
             get %r{#{url}/repondre(?:/(\d{1,7}))?/?$} do |id, last_message|
                discussion = resource Discussion.find_by_id id
-               discussion_type = discussion.discussion_group_type
-               not_found unless discussion_type == group_type.name
+               group = discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
                not_authorized if !modo? and discussion.archived?
 
                new_messages = []
@@ -79,8 +84,9 @@ module EthilVan::App::Helpers
 
             post %r{#{url}/repondre(?:/(\d{1,7}))?/?$} do |id, last_message|
                discussion = resource Discussion.find_by_id id
-               discussion_type = discussion.discussion_group_type
-               not_found unless discussion_type == group_type.name
+               group = discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
                not_authorized if !modo? and discussion.archived?
 
                new_messages = []
@@ -109,8 +115,9 @@ module EthilVan::App::Helpers
 
             get %r{#{url}/editer/?$} do |id|
                discussion = resource Discussion.find_by_id id
-               discussion_type = discussion.discussion_group_type
-               not_found unless discussion_type == group_type.name
+               group = discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
 
                discussion.activity_actor = current_account
 
@@ -120,8 +127,9 @@ module EthilVan::App::Helpers
 
             post %r{#{url}/editer/?$} do |id|
                discussion = resource Discussion.find_by_id id
-               discussion_type = discussion.discussion_group_type
-               not_found unless discussion_type == group_type.name
+               group = discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
 
                discussion.activity_actor = current_account
 

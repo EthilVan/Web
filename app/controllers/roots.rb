@@ -17,7 +17,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    # Legacy
-   get %r{/moderation(?:/?$|/)} do
+   get %r{^/moderation(?:/?$|/)} do
       redirect request.path.gsub(%r{^/moderation}, '/gestion')
    end
 end

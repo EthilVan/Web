@@ -1,6 +1,6 @@
 class GestionDiscussionGroup < ActiveRecord::Base
 
-   ROLES = [:redacteur, :modo, :dev, :admin]
+   ROLES = ['redacteur', 'modo', 'dev', 'admin']
 
    include DiscussionGroup
 
@@ -9,4 +9,10 @@ class GestionDiscussionGroup < ActiveRecord::Base
    # ==========================================================================
    validates_inclusion_of :role, in: ROLES
 
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
+   def viewable_by?(account)
+      account.role.inherit? EthilVan::Role.get(role.to_sym)
+   end
 end

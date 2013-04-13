@@ -15,6 +15,8 @@ module EthilVan::App::Helpers
 
             get "#{discussion_urls.group.root}/?" do
                groups = group_type.by_priority.with_everything
+               groups = groups.select { |group| group.viewable_by? current_account }
+
                views = current_account.views_by_discussion_id
                view views_ns::List.new discussion_urls, groups, views
                mustache "#{base_template}/list"
@@ -41,6 +43,8 @@ module EthilVan::App::Helpers
             get %r{#{url}/?$} do |group_url|
                group = resource group_type.with_everything.
                      find_by_url group_url
+               not_authorized unless group.viewable_by? current_account
+
                views = current_account.views_by_discussion_id
                view views_ns::Show.new discussion_urls, group, views
                mustache "#{base_template}/show"
@@ -48,12 +52,16 @@ module EthilVan::App::Helpers
 
             get %r{#{url}/editer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
+               not_authorized unless group.viewable_by? current_account
+
                view views_ns::Edit.new discussion_urls, group
                mustache "#{base_template}/edit"
             end
 
             post %r{#{url}/editer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
+               not_authorized unless group.viewable_by? current_account
+
                if group.update_attributes params[group_type.model_name.param_key]
                   redirect discussion_urls.group.show(group)
                end
@@ -63,6 +71,8 @@ module EthilVan::App::Helpers
 
             get %r{#{url}/supprimer/?$} do |group_url|
                group = resource group_type.find_by_url group_url
+               not_authorized unless group.viewable_by? current_account
+
                group.destroy
                xhr_ok_or_redirect discussion_urls.group.root
             end

@@ -21,6 +21,16 @@
       </div>
    {{/ url }}
 
+   {{# role }}
+      <div class="control-group">
+         <div class="control-label">{{> form/label }}</div>
+         <div class="controls">
+            {{> form/picker }}
+            {{> form/errors }}
+         </div>
+      </div>
+   {{/ role }}
+
    {{# icon }}
       <div class="control-group">
          <div class="control-label">{{> form/label }}</div>

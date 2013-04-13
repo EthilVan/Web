@@ -15,15 +15,18 @@ module EthilVan::App::Helpers
 
             get "#{url}/?" do |id|
                message = resource Message.find_by_id id
-               message_type = message.discussion.discussion_group_type
-               not_found unless message_type == group_type.name
+               group = message.discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
+
                redirect discussion_url(discussion_urls, message)
             end
 
             get "#{url}/editer/?" do |id|
                message = resource Message.find_by_id id
-               message_type = message.discussion.discussion_group_type
-               not_found unless message_type == group_type.name
+               group = message.discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
                not_authorized unless message.editable_by? current_account
                message.activity_actor = current_account
 
@@ -33,15 +36,16 @@ module EthilVan::App::Helpers
 
             post "#{url}/editer/?" do |id|
                message = resource Message.find_by_id id
-               message_type = message.discussion.discussion_group_type
-               not_found unless message_type == group_type.name
+               group = message.discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
                not_authorized unless message.editable_by? current_account
                message.activity_actor = current_account
 
                if message.update_attributes params[:message]
                   DiscussionView.update_for(current_account,
                         message.discussion,Time.now + 1)
-                  redirect_not_xhr discussion_url message
+                  redirect_not_xhr discussion_url discussion_urls, message
                   view_class = EthilVan::App::Views::Partials::Message::Display
                   view view_class.new discussion_urls, message, true
                   mustache 'message/display'
@@ -53,8 +57,9 @@ module EthilVan::App::Helpers
 
             get "#{url}/supprimer/?" do |id|
                message = resource Message.find_by_id id
-               message_type = message.discussion.discussion_group_type
-               not_found unless message_type == group_type.name
+               group = message.discussion.group
+               not_found unless group.is_a? group_type
+               not_authorized unless group.viewable_by? current_account
                not_found if message.first?
                not_authorized unless message.editable_by? current_account
                message.activity_actor = current_account

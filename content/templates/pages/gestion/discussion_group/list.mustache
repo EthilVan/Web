@@ -1,0 +1,13 @@
+{{# page_title }}Discussions{{/ page_title }}
+
+<a href="/gestion/discussion/!toutes_lues">
+   Marquer toutes les discussions comme lues
+</a>
+
+{{# modo? }}
+<a class="creer-espace" href="/gestion/discussion/!creer_espace">
+   Créer un espace de discussion
+</a>
+{{/ modo? }}
+
+{{# groups }}{{> discussion_group/preview }}{{/ groups }}

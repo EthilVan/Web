@@ -21,6 +21,11 @@ module EthilVan::App::Views
             }
          end
 
+         def role
+            return nil unless @model.is_a? GestionDiscussionGroup
+            choice :role, among: GestionDiscussionGroup::ROLES
+         end
+
          def icon
             text :icon, validations: {
                type: 'urlstrict',

@@ -17,6 +17,10 @@ module EthilVan::App::Views
             end
          end
 
+         def discussion_groups_root
+            @discussion_urls.group.root
+         end
+
          def name
             @group.name
          end
