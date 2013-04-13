@@ -18,7 +18,9 @@
          Vous avez mentionné {{> activity/message_mention/mentionned }}
          dans {{> activity/message_mention/subject }}
       {{/ subject_mentionned_is_viewer? }}
-      {{# subject_mentionned_is_viewer? }}Votre égocentricité vous perdra !{{/ subject_mentionned_is_viewer? }}
+      {{# subject_mentionned_is_viewer? }}
+         Votre  <a href="{{ subject_message_url }}">égocentricité</a> vous perdra !
+      {{/ subject_mentionned_is_viewer? }}
    {{/ actor_is_viewer? }}
 </div>
 <div class="cleaner"></div>
