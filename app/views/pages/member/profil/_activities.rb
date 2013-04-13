@@ -5,7 +5,7 @@ module EthilVan::App::Views
       class Activities < PageTab
 
          def initialize(page, activities)
-            super(page, 'activites')
+            super(page, 'activite')
             @activities = activities
          end
 
