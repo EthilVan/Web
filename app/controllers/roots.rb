@@ -9,15 +9,7 @@ class EthilVan::App < Sinatra::Base
    logged_only %r{^/membre}
 
    # Gestion
-   protect %r{^/gestion},    EthilVan::Role::MODO
-   protect %r{^/moderation}, EthilVan::Role::MODO
-
-   get '/gestion/?' do
-      redirect '/gestion/postulation'
-   end
-
-   # Legacy
-   get %r{^/moderation(?:/?$|/)} do
-      redirect request.path.gsub(%r{^/moderation}, '/gestion')
-   end
+   protect %r{^/gestion/postulation}, EthilVan::Role::MODO
+   protect %r{^/gestion/annonce},     EthilVan::Role::REDACTEUR
+   protect %r{^/gestion/discussion},  EthilVan::Role::REDACTEUR
 end
