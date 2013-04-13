@@ -12,7 +12,7 @@ class EthilVan::App < Sinatra::Base
          redirect page.main_tab.tab_complete_url
       end
 
-      get "#{page.yaml_tabs_url}/?" do |tab|
+      get page.yaml_tabs_url do |tab|
          view page
          mustache page.yaml_template
       end

@@ -41,7 +41,7 @@ module EthilVan::App::Views
       end
 
       def yaml_tabs_url
-         %r{#{@yaml_url}/(#{@page_tabs.map(&:tab_url) * '|'})$}
+         %r{#{@yaml_url}/(#{@page_tabs.map(&:tab_url) * '|'})/?$}
       end
 
       def main_tab
