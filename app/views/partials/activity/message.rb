@@ -4,8 +4,18 @@ module EthilVan::App::Views
 
       class Message < ActivityPartial
 
+         def discussion_urls
+            @discussion_urls ||= begin
+               if _subject.discussion.group.is_a? GestionDiscussionGroup
+                  urls::Gestion
+               else
+                  urls::Member
+               end
+            end
+         end
+
          def subject_url
-            urls::Member::Message.show(_subject)
+            discussion_urls::Message.show(_subject)
          end
 
          def subject_discussion
