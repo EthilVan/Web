@@ -20,7 +20,7 @@ module EthilVan::App::Views
          def page_tabs
             @page_tabs ||= [
                @tab_general, @tab_postulation,
-               @tab_activities, @tab_tags, @tab_messages
+               @tab_activities, @tab_messages, @tab_tags
             ]
          end
 
