@@ -14,4 +14,11 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    has_many :discussion_group_subscriptions, foreign_key: :group_id
    has_many :subscribers, through: :discussion_group_subscriptions,
          source: :account
+
+   # ==========================================================================
+   # * Methods
+   # ==========================================================================
+   def activity_viewable_by?(account)
+      account.subscripted_group_ids.include? id
+   end
 end

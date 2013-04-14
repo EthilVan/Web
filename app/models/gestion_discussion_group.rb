@@ -15,4 +15,8 @@ class GestionDiscussionGroup < ActiveRecord::Base
    def viewable_by?(account)
       account.role.inherit? EthilVan::Role.get(role.to_sym)
    end
+
+   def activity_viewable_by?(account)
+      viewable_by?(account)
+   end
 end

@@ -39,15 +39,13 @@ class Discussion < ActiveRecord::Base
    activities_includes :group
 
    activities_filter :feed, :create do |viewer, subject, activity|
-      activity.actor.id == viewer.id or
-            viewer.subscripted_group_ids.include?(subject.group.id) or
-            viewer.subscripted_discussion_ids.include?(subject.id)
+      activity.viewer_is_actor?(viewer) or subject.followed_by?(viewer) or
+            subject.group.activity_viewable_by?(viewer)
    end
 
    activities_filter :feed, :moved, :archived, :unarchived do
          |viewer, subject, activity|
-      activity.actor.id == viewer.id or
-            viewer.subscripted_discussion_ids.include?(subject.id)
+      activity.viewer_is_actor?(viewer) or subject.followed_by?(viewer)
    end
 
    activities_filter :list, :moved, :archived, :unarchived do
@@ -79,6 +77,10 @@ class Discussion < ActiveRecord::Base
 
    def total_pages
       page(1).total_pages
+   end
+
+   def followed_by?(account)
+      account.subscripted_discussion_ids.include?(id)
    end
 
 private

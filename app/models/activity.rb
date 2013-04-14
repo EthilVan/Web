@@ -61,4 +61,8 @@ class Activity < ActiveRecord::Base
          end
       end
    end
+
+   def viewer_is_actor?(viewer)
+      actor_id == viewer.id
+   end
 end

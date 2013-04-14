@@ -28,8 +28,9 @@ class Message < ActiveRecord::Base
 
    activities_filter :feed, :create do |viewer, subject, activity|
       discussion = subject.discussion
-      activity.actor.id == viewer.id or
-            viewer.subscripted_discussion_ids.include?(discussion.id)
+      activity.viewer_is_actor?(viewer) or
+            discussion.followed_by?(viewer) or
+            discussion.group.activity_viewable_by?(viewer)
    end
 
    activities_filter :feed, :edit do |viewer, subject, activity|
