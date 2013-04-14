@@ -1,5 +1,41 @@
 {{# page_title }}Accueil{{/ page_title }}
 
+<div class="navbar navbar-inverse">
+   <div class="navbar-inner">
+      <div class="container">
+         {{# redacteur? }}
+            <ul class="nav">
+               <li>
+                  <a href="/gestion">Gestion</a>
+               </li>
+               {{# modo? }}
+               <li>
+                  <a href="/gestion/postulation">Postulations</a>
+               </li>
+               {{/ modo? }}
+               <li>
+                  <a href="/gestion/discussion">Discussions</a>
+               </li>
+               <li>
+                  <a href="/gestion/annonce">Annonces</a>
+               </li>
+               <li class="divider-vertical"></li>
+            </ul>
+         {{/ redacteur? }}
+         <ul class="nav">
+            <li>
+               <a href="">Suivi</a>
+            </li>
+         </ul>
+         <ul class="nav pull-right">
+            <li>
+               <a href="/membre/logout">Déconnexion</a>
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>
+
 <ul class="flux" data-autofill>
 {{# activities }}
    <li class="activity-{{ viewed_class }} activite">{{{ render_activity }}}</li>
