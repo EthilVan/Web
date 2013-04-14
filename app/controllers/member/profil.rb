@@ -36,7 +36,7 @@ class EthilVan::App < Sinatra::Base
       redirect urls::Member::Profil.general(name)
    end
 
-   xhr_get %r{/membre/@(#{Account::NAME})/activites/?$} do |name|
+   xhr_get %r{/membre/@(#{Account::NAME})/activite/?$} do |name|
       account    = profil_account    name
       activities = profil_activities account
 
@@ -60,7 +60,7 @@ class EthilVan::App < Sinatra::Base
       mustache 'membre/profil/_tags'
    end
 
-   tabs = %w{general postulation activites tags messages}
+   tabs = %w{general postulation activite tags messages}
    get %r{/membre/@(#{Account::NAME})/(?:#{tabs *  '|'})/?$} do |name|
       account    = profil_account    name
       activities = profil_activities account

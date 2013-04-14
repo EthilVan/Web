@@ -29,7 +29,7 @@ module EthilVan
          end
 
          def activities(account)
-            base(account) + '/activites'
+            base(account) + '/activite'
          end
 
          def tags(account)
