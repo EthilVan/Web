@@ -1,3 +1,7 @@
+gestion:
+   url: "gestion"
+   template: "gestion/index"
+
 projets:
    url: "membre/projets"
    template: "membre/projets"
