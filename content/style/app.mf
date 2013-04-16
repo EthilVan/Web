@@ -28,3 +28,4 @@ membre/profil/messages.less
 membre/profil/form.less
 membre/membres/list.less
 gestion/postulation.less
+gestion/annonce.less

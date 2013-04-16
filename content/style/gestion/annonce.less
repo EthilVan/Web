@@ -1,0 +1,72 @@
+#subcontents {
+
+   #annonce-btn-creer {
+      margin: 0 auto;
+      display: block;
+   }
+
+   #annonce-form {
+
+      textarea {
+         width: 99%;
+         max-width: 99%;
+      }
+
+   }
+
+   li.activite.annonce {
+      margin-top: 10px;
+
+      &:first-child {
+         margin-top: 0px;
+      }
+
+      &:hover {
+
+         .info-annonce {
+
+            .edit, .suppr {
+               display: block;
+            }
+         }
+      }
+
+      .info-annonce {
+         height: 21px;
+         padding-bottom: 5px;
+         border-bottom: 1px solid;
+         margin-bottom: 10px;
+
+         .edit, .suppr {
+            width: 24px;
+            float: right;
+            display: none;
+         }
+
+         .edit {
+            background-image: url(images/interaction/edit.png);
+            height: 21px;
+            margin-top: -3px;
+
+            &:hover {
+               background-image: url(images/interaction/edit-2.png);
+            }
+
+         }
+
+         .suppr {
+            background-image: url(images/interaction/suppr.png);
+            height: 18px;
+            margin-left: 10px;
+
+            &:hover {
+               background-image: url(images/interaction/suppr-2.png);
+            }
+
+         }
+
+      }
+
+   }
+
+}

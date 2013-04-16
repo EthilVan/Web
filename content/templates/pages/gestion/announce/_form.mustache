@@ -2,12 +2,15 @@
 <form id="annonce-form" {{{ attributes }}}>
 
    {{# content }}
-      {{> form/label }}
-      {{> form/mdeditor }}
+      {{> gestion/announce_editor }}
       {{> form/errors }}
    {{/ content }}
 
-   <input class="btn" type="submit" value="Soumettre"
+   <br>
+
+   <input class="btn pull-right" type="submit" value="Poster"
          {{# inline? }}data-inline-target="#annonce-form"{{/ inline? }}/>
+
+   <div class="cleaner"></div>
 </form>
 {{/ form }}

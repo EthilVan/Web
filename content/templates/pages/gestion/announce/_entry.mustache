@@ -1,8 +1,12 @@
-<div id="{{ anchor }}">
-   Par <a href="{{ author_url }}">{{ author }}</a> le {{ date }} :
-   <div>
-      <a href="{{ edit_url }}" data-inline-target="#{{ anchor }}">Editer</a>
-      <a href="{{ delete_url }}" data-remove-target="#{{ anchor }}">Supprimer</a>
+<li class="activite annonce" id="{{ anchor }}">
+   <div class="info-annonce">
+      Par <a href="{{ author_url }}">{{ author }}</a> le {{ date }}
+      <a href="{{ delete_url }}" data-remove-target="#{{ anchor }}">
+         <div class="suppr"></div>
+      </a>
+      <a href="{{ edit_url }}" data-inline-target="#{{ anchor }}">
+         <div class="edit"></div>
+      </a>
    </div>
    <div>{{{ content }}}</div>
-</div>
+</li>
