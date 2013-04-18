@@ -39,7 +39,11 @@ class EthilVan::App < Sinatra::Base
       login = Login.new params[:login]
       if login.valid?
          account = login.account
-         token = account.generate_auth_token
+         if login.remember
+            token = account.generate_remembered_auth_token
+         else
+            token = account.generate_auth_token
+         end
          login(account.name, token, login.remember)
          redirect_after_login
          redirect '/membre'
@@ -49,7 +53,7 @@ class EthilVan::App < Sinatra::Base
    end
 
    get '/membre/logout/?' do
-      current_account.delete_auth_token
+      current_account.delete_auth_tokens
       logout
       redirect '/'
    end

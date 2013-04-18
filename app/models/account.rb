@@ -112,7 +112,8 @@ class Account < ActiveRecord::Base
    def self.authenticate_by_token(name, auth_token)
       account = find_by_name name
       return nil if account.nil?
-      return nil unless account.check_token?(auth_token)
+      return nil unless account.check_token?(auth_token) or
+            account.check_remembered_token?(auth_token)
       return account
    end
 
@@ -148,6 +149,11 @@ class Account < ActiveRecord::Base
       Password.new(auth_token) == token
    end
 
+   def check_remembered_token?(token)
+      return false if remembered_auth_token.nil?
+      Password.new(remembered_auth_token) == token
+   end
+
    def new_password?
       crypted_password.blank? || password.present?
    end
@@ -167,7 +173,15 @@ class Account < ActiveRecord::Base
       return raw_auth_token
    end
 
-   def delete_auth_token
+   def generate_remembered_auth_token
+      raw_auth_token = SecureRandom.base64(180)
+      auth_token = Password.create(raw_auth_token, cost: AUTH_TOKEN_COST)
+      update_attribute :remembered_auth_token, auth_token
+      return raw_auth_token
+   end
+
+   def delete_auth_tokens
       update_attribute :auth_token, nil
+      update_attribute :remembered_auth_token, nil
    end
 end
