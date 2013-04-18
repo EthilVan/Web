@@ -11,6 +11,7 @@ class Profil < ActiveRecord::Base
    attr_accessible :birthdate_formatted
    attr_accessible :sexe
    attr_accessible :localisation
+   attr_accessible :availability
    attr_accessible :website
    attr_accessible :twitter
    attr_accessible :youtube

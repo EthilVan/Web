@@ -39,6 +39,16 @@
          </div>
       {{/ localisation }}
 
+      {{# availability }}
+         <div class="control-group">
+            <div class="control-label compteur">{{> form/label }}</div>
+            <div class="controls">
+               {{> form/textarea }}
+               {{> form/errors }}
+            </div>
+         </div>
+      {{/ availability }}
+
       {{# minecraft_since }}
          <div class="control-group">
             <div class="control-label compteur">{{> form/label }}</div>

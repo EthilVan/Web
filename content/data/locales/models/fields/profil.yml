@@ -11,6 +11,7 @@ fr:
             birthdate:           "Date de naissance"
             sexe:                "Sexe"
             localisation:        "Localisation"
+            availability:        "Disponibilités"
             website:             "Site Web"
             twitter:             "Compte Twitter"
             youtube:             "Compte Youtube"

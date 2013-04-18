@@ -57,6 +57,11 @@ module EthilVan::App::Views
             @profil.minecraft_since
          end
 
+         presence_predicate :availability
+         def availability
+            @profil.availability
+         end
+
          presence_predicate :skill
          def skill
             @profil.skill

@@ -39,6 +39,12 @@
          <span class="profil-label">Dernière visite sur le serveur : </span>
          <span class="profil-valeur">{{ last_minecraft_visit }}</span>
       </div>
+      {{# availability? }}
+      <div class="info availability">
+         <span class="profil-label">Disponibilités : </span>
+         <span class="profil-valeur">{{ availability }}</span>
+      </div>
+      {{/ availability? }}
    </div>
 
    <div class="profil-info minecraft">

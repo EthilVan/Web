@@ -44,6 +44,10 @@ module EthilVan::App::Views
             text :localisation
          end
 
+         def availability
+            text :availability
+         end
+
          def minecraft_since
             text :minecraft_since, validations: {
                minlength: 20
