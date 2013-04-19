@@ -13,7 +13,7 @@
       {{/ member? }}
 
       {{^ member? }}
-         <img class="avatar" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=30"/>
+         <img class="avatar" src="{{ author_avatar }}"/>
          <div class="pseudo">{{ author_name }} </div>
          {{# modo? }}
             <div class="email">({{ author_email }})</div>

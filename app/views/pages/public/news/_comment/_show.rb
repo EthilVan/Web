@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 module EthilVan::App::Views
 
    module Public::News::Comment
@@ -26,6 +28,11 @@ module EthilVan::App::Views
 
          def author_email
             @comment.email
+         end
+
+         def author_avatar
+            md5hash = Digest::MD5.hexdigest author_email
+            "http://www.gravatar.com/avatar/#{md5hash}"
          end
 
          def content
