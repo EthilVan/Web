@@ -16,7 +16,7 @@
          <img class="avatar" src="{{ author_avatar }}"/>
          <div class="pseudo">{{ author_name }} </div>
          {{# modo? }}
-            <div class="email">({{ author_email }})</div>
+            <div class="email">(<a href="mailto:{{ author_email }}">{{ author_email }}</a>)</div>
          {{/ modo? }}
       {{/ member? }}
 
