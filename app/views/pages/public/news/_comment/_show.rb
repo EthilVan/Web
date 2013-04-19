@@ -35,6 +35,10 @@ module EthilVan::App::Views
             "http://www.gravatar.com/avatar/#{md5hash}"
          end
 
+         def created_at
+            I18n.l @comment.created_at
+         end
+
          def content
             @comment.parsed_content
          end
