@@ -13,7 +13,7 @@ module EthilVan::App::Views
          end
 
          def cadre
-            @cadre = Partials::Message::Cadre.new(@app.current_account)
+            @cadre = Partials::Account::Cadre.new(@app.current_account)
          end
       end
    end
