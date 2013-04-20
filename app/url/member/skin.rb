@@ -7,7 +7,7 @@ module EthilVan
          extend self
 
          def avatar(account)
-            "/avatar/#{account.name}"
+            "/avatar/#{account.name}.png"
          end
 
          def private_skin(account, type, scale)
