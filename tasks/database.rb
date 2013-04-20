@@ -6,6 +6,7 @@ namespace :db do
 
    task :migrate do
       require './app/boot/database'
+      require 'ethilvan/active_record'
       require 'logger'
       ActiveRecord::Migration.verbose = true
 
