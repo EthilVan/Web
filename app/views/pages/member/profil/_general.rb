@@ -22,7 +22,7 @@ module EthilVan::App::Views
          end
 
          def cadre
-            Cadre.new(@account, @profil, @minecraft_stats)
+            Partials::Account::Cadre.new(@account)
          end
 
          def show_email?

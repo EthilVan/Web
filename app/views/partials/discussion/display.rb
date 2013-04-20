@@ -24,12 +24,11 @@ module EthilVan::App::Views
 
          def messages
             return [] if @page.nil?
-            stats_max = MinecraftStats.maximum('version')
             not_archived = !@discussion.archived
             @page.each_with_index.map do |message, index|
                editable = modo?
                editable ||= not_archived && message.editable_by?(current_account)
-               Partials::Message::Display.new(@discussion_urls, message, editable, stats_max)
+               Partials::Message::Display.new(@discussion_urls, message, editable)
             end
          end
 

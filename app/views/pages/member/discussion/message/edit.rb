@@ -7,7 +7,7 @@ module EthilVan::App::Views
          def initialize(discussion_urls, message, inline = false, url = '')
             @discussion_urls = discussion_urls
             @form = Partials::Message::Form.new(message, inline, url)
-            @cadre = Partials::Message::Cadre.new(message.account)
+            @cadre = Partials::Account::Cadre.new(message.account)
          end
 
          def cadre

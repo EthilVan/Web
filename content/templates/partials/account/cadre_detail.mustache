@@ -1,7 +1,9 @@
-<div class="profil-cadre full" style="background-image: url('{{ cadre_url }}');">
-   <div class="jauge" style="top: {{ gauge_top }}px; height: {{ gauge_height }}px;"> </div>
+<div class="profil-cadre full" style="background-image: url('{{ background_url }}');">
+   <a href="{{ activities_url }}">
+      <div class="jauge" style="top: {{ gauge_top }}px; height: {{ gauge_height }}px;"> </div>
+   </a>
    <div class="avatar" style="background-image: url('{{ avatar }}');"> </div>
-   <div class="pseudo"> - {{ account_name }} - </div>
+   <div class="pseudo"> - {{ name }} - </div>
    <div class="online-status {{ online_class }}"> </div>
    <img class="skin" src="{{ skin_url }}"> </img>
    <div class="stat deaths">

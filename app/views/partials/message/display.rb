@@ -4,10 +4,9 @@ module EthilVan::App::Views
 
       class Display < Partial
 
-         def initialize(discussion_urls, message, can_edit, stats_max = nil)
+         def initialize(discussion_urls, message, can_edit)
             @discussion_urls = discussion_urls
             @message = message
-            @stats_max = stats_max
             @can_edit = can_edit
          end
 
@@ -16,7 +15,7 @@ module EthilVan::App::Views
          end
 
          def cadre
-            Cadre.new(@message.account, @stats_max)
+            Partials::Account::Cadre.new(@message.account)
          end
 
          def anchor
