@@ -10,6 +10,7 @@ class Account < ActiveRecord::Base
    AUTH_TOKEN_COST = 5
 
    attr_accessible :email
+   attr_accessible :minecraft_name
    attr_accessible :password
    attr_accessible :password_confirmation
 

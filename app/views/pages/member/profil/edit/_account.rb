@@ -25,6 +25,13 @@ module EthilVan::App::Views
                boolean :vote_needed
             end
 
+            def minecraft_name
+               text :minecraft_name, validations: {
+                  required: true,
+                  nameformat: true,
+               }
+            end
+
             def email
                text :email, validations: { type: 'email' }
             end
