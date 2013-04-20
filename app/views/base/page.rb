@@ -91,6 +91,10 @@ module EthilVan::App::Views
       def submenu_member_visibility
          member_page? ? ' submenu-visible' : ' submenu-hidden'
       end
+
+      def version
+         EthilVan::VERSION
+      end
    end
 
    module Public

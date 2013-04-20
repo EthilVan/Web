@@ -34,6 +34,12 @@ module EthilVan
       bool
    end
 
+   if production?
+      VERSION = 'v' + `git describe --tags --abbrev=0`.strip
+   else
+      VERSION = "Dev"
+   end
+
    require_relative 'config'
    Config = YamlConfig.new path('config.yml')
 
