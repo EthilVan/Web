@@ -19,4 +19,9 @@ class EthilVan::App < Sinatra::Base
       json << ']'
       json
    end
+
+   get '/markdown/editeur' do
+      view Views::Public::MarkdownEditor.new
+      mustache 'public/markdown_editor'
+   end
 end
