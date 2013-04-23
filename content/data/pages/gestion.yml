@@ -1,3 +1,4 @@
 gestion:
    url: "gestion"
+   role: "redacteur"
    template: "gestion/index"

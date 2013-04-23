@@ -22,11 +22,13 @@ module EthilVan::App::Views
 
       include YamlHelpers
 
-      attr_reader :yaml_url, :yaml_template
+      attr_reader :yaml_url, :yaml_role, :yaml_template
 
       def initialize(id, hash)
          super()
          @yaml_url = '/' + (hash['url'] || id)
+         @yaml_role = hash['role']
+         @yaml_role &&= EthilVan::Role.get(hash['role'].to_sym)
          @yaml_template = hash['template']
 
          add_helpers hash
@@ -38,6 +40,10 @@ module EthilVan::App::Views
             meta_class.send(:define_method, "tab_#{tab.tab_name}") { tab }
             tab
          end
+      end
+
+      def yaml_role?
+         not @yaml_role.nil?
       end
 
       def yaml_tabs_url

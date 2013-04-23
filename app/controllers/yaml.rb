@@ -2,6 +2,7 @@ class EthilVan::App < Sinatra::Base
 
    def self.define_simple_page(page)
       get "#{page.yaml_url}/?" do
+         ensure_authorized(page.yaml_role) if page.yaml_role?
          view page
          mustache page.yaml_template
       end
@@ -9,10 +10,12 @@ class EthilVan::App < Sinatra::Base
 
    def self.define_page_with_tabs(page)
       get "#{page.yaml_url}/?" do
+         ensure_authorized(page.yaml_role) if page.yaml_role?
          redirect page.main_tab.tab_complete_url
       end
 
       get page.yaml_tabs_url do |tab|
+         ensure_authorized(page.yaml_role) if page.yaml_role?
          view page
          mustache page.yaml_template
       end
