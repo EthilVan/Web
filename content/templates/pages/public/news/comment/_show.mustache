@@ -1,6 +1,5 @@
 <div id="{{ anchor }}" class="news-comment">
    <div class="auteur">
-      <div>Le {{ created_at }}</div>
       {{# editable? }}
          <div class="edition">
             <a class="edit" href="{{ edit_url }}"></a>
@@ -20,6 +19,8 @@
             <div class="email">(<a href="mailto:{{ author_email }}">{{ author_email }}</a>)</div>
          {{/ modo? }}
       {{/ member? }}
+
+      <div class="date">le {{ created_at }}</div>
 
       <div class="cleaner"></div>
    </div>
