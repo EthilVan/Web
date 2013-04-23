@@ -1,0 +1,3 @@
+gestion:
+   url: "gestion"
+   template: "gestion/index"
