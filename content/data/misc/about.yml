@@ -12,8 +12,8 @@ team:
       twitter:    Travis_Hironak
       location:   'Nevers, France'
 
-   -  role:       Server Admin
-      role_fr:    Administrateur Serveur
+   -  role:       Server admin
+      role_fr:    Administrateur serveur
       name:       Loup Des Neiges
       site:       http://www.loup-des-neiges.com
       twitter:    loupdesneiges

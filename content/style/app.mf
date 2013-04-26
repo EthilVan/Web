@@ -6,6 +6,7 @@ layout/page.less
 layout/form.less
 layout/jquery.atwho.css
 layout/mdeditor.less
+public/about.less
 public/login/login.less
 public/presentation/equipe.less
 public/apercu/videos.less

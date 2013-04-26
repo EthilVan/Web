@@ -1,44 +1,53 @@
 {{# page_title }}A Propos{{/ page_title }}
 
-<h3>Equipe :</h3>
+<div id="about">
 
-<ul>
-   {{# team }}
-   <li>
-      <p>{{ role_fr }} : {{ name }}</p>
-      {{# site }}
-      <p>Site : <a href="{{ site }}">{{ site }}</a></p>
-      {{/ site }}
-      {{# twitter }}
-      <p>Twitter : <a href="http://twitter.com/{{ twitter }}">{{ twitter }}</a></p>
-      {{/ twitter }}
-      {{# location }}
-      <p>Localisation : {{ location }}</p>
-      {{/ location }}
-   </li>
-   {{/ team }}
-</ul>
+   <h3>Equipe :</h3>
 
-<h3>In the wild :</h3>
-<ul>
-   <li><a href="http://twitter.com/EthilVan">Twitter</a></li>
-   <li><a href="http://twitter.com/EthilVanDev">Twitter Développement</a></li>
-   <li><a href="https://github.com/EthilVan">Github Plugins</a></li>
-   <li><a href="https://github.com/EthilVanMods">Github Mods</a></li>
-</ul>
+   <ul>
+      {{# team }}
+      <li class="tiers">
+         <p><b>{{ role_fr }} :</b> {{ name }}</p>
+         {{# site }}
+         <p>Site : <a href="{{ site }}">{{ site }}</a></p>
+         {{/ site }}
+         {{# twitter }}
+         <p>Twitter : <a href="http://twitter.com/{{ twitter }}">{{ twitter }}</a></p>
+         {{/ twitter }}
+         {{# location }}
+         <p>Localisation : {{ location }}</p>
+         {{/ location }}
+      </li>
+      {{/ team }}
+   </ul>
+   <br>
 
-<h3>Caractèristiques Techniques :</h3>
+   <h3>In the wild :</h3>
+   <ul>
+      <li class="tiers"><a href="http://twitter.com/EthilVan"><img src="{{ static }}images/icones/twitter.png"> Twitter</a></li>
+      <li class="tiers"><a href="http://twitter.com/EthilVanDev"><img src="{{ static }}images/icones/twitter.png"> Twitter Développement</a></li>
+      <li class="tiers"><a href="https://github.com/EthilVan"><img src="{{ static }}images/icones/github.png"> Github</a></li>
+   </ul>
+   <br>
 
-<h4>Déploiement :</h4>
-<ul>
-{{# stack }}
-   <li><a href="{{ url }}">{{ name }}</a></li>
-{{/ stack }}
-</ul>
+   <h3>Caractéristiques techniques :</h3>
 
-<h4>Composants :</h4>
-<ul>
-{{# components }}
-   <li><a href="{{ url }}">{{ name }}</a></li>
-{{/ components }}
-</ul>
+   <div class="carac">
+      <h5>Déploiement :</h5>
+      <ul>
+      {{# stack }}
+         <li><a href="{{ url }}">{{ name }}</a></li>
+      {{/ stack }}
+      </ul>
+   </div>
+
+   <div class="carac">
+      <h5>Composants :</h5>
+      <ul>
+      {{# components }}
+         <li><a href="{{ url }}">{{ name }}</a></li>
+      {{/ components }}
+      </ul>
+   </div>
+
+</div>
