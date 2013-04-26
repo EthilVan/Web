@@ -29,5 +29,5 @@ default:
    subroles:
       - ancien
 ancien:
-   name: "Pélerin"
+   name: "Pèlerin"
    subroles: []
