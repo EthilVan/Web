@@ -3,6 +3,7 @@ lib/jquery.a-tools.js
 lib/spin.js
 lib/spin.jquery.js
 lib/jquery.atwho.js
+lib/dropzone.js
 bootstrap/bootstrap-transition.js
 bootstrap/bootstrap-button.js
 bootstrap/bootstrap-tab.js
@@ -23,5 +24,6 @@ app/parsley.custom.js
 app/parsley.js
 app/text-counter.js
 app/inline.js
+app/dropzone.js
 app/postulation.js
 app/postulation-vote.js

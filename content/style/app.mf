@@ -5,6 +5,7 @@ layout/page-scroller.less
 layout/page.less
 layout/form.less
 layout/jquery.atwho.css
+layout/dropzone.less
 layout/mdeditor.less
 public/about.less
 public/login/login.less
