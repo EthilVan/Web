@@ -25,7 +25,6 @@ class EthilVan::App
          folder = File.join(EthilVan::Config.upload_folder, subfolder)
          filename = SecureRandom.hex(20) + File.extname(upload[:filename])
          dest = File.join(folder, filename)
-         puts dest
 
          FileUtils.mkdir_p folder
          File.open(dest, 'wb') do |destfile|
