@@ -6,11 +6,14 @@ class EthilVan::YamlConfig
    attr :mail_delivery_method
    attr :mail_sender
    attr :mail_test_receiver
+   attr :upload_folder
+   attr :upload_url
 
    def initialize(path)
       hash = YAML.load_file path
       load_database(hash)
       load_mail(hash)
+      load_upload(hash)
    end
 
    def mail_test_receiver?
@@ -48,5 +51,17 @@ class EthilVan::YamlConfig
       @mail_delivery_method = [:smtp, hash['mail']['smtp']]
       @mail_sender = "#{hash['mail']['sender_name']}"
       @mail_sender << " <#{hash['mail']['sender']}>"
+   end
+
+   def load_upload(hash)
+      unless hash.key? 'upload'
+         @upload_folder = EthilVan.path('tmp/uploads')
+         @upload_url = 'http://ethilvan.fr'
+         return
+      end
+
+      upload = hash['upload']
+      @upload_folder = File.expand_path(upload['folder'], EthilVan::ROOT)
+      @upload_url = upload['url']
    end
 end
