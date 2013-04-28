@@ -27,14 +27,17 @@ class Message < ActiveRecord::Base
    activities_includes :account
 
    activities_filter :feed, :create do |viewer, subject, activity|
-      discussion = subject.discussion
       activity.viewer_is_actor?(viewer) or
-            discussion.followed_by?(viewer) or
-            discussion.group.activity_viewable_by?(viewer)
+            subject.discussion.followed_by?(viewer) or
+            subject.discussion.group.followed_by?(viewer)
    end
 
    activities_filter :feed, :edit do |viewer, subject, activity|
       [subject.account.id, activity.actor.id].include? viewer.id
+   end
+
+   activities_filter :list, :create, :edit do |viewer, subject, activity|
+      subject.discussion.group.viewable_by?(viewer)
    end
 
    # ==========================================================================

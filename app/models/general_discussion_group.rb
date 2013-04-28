@@ -18,7 +18,11 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    # ==========================================================================
    # * Methods
    # ==========================================================================
-   def activity_viewable_by?(account)
+   def viewable_by?(account)
+      true
+   end
+
+   def followed_by?(account)
       account.subscripted_group_ids.include? id
    end
 end

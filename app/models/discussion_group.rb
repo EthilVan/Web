@@ -43,8 +43,4 @@ module DiscussionGroup
    def discussions_count
       discussions.count
    end
-
-   def viewable_by?(account)
-      true
-   end
 end

@@ -39,13 +39,18 @@ class Discussion < ActiveRecord::Base
    activities_includes :group
 
    activities_filter :feed, :create do |viewer, subject, activity|
-      activity.viewer_is_actor?(viewer) or subject.followed_by?(viewer) or
-            subject.group.activity_viewable_by?(viewer)
+      activity.viewer_is_actor?(viewer) or
+            subject.followed_by?(viewer) or
+            subject.group.followed_by?(viewer)
    end
 
    activities_filter :feed, :moved, :archived, :unarchived do
          |viewer, subject, activity|
       activity.viewer_is_actor?(viewer) or subject.followed_by?(viewer)
+   end
+
+   activities_filter :list, :create do |viewer, subject, activity|
+      subject.group.viewable_by?(viewer)
    end
 
    activities_filter :list, :moved, :archived, :unarchived do
