@@ -10,6 +10,7 @@ gem 'activerecord'
 gem 'mysql2'
 gem 'mail'
 gem 'mustache'
+gem 'beanstalk-client'
 
 # Assets
 gem 'rainpress'

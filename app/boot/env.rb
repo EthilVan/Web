@@ -52,4 +52,6 @@ module EthilVan
 
    $LOAD_PATH.unshift path('lib')
    require 'ethilvan'
+
+   require_all 'app/jobs'
 end

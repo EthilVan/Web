@@ -8,12 +8,14 @@ class EthilVan::YamlConfig
    attr :mail_test_receiver
    attr :upload_folder
    attr :upload_url
+   attr :jobs_url
 
    def initialize(path)
       hash = YAML.load_file path
       load_database(hash)
       load_mail(hash)
       load_upload(hash)
+      load_jobs(hash)
    end
 
    def mail_test_receiver?
@@ -63,5 +65,9 @@ class EthilVan::YamlConfig
       upload = hash['upload']
       @upload_folder = File.expand_path(upload['folder'], EthilVan::ROOT)
       @upload_url = upload['url']
+   end
+
+   def load_jobs(hash)
+      @jobs_url = hash['jobs_url'] || 'localhost:11300'
    end
 end

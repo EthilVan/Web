@@ -24,7 +24,7 @@ class Message < ActiveRecord::Base
    # ==========================================================================
    # * Activity
    # ==========================================================================
-   activities_includes :account
+   activities_includes account: [], discussion: :group
 
    activities_filter :feed, :create do |viewer, subject, activity|
       activity.viewer_is_actor?(viewer) or
