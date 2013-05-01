@@ -77,8 +77,7 @@ module EthilVan::App::Views
          end
 
          def age
-            time = Time.now - @profil.birthdate.to_time
-            Time.at(time).year - 1970
+            AgeUtil.from_dob(@profil.birthdate)
          end
 
          presence_predicate :sexe
