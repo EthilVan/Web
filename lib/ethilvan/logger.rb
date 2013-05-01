@@ -10,6 +10,8 @@ module EthilVan
    ::Logging.logger.root.appenders = ::Logging.appenders.stdout(
          layout: layout)
 
+   EthilVan.production? { ::Logging.logger.root.level = :warn }
+
    module Logging
 
       def self.registered(app)
