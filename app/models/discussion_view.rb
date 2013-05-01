@@ -10,14 +10,14 @@ class DiscussionView < ActiveRecord::Base
       create(account_id: account.id, discussion_id: nil, date: Time.now)
    end
 
-   def self.update_for(account, discussion, date = Time.now)
-      view = where(account_id: account.id, discussion_id: discussion.id).first
-      if view.nil?
-         view = DiscussionView.create(account_id: account.id,
-               discussion_id: discussion.id, date: date)
-      else
+   def self.update_for(account_id, discussion_id, date = Time.now)
+      view = where(account_id: account_id, discussion_id: discussion_id).first
+      unless view.nil?
          view.update_attribute :date, date
+         return
       end
+      DiscussionView.create(account_id: account_id,
+            discussion_id: discussion_id, date: date)
    end
 
    def <=>(discussion)

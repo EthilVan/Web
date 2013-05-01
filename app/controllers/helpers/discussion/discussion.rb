@@ -56,7 +56,7 @@ module EthilVan::App::Helpers
                      [ :profil, :minecraft_stats ])
                not_found unless page.present?
 
-               DiscussionView.update_for(current_account, discussion)
+               update_discussion_view(current_account, discussion)
 
                view views_ns::Show.new(discussion_urls, discussion, page)
                mustache "#{base_template}/show"
@@ -97,7 +97,7 @@ module EthilVan::App::Helpers
                message.account = current_account
 
                if message.save
-                  DiscussionView.update_for(current_account, discussion, Time.now + 1)
+                  update_discussion_view(current_account, discussion, Time.now + 1)
                   redirect_not_xhr discussion_urls.discussion.show(discussion,
                         discussion.total_pages, message)
                   new_messages = new_messages(discussion, last_message.to_i)

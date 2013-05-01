@@ -43,8 +43,7 @@ module EthilVan::App::Helpers
                message.activity_actor = current_account
 
                if message.update_attributes params[:message]
-                  DiscussionView.update_for(current_account,
-                        message.discussion,Time.now + 1)
+                  update_discussion_view(current_account, message.discussion,Time.now + 1)
                   redirect_not_xhr discussion_url discussion_urls, message
                   view_class = EthilVan::App::Views::Partials::Message::Display
                   view view_class.new discussion_urls, message, true

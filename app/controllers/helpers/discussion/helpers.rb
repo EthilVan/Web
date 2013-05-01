@@ -8,6 +8,11 @@ class EthilVan::App
 
          helpers do
 
+            def update_discussion_view(account, discussion, time = Time.now)
+               job = EthilVan::Jobs::UpdateDiscussionView.new(account, discussion, time)
+               EthilVan::Jobs.push(job)
+            end
+
             def discussion_url(discussion_urls, message, discussion = message.discussion, page = nil)
                page ||= message.page
                page = nil if page < 1
