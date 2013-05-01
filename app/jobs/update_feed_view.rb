@@ -1,19 +1,19 @@
 module EthilVan::Jobs
 
-   class UpdateLastVisit
+   class UpdateFeedView
 
-      def initialize(account, visit)
+      def initialize(account, view)
          @account_id = account.id
-         @visit = visit
+         @view = view
       end
 
       def message
-         'Updating Last Visit ...'
+         'Updating Feed View ...'
       end
 
       def run
          account = Account.find_by_id @account_id
-         account.update_attribute :last_visit, @visit
+         account.update_attribute :feed_view, @view
       end
    end
 end
