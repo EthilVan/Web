@@ -4,154 +4,162 @@
 @marge-texte: 15px;
 @marge-side: 15px;
 
-#subcontents .messages .message {
+#subcontents {
 
-   margin: 0px 5px;
-   margin-bottom: 20px;
-   padding: 10px 0px;
-   background-color: @gris-medium;
-   border-radius: 6px;
-   box-shadow: 1px 1px 0px 0px @gris-relief;
+   .messages {
 
-   &:last-child {
-      margin-bottom: 0px;
-   }
+      .message {
 
-   .profil-cadre {
-      margin-top: 8px;
-   }
-
-   .message-contenu {
-      margin: 5px;
-      background-color: @gris-colonne;
-      padding: 15px;
-      border-radius: 6px;
-      box-shadow: 1px 1px 0px 0px @gris-relief inset;
-
-      .texte, .mde-preview.mde-control {
+         margin: 0px 5px;
          margin-bottom: 20px;
+         padding: 10px 0px;
+         background-color: @gris-medium;
+         border-radius: 6px;
+         box-shadow: 1px 1px 0px 0px @gris-relief;
+
+         &:last-child {
+            margin-bottom: 0px;
+         }
+
+         .profil-cadre {
+            margin-top: 8px;
+         }
+
+         .message-contenu {
+            margin: 5px;
+            background-color: @gris-colonne;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 1px 1px 0px 0px @gris-relief inset;
+
+            .texte, .mde-preview.mde-control {
+               margin-bottom: 20px;
+            }
+
+            .dates {
+               margin: 0px 2px;
+
+               &.creation {
+                  float: left;
+               }
+
+               &.edition {
+                  float: right;
+               }
+
+            }
+
+            .ligne-signature {
+               border-bottom: 2px solid;
+            }
+
+            .signature-membre {
+               margin: 8px 5px;
+               margin-bottom: 0px;
+
+               .signature {
+                  max-height: 107px;
+                  overflow: hidden;
+                  padding-right: 10px;
+
+                  p {
+                     margin: 0px;
+                  }
+
+                  img {
+                     max-width: 100%;
+                     max-height: 100px;
+                     margin-top: 7px;
+                  }
+
+               }
+
+               .boutons {
+                  float: right;
+
+                  .edit, .suppr, .lien {
+                     width: 24px;
+                  }
+
+                  .lien {
+                     background-image: url(images/interaction/lien.png);
+                     height: 23px;
+                     margin-top: 4px;
+
+
+                     &:hover {
+                        background-image: url(images/interaction/lien-2.png);
+                     }
+
+                  }
+
+                  .edit {
+                     background-image: url(images/interaction/edit.png);
+                     height: 21px;
+                     margin-top: 6px;
+
+                     &:hover {
+                        background-image: url(images/interaction/edit-2.png);
+                     }
+
+                  }
+
+                  .suppr {
+                     background-image: url(images/interaction/suppr.png);
+                     height: 18px;
+                     margin-top: 10px;
+
+                     &:hover {
+                        background-image: url(images/interaction/suppr-2.png);
+                     }
+
+                  }
+
+               }
+
+            }
+
+         }
       }
 
-      .dates {
-         margin: 0px 2px;
+   }
 
-         &.creation {
+   .message-odd-even {
+
+      &:nth-child(odd) {
+
+         .profil-cadre {
             float: left;
+            margin-left: @marge-side;
          }
 
-         &.edition {
+         .message-contenu, .message-edit {
+            margin-left: @largeur-cadre + @marge-texte + @marge-side;
+            margin-right: @marge-side;
+
+            .cleaner-side {
+               clear: right;
+            }
+
+         }
+
+      }
+
+      &:nth-child(even) {
+
+         .profil-cadre {
             float: right;
+            margin-right: @marge-side;
          }
 
-      }
+         .message-contenu, .message-edit {
+            margin-right: @largeur-cadre + @marge-texte + @marge-side;
+            margin-left: @marge-side;
 
-      .ligne-signature {
-         border-bottom: 2px solid;
-      }
-
-      .signature-membre {
-         margin: 8px 5px;
-         margin-bottom: 0px;
-
-         .signature {
-            max-height: 107px;
-            overflow: hidden;
-            padding-right: 10px;
-
-            p {
-               margin: 0px;
+            .cleaner-side {
+               clear: left;
             }
 
-            img {
-               max-width: 100%;
-               max-height: 100px;
-               margin-top: 7px;
-            }
-
-         }
-
-         .boutons {
-            float: right;
-
-            .edit, .suppr, .lien {
-               width: 24px;
-            }
-
-            .lien {
-               background-image: url(images/interaction/lien.png);
-               height: 23px;
-               margin-top: 4px;
-
-
-               &:hover {
-                  background-image: url(images/interaction/lien-2.png);
-               }
-
-            }
-
-            .edit {
-               background-image: url(images/interaction/edit.png);
-               height: 21px;
-               margin-top: 6px;
-
-               &:hover {
-                  background-image: url(images/interaction/edit-2.png);
-               }
-
-            }
-
-            .suppr {
-               background-image: url(images/interaction/suppr.png);
-               height: 18px;
-               margin-top: 10px;
-
-               &:hover {
-                  background-image: url(images/interaction/suppr-2.png);
-               }
-
-            }
-
-         }
-
-      }
-
-   }
-}
-
-#subcontents .message-odd-even {
-
-   &:nth-child(odd) {
-
-      .profil-cadre {
-         float: left;
-         margin-left: @marge-side;
-      }
-
-      .message-contenu, .message-edit {
-         margin-left: @largeur-cadre + @marge-texte + @marge-side;
-         margin-right: @marge-side;
-
-         .cleaner-side {
-            clear: right;
-         }
-
-      }
-
-   }
-
-   &:nth-child(even) {
-
-      .profil-cadre {
-         float: right;
-         margin-right: @marge-side;
-      }
-
-      .message-contenu, .message-edit {
-         margin-right: @largeur-cadre + @marge-texte + @marge-side;
-         margin-left: @marge-side;
-
-         .cleaner-side {
-            clear: left;
          }
 
       }
