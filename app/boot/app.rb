@@ -30,7 +30,6 @@ module EthilVan
 
       register EthilVan::SinatraHelpers
       register EthilVan::Logging
-      register EthilVan::Cron::Sinatra
       register EthilVan::Static
       register EthilVan::Url::Sinatra
       register EthilVan::Cookies

@@ -20,7 +20,6 @@ module EthilVan
    require 'ethilvan/sinatra'
    require 'ethilvan/logger'
    require 'ethilvan/jobs'
-   require 'ethilvan/cron'
    require 'ethilvan/static'
    require 'ethilvan/mustache'
    require 'ethilvan/auth'
