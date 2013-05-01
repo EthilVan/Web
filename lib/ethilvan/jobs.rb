@@ -7,6 +7,8 @@ class << EthilVan::Jobs
 
    def push(job)
       pool.put(Marshal.dump(job))
+   rescue Beanstalk::NotConnected
+      job.run
    end
 
    def run
