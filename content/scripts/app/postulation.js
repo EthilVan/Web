@@ -76,7 +76,9 @@ $(function() {
 
    var onScreenRemove = function(event) {
       event.preventDefault();
-      $(this).parent().remove();
+      var $parent = $(this).parent();
+      $parent.find('.parsley-validated').parsley('destroy');
+      $parent.remove();
 
       screensCount = 0;
       $form.find('fieldset.field-screen').each(function() {
