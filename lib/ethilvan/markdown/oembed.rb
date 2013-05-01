@@ -7,13 +7,9 @@ module EthilVan::Markdown::Helpers
 
    module OEmbed
 
-      CACHE = {}
-      EthilVan::Cron.task { CACHE.clear }
-
       def image(link, title, alt)
-         return CACHE[link] if CACHE.key?(link)
          res = ::OEmbed::Providers.get(link)
-         CACHE[link] = res.html
+         res.html
       rescue
          super(link, title, alt)
       end
