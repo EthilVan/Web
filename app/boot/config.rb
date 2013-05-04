@@ -3,13 +3,17 @@ require 'yaml'
 class EthilVan::YamlConfig
 
    attr :database
+
    attr :mail_delivery_method
    attr :mail_sender
    attr :mail_test_receiver
+
    attr :upload_folder
    attr :upload_url
+
    attr :jobs_url
    attr :jobs_pidfile
+   attr :jobs_logfile
 
    def initialize(path)
       hash = YAML.load_file path
@@ -72,5 +76,7 @@ class EthilVan::YamlConfig
       @jobs_url = hash['jobs_url'] || 'localhost:11300'
       jobs_pidfile = hash['jobs_pid'] || 'tmp/jobs'
       @jobs_pidfile = EthilVan.expand_path jobs_pidfile
+      jobs_logfile = hash['jobs_log'] || 'tmp/jobs.log'
+      @jobs_logfile = EthilVan.expand_path jobs_logfile
    end
 end
