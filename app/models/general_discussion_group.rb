@@ -1,5 +1,7 @@
 class GeneralDiscussionGroup < ActiveRecord::Base
 
+   ALL_READ_ID = -1
+
    include DiscussionGroup
 
    attr_accessible :name
@@ -7,6 +9,7 @@ class GeneralDiscussionGroup < ActiveRecord::Base
    attr_accessible :icon
    attr_accessible :description
    attr_accessible :priority
+
 
    # ==========================================================================
    # * Relations

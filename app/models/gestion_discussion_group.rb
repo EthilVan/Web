@@ -1,5 +1,6 @@
 class GestionDiscussionGroup < ActiveRecord::Base
 
+   ALL_READ_ID = -2
    ROLES = ['redacteur', 'modo', 'dev', 'admin']
 
    include DiscussionGroup

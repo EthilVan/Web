@@ -17,13 +17,13 @@ module EthilVan::App::Helpers
                groups = group_type.by_priority.with_everything
                groups = groups.select { |group| group.viewable_by? current_account }
 
-               views = current_account.views_by_discussion_id
+               views = DiscussionViews.new(group_type, current_account)
                view views_ns::List.new discussion_urls, groups, views
                mustache "#{base_template}/list"
             end
 
             get "#{discussion_urls.group.root}/!toutes_lues/?" do
-               DiscussionView.mark_all_read_for(current_account)
+               DiscussionView.mark_all_read_for(group_type, current_account)
                redirect discussion_urls.group.root
             end
 
@@ -45,7 +45,7 @@ module EthilVan::App::Helpers
                      find_by_url group_url
                not_authorized unless group.viewable_by? current_account
 
-               views = current_account.views_by_discussion_id
+               views = DiscussionViews.new(group_type, current_account)
                view views_ns::Show.new discussion_urls, group, views
                mustache "#{base_template}/show"
             end

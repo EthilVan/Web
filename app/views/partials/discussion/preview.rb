@@ -10,7 +10,7 @@ module EthilVan::App::Views
             @first_message = discussion.first_message
             @last_message = discussion.last_message
             @account = current_account
-            @viewed = discussion.archived? || viewed?(views)
+            @viewed = discussion.archived? || views.include?(discussion)
          end
 
          def status_class
@@ -59,15 +59,6 @@ module EthilVan::App::Views
 
          def last_author_link
             urls::Member::Profil.show(@last_message.account)
-         end
-
-      private
-
-         def viewed?(views)
-            view = views[nil]
-            return true if !view.nil? and view.first > @discussion
-            view = views[@discussion.id]
-            return (!view.nil? and view.first > @discussion)
          end
       end
    end

@@ -129,10 +129,6 @@ class Account < ActiveRecord::Base
       EthilVan::Role.get role_id_was.to_sym
    end
 
-   def views_by_discussion_id
-      discussion_views.group_by { |view| view.discussion_id }
-   end
-
    def logged_in?
       true
    end
