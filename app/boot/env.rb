@@ -16,6 +16,10 @@ module EthilVan
       Dir[path(*args)]
    end
 
+   def expand_path(path)
+      File.expand_path(path, ROOT)
+   end
+
    def development?(&block)
       env :development, &block
    end

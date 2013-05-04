@@ -9,6 +9,7 @@ class EthilVan::YamlConfig
    attr :upload_folder
    attr :upload_url
    attr :jobs_url
+   attr :jobs_pidfile
 
    def initialize(path)
       hash = YAML.load_file path
@@ -63,11 +64,13 @@ class EthilVan::YamlConfig
       end
 
       upload = hash['upload']
-      @upload_folder = File.expand_path(upload['folder'], EthilVan::ROOT)
+      @upload_folder = EthilVan.expand_path upload['folder']
       @upload_url = upload['url']
    end
 
    def load_jobs(hash)
       @jobs_url = hash['jobs_url'] || 'localhost:11300'
+      jobs_pidfile = hash['jobs_pid'] || 'tmp/jobs'
+      @jobs_pidfile = EthilVan.expand_path jobs_pidfile
    end
 end
