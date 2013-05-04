@@ -16,7 +16,7 @@ module EthilVan::App::Views
             stats_max = MinecraftStats.maximum('version')
             @new_messages.map do |message|
                editable = modo? || message.editable_by?(@app.current_account)
-               Partials::Message::Display.new(@discussion_urls, message, editable, stats_max)
+               Partials::Message::Display.new(@discussion_urls, message, editable)
             end
          end
       end
