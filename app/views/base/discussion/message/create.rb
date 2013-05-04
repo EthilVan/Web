@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   module Gestion::Message
+   module Base::Message
 
       class Create < Edit
 

@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   module Gestion::DiscussionGroup
+   module Base::DiscussionGroup
 
       class List < Page
 

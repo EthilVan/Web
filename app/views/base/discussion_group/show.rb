@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   module Member::DiscussionGroup
+   module Base::DiscussionGroup
 
       class Show < Page
 

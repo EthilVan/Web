@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   module Member::Discussion
+   module Base::Discussion
 
       class Edit < Page
 

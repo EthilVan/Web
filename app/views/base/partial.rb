@@ -44,4 +44,7 @@ module EthilVan::App::Views
 
    module Partials
    end
+
+   module Base
+   end
 end

@@ -1,6 +1,6 @@
 module EthilVan::App::Views
 
-   module Member::Message
+   module Base::Message
 
       class Edit < Page
 

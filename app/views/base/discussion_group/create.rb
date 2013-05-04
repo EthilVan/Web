@@ -1,8 +1,8 @@
 module EthilVan::App::Views
 
-   module Member::DiscussionGroup
+   module Base::DiscussionGroup
 
-      class Edit < Page
+      class Create < Page
 
          def initialize(discussion_urls, group)
             @form = Partials::DiscussionGroup::Form.new(group)
